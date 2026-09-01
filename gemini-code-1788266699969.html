@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destiny Eleven — Ultimate RPG</title>
+  <style>
+    :root {
+      --bg-dark: #0a0e17;
+      --card-bg: #161f30;
+      --accent-gold: #e5b842;
+      --accent-blue: #00d2ff;
+      --text-light: #f0f4f8;
+      --text-dim: #8a99ad;
+      --danger: #ff4757;
+      --success: #2ed573;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: var(--bg-dark); color: var(--text-light); padding: 20px; display: flex; justify-content: center; }
+    .container { max-width: 800px; width: 100%; }
+
+    header { text-align: center; margin-bottom: 25px; border-bottom: 2px solid var(--accent-gold); padding-bottom: 10px; }
+    header h1 { font-size: 2.2rem; color: var(--accent-gold); letter-spacing: 2px; text-transform: uppercase; }
+    header p { color: var(--text-dim); font-size: 0.9rem; }
+
+    .card { background: var(--card-bg); border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.05); }
+    h2 { color: var(--accent-blue); margin-bottom: 15px; font-size: 1.3rem; border-left: 4px solid var(--accent-blue); padding-left: 10px; }
+
+    .form-group { margin-bottom: 15px; }
+    label { display: block; margin-bottom: 5px; color: var(--text-dim); font-size: 0.9rem; }
+    input, select { width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #2a384e; background: #0d131d; color: var(--text-light); font-size: 1rem; }
+    
+    .btn { background: linear-gradient(135deg, var(--accent-gold), #b88e22); color: #000; font-weight: bold; padding: 12px 20px; border: none; border-radius: 6px; cursor: pointer; width: 100%; transition: 0.2s; font-size: 1rem; text-transform: uppercase; margin-bottom: 10px; }
+    .btn:hover { opacity: 0.9; transform: translateY(-2px); }
+    .btn-demo { background: linear-gradient(135deg, var(--accent-blue), #0088cc); color: #fff; }
+    .btn-action { background: #223046; color: var(--text-light); border: 1px solid var(--accent-blue); margin-bottom: 10px; text-align: left; }
+    .btn-action:hover { background: var(--accent-blue); color: #000; }
+
+    .player-header { display: flex; justify-content: space-between; align-items: center; background: linear-gradient(45deg, #1f2d42, #111823); padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid var(--accent-gold); }
+    .player-score { font-size: 2rem; font-weight: bold; color: var(--accent-gold); }
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 15px; }
+    .stat-box { background: #0d131d; padding: 10px; border-radius: 6px; text-align: center; }
+    .stat-val { font-size: 1.2rem; font-weight: bold; color: var(--accent-blue); }
+    .stat-lbl { font-size: 0.75rem; color: var(--text-dim); }
+
+    .match-log { background: #0d131d; border-radius: 6px; padding: 15px; height: 180px; overflow-y: auto; margin-bottom: 15px; font-family: monospace; font-size: 0.95rem; border: 1px solid #2a384e; }
+    .log-entry { margin-bottom: 8px; border-bottom: 1px solid #1a2433; padding-bottom: 4px; }
+    .demo-tag { background: var(--accent-gold); color: #000; font-size: 0.7rem; font-weight: bold; padding: 2px 6px; border-radius: 4px; margin-left: 8px; vertical-align: middle; }
+    
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Destiny Eleven</h1>
+    <p>Simulation de Carrière RPG Football</p>
+  </header>
+
+  <div id="screen-creation" class="card">
+    <h2>Lancer une Partie</h2>
+    <div class="form-group">
+      <label>Nom & Prénom</label>
+      <input type="text" id="p-name" value="Axel Venet">
+    </div>
+    <div class="form-group">
+      <label>Poste</label>
+      <select id="p-pos">
+        <option value="MC">Milieu Central (MC)</option>
+        <option value="MO">Milieu Offensif (MO)</option>
+        <option value="BU">Buteur (BU)</option>
+        <option value="Ailier">Ailier (AG/AD)</option>
+        <option value="MDC">Milieu Défensif (MDC)</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Scénario de Départ</label>
+      <select id="p-scenario">
+        <option value="crack">Le Crack Académie (Pression élevée, Stats équilibrées)</option>
+        <option value="atypique">La Trajectoire Atypique (Physique lourd, Technique à travailler)</option>
+        <option value="comeback">Le Comeback (Mental d'acier, Physique affaibli)</option>
+      </select>
+    </div>
+    <button class="btn" onclick="startGame(false)">Lancer la Carrière Personnalisée</button>
+    <button class="btn btn-demo" onclick="startGame(true)">🎮 Mode Démo Rapide (Joueur Star)</button>
+  </div>
+
+  <div id="screen-game" class="card hidden">
+    <div class="player-header">
+      <div>
+        <h3 id="card-name" style="color:var(--text-light)">-</h3>
+        <span id="card-details" style="color:var(--text-dim); font-size:0.85rem">-</span>
+      </div>
+      <div class="player-score" id="card-ovr">70</div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-box"><div class="stat-val" id="st-tir">65</div><div class="stat-lbl">TIR</div></div>
+      <div class="stat-box"><div class="stat-val" id="st-pas">70</div><div class="stat-lbl">PAS</div></div>
+      <div class="stat-box"><div class="stat-val" id="st-dri">68</div><div class="stat-lbl">DRI</div></div>
+      <div class="stat-box"><div class="stat-val" id="st-phy">65</div><div class="stat-lbl">PHY</div></div>
+      <div class="stat-box"><div class="stat-val" id="st-vis">72</div><div class="stat-lbl">VIS</div></div>
+      <div class="stat-box"><div class="stat-val" id="st-mor">80%</div><div class="stat-lbl">MORAL</div></div>
+    </div>
+
+    <h2>Journée de Championnat <span id="demo-indicator"></span></h2>
+    <div class="match-log" id="match-log">
+      <div class="log-entry"> Le match va commencer. Préparez-vous à entrer sur le terrain.</div>
+    </div>
+
+    <div id="action-choices">
+      <button class="btn" onclick="nextMatchPhase()">Démarrer le Match</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  let player = {};
+  let currentMatchStep = 0;
+
+  function startGame(isDemo = false) {
+    if (isDemo) {
+      player = {
+        name: "Axel (Démo)",
+        pos: "MC",
+        scenario: "crack",
+        stats: { tir: 78, pas: 85, dri: 82, phy: 75, vis: 88 },
+        moral: 95
+      };
+      document.getElementById('demo-indicator').innerHTML = '<span class="demo-tag">MODE DÉMO</span>';
+    } else {
+      const name = document.getElementById('p-name').value;
+      const pos = document.getElementById('p-pos').value;
+      const scenario = document.getElementById('p-scenario').value;
+
+      player = {
+        name: name,
+        pos: pos,
+        scenario: scenario,
+        stats: { tir: 65, pas: 70, dri: 68, phy: 65, vis: 70 },
+        moral: 80
+      };
+
+      if(scenario === 'crack') { player.stats.pas += 5; player.stats.vis += 5; }
+      if(scenario === 'atypique') { player.stats.phy += 10; player.stats.tir += 5; }
+      if(scenario === 'comeback') { player.stats.vis += 8; player.stats.phy -= 5; }
+      document.getElementById('demo-indicator').innerHTML = '';
+    }
+
+    updateUI();
+    document.getElementById('screen-creation').classList.add('hidden');
+    document.getElementById('screen-game').classList.remove('hidden');
+  }
+
+  function updateUI() {
+    document.getElementById('card-name').innerText = player.name;
+    document.getElementById('card-details').innerText = `${player.pos} | Scénario : ${player.scenario}`;
+    document.getElementById('card-ovr').innerText = Math.round((player.stats.tir + player.stats.pas + player.stats.dri + player.stats.phy + player.stats.vis)/5);
+    
+    document.getElementById('st-tir').innerText = player.stats.tir;
+    document.getElementById('st-pas').innerText = player.stats.pas;
+    document.getElementById('st-dri').innerText = player.stats.dri;
+    document.getElementById('st-phy').innerText = player.stats.phy;
+    document.getElementById('st-vis').innerText = player.stats.vis;
+    document.getElementById('st-mor').innerText = player.moral + "%";
+  }
+
+  const matchEvents = [
+    {
+      text: "⏱️ 22' | Ballon récupéré au milieu de terrain. Deux attaquants font un appel croisé.",
+      options: [
+        { label: "Tenter une passe en profondeur millimétrée (Test PAS)", stat: "pas", diff: 68 },
+        { label: "Garder le ballon et temporiser (Test DRI)", stat: "dri", diff: 60 }
+      ]
+    },
+    {
+      text: "⏱️ 58' | Ouverture à l'entrée de la surface. Tu as un angle de frappe ouvert.",
+      options: [
+        { label: "Enrouler une frappe lucarne opposée (Test TIR)", stat: "tir", diff: 70 },
+        { label: "Servir le coéquipier mieux démarqué (Test VIS)", stat: "vis", diff: 65 }
+      ]
+    },
+    {
+      text: "⏱️ 84' | Contre-attaque adverse dangereuse. Tu es le dernier replié.",
+      options: [
+        { label: "Faire une faute tactique intelligente (Test PHY)", stat: "phy", diff: 55 },
+        { label: "Tenter d'intercepter la passe sans faire faute (Test VIS)", stat: "vis", diff: 72 }
+      ]
+    }
+  ];
+
+  function nextMatchPhase() {
+    if(currentMatchStep < matchEvents.length) {
+      const evt = matchEvents[currentMatchStep];
+      logMessage(evt.text);
+
+      let optionsHTML = "";
+      evt.options.forEach((opt, idx) => {
+        optionsHTML += `<button class="btn btn-action" onclick="resolveAction(${idx})">${opt.label}</button>`;
+      });
+      document.getElementById('action-choices').innerHTML = optionsHTML;
+    } else {
+      logMessage("🏁 Fin du match ! Bilan : Prestation solide enregistrée.");
+      document.getElementById('action-choices').innerHTML = `<button class="btn" onclick="resetMatch()">Match Suivant</button>`;
+    }
+  }
+
+  function resolveAction(optIndex) {
+    const evt = matchEvents[currentMatchStep];
+    const opt = evt.options[optIndex];
+    const playerStat = player.stats[opt.stat];
+    const success = (playerStat + Math.floor(Math.random() * 20)) >= opt.diff;
+
+    if(success) {
+      logMessage(`✅ Action réussie ! (+1 en ${opt.stat.toUpperCase()})`);
+      player.stats[opt.stat] = Math.min(99, player.stats[opt.stat] + 1);
+    } else {
+      logMessage(`❌ Action manquée... La défense ou l'adversaire a pris le dessus.`);
+    }
+
+    currentMatchStep++;
+    updateUI();
+    setTimeout(nextMatchPhase, 1000);
+  }
+
+  function logMessage(msg) {
+    const log = document.getElementById('match-log');
+    log.innerHTML += `<div class="log-entry">${msg}</div>`;
+    log.scrollTop = log.scrollHeight;
+  }
+
+  function resetMatch() {
+    currentMatchStep = 0;
+    document.getElementById('match-log').innerHTML = '<div class="log-entry">Nouveau match commencé.</div>';
+    nextMatchPhase();
+  }
+</script>
+</body>
+</html>
