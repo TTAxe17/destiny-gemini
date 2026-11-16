@@ -1,0 +1,576 @@
+<title>Herbier Vivant</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Entraînement quotidien à la reconnaissance des végétaux pour paysagistes : photos, noms français et latins, conseils de reconnaissance.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Mise en page : une colonne étroite de « fiches d'herbier » ; photo en haut, étiquette de pépinière dessous. */
+:root{
+  --bg:#eef2ec;          /* papier d'herbier, teinté sauge */
+  --surface:#ffffff;
+  --surface-2:#e3eadf;
+  --ink:#18241c;
+  --muted:#56655a;
+  --line:#cdd8cb;
+  --leaf:#2c5a3a;        /* vert feuillage */
+  --leaf-soft:#d6e6d6;
+  --tag:#b9761a;         /* étiquette de pépinière */
+  --tag-soft:#f4e2c4;
+  --ok:#2f7d45; --ok-soft:#dcefdf;
+  --ko:#b23b2c; --ko-soft:#f6dcd7;
+  --shadow:0 1px 2px rgba(24,36,28,.06),0 6px 20px rgba(24,36,28,.07);
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Public Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+  --f-latin:"Instrument Serif","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#101712; --surface:#18221b; --surface-2:#202d24; --ink:#e4ece5; --muted:#9aab9e; --line:#2d3d32;
+  --leaf:#8fc79d; --leaf-soft:#22382a; --tag:#e3a64a; --tag-soft:#3a2d17;
+  --ok:#7fcf92; --ok-soft:#1d3524; --ko:#f08d7f; --ko-soft:#3d221e; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#101712; --surface:#18221b; --surface-2:#202d24; --ink:#e4ece5; --muted:#9aab9e; --line:#2d3d32;
+  --leaf:#8fc79d; --leaf-soft:#22382a; --tag:#e3a64a; --tag-soft:#3a2d17;
+  --ok:#7fcf92; --ok-soft:#1d3524; --ko:#f08d7f; --ko-soft:#3d221e; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25); color-scheme:dark}
+
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 96px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:720px;margin:0 auto}
+h1,h2,h3{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+.latin{font-family:var(--f-latin);font-style:italic;font-weight:400}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--tag);outline-offset:2px;border-radius:8px}
+a{color:var(--leaf)}
+
+/* En-tête */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:14px 10px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.brand svg{flex:none}
+.brand b{font-family:var(--f-display);font-weight:800;font-size:1.25rem;letter-spacing:-.01em}
+.brand small{display:block;font-size:.72rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:-2px}
+.streak{display:flex;align-items:center;gap:6px;background:var(--tag-soft);color:var(--ink);border-radius:999px;padding:6px 12px;font-weight:700;font-variant-numeric:tabular-nums;font-size:.9rem;white-space:nowrap}
+.streak i{font-style:normal;color:var(--tag)}
+
+/* Navigation basse */
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--surface);border-top:1px solid var(--line);
+  padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px))}
+nav.tabs .in{max-width:720px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+nav.tabs a{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:var(--muted);font-size:.75rem;font-weight:600;padding:6px 4px;border-radius:10px}
+nav.tabs a[aria-current="page"]{color:var(--leaf);background:var(--leaf-soft)}
+nav.tabs svg{width:22px;height:22px}
+
+section.view{padding-block:20px;display:flex;flex-direction:column;gap:18px}
+.eyebrow{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.pad{padding:18px}
+.muted{color:var(--muted)}
+
+/* Accueil */
+.hero{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
+.hero h1{font-size:clamp(1.6rem,5vw,2.2rem);font-weight:800;letter-spacing:-.02em}
+.hero p{margin:6px 0 0;color:var(--muted);max-width:46ch}
+.ring{width:96px;height:96px;flex:none}
+.ring text{font-family:var(--f-display);font-weight:800;fill:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:12px;padding:14px 20px;font-weight:700;cursor:pointer;text-decoration:none;font-size:1rem}
+.btn-main{background:var(--leaf);color:var(--bg)}
+.btn-main:hover{filter:brightness(1.08)}
+.btn-ghost{background:var(--surface-2);color:var(--ink)}
+.btn-ghost:hover{background:var(--line)}
+.btn-wide{width:100%}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat{padding:12px 14px}
+.stat b{display:block;font-family:var(--f-display);font-size:1.5rem;font-variant-numeric:tabular-nums}
+.stat span{font-size:.8rem;color:var(--muted)}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center;font-size:.72rem;color:var(--muted)}
+.week .d{aspect-ratio:1;max-width:100%;border-radius:8px;background:var(--surface-2);display:grid;place-items:center;font-weight:700;color:var(--muted);margin-bottom:3px}
+.week .d.on{background:var(--leaf);color:var(--bg)}
+.week .d.today{outline:2px solid var(--tag)}
+
+/* Niveaux */
+.levels{display:flex;flex-direction:column;gap:10px}
+.lvl{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:14px 16px;text-align:left;width:100%;border:1px solid var(--line);background:var(--surface);border-radius:var(--r);cursor:pointer}
+.lvl:hover:not([disabled]){border-color:var(--leaf)}
+.lvl[disabled]{cursor:not-allowed;opacity:.6}
+.lvl .num{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;font-family:var(--f-display);font-weight:800;background:var(--leaf-soft);color:var(--leaf)}
+.lvl h3{font-size:1.02rem}
+.lvl p{margin:2px 0 6px;font-size:.85rem;color:var(--muted)}
+.lvl .meta{font-size:.8rem;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar{height:6px;border-radius:99px;background:var(--surface-2);overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--leaf);border-radius:99px}
+
+/* Quiz */
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.qhead .bar{flex:1}
+.qcount{font-variant-numeric:tabular-nums;font-weight:700;font-size:.9rem;color:var(--muted);white-space:nowrap}
+.photo{position:relative;border-radius:var(--r);overflow:hidden;background:var(--surface-2);aspect-ratio:4/3;max-width:100%}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo .credit{position:absolute;right:0;bottom:0;max-width:100%;background:rgba(0,0,0,.55);color:#fff;font-size:.68rem;padding:3px 8px;border-top-left-radius:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.photo .credit a{color:#fff}
+.photo .zoom{position:absolute;left:10px;top:10px;background:rgba(0,0,0,.5);color:#fff;border:0;border-radius:8px;padding:6px 10px;font-size:.78rem;cursor:pointer}
+.photo.noimg{display:grid;place-items:center;color:var(--muted);text-align:center;padding:20px}
+.qtitle{font-size:1.25rem;font-weight:700}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:520px){.choices{grid-template-columns:1fr}}
+.choice{border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:12px 14px;text-align:left;cursor:pointer;min-height:56px;display:flex;flex-direction:column;justify-content:center}
+.choice:hover:not([disabled]){border-color:var(--leaf)}
+.choice .main{font-weight:600}
+.choice .main.latin{font-size:1.18rem;font-weight:400}
+.choice[disabled]{cursor:default}
+.choice.good{border-color:var(--ok);background:var(--ok-soft)}
+.choice.bad{border-color:var(--ko);background:var(--ko-soft)}
+.choice.dim{opacity:.55}
+
+/* Fiche réponse */
+.answer{overflow:hidden}
+.verdict{padding:12px 18px;font-weight:700;display:flex;align-items:center;gap:8px}
+.verdict.ok{background:var(--ok-soft);color:var(--ok)}
+.verdict.ko{background:var(--ko-soft);color:var(--ko)}
+.label{padding:16px 18px;display:flex;flex-direction:column;gap:12px}
+.names .fr{font-family:var(--f-display);font-size:1.4rem;font-weight:700}
+.names .latin{font-size:1.35rem;color:var(--leaf)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:.76rem;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--surface-2);color:var(--muted)}
+.chip.tagc{background:var(--tag-soft);color:var(--ink)}
+.tip{border-left:3px solid var(--tag);padding:2px 0 2px 12px}
+.tip h4,.diff h4{margin:0 0 3px;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--tag)}
+.diff h4{color:var(--leaf)}
+.tip p,.diff p{margin:0}
+.diff{border-left:3px solid var(--leaf);padding:2px 0 2px 12px}
+.look{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
+.mini{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface);cursor:pointer;text-align:left;padding:0}
+.mini img{width:100%;aspect-ratio:1;object-fit:cover;display:block;background:var(--surface-2)}
+.mini span{display:block;padding:6px 8px;font-size:.8rem;line-height:1.25}
+.mini span em{font-family:var(--f-latin);font-size:.9rem;color:var(--muted)}
+
+/* Herbier */
+.search{display:flex;gap:8px;flex-wrap:wrap}
+.search input,.search select{flex:1 1 180px;min-width:0;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.grid .mini span b{display:block;font-weight:600}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;background:var(--line);vertical-align:middle}
+.dot.m1{background:var(--tag)} .dot.m2{background:var(--leaf)}
+
+/* Modale */
+dialog{border:0;padding:0;border-radius:var(--r);max-width:min(640px,calc(100vw - 24px));width:100%;background:var(--surface);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(10,16,12,.6)}
+dialog .close{position:absolute;right:10px;top:10px;z-index:2;border:0;border-radius:999px;width:36px;height:36px;background:rgba(0,0,0,.55);color:#fff;cursor:pointer;font-size:1.1rem}
+dialog .photo{border-radius:0;aspect-ratio:4/3}
+dialog.zoomd{max-width:min(1000px,calc(100vw - 24px));background:#000}
+dialog.zoomd img{width:100%;max-height:85vh;object-fit:contain;display:block}
+
+/* Résultat */
+.result h2{font-size:1.8rem}
+.score{font-family:var(--f-display);font-size:3rem;font-weight:800;color:var(--leaf);font-variant-numeric:tabular-nums}
+.share-url{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem;background:var(--surface-2);padding:12px;border-radius:10px;word-break:break-all;user-select:all}
+.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-weight:600;z-index:20;max-width:calc(100vw - 32px)}
+.steps{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.small{font-size:.85rem}
+@media (prefers-reduced-motion:no-preference){
+  .choice,.lvl,.btn{transition:background .15s,border-color .15s,filter .15s}
+  .answer{animation:rise .25s ease-out}
+  @keyframes rise{from{transform:translateY(6px)}to{transform:none}}
+}
+</style>
+
+<header class="top wrap">
+  <a class="brand" href="#accueil" aria-label="Herbier Vivant, accueil">
+    <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="9" fill="var(--leaf)"/><path d="M9 25c0-9 6-15 16-16-1 10-7 16-16 16Z" fill="var(--bg)"/><path d="M9 25 20 14" stroke="var(--leaf)" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <span><b>Herbier Vivant</b><small>Reconnaissance des végétaux</small></span>
+  </a>
+  <div class="streak" id="streak" title="Jours d'entraînement consécutifs"><i>●</i> <span id="streakN">0</span> j</div>
+</header>
+
+<main class="wrap" id="app"></main>
+
+<nav class="tabs" aria-label="Navigation">
+  <div class="in">
+    <a href="#accueil" data-v="accueil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/></svg>Aujourd'hui</a>
+    <a href="#niveaux" data-v="niveaux"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20h4v-6H4zM10 20h4V9h-4zM16 20h4V4h-4z"/></svg>Niveaux</a>
+    <a href="#herbier" data-v="herbier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M9 15c0-4 3-7 7-7-.5 4-3 7-7 7Z"/></svg>Herbier</a>
+    <a href="#partager" data-v="partager"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>Partager</a>
+  </div>
+</nav>
+
+<dialog id="modal"></dialog>
+
+<script>
+const PLANTS = /*PLANTS*/[];
+const IMAGES = /*IMAGES*/{};
+const SHARE_URL = /*SHARE_URL*/"";
+
+const LEVELS = [
+  {n:1, name:"Les incontournables", sub:"Arbres et arbustes qu'on croise partout en France"},
+  {n:2, name:"Jardins et espaces verts", sub:"Les classiques des pépinières et des villes"},
+  {n:3, name:"Vivaces et graminées", sub:"Les massifs d'aujourd'hui"},
+  {n:4, name:"Les sosies", sub:"Espèces qu'on confond, à départager au détail près"},
+  {n:5, name:"Méditerranée", sub:"Garrigue, maquis et jardins du Sud"},
+  {n:6, name:"Végétaux du monde", sub:"Japon, Amériques, Océanie, Afrique du Sud"},
+];
+const SESSION_LEN = 10;
+const INTERVALS = [0,1,2,4,8,16,32]; // jours avant révision selon la boîte
+const MASTER_BOX = 3;               // boîte à partir de laquelle une plante est « connue »
+const UNLOCK = 0.5;                 // part du niveau précédent à connaître pour débloquer
+
+const byId = Object.fromEntries(PLANTS.map(p=>[p.id,p]));
+const $ = s => document.querySelector(s);
+const esc = s => String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const shuffle = a => {a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const today = () => { const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0") };
+const dayDiff = (a,b) => Math.round((new Date(b+"T12:00")-new Date(a+"T12:00"))/864e5);
+
+/* ---------- Progression (dans ce navigateur) ---------- */
+const KEY = "herbier-vivant-v1";
+let S = load();
+function load(){
+  let s=null; try{ s=JSON.parse(localStorage.getItem(KEY)) }catch(e){}
+  return Object.assign({cards:{}, days:{}, streak:0, lastDay:null, best:0, all:false, maxLvl:1}, s||{});
+}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)) }catch(e){} }
+const card = id => S.cards[id] || {box:0, ok:0, ko:0, last:null};
+const known = id => card(id).box >= MASTER_BOX;
+
+function levelStats(n){
+  const ps = PLANTS.filter(p=>p.lvl===n);
+  const k = ps.filter(p=>known(p.id)).length;
+  const seen = ps.filter(p=>card(p.id).box>0).length;
+  return {total:ps.length, known:k, seen, ratio: ps.length? k/ps.length : 0};
+}
+function unlocked(n){ return S.all || n <= (S.maxLvl||1) }
+function refreshUnlocks(){
+  let m = S.maxLvl||1; const before = m;
+  while (m < LEVELS.length && levelStats(m).ratio >= UNLOCK) m++;
+  S.maxLvl = m; if (m!==before) save();
+  return m > before;
+}
+function isDue(id){
+  const c = card(id); if(!c.box || !c.last) return false;
+  return dayDiff(c.last, today()) >= INTERVALS[Math.min(c.box, INTERVALS.length-1)];
+}
+function displayStreak(){
+  let n = S.streak;
+  if (S.lastDay && dayDiff(S.lastDay, today()) > 1) n = 0;
+  $("#streakN").textContent = n;
+}
+
+/* ---------- Construction d'une séance ---------- */
+function buildSession(level){
+  const pool = PLANTS.filter(p => level ? p.lvl===level : unlocked(p.lvl));
+  let picks = [];
+  if (level){
+    const due = shuffle(pool.filter(p=>isDue(p.id)));
+    const fresh = pool.filter(p=>!card(p.id).box);
+    const weak = shuffle(pool.filter(p=>card(p.id).box>0 && !known(p.id)));
+    picks = [...due, ...fresh.slice(0,5), ...weak, ...shuffle(pool)];
+  } else {
+    const due = shuffle(pool.filter(p=>isDue(p.id))).sort((a,b)=>card(a.id).box-card(b.id).box);
+    // nouvelles plantes : dans l'ordre, des plus communes aux plus difficiles
+    const fresh = pool.filter(p=>!card(p.id).box).sort((a,b)=>a.lvl-b.lvl);
+    const nNew = Math.max(3, SESSION_LEN - Math.min(due.length, 7));
+    const weak = shuffle(pool.filter(p=>card(p.id).box>0 && !known(p.id)));
+    picks = [...due.slice(0,7), ...fresh.slice(0,nNew), ...weak, ...shuffle(pool)];
+  }
+  const seen = new Set(); const out=[];
+  for(const p of picks){ if(!seen.has(p.id)){ seen.add(p.id); out.push(p) } if(out.length===SESSION_LEN) break }
+  return shuffle(out).map(p => makeQuestion(p));
+}
+function makeQuestion(p){
+  const latinChance = p.lvl>=4 ? .6 : p.lvl>=2 ? .4 : .25;
+  const mode = Math.random() < latinChance ? "lat" : "fr";
+  const nChoices = p.lvl>=4 ? 6 : 4;
+  const others = [];
+  const add = q => { if(q && q.id!==p.id && !others.includes(q) && q[mode]!==p[mode]) others.push(q) };
+  shuffle(p.conf).forEach(id=>add(byId[id]));
+  shuffle(PLANTS.filter(q=>q.type===p.type && Math.abs(q.lvl-p.lvl)<=2)).forEach(add);
+  shuffle(PLANTS.filter(q=>q.lvl===p.lvl)).forEach(add);
+  shuffle(PLANTS).forEach(add);
+  const choices = shuffle([p, ...others.slice(0,nChoices-1)]);
+  return {p, mode, choices, answered:null};
+}
+
+/* ---------- Images ---------- */
+function img(p){ const m=IMAGES[p.id]; return m && m.file ? m.file : "" }
+function credit(p){
+  const m=IMAGES[p.id]; if(!m||!m.commons) return "";
+  const url="https://commons.wikimedia.org/wiki/File:"+encodeURIComponent(m.commons.replace(/ /g,"_"));
+  return `<span class="credit">Photo : ${esc(m.artist||"Wikimedia Commons")}${m.license?" · "+esc(m.license):""} · <a href="${url}" target="_blank" rel="noopener">source</a></span>`;
+}
+function photo(p, hide){
+  const src=img(p);
+  if(!src) return `<div class="photo noimg">Photo indisponible pour cette plante.<br>Fiez-vous à la description.</div>`;
+  const alt = hide ? "Photo du végétal à identifier" : `${p.fr} (${p.lat})`;
+  return `<div class="photo"><img src="${esc(src)}" alt="${esc(alt)}" loading="lazy"><button class="zoom" data-zoom="${esc(src)}" type="button">Agrandir</button>${credit(p)}</div>`;
+}
+
+/* ---------- Vues ---------- */
+let quiz = null; // séance en cours
+const app = $("#app");
+
+function route(){
+  const v = (location.hash||"#accueil").slice(1);
+  const known = ["accueil","niveaux","herbier","partager","seance"];
+  const view = known.includes(v) ? v : "accueil";
+  document.querySelectorAll("nav.tabs a").forEach(a=>a.setAttribute("aria-current", a.dataset.v===view || (view==="seance" && a.dataset.v==="accueil") ? "page":"false"));
+  refreshUnlocks(); displayStreak();
+  if (view==="seance"){ if(!quiz){ location.hash="#accueil"; return } renderQuiz(); }
+  else ({accueil:renderHome, niveaux:renderLevels, herbier:renderHerbier, partager:renderShare})[view]();
+  window.scrollTo(0,0);
+}
+window.addEventListener("hashchange", route);
+
+function renderHome(){
+  const t = today(); const d = S.days[t];
+  const totalKnown = PLANTS.filter(p=>known(p.id)).length;
+  const due = PLANTS.filter(p=>unlocked(p.lvl) && isDue(p.id)).length;
+  const done = d && d.sessions>0;
+  const pct = Math.round(totalKnown/PLANTS.length*100);
+  const C = 2*Math.PI*40;
+  const week = [...Array(7)].map((_,i)=>{ const dt=new Date(); dt.setDate(dt.getDate()-(6-i));
+    const k=dt.getFullYear()+"-"+String(dt.getMonth()+1).padStart(2,"0")+"-"+String(dt.getDate()).padStart(2,"0");
+    return {k, on: S.days[k] && S.days[k].sessions>0, l:"DLMMJVS"[dt.getDay()], today:k===t}});
+  const curLvl = LEVELS.find(l=>unlocked(l.n) && levelStats(l.n).ratio<1) || LEVELS[LEVELS.length-1];
+  app.innerHTML = `<section class="view">
+    <div class="hero">
+      <div>
+        <div class="eyebrow">${new Date().toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"})}</div>
+        <h1>${done ? "Séance du jour faite. Bravo !" : "Votre séance du jour vous attend"}</h1>
+        <p>${SESSION_LEN} photos à reconnaître. ${due ? `<b>${due}</b> plante${due>1?"s":""} à réviser, ` : ""}et de nouvelles espèces du niveau « ${esc(curLvl.name)} ».</p>
+      </div>
+      <svg class="ring" viewBox="0 0 96 96" role="img" aria-label="${totalKnown} végétaux connus sur ${PLANTS.length}">
+        <circle cx="48" cy="48" r="40" fill="none" stroke="var(--surface-2)" stroke-width="9"/>
+        <circle cx="48" cy="48" r="40" fill="none" stroke="var(--leaf)" stroke-width="9" stroke-linecap="round" stroke-dasharray="${C*pct/100} ${C}" transform="rotate(-90 48 48)"/>
+        <text x="48" y="50" text-anchor="middle" font-size="21">${totalKnown}</text>
+        <text x="48" y="66" text-anchor="middle" font-size="10" style="font-family:var(--f-body);font-weight:600;fill:var(--muted)">sur ${PLANTS.length}</text>
+      </svg>
+    </div>
+    <button class="btn btn-main btn-wide" id="go" type="button">${done ? "Faire une séance bonus" : "Commencer l'entraînement du jour"}</button>
+    <div class="stats">
+      <div class="card stat"><b>${S.lastDay && dayDiff(S.lastDay,t)<=1 ? S.streak : 0}</b><span>jours d'affilée</span></div>
+      <div class="card stat"><b>${totalKnown}</b><span>végétaux connus</span></div>
+      <div class="card stat"><b>${Math.max(S.best,0)}</b><span>meilleure série</span></div>
+    </div>
+    <div class="card pad">
+      <div class="eyebrow" style="margin-bottom:10px">Cette semaine</div>
+      <div class="week">${week.map(w=>`<div><div class="d ${w.on?"on":""} ${w.today?"today":""}">${w.on?"✓":""}</div>${w.l}</div>`).join("")}</div>
+    </div>
+    <div class="card pad">
+      <div class="eyebrow" style="margin-bottom:6px">Comment ça marche</div>
+      <ol class="steps small">
+        <li>Chaque jour, une séance de ${SESSION_LEN} photos : de nouvelles espèces, des plus communes aux plus difficiles, et des révisions.</li>
+        <li>Après chaque réponse, une fiche donne les noms français et latin, un conseil pour reconnaître la plante et la différence avec ses sosies.</li>
+        <li>Une plante ratée revient vite. Une plante réussie revient de plus en plus tard (1, 2, 4, 8 jours…).</li>
+        <li>Connaissez la moitié d'un niveau pour débloquer le suivant, jusqu'aux végétaux du monde entier.</li>
+      </ol>
+    </div>
+  </section>`;
+  $("#go").onclick = ()=>startSession(null);
+}
+
+function renderLevels(){
+  app.innerHTML = `<section class="view">
+    <div><div class="eyebrow">Parcours</div><h1 style="font-size:1.8rem">Niveaux</h1>
+    <p class="muted" style="margin:6px 0 0">Choisissez un niveau pour une séance ciblée. Un niveau s'ouvre quand vous connaissez la moitié du précédent.</p></div>
+    <div class="levels">${LEVELS.map(l=>{const st=levelStats(l.n), u=unlocked(l.n);
+      return `<button class="lvl" data-l="${l.n}" ${u?"":"disabled"} type="button">
+        <span class="num">${u?l.n:"🔒"}</span>
+        <span><h3>${esc(l.name)}</h3><p>${esc(l.sub)}</p><span class="bar"><i style="width:${Math.round(st.ratio*100)}%"></i></span></span>
+        <span class="meta">${st.known}/${st.total}<br>connus</span></button>`}).join("")}</div>
+    <label class="card pad row small" style="align-items:center;cursor:pointer">
+      <input type="checkbox" id="all" ${S.all?"checked":""}> <span>Tout débloquer (pour les paysagistes déjà expérimentés)</span>
+    </label>
+  </section>`;
+  app.querySelectorAll(".lvl").forEach(b=>b.onclick=()=>startSession(+b.dataset.l));
+  $("#all").onchange = e => { S.all = e.target.checked; save(); renderLevels() };
+}
+
+function renderHerbier(){
+  app.innerHTML = `<section class="view">
+    <div><div class="eyebrow">Catalogue</div><h1 style="font-size:1.8rem">L'herbier</h1>
+    <p class="muted" style="margin:6px 0 0">Les ${PLANTS.length} végétaux du parcours. Touchez une fiche pour l'étudier.</p></div>
+    <div class="search">
+      <input id="q" type="search" placeholder="Chercher un nom français ou latin…" aria-label="Chercher">
+      <select id="fl" aria-label="Filtrer par niveau"><option value="">Tous les niveaux</option>${LEVELS.map(l=>`<option value="${l.n}">${l.n}. ${esc(l.name)}</option>`).join("")}</select>
+    </div>
+    <p class="small muted" style="margin:0"><span class="dot"></span>pas encore vu <span class="dot m1" style="margin-left:10px"></span>en cours <span class="dot m2" style="margin-left:10px"></span>connu</p>
+    <div class="grid" id="grid"></div>
+  </section>`;
+  const draw = ()=>{
+    const q = $("#q").value.trim().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+    const l = $("#fl").value;
+    const list = PLANTS.filter(p=>(!l||p.lvl==l) && (!q || (p.fr+" "+p.lat+" "+p.fam).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").includes(q)));
+    $("#grid").innerHTML = list.map(p=>{const c=card(p.id); const cls = c.box>=MASTER_BOX?"m2":c.box>0?"m1":"";
+      return `<button class="mini" data-id="${p.id}" type="button">${img(p)?`<img src="${esc(img(p))}" alt="" loading="lazy">`:`<img alt="">`}
+      <span><b><i class="dot ${cls}"></i>${esc(p.fr)}</b><em>${esc(p.lat)}</em></span></button>`}).join("") || `<p class="muted">Aucun végétal ne correspond.</p>`;
+    $("#grid").querySelectorAll(".mini").forEach(b=>b.onclick=()=>openSheet(byId[b.dataset.id]));
+  };
+  $("#q").oninput = draw; $("#fl").onchange = draw; draw();
+}
+
+function shareLink(){ return SHARE_URL || location.href.split("#")[0] }
+function renderShare(){
+  const url = shareLink();
+  const msg = `Je m'entraîne chaque jour à reconnaître les végétaux avec Herbier Vivant (photos, noms latins, astuces de pro). Viens t'entraîner aussi : ${url}`;
+  app.innerHTML = `<section class="view">
+    <div><div class="eyebrow">Entre amis</div><h1 style="font-size:1.8rem">Partager l'application</h1>
+    <p class="muted" style="margin:6px 0 0">Envoyez ce lien à vos amis et collègues. Chacun suit sa propre progression, enregistrée sur son téléphone ou son ordinateur.</p></div>
+    <div class="card pad" style="display:flex;flex-direction:column;gap:12px">
+      <div class="eyebrow">Lien de l'application</div>
+      <div class="share-url" id="url">${esc(url)}</div>
+      <div class="row"><button class="btn btn-main" id="cp1" type="button">Copier le lien</button><button class="btn btn-ghost" id="cp2" type="button">Copier un message d'invitation</button></div>
+    </div>
+    <div class="card pad" style="display:flex;flex-direction:column;gap:10px">
+      <div class="eyebrow">Défiez-les</div>
+      <p style="margin:0">Partagez votre score : <b>${PLANTS.filter(p=>known(p.id)).length}</b> végétaux connus sur ${PLANTS.length}, série de <b>${S.lastDay && dayDiff(S.lastDay,today())<=1 ? S.streak : 0}</b> jour(s).</p>
+      <div class="row"><button class="btn btn-ghost" id="cp3" type="button">Copier mon score</button></div>
+    </div>
+    <div class="card pad small muted">
+      Votre progression reste dans ce navigateur. Si vous videz les données du navigateur ou changez d'appareil, elle repart de zéro.
+      <div class="row" style="margin-top:10px"><button class="btn btn-ghost" id="reset" type="button">Remettre ma progression à zéro</button></div>
+      <div id="resetc" hidden style="margin-top:10px"><p style="margin:0 0 8px;color:var(--ko)">Toute votre progression sera effacée. Confirmer ?</p>
+      <div class="row"><button class="btn btn-ghost" id="resetyes" type="button" style="color:var(--ko)">Oui, tout effacer</button><button class="btn btn-ghost" id="resetno" type="button">Annuler</button></div></div>
+    </div>
+  </section>`;
+  const copy = (txt, ok) => {
+    const fallback = ()=>{ const r=document.createRange(); r.selectNodeContents($("#url")); const s=getSelection(); s.removeAllRanges(); s.addRange(r); toast("Sélectionné : faites Copier") };
+    try{ navigator.clipboard.writeText(txt).then(()=>toast(ok)).catch(fallback) }catch(e){ fallback() }
+  };
+  $("#cp1").onclick = ()=>copy(url,"Lien copié");
+  $("#cp2").onclick = ()=>copy(msg,"Message copié, collez-le dans un SMS ou WhatsApp");
+  $("#cp3").onclick = ()=>copy(`🌿 Herbier Vivant : je connais ${PLANTS.filter(p=>known(p.id)).length}/${PLANTS.length} végétaux, série de ${S.streak} jour(s). À toi ! ${url}`,"Score copié");
+  $("#reset").onclick = ()=>{ $("#resetc").hidden=false };
+  $("#resetno").onclick = ()=>{ $("#resetc").hidden=true };
+  $("#resetyes").onclick = ()=>{ S = Object.assign(load(), {cards:{},days:{},streak:0,lastDay:null,best:0,all:false,maxLvl:1}); save(); toast("Progression effacée"); route() };
+}
+
+/* ---------- Séance ---------- */
+function startSession(level){
+  quiz = {level, qs: buildSession(level), i:0, good:0};
+  if (location.hash==="#seance") renderQuiz(); else location.hash = "#seance";
+}
+function renderQuiz(){
+  const q = quiz.qs[quiz.i];
+  const p = q.p;
+  const lvlName = LEVELS[p.lvl-1].name;
+  app.innerHTML = `<section class="view">
+    <div class="qhead"><span class="qcount">${quiz.i+1} / ${quiz.qs.length}</span><span class="bar"><i style="width:${(quiz.i)/quiz.qs.length*100}%"></i></span>
+      <button class="btn btn-ghost small" id="quit" type="button" style="padding:8px 12px">Quitter</button></div>
+    ${photo(p, true)}
+    <div>
+      <div class="eyebrow">Niveau ${p.lvl} · ${esc(lvlName)} · ${esc(p.type)}</div>
+      <h2 class="qtitle">${q.mode==="lat" ? "Quel est son nom latin ?" : "Quel est ce végétal ?"}</h2>
+    </div>
+    <div class="choices" id="choices">${q.choices.map((c,i)=>`<button class="choice" data-i="${i}" type="button"><span class="main ${q.mode==="lat"?"latin":""}">${esc(c[q.mode])}</span></button>`).join("")}</div>
+    <div id="fb"></div>
+  </section>`;
+  $("#quit").onclick = ()=>{ quiz=null; location.hash="#accueil" };
+  app.querySelectorAll(".choice").forEach(b=>b.onclick=()=>answer(+b.dataset.i));
+  if (q.answered!==null) showFeedback(q);
+}
+function answer(i){
+  const q = quiz.qs[quiz.i]; if(q.answered!==null) return;
+  q.answered = i;
+  const ok = q.choices[i].id===q.p.id;
+  const c = Object.assign({box:0,ok:0,ko:0,last:null}, S.cards[q.p.id]);
+  if(ok){ c.box=Math.min(c.box+1, INTERVALS.length-1); c.ok++; quiz.good++ } else { c.box=1; c.ko++ }
+  c.last = today(); S.cards[q.p.id]=c; save();
+  showFeedback(q);
+}
+function showFeedback(q){
+  const p=q.p, ok=q.choices[q.answered].id===p.id;
+  app.querySelectorAll(".choice").forEach((b,i)=>{
+    b.disabled=true; const c=q.choices[i];
+    if(c.id===p.id) b.classList.add("good"); else if(i===q.answered) b.classList.add("bad"); else b.classList.add("dim");
+    b.insertAdjacentHTML("beforeend", `<span class="small muted ${q.mode==="lat"?"":"latin"}" style="${q.mode==="lat"?"":"font-size:1rem"}">${esc(q.mode==="lat"?c.fr:c.lat)}</span>`);
+  });
+  const wrong = q.choices[q.answered];
+  const last = quiz.i===quiz.qs.length-1;
+  $("#fb").innerHTML = `<div class="card answer">
+    <div class="verdict ${ok?"ok":"ko"}">${ok?"✓ Bien vu !":"✗ Ce n'était pas ça"}</div>
+    ${sheetBody(p, ok?null:wrong)}
+    <div class="pad" style="padding-top:0"><button class="btn btn-main btn-wide" id="next" type="button">${last?"Voir le bilan":"Plante suivante"}</button></div>
+  </div>`;
+  $("#next").onclick = next;
+  bindMinis($("#fb"));
+  $("#fb").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth", block:"start"});
+}
+function sheetBody(p, wrong){
+  const looks = [...new Set([...(wrong?[wrong.id]:[]), ...p.conf])].map(id=>byId[id]).filter(Boolean).slice(0,4);
+  return `<div class="label">
+    <div class="names"><div class="fr">${esc(p.fr)}</div><div class="latin">${esc(p.lat)}</div></div>
+    <div class="chips"><span class="chip tagc">${esc(p.fam)}</span><span class="chip">${esc(p.type)}</span><span class="chip">Origine : ${esc(p.orig)}</span><span class="chip">Niveau ${p.lvl}</span></div>
+    <div class="tip"><h4>Pour le reconnaître</h4><p>${esc(p.tip)}</p></div>
+    <div class="diff"><h4>Pour ne pas confondre</h4><p>${esc(p.diff)}</p></div>
+    ${wrong?`<p class="small" style="margin:0">Vous avez répondu <b>${esc(wrong.fr)}</b> (<span class="latin">${esc(wrong.lat)}</span>). Comparez les deux ci-dessous.</p>`:""}
+    ${looks.length?`<div><div class="eyebrow" style="margin-bottom:6px">${wrong?"À comparer":"Ses sosies"}</div><div class="look">${looks.map(miniHTML).join("")}</div></div>`:""}
+  </div>`;
+}
+function miniHTML(p){ return `<button class="mini" data-id="${p.id}" type="button">${img(p)?`<img src="${esc(img(p))}" alt="" loading="lazy">`:`<img alt="">`}<span>${esc(p.fr)}<br><em>${esc(p.lat)}</em></span></button>` }
+function bindMinis(root){ root.querySelectorAll(".mini").forEach(b=>b.onclick=()=>openSheet(byId[b.dataset.id])) }
+function next(){
+  if (quiz.i < quiz.qs.length-1){ quiz.i++; renderQuiz(); window.scrollTo(0,0); return }
+  finish();
+}
+function finish(){
+  const t = today();
+  const d = S.days[t] || {sessions:0, good:0, total:0};
+  const first = d.sessions===0;
+  d.sessions++; d.good+=quiz.good; d.total+=quiz.qs.length; S.days[t]=d;
+  if (S.lastDay !== t){
+    S.streak = (S.lastDay && dayDiff(S.lastDay,t)===1) ? S.streak+1 : 1;
+    S.lastDay = t;
+  }
+  S.best = Math.max(S.best, S.streak);
+  save(); displayStreak();
+  const opened = refreshUnlocks() && !S.all;
+  const missed = quiz.qs.filter(q=>q.choices[q.answered].id!==q.p.id).map(q=>q.p);
+  const g=quiz.good, n=quiz.qs.length;
+  const word = g===n ? "Sans faute !" : g>=n*.8 ? "Très bon œil" : g>=n*.5 ? "Bonne séance" : "On progresse en se trompant";
+  app.innerHTML = `<section class="view result">
+    <div class="card pad" style="text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center">
+      <div class="eyebrow">Bilan de la séance</div>
+      <div class="score">${g}/${n}</div>
+      <h2>${word}</h2>
+      <p class="muted" style="margin:0">${first?`Jour validé : série de <b>${S.streak}</b> jour${S.streak>1?"s":""}.`:"Séance bonus enregistrée."} Revenez demain pour garder votre série.</p>
+      ${opened?`<p style="margin:6px 0 0;color:var(--leaf);font-weight:700">Nouveau niveau débloqué : ${esc(LEVELS[S.maxLvl-1].name)}</p>`:""}
+    </div>
+    ${missed.length?`<div><div class="eyebrow" style="margin-bottom:8px">À revoir (elles reviendront demain)</div><div class="look">${missed.map(miniHTML).join("")}</div></div>`:""}
+    <div class="row"><button class="btn btn-main" id="again" type="button" style="flex:1">Encore ${SESSION_LEN} plantes</button><a class="btn btn-ghost" href="#partager" style="flex:1">Défier un ami</a></div>
+  </section>`;
+  bindMinis(app);
+  const lvl = quiz.level; quiz=null;
+  $("#again").onclick = ()=>startSession(lvl);
+}
+
+/* ---------- Fiche & zoom ---------- */
+const modal = $("#modal");
+function openSheet(p){
+  modal.className="";
+  modal.innerHTML = `<button class="close" type="button" aria-label="Fermer">✕</button>${photo(p,false)}${sheetBody(p,null)}`;
+  modal.querySelector(".close").onclick=()=>modal.close();
+  bindMinis(modal);
+  if(!modal.open) modal.showModal(); modal.scrollTop=0;
+}
+function zoom(src){
+  modal.className="zoomd";
+  modal.innerHTML = `<button class="close" type="button" aria-label="Fermer">✕</button><img src="${esc(src)}" alt="Photo agrandie">`;
+  modal.querySelector(".close").onclick=()=>modal.close();
+  if(!modal.open) modal.showModal();
+}
+modal.addEventListener("click", e=>{ if(e.target===modal) modal.close() });
+document.addEventListener("click", e=>{ const z=e.target.closest("[data-zoom]"); if(z){ e.preventDefault(); zoom(z.dataset.zoom) } });
+let tt; function toast(m){ let el=$(".toast"); if(!el){ el=document.createElement("div"); el.className="toast"; el.setAttribute("role","status"); document.body.appendChild(el) } el.textContent=m; el.hidden=false; clearTimeout(tt); tt=setTimeout(()=>el.hidden=true,2600) }
+
+document.addEventListener("keydown", e=>{
+  if(location.hash!=="#seance"||!quiz||modal.open) return;
+  const q=quiz.qs[quiz.i];
+  if(q.answered===null && /^[1-6]$/.test(e.key) && +e.key<=q.choices.length) answer(+e.key-1);
+  else if(q.answered!==null && e.key==="Enter"){ e.preventDefault(); next() }
+});
+
+if (location.hash==="#seance") location.hash="#accueil";
+route();
+</script>
