@@ -30,5 +30,43 @@
   "lang": "en",
   "file": "img/acer-platanoides.jpg",
   "bytes": 64987
+ },
+ "acer-pseudoplatanus": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Acer_pseudoplatanusAA.jpg",
+  "commons": "Acer_pseudoplatanusAA.jpg",
+  "page": "https://fr.wikipedia.org/wiki/%C3%89rable_sycomore",
+  "lang": "fr",
+  "file": "img/acer-pseudoplatanus.jpg",
+  "bytes": 186936
+ },
+ "platanus-hispanica": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Soignies_AR1aJPG.jpg/500px-Soignies_AR1aJPG.jpg",
+  "commons": "Soignies_AR1aJPG.jpg",
+  "page": "https://fr.wikipedia.org/wiki/Platane_commun",
+  "lang": "fr",
+  "file": "img/platanus-hispanica.jpg",
+  "bytes": 95423
+ },
+ "tilia-cordata": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Tilia-cordata2.JPG/500px-Tilia-cordata2.JPG",
+  "commons": "Tilia-cordata2.JPG",
+  "page": "https://en.wikipedia.org/wiki/Tilia_cordata",
+  "lang": "en",
+  "file": "img/tilia-cordata.jpg",
+  "bytes": 58173
+ },
+ "betula-pendula": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Betula_Pendula_at_Stockholm_University_2005-07-01.jpg/500px-Betula_Pendula_at_Stockholm_University_2005-07-01.jpg",
+  "commons": "Betula_Pendula_at_Stockholm_University_2005-07-01.jpg",
+  "page": "https://fr.wikipedia.org/wiki/Bouleau_verruqueux",
+  "lang": "fr",
+  "file": "img/betula-pendula.jpg",
+  "bytes": 86145
+ },
+ "fraxinus-excelsior": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/0/03/Ask_lindman.jpg",
+  "commons": "Ask_lindman.jpg",
+  "page": "https://fr.wikipedia.org/wiki/Fr%C3%AAne_%C3%A9lev%C3%A9",
+  "lang": "fr"
  }
 }
