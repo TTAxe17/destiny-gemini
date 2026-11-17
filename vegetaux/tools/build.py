@@ -9,14 +9,15 @@ import json, os, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 plants = json.load(open(os.path.join(ROOT, "data/plants.json")))
-images_path = os.path.join(ROOT, "data/images.json")
-images = json.load(open(images_path)) if os.path.exists(images_path) else {}
+photos_path = os.path.join(ROOT, "data/photos.json")
+photos = json.load(open(photos_path)) if os.path.exists(photos_path) else {}
 share = sys.argv[1] if len(sys.argv) > 1 else ""
 
 img = {}
-for pid, m in images.items():
-    if m.get("file") and os.path.exists(os.path.join(ROOT, m["file"])):
-        img[pid] = {k: m.get(k) for k in ("file", "commons", "artist", "license") if m.get(k)}
+for pid, lst in photos.items():
+    ok = [{k: m[k] for k in ("file", "by", "lic", "url")} for m in lst if os.path.exists(os.path.join(ROOT, m["file"]))]
+    if ok:
+        img[pid] = ok
 
 tpl = open(os.path.join(ROOT, "template.html")).read()
 dump = lambda o: json.dumps(o, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
@@ -28,4 +29,4 @@ open(os.path.join(ROOT, "index.html"), "w").write(
     '<!doctype html>\n<html lang="fr">\n<head>\n<meta charset="utf-8">\n'
     '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
     '</head>\n<body>\n' + page + '\n</body>\n</html>\n')
-print(f"{len(plants)} végétaux, {len(img)} photos")
+print(f"{len(plants)} végétaux, {len(img)} avec photos, {sum(map(len, img.values()))} photos")

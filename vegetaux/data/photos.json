@@ -1,0 +1,209 @@
+{
+ "quercus-robur": [
+  {
+   "file": "img/quercus-robur-1.jpg",
+   "by": "Karen Andrea Boehme",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/482832455",
+   "taxon": "Quercus robur"
+  },
+  {
+   "file": "img/quercus-robur-2.jpg",
+   "by": "Felix Riegel",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/110607739",
+   "taxon": "Quercus robur"
+  },
+  {
+   "file": "img/quercus-robur-3.jpg",
+   "by": "Jakob Fahr",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/2305598",
+   "taxon": "Quercus robur"
+  }
+ ],
+ "fagus-sylvatica": [
+  {
+   "file": "img/fagus-sylvatica-1.jpg",
+   "by": "sabine-g",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/335978296",
+   "taxon": "Fagus sylvatica"
+  },
+  {
+   "file": "img/fagus-sylvatica-2.jpg",
+   "by": "Li Jianong",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/737550854",
+   "taxon": "Fagus sylvatica"
+  },
+  {
+   "file": "img/fagus-sylvatica-3.jpg",
+   "by": "Li Jianong",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/737550816",
+   "taxon": "Fagus sylvatica"
+  }
+ ],
+ "carpinus-betulus": [
+  {
+   "file": "img/carpinus-betulus-1.jpg",
+   "by": "Ihor Olshanskyi",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/105993037",
+   "taxon": "Carpinus betulus"
+  },
+  {
+   "file": "img/carpinus-betulus-2.jpg",
+   "by": "Zo Clark",
+   "lic": "CC BY",
+   "url": "https://www.inaturalist.org/photos/171859554",
+   "taxon": "Carpinus betulus"
+  },
+  {
+   "file": "img/carpinus-betulus-3.jpg",
+   "by": "Grzegorz Grzejszczak",
+   "lic": "CC BY-SA",
+   "url": "https://www.inaturalist.org/photos/50638873",
+   "taxon": "Carpinus betulus"
+  }
+ ],
+ "acer-platanoides": [
+  {
+   "file": "img/acer-platanoides-1.jpg",
+   "by": "tauntonguy02780",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/87307303",
+   "taxon": "Acer platanoides"
+  },
+  {
+   "file": "img/acer-platanoides-2.jpg",
+   "by": "Ayotte",
+   "lic": "CC BY-SA",
+   "url": "https://www.inaturalist.org/photos/542450548",
+   "taxon": "Acer platanoides"
+  },
+  {
+   "file": "img/acer-platanoides-3.jpg",
+   "by": "raviner",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/123119472",
+   "taxon": "Acer platanoides"
+  }
+ ],
+ "acer-pseudoplatanus": [
+  {
+   "file": "img/acer-pseudoplatanus-1.jpg",
+   "by": "Willow",
+   "lic": "CC BY-SA",
+   "url": "https://www.inaturalist.org/photos/270771593",
+   "taxon": "Acer pseudoplatanus"
+  },
+  {
+   "file": "img/acer-pseudoplatanus-2.jpg",
+   "by": "Willow",
+   "lic": "CC BY-SA",
+   "url": "https://www.inaturalist.org/photos/270771607",
+   "taxon": "Acer pseudoplatanus"
+  },
+  {
+   "file": "img/acer-pseudoplatanus-3.jpg",
+   "by": "Stephen James McWilliam",
+   "lic": "CC BY",
+   "url": "https://www.inaturalist.org/photos/270771613",
+   "taxon": "Acer pseudoplatanus"
+  }
+ ],
+ "platanus-hispanica": [
+  {
+   "file": "img/platanus-hispanica-1.jpg",
+   "by": "Jacques",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/199751475",
+   "taxon": "Platanus × hispanica"
+  },
+  {
+   "file": "img/platanus-hispanica-2.jpg",
+   "by": "Ron Vanderhoff",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/299903119",
+   "taxon": "Platanus × hispanica"
+  },
+  {
+   "file": "img/platanus-hispanica-3.jpg",
+   "by": "James Bailey",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/2261406",
+   "taxon": "Platanus × hispanica"
+  }
+ ],
+ "tilia-cordata": [
+  {
+   "file": "img/tilia-cordata-1.jpg",
+   "by": "narya.de",
+   "lic": "CC BY-SA",
+   "url": "https://www.inaturalist.org/photos/550216409",
+   "taxon": "Tilia cordata"
+  },
+  {
+   "file": "img/tilia-cordata-2.jpg",
+   "by": "Ника",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/138956702",
+   "taxon": "Tilia cordata"
+  },
+  {
+   "file": "img/tilia-cordata-3.jpg",
+   "by": "Maria A. Vereshchagina",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/559952034",
+   "taxon": "Tilia cordata"
+  }
+ ],
+ "betula-pendula": [
+  {
+   "file": "img/betula-pendula-1.jpg",
+   "by": "Полина Яковлевна Нехаева (Лихачева)",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/36257611",
+   "taxon": "Betula pendula"
+  },
+  {
+   "file": "img/betula-pendula-2.jpg",
+   "by": "Douglas Goldman",
+   "lic": "CC BY-SA",
+   "url": "https://www.inaturalist.org/photos/175067773",
+   "taxon": "Betula pendula"
+  },
+  {
+   "file": "img/betula-pendula-3.jpg",
+   "by": "Paul Abell",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/55923857",
+   "taxon": "Betula pendula"
+  }
+ ],
+ "fraxinus-excelsior": [
+  {
+   "file": "img/fraxinus-excelsior-1.jpg",
+   "by": "nicky-by-nature",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/218128525",
+   "taxon": "Fraxinus excelsior"
+  },
+  {
+   "file": "img/fraxinus-excelsior-2.jpg",
+   "by": "rothleyschool",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/383571342",
+   "taxon": "Fraxinus excelsior"
+  },
+  {
+   "file": "img/fraxinus-excelsior-3.jpg",
+   "by": "Jakob Fahr",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/65934865",
+   "taxon": "Fraxinus excelsior"
+  }
+ ]
+}
