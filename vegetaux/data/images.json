@@ -3,6 +3,32 @@
   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Quercus_robur_JPG_%28d1%29.jpg/500px-Quercus_robur_JPG_%28d1%29.jpg",
   "commons": "Quercus_robur_JPG_(d1).jpg",
   "page": "https://fr.wikipedia.org/wiki/Ch%C3%AAne_p%C3%A9doncul%C3%A9",
-  "lang": "fr"
+  "lang": "fr",
+  "file": "img/quercus-robur.jpg",
+  "bytes": 73482
+ },
+ "fagus-sylvatica": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Fagus-sylvatica-cansiglio-forest-italy.jpg/500px-Fagus-sylvatica-cansiglio-forest-italy.jpg",
+  "commons": "1920px-Fagus-sylvatica-cansiglio-forest-italy.jpg",
+  "page": "https://en.wikipedia.org/wiki/Fagus_sylvatica",
+  "lang": "en",
+  "file": "img/fagus-sylvatica.jpg",
+  "bytes": 210096
+ },
+ "carpinus-betulus": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Carpinus_betulus_-_Hunsr%C3%BCck_001.jpg/500px-Carpinus_betulus_-_Hunsr%C3%BCck_001.jpg",
+  "commons": "Carpinus_betulus_-_Hunsrück_001.jpg",
+  "page": "https://en.wikipedia.org/wiki/Carpinus_betulus",
+  "lang": "en",
+  "file": "img/carpinus-betulus.jpg",
+  "bytes": 103590
+ },
+ "acer-platanoides": {
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Spitz-Ahorn%28mbo%29.jpg/500px-Spitz-Ahorn%28mbo%29.jpg",
+  "commons": "Spitz-Ahorn(mbo).jpg",
+  "page": "https://en.wikipedia.org/wiki/Acer_platanoides",
+  "lang": "en",
+  "file": "img/acer-platanoides.jpg",
+  "bytes": 64987
  }
 }
