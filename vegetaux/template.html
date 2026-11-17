@@ -143,6 +143,20 @@ section.view{padding-block:20px;display:flex;flex-direction:column;gap:18px}
 .tip p,.diff p{margin:0}
 .diff{border-left:3px solid var(--leaf);padding:2px 0 2px 12px}
 .look{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
+.g4{display:grid;grid-template-columns:1fr 1fr;gap:6px;border-radius:var(--r);overflow:hidden}
+.g4-cell{position:relative;padding:0;border:0;background:var(--surface-2);aspect-ratio:1;cursor:zoom-in;overflow:hidden;max-width:100%}
+.g4-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.g4-cell:hover img{transform:scale(1.04)}
+.g4-tag{position:absolute;left:6px;top:6px;background:rgba(0,0,0,.6);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:999px}
+.vw{position:relative;background:#000;display:grid;place-items:center}
+.vw img{width:100%;max-height:78vh;object-fit:contain;display:block}
+.vw-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:64px;border:0;background:rgba(0,0,0,.45);color:#fff;font-size:2rem;cursor:pointer}
+.vw-prev{left:0;border-radius:0 10px 10px 0}.vw-next{right:0;border-radius:10px 0 0 10px}
+.vw-bar{background:#111;color:#ddd;padding:10px 12px;display:flex;flex-direction:column;gap:8px}
+.vw-tabs{display:flex;gap:6px;flex-wrap:wrap}
+.vw-tab{border:1px solid #444;background:transparent;color:#ddd;border-radius:999px;padding:5px 12px;font-size:.82rem;cursor:pointer}
+.vw-tab[aria-current="true"]{background:#fff;color:#000;border-color:#fff}
+.vw-credit{font-size:.75rem;color:#aaa}.vw-credit a{color:#ccc}
 .views{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .view-btn{padding:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;cursor:zoom-in;background:var(--surface-2)}
 .view-btn img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
@@ -208,12 +222,15 @@ const IMAGES = /*IMAGES*/{};
 const SHARE_URL = /*SHARE_URL*/"";
 
 const LEVELS = [
-  {n:1, name:"Les incontournables", sub:"Arbres et arbustes qu'on croise partout en France"},
-  {n:2, name:"Jardins et espaces verts", sub:"Les classiques des pépinières et des villes"},
-  {n:3, name:"Vivaces et graminées", sub:"Les massifs d'aujourd'hui"},
-  {n:4, name:"Les sosies", sub:"Espèces qu'on confond, à départager au détail près"},
-  {n:5, name:"Méditerranée", sub:"Garrigue, maquis et jardins du Sud"},
-  {n:6, name:"Végétaux du monde", sub:"Japon, Amériques, Océanie, Afrique du Sud"},
+  {n:1, name:"Les incontournables", sub:"Arbres, fruitiers et arbustes qu'on croise partout en France"},
+  {n:2, name:"Jardins et espaces verts", sub:"Les classiques des pépinières, des villes et des pergolas"},
+  {n:3, name:"Haies et arbustes d'ornement", sub:"Persistants, floraux, haies libres et champêtres"},
+  {n:4, name:"Arbres de parcs et d'alignement", sub:"Érables, chênes, tilleuls et raretés des arboretums"},
+  {n:5, name:"Conifères", sub:"Sapins, épicéas, pins, cyprès et genévriers"},
+  {n:6, name:"Vivaces, graminées et grimpantes", sub:"Massifs, sous-arbrisseaux, fougères et lianes"},
+  {n:7, name:"Flore sauvage et sosies", sub:"Les espèces indigènes à départager au détail près"},
+  {n:8, name:"Méditerranée et littoral", sub:"Garrigue, maquis et bord de mer"},
+  {n:9, name:"Venus d'ailleurs", sub:"Espèces d'autres pays qui poussent en France"},
 ];
 const SESSION_LEN = 10;
 const INTERVALS = [0,1,2,4,8,16,32]; // jours avant révision selon la boîte
@@ -293,93 +310,59 @@ function makeQuestion(p){
   shuffle(PLANTS.filter(q=>q.lvl===p.lvl)).forEach(add);
   shuffle(PLANTS).forEach(add);
   const choices = shuffle([p, ...others.slice(0,nChoices-1)]);
-  return {p, mode, choices, answered:null, pi: Math.floor(Math.random()*Math.max(1, views(p).length))};
+  return {p, mode, choices, answered:null};
 }
 
 /* ---------- Images ----------
-   Photo locale si elle existe (dossier img/), sinon le navigateur la cherche sur Wikipédia
-   (image principale de l'article, en évitant les planches dessinées). Résultat mis en cache. */
-const PLATE = /k[oö]e?hler|illustration|sturm|thom[eé]|botanical|plate|flora|tafel|drawing|\.svg$|\.png$|\.tif|(?<![a-z])(map|range)(?![a-z])|distribution|herbarium/i;
-const IMG_KEY = "herbier-vivant-img-v1";
-let IMGC = {}; try{ IMGC = JSON.parse(localStorage.getItem(IMG_KEY))||{} }catch(e){}
-const pending = {};
-function views(p){ return (IMAGES[p.id]||[]).map(m=>({src:m.file, by:m.by, lic:m.lic, url:m.url})) }
-function localImg(p, i){ const v=views(p); return v.length ? v[(i||0)%v.length] : null }
-function sized(url){ return url.split("?")[0].replace(/\/\d+px-/, "/500px-") }
-async function wiki(lang, path){
-  const r = await fetch(`https://${lang}.wikipedia.org/api/rest_v1/page/${path}`);
-  if(!r.ok) throw new Error(r.status); return r.json();
+   4 photos par plante (Pl@ntNet, licences Creative Commons) : feuille, fruit, écorce, port. */
+const SLOTS = [["leaf","Feuille"],["fruit","Fruit"],["bark","Écorce"],["habit","Port"]];
+function slotLabel(p, slot){
+  const m = (IMAGES[p.id]||{})[slot] || {};
+  const organ = m.organ || slot;
+  const woody = /^(Arbre|Arbuste|Conifère|Liane|Palmier)/.test(p.type);
+  return {leaf:"Feuille", flower:"Fleur", fruit:"Fruit", bark: woody?"Écorce":"Tige", twig: woody?"Rameau":"Tige", spores:"Spores", habit:"Port"}[organ] || "Photo";
 }
-async function findRemote(p){
-  const t = encodeURIComponent((p.wiki||p.lat).replace(/ /g,"_"));
-  const tried = [];
-  for (const lang of ["fr","en"]){
-    try{
-      const d = await wiki(lang, "summary/"+t);
-      tried.push(lang);
-      if (d.originalimage && d.thumbnail){
-        const name = decodeURIComponent(d.originalimage.source.split("?")[0].split("/").pop());
-        if (!PLATE.test(name)){
-          const src = d.originalimage.width>500 && d.thumbnail.source.includes("/thumb/") ? sized(d.thumbnail.source) : d.originalimage.source.split("?")[0];
-          return {src, commons:name};
-        }
-      }
-    }catch(e){}
-  }
-  for (const lang of tried){
-    try{
-      const d = await wiki(lang, "media-list/"+t);
-      for (const it of d.items||[]){
-        const name = (it.title||"").replace(/^(File|Fichier):/,"");
-        if (it.type!=="image" || !/\.jpe?g$/i.test(name) || PLATE.test(name) || !(it.srcset||[]).length) continue;
-        let src = it.srcset[0].src; if (src.startsWith("//")) src = "https:"+src;
-        return {src: sized(src), commons:name};
-      }
-    }catch(e){}
-  }
-  return null;
-}
-function getImg(p){
-  const l = localImg(p); if (l) return Promise.resolve(l);
-  if (IMGC[p.id]) return Promise.resolve(IMGC[p.id]);
-  if (!pending[p.id]) pending[p.id] = findRemote(p).then(r=>{ if(r){ IMGC[p.id]=r; try{ localStorage.setItem(IMG_KEY, JSON.stringify(IMGC)) }catch(e){} } return r });
-  return pending[p.id];
-}
+function photos(p){ return SLOTS.map(([k])=>({slot:k, label:slotLabel(p,k), ...((IMAGES[p.id]||{})[k]||{})})).filter(x=>x.file) }
+function thumb(p){ const m=(IMAGES[p.id]||{}); const f=(m.leaf||m.habit||m.fruit||m.bark||{}).file; return f ? `<img src="${esc(f)}" alt="" loading="lazy">` : `<img alt="">` }
 function creditHTML(m){
-  if(m && m.url) return `Photo : ${esc(m.by||"iNaturalist")} · ${esc(m.lic||"")} · <a href="${esc(m.url)}" target="_blank" rel="noopener">iNaturalist</a>`;
-  if(!m||!m.commons) return "";
-  const url="https://commons.wikimedia.org/wiki/File:"+encodeURIComponent(m.commons.replace(/ /g,"_"));
-  return `Photo : ${esc(m.artist||"Wikimedia Commons")}${m.license?" · "+esc(m.license):""} · <a href="${url}" target="_blank" rel="noopener">source et licence</a>`;
+  if(!m) return "";
+  return `Photo : ${esc(m.by||"Pl@ntNet")} · ${esc(m.lic||"")}${m.src?` · <a href="${esc(m.src)}" target="_blank" rel="noopener">Pl@ntNet</a>`:""}`;
 }
-async function fill(el){
-  const p = byId[el.dataset.pid]; if(!p || el.dataset.done) return; el.dataset.done = "1";
-  const m = await getImg(p);
-  const box = el.closest(".photo");
-  if (!m){
-    if (box){ box.classList.add("noimg"); box.innerHTML = "Photo indisponible pour le moment.<br>Fiez-vous à la description." }
-    return;
-  }
-  el.src = m.src;
-  if (box){
-    const z = box.querySelector(".zoom"); if (z){ z.dataset.zoom = m.src; z.hidden = false }
-    const c = box.querySelector(".credit"); if (c){ c.innerHTML = creditHTML(m); c.hidden = false }
-  }
+function gallery(p, hide){
+  const ph = photos(p);
+  if (!ph.length) return `<div class="photo noimg">Photos indisponibles pour cette plante.</div>`;
+  return `<div class="g4" data-pid="${p.id}">${ph.map((m,i)=>`<button class="g4-cell" type="button" data-gal="${p.id}" data-i="${i}" data-hide="${hide?1:0}" aria-label="Agrandir : ${esc(m.label)}">
+    <img src="${esc(m.file)}" alt="${esc(hide?m.label+" du végétal à identifier":m.label+" de "+p.fr)}" loading="${hide?"eager":"lazy"}">
+    <span class="g4-tag">${esc(m.label)}</span></button>`).join("")}</div>`;
 }
-const io = "IntersectionObserver" in window ? new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ io.unobserve(e.target); fill(e.target) } }), {rootMargin:"400px"}) : null;
-function hydrate(root){ (root||document).querySelectorAll("img[data-pid]:not([data-done])").forEach(el=> io ? io.observe(el) : fill(el)) }
-new MutationObserver(()=>hydrate()).observe(document.body, {childList:true, subtree:true});
-function thumb(p){ const l=localImg(p,0); return l ? `<img src="${esc(l.src)}" alt="" loading="lazy">` : `<img data-pid="${p.id}" alt="" loading="lazy">` }
-function photo(p, hide, i){
-  const alt = hide ? "Photo du végétal à identifier" : `${p.fr} (${p.lat})`;
-  const l = localImg(p, i);
-  if (l) return `<div class="photo"><img src="${esc(l.src)}" alt="${esc(alt)}"><button class="zoom" type="button" data-zoom="${esc(l.src)}">Agrandir</button><span class="credit">${creditHTML(l)}</span></div>`;
-  return `<div class="photo"><img data-pid="${p.id}" alt="${esc(alt)}"><button class="zoom" type="button" hidden>Agrandir</button><span class="credit" hidden></span></div>`;
+/* Visionneuse plein écran : glisser ou flèches pour passer d'une photo à l'autre */
+let viewer = null;
+function openViewer(p, i, hide){
+  const ph = photos(p); if(!ph.length) return;
+  viewer = {p, ph, i, hide};
+  modal.className = "zoomd";
+  drawViewer();
+  if(!modal.open) modal.showModal();
 }
-function viewsHTML(p, skip){
-  const v = views(p).map((m,i)=>({m,i})).filter(x=>x.i!==skip);
-  if (!v.length) return "";
-  return `<div><div class="eyebrow" style="margin-bottom:6px">${skip==null?"Les photos":"Autres vues"}</div><div class="views">${v.map(x=>`<button class="view-btn" type="button" data-zoom="${esc(x.m.src)}" aria-label="Agrandir la photo"><img src="${esc(x.m.src)}" alt="${esc(p.fr)}" loading="lazy"></button>`).join("")}</div></div>`;
+function drawViewer(){
+  const {p, ph, i, hide} = viewer; const m = ph[i];
+  modal.innerHTML = `<button class="close" type="button" aria-label="Fermer">✕</button>
+    <div class="vw"><img src="${esc(m.file)}" alt="${esc(m.label)}">
+      <button class="vw-nav vw-prev" type="button" aria-label="Photo précédente">‹</button>
+      <button class="vw-nav vw-next" type="button" aria-label="Photo suivante">›</button></div>
+    <div class="vw-bar"><div class="vw-tabs">${ph.map((x,j)=>`<button type="button" class="vw-tab" data-j="${j}" aria-current="${j===i}">${esc(x.label)}</button>`).join("")}</div>
+      <div class="vw-credit">${hide?"":`<b>${esc(p.fr)}</b> · `}${creditHTML(m)}</div></div>`;
+  modal.querySelector(".close").onclick=()=>modal.close();
+  modal.querySelector(".vw-prev").onclick=()=>step(-1);
+  modal.querySelector(".vw-next").onclick=()=>step(1);
+  modal.querySelectorAll(".vw-tab").forEach(b=>b.onclick=()=>{ viewer.i=+b.dataset.j; drawViewer() });
+  let x0=null; const im=modal.querySelector(".vw");
+  im.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true});
+  im.addEventListener("touchend",e=>{ if(x0==null) return; const dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>40) step(dx<0?1:-1); x0=null });
 }
+function step(d){ if(!viewer) return; viewer.i=(viewer.i+d+viewer.ph.length)%viewer.ph.length; drawViewer() }
+document.addEventListener("click", e=>{ const g=e.target.closest("[data-gal]"); if(g){ e.preventDefault(); openViewer(byId[g.dataset.gal], +g.dataset.i, g.dataset.hide==="1") } });
+document.addEventListener("keydown", e=>{ if(modal.open && viewer && modal.classList.contains("zoomd")){ if(e.key==="ArrowRight") step(1); if(e.key==="ArrowLeft") step(-1) } });
 
 /* ---------- Vues ---------- */
 let quiz = null; // séance en cours
@@ -454,12 +437,24 @@ function renderLevels(){
         <span class="num">${u?l.n:"🔒"}</span>
         <span><h3>${esc(l.name)}</h3><p>${esc(l.sub)}</p><span class="bar"><i style="width:${Math.round(st.ratio*100)}%"></i></span></span>
         <span class="meta">${st.known}/${st.total}<br>connus</span></button>`}).join("")}</div>
+    <div class="card pad small" id="offline" hidden style="display:flex;flex-direction:column;gap:8px">
+      <b>Hors connexion</b>
+      <span class="muted">Les photos vues une fois restent sur le téléphone. Pour réviser sur un chantier sans réseau, téléchargez d'avance celles des niveaux ouverts.</span>
+      <button class="btn btn-ghost" id="dl" type="button">Télécharger les photos des niveaux ouverts</button>
+    </div>
     <label class="card pad row small" style="align-items:center;cursor:pointer">
       <input type="checkbox" id="all" ${S.all?"checked":""}> <span>Tout débloquer (pour les paysagistes déjà expérimentés)</span>
     </label>
   </section>`;
   app.querySelectorAll(".lvl").forEach(b=>b.onclick=()=>startSession(+b.dataset.l));
   $("#all").onchange = e => { S.all = e.target.checked; save(); renderLevels() };
+  const sw = navigator.serviceWorker && navigator.serviceWorker.controller;
+  if (sw){
+    const files = PLANTS.filter(p=>unlocked(p.lvl)).flatMap(p=>photos(p).map(m=>m.file));
+    $("#offline").hidden = false;
+    $("#dl").textContent = `Télécharger les photos des niveaux ouverts (${files.length} photos, environ ${Math.round(files.length*0.13)} Mo)`;
+    $("#dl").onclick = ()=>{ sw.postMessage({type:"precache", files}); toast("Téléchargement lancé : gardez l'appli ouverte quelques minutes") };
+  }
 }
 
 function renderHerbier(){
@@ -524,7 +519,7 @@ function renderShare(){
 /* ---------- Séance ---------- */
 function startSession(level){
   quiz = {level, qs: buildSession(level), i:0, good:0};
-  quiz.qs.forEach(q=>getImg(q.p)); // précharge les photos de la séance
+  quiz.qs.forEach(q=>photos(q.p).forEach(m=>{ const i=new Image(); i.src=m.file })); // précharge les photos de la séance
   if (location.hash==="#seance") renderQuiz(); else location.hash = "#seance";
 }
 function renderQuiz(){
@@ -534,7 +529,7 @@ function renderQuiz(){
   app.innerHTML = `<section class="view">
     <div class="qhead"><span class="qcount">${quiz.i+1} / ${quiz.qs.length}</span><span class="bar"><i style="width:${(quiz.i)/quiz.qs.length*100}%"></i></span>
       <button class="btn btn-ghost small" id="quit" type="button" style="padding:8px 12px">Quitter</button></div>
-    ${photo(p, true, q.pi)}
+    ${gallery(p, true)}
     <div>
       <div class="eyebrow">Niveau ${p.lvl} · ${esc(lvlName)} · ${esc(p.type)}</div>
       <h2 class="qtitle">${q.mode==="lat" ? "Quel est son nom latin ?" : "Quel est ce végétal ?"}</h2>
@@ -566,21 +561,20 @@ function showFeedback(q){
   const last = quiz.i===quiz.qs.length-1;
   $("#fb").innerHTML = `<div class="card answer">
     <div class="verdict ${ok?"ok":"ko"}">${ok?"✓ Bien vu !":"✗ Ce n'était pas ça"}</div>
-    ${sheetBody(p, ok?null:wrong, q.pi)}
+    ${sheetBody(p, ok?null:wrong)}
     <div class="pad" style="padding-top:0"><button class="btn btn-main btn-wide" id="next" type="button">${last?"Voir le bilan":"Plante suivante"}</button></div>
   </div>`;
   $("#next").onclick = next;
   bindMinis($("#fb"));
   $("#fb").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth", block:"start"});
 }
-function sheetBody(p, wrong, skip){
+function sheetBody(p, wrong){
   const looks = [...new Set([...(wrong?[wrong.id]:[]), ...p.conf])].map(id=>byId[id]).filter(Boolean).slice(0,4);
   return `<div class="label">
     <div class="names"><div class="fr">${esc(p.fr)}</div><div class="latin">${esc(p.lat)}</div></div>
     <div class="chips"><span class="chip tagc">${esc(p.fam)}</span><span class="chip">${esc(p.type)}</span><span class="chip">Origine : ${esc(p.orig)}</span><span class="chip">Niveau ${p.lvl}</span></div>
     <div class="tip"><h4>Pour le reconnaître</h4><p>${esc(p.tip)}</p></div>
     <div class="diff"><h4>Pour ne pas confondre</h4><p>${esc(p.diff)}</p></div>
-    ${viewsHTML(p, skip)}
     ${wrong?`<p class="small" style="margin:0">Vous avez répondu <b>${esc(wrong.fr)}</b> (<span class="latin">${esc(wrong.lat)}</span>). Comparez les deux ci-dessous.</p>`:""}
     ${looks.length?`<div><div class="eyebrow" style="margin-bottom:6px">${wrong?"À comparer":"Ses sosies"}</div><div class="look">${looks.map(miniHTML).join("")}</div></div>`:""}
   </div>`;
@@ -625,20 +619,13 @@ function finish(){
 /* ---------- Fiche & zoom ---------- */
 const modal = $("#modal");
 function openSheet(p){
-  modal.className="";
-  modal.innerHTML = `<button class="close" type="button" aria-label="Fermer">✕</button>${photo(p,false,0)}${sheetBody(p,null,0)}`;
+  viewer=null; modal.className="";
+  modal.innerHTML = `<button class="close" type="button" aria-label="Fermer">✕</button><div class="pad" style="padding-bottom:0">${gallery(p,false)}</div>${sheetBody(p,null)}`;
   modal.querySelector(".close").onclick=()=>modal.close();
   bindMinis(modal);
   if(!modal.open) modal.showModal(); modal.scrollTop=0;
 }
-function zoom(src){
-  modal.className="zoomd";
-  modal.innerHTML = `<button class="close" type="button" aria-label="Fermer">✕</button><img src="${esc(src)}" alt="Photo agrandie">`;
-  modal.querySelector(".close").onclick=()=>modal.close();
-  if(!modal.open) modal.showModal();
-}
 modal.addEventListener("click", e=>{ if(e.target===modal) modal.close() });
-document.addEventListener("click", e=>{ const z=e.target.closest("[data-zoom]"); if(z){ e.preventDefault(); zoom(z.dataset.zoom) } });
 let tt; function toast(m){ let el=$(".toast"); if(!el){ el=document.createElement("div"); el.className="toast"; el.setAttribute("role","status"); document.body.appendChild(el) } el.textContent=m; el.hidden=false; clearTimeout(tt); tt=setTimeout(()=>el.hidden=true,2600) }
 
 document.addEventListener("keydown", e=>{
