@@ -205,5 +205,764 @@
    "url": "https://www.inaturalist.org/photos/65934865",
    "taxon": "Fraxinus excelsior"
   }
+ ],
+ "prunus-laurocerasus": [
+  {
+   "file": "img/prunus-laurocerasus-1.jpg",
+   "by": "edgeplot",
+   "lic": "CC BY-NC-SA",
+   "url": "https://www.inaturalist.org/photos/146285013",
+   "taxon": "Prunus laurocerasus"
+  },
+  {
+   "file": "img/prunus-laurocerasus-2.jpg",
+   "by": "fotoculus",
+   "lic": "CC BY-NC-SA",
+   "url": "https://www.inaturalist.org/photos/146285014",
+   "taxon": "Prunus laurocerasus"
+  },
+  {
+   "file": "img/prunus-laurocerasus-3.jpg",
+   "by": "c michael hogan",
+   "lic": "CC BY-NC-SA",
+   "url": "https://www.inaturalist.org/photos/63122064",
+   "taxon": "Prunus laurocerasus"
+  }
+ ],
+ "buxus-sempervirens": [
+  {
+   "file": "img/buxus-sempervirens-1.jpg",
+   "by": "Elaina Pecher",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/349731317",
+   "taxon": "Buxus sempervirens"
+  },
+  {
+   "file": "img/buxus-sempervirens-2.jpg",
+   "by": "Pete Woodall",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/23091876",
+   "taxon": "Buxus sempervirens"
+  },
+  {
+   "file": "img/buxus-sempervirens-3.jpg",
+   "by": "Michael Scherer-Lorenzen",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/18652921",
+   "taxon": "Buxus sempervirens"
+  }
+ ],
+ "ligustrum-vulgare": [
+  {
+   "file": "img/ligustrum-vulgare-1.jpg",
+   "by": "Petr Harant",
+   "lic": "CC BY",
+   "url": "https://www.inaturalist.org/photos/291303580",
+   "taxon": "Ligustrum vulgare"
+  },
+  {
+   "file": "img/ligustrum-vulgare-2.jpg",
+   "by": "Elias",
+   "lic": "CC BY",
+   "url": "https://www.inaturalist.org/photos/298751282",
+   "taxon": "Ligustrum vulgare"
+  },
+  {
+   "file": "img/ligustrum-vulgare-3.jpg",
+   "by": "Douglas Goldman",
+   "lic": "CC BY-SA",
+   "url": "https://www.inaturalist.org/photos/262268140",
+   "taxon": "Ligustrum vulgare"
+  }
+ ],
+ "lavandula-angustifolia": [
+  {
+   "file": "img/lavandula-angustifolia-1.jpg",
+   "by": "epicnom",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/157057",
+   "taxon": "Lavandula angustifolia"
+  },
+  {
+   "file": "img/lavandula-angustifolia-2.jpg",
+   "by": "Andrey Zharkikh",
+   "lic": "CC BY",
+   "url": "https://www.inaturalist.org/photos/2697772",
+   "taxon": "Lavandula angustifolia"
+  },
+  {
+   "file": "img/lavandula-angustifolia-3.jpg",
+   "by": "Andrey Zharkikh",
+   "lic": "CC BY",
+   "url": "https://www.inaturalist.org/photos/2697773",
+   "taxon": "Lavandula angustifolia"
+  }
+ ],
+ "salvia-rosmarinus": [
+  {
+   "file": "img/salvia-rosmarinus-1.jpg",
+   "by": "Sergio Ibarra",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/466148684",
+   "taxon": "Salvia rosmarinus"
+  },
+  {
+   "file": "img/salvia-rosmarinus-2.jpg",
+   "by": "hoja",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/91642813",
+   "taxon": "Salvia rosmarinus"
+  },
+  {
+   "file": "img/salvia-rosmarinus-3.jpg",
+   "by": "Παναγιώτης Ραφαηλίδης",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/173884858",
+   "taxon": "Salvia rosmarinus"
+  }
+ ],
+ "photinia-fraseri": [
+  {
+   "file": "img/photinia-fraseri-1.jpg",
+   "by": "Natalie Wilkinson",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/5188983",
+   "taxon": "Photinia × fraseri"
+  },
+  {
+   "file": "img/photinia-fraseri-2.jpg",
+   "by": "elspethshipton",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/52289451",
+   "taxon": "Photinia × fraseri"
+  },
+  {
+   "file": "img/photinia-fraseri-3.jpg",
+   "by": "CameliaTWU (off for a while)",
+   "lic": "CC BY-NC-ND",
+   "url": "https://www.inaturalist.org/photos/2207798",
+   "taxon": "Photinia × fraseri"
+  }
+ ],
+ "laurus-nobilis": [
+  {
+   "file": "img/laurus-nobilis-1.jpg",
+   "by": "Sarah Gregg",
+   "lic": "CC BY-NC-SA",
+   "url": "https://www.inaturalist.org/photos/150103946",
+   "taxon": "Laurus nobilis"
+  },
+  {
+   "file": "img/laurus-nobilis-2.jpg",
+   "by": "James Gaither",
+   "lic": "CC BY-NC-ND",
+   "url": "https://www.inaturalist.org/photos/150103948",
+   "taxon": "Laurus nobilis"
+  },
+  {
+   "file": "img/laurus-nobilis-3.jpg",
+   "by": "Sebastian J. Dunkl",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/333062954",
+   "taxon": "Laurus nobilis"
+  }
+ ],
+ "taxus-baccata": [
+  {
+   "file": "img/taxus-baccata-1.jpg",
+   "by": "Jonathan Tyler",
+   "lic": "CC BY-NC-SA",
+   "url": "https://www.inaturalist.org/photos/8502",
+   "taxon": "Taxus baccata"
+  },
+  {
+   "file": "img/taxus-baccata-2.jpg",
+   "by": "jaimebraschi",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/167165354",
+   "taxon": "Taxus baccata"
+  },
+  {
+   "file": "img/taxus-baccata-3.jpg",
+   "by": "Douglas Goldman",
+   "lic": "CC BY-SA",
+   "url": "https://www.inaturalist.org/photos/79446798",
+   "taxon": "Taxus baccata"
+  }
+ ],
+ "thuja-occidentalis": [
+  {
+   "file": "img/thuja-occidentalis-1.jpg",
+   "by": "Donna Pomeroy",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/4684247",
+   "taxon": "Thuja occidentalis"
+  },
+  {
+   "file": "img/thuja-occidentalis-2.jpg",
+   "by": "Owen Clarkin",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/120128278",
+   "taxon": "Thuja occidentalis"
+  },
+  {
+   "file": "img/thuja-occidentalis-3.jpg",
+   "by": "Douglas Goldman",
+   "lic": "CC BY-SA",
+   "url": "https://www.inaturalist.org/photos/541741304",
+   "taxon": "Thuja occidentalis"
+  }
+ ],
+ "pinus-sylvestris": [
+  {
+   "file": "img/pinus-sylvestris-1.jpg",
+   "by": "vyatka",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/171073483",
+   "taxon": "Pinus sylvestris"
+  },
+  {
+   "file": "img/pinus-sylvestris-2.jpg",
+   "by": "Douglas Goldman",
+   "lic": "CC BY-SA",
+   "url": "https://www.inaturalist.org/photos/268451762",
+   "taxon": "Pinus sylvestris"
+  },
+  {
+   "file": "img/pinus-sylvestris-3.jpg",
+   "by": "anemoneprojectors (no internet at the moment)",
+   "lic": "CC BY-SA",
+   "url": "https://www.inaturalist.org/photos/71529",
+   "taxon": "Pinus sylvestris"
+  }
+ ],
+ "hydrangea-macrophylla": [
+  {
+   "file": "img/hydrangea-macrophylla-1.jpg",
+   "by": "miyuu",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/45518546",
+   "taxon": "Hydrangea macrophylla"
+  },
+  {
+   "file": "img/hydrangea-macrophylla-2.jpg",
+   "by": "Rino",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/66619893",
+   "taxon": "Hydrangea macrophylla"
+  },
+  {
+   "file": "img/hydrangea-macrophylla-3.jpg",
+   "by": "Tony Rebelo",
+   "lic": "CC BY-SA",
+   "url": "https://www.inaturalist.org/photos/31091656",
+   "taxon": "Hydrangea macrophylla"
+  }
+ ],
+ "rosa-canina": [
+  {
+   "file": "img/rosa-canina-1.jpg",
+   "by": "mmshuman",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/535976332",
+   "taxon": "Rosa canina"
+  },
+  {
+   "file": "img/rosa-canina-2.jpg",
+   "by": "Mathieu Massaviol",
+   "lic": "CC BY-NC-ND",
+   "url": "https://www.inaturalist.org/photos/43901474",
+   "taxon": "Rosa canina"
+  },
+  {
+   "file": "img/rosa-canina-3.jpg",
+   "by": "Alexis Tinker-Tsavalas",
+   "lic": "CC BY",
+   "url": "https://www.inaturalist.org/photos/322158952",
+   "taxon": "Rosa canina"
+  }
+ ],
+ "forsythia-intermedia": [
+  {
+   "file": "img/forsythia-intermedia-1.jpg",
+   "by": "Dr. Boli",
+   "lic": "CC BY",
+   "url": "https://www.inaturalist.org/photos/3369427",
+   "taxon": "Forsythia × intermedia"
+  },
+  {
+   "file": "img/forsythia-intermedia-2.jpg",
+   "by": "alderash",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/1744222",
+   "taxon": "Forsythia × intermedia"
+  },
+  {
+   "file": "img/forsythia-intermedia-3.jpg",
+   "by": "Maggie",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/3369428",
+   "taxon": "Forsythia × intermedia"
+  }
+ ],
+ "buddleja-davidii": [
+  {
+   "file": "img/buddleja-davidii-1.jpg",
+   "by": "aquadragonfly",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/411134966",
+   "taxon": "Buddleja davidii"
+  },
+  {
+   "file": "img/buddleja-davidii-2.jpg",
+   "by": "Weston Siegenthaler",
+   "lic": "CC BY",
+   "url": "https://www.inaturalist.org/photos/38812802",
+   "taxon": "Buddleja davidii"
+  },
+  {
+   "file": "img/buddleja-davidii-3.jpg",
+   "by": "Izigabo",
+   "lic": "CC BY-SA",
+   "url": "https://www.inaturalist.org/photos/87998902",
+   "taxon": "Buddleja davidii"
+  }
+ ],
+ "olea-europaea": [
+  {
+   "file": "img/olea-europaea-1.jpg",
+   "by": "Alan Dandie",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/71271675",
+   "taxon": "Olea europaea"
+  },
+  {
+   "file": "img/olea-europaea-2.jpg",
+   "by": "Pescalune Photo",
+   "lic": "CC BY-NC-ND",
+   "url": "https://www.inaturalist.org/photos/87194494",
+   "taxon": "Olea europaea"
+  },
+  {
+   "file": "img/olea-europaea-3.jpg",
+   "by": "Mauricio Mercadante",
+   "lic": "CC BY-NC-SA",
+   "url": "https://www.inaturalist.org/photos/87194495",
+   "taxon": "Olea europaea"
+  }
+ ],
+ "cornus-sanguinea": [
+  {
+   "file": "img/cornus-sanguinea-1.jpg",
+   "by": "Ирина",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/41146594",
+   "taxon": "Cornus sanguinea"
+  },
+  {
+   "file": "img/cornus-sanguinea-2.jpg",
+   "by": "Юрій Бенгус",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/173545771",
+   "taxon": "Cornus sanguinea"
+  },
+  {
+   "file": "img/cornus-sanguinea-3.jpg",
+   "by": "Paul G. Schrijvershof",
+   "lic": "CC BY-NC-ND",
+   "url": "https://www.inaturalist.org/photos/163426459",
+   "taxon": "Cornus sanguinea"
+  }
+ ],
+ "corylus-avellana": [
+  {
+   "file": "img/corylus-avellana-1.jpg",
+   "by": "David Ballesteros",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/249644515",
+   "taxon": "Corylus avellana"
+  },
+  {
+   "file": "img/corylus-avellana-2.jpg",
+   "by": "Gertraud Seiser",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/180832374",
+   "taxon": "Corylus avellana"
+  },
+  {
+   "file": "img/corylus-avellana-3.jpg",
+   "by": "no rights reserved",
+   "lic": "CC0",
+   "url": "https://www.inaturalist.org/photos/27607570",
+   "taxon": "Corylus avellana"
+  }
+ ],
+ "sambucus-nigra": [
+  {
+   "file": "img/sambucus-nigra-1.jpg",
+   "by": "Rison Thumboor",
+   "lic": "CC BY-SA",
+   "url": "https://www.inaturalist.org/photos/104695913",
+   "taxon": "Sambucus nigra"
+  },
+  {
+   "file": "img/sambucus-nigra-2.jpg",
+   "by": "Matthew Zlatunich",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/46738658",
+   "taxon": "Sambucus nigra"
+  },
+  {
+   "file": "img/sambucus-nigra-3.jpg",
+   "by": "Rea Orthner",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/138459240",
+   "taxon": "Sambucus nigra"
+  }
+ ],
+ "viburnum-tinus": [
+  {
+   "file": "img/viburnum-tinus-1.jpg",
+   "by": "Cassiopée2010",
+   "lic": "CC BY-NC-SA",
+   "url": "https://www.inaturalist.org/photos/11569121",
+   "taxon": "Viburnum tinus"
+  },
+  {
+   "file": "img/viburnum-tinus-2.jpg",
+   "by": "M.M. R",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/37581",
+   "taxon": "Viburnum tinus"
+  },
+  {
+   "file": "img/viburnum-tinus-3.jpg",
+   "by": "Andrew Simon",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/3091508",
+   "taxon": "Viburnum tinus"
+  }
+ ],
+ "ilex-aquifolium": [
+  {
+   "file": "img/ilex-aquifolium-1.jpg",
+   "by": "Joan Septembre",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/117929954",
+   "taxon": "Ilex aquifolium"
+  },
+  {
+   "file": "img/ilex-aquifolium-2.jpg",
+   "by": "mjdrumond",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/174575516",
+   "taxon": "Ilex aquifolium"
+  },
+  {
+   "file": "img/ilex-aquifolium-3.jpg",
+   "by": "Cesar Pollo",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/28625785",
+   "taxon": "Ilex aquifolium"
+  }
+ ],
+ "magnolia-grandiflora": [
+  {
+   "file": "img/magnolia-grandiflora-1.jpg",
+   "by": "潘立傑 LiChieh Pan",
+   "lic": "CC BY-NC-SA",
+   "url": "https://www.inaturalist.org/photos/82254330",
+   "taxon": "Magnolia grandiflora"
+  },
+  {
+   "file": "img/magnolia-grandiflora-2.jpg",
+   "by": "ash_morgan",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/169262925",
+   "taxon": "Magnolia grandiflora"
+  },
+  {
+   "file": "img/magnolia-grandiflora-3.jpg",
+   "by": "Douglas Goldman",
+   "lic": "CC BY-SA",
+   "url": "https://www.inaturalist.org/photos/557171383",
+   "taxon": "Magnolia grandiflora"
+  }
+ ],
+ "cercis-siliquastrum": [
+  {
+   "file": "img/cercis-siliquastrum-1.jpg",
+   "by": "Alenka Mihoric",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/594991963",
+   "taxon": "Cercis siliquastrum"
+  },
+  {
+   "file": "img/cercis-siliquastrum-2.jpg",
+   "by": "Elena_Sherehora",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/626406703",
+   "taxon": "Cercis siliquastrum"
+  },
+  {
+   "file": "img/cercis-siliquastrum-3.jpg",
+   "by": "Platon Kleanthidis",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/443720003",
+   "taxon": "Cercis siliquastrum"
+  }
+ ],
+ "lagerstroemia-indica": [
+  {
+   "file": "img/lagerstroemia-indica-1.jpg",
+   "by": "Rich_Yang",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/203337469",
+   "taxon": "Lagerstroemia indica"
+  },
+  {
+   "file": "img/lagerstroemia-indica-2.jpg",
+   "by": "Diego Monsores",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/273276339",
+   "taxon": "Lagerstroemia indica"
+  },
+  {
+   "file": "img/lagerstroemia-indica-3.jpg",
+   "by": "Tom Ameye",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/302684301",
+   "taxon": "Lagerstroemia indica"
+  }
+ ],
+ "syringa-vulgaris": [
+  {
+   "file": "img/syringa-vulgaris-1.jpg",
+   "by": "Игорь Поспелов",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/131487901",
+   "taxon": "Syringa vulgaris"
+  },
+  {
+   "file": "img/syringa-vulgaris-2.jpg",
+   "by": "Andreas Rockstein",
+   "lic": "CC BY-SA",
+   "url": "https://www.inaturalist.org/photos/7016217",
+   "taxon": "Syringa vulgaris"
+  },
+  {
+   "file": "img/syringa-vulgaris-3.jpg",
+   "by": "drweltschmerz",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/73700727",
+   "taxon": "Syringa vulgaris"
+  }
+ ],
+ "nerium-oleander": [
+  {
+   "file": "img/nerium-oleander-1.jpg",
+   "by": "Cheng-wei",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/392455529",
+   "taxon": "Nerium oleander"
+  },
+  {
+   "file": "img/nerium-oleander-2.jpg",
+   "by": "James Bailey",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/9512852",
+   "taxon": "Nerium oleander"
+  },
+  {
+   "file": "img/nerium-oleander-3.jpg",
+   "by": "anjalibritto00",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/181978365",
+   "taxon": "Nerium oleander"
+  }
+ ],
+ "pittosporum-tobira": [
+  {
+   "file": "img/pittosporum-tobira-1.jpg",
+   "by": "no rights reserved",
+   "lic": "CC0",
+   "url": "https://www.inaturalist.org/photos/33349195",
+   "taxon": "Pittosporum tobira"
+  },
+  {
+   "file": "img/pittosporum-tobira-2.jpg",
+   "by": "Marco Mussita",
+   "lic": "CC BY",
+   "url": "https://www.inaturalist.org/photos/53637336",
+   "taxon": "Pittosporum tobira"
+  },
+  {
+   "file": "img/pittosporum-tobira-3.jpg",
+   "by": "Walaa Almatar",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/74449524",
+   "taxon": "Pittosporum tobira"
+  }
+ ],
+ "elaeagnus-ebbingei": [
+  {
+   "file": "img/elaeagnus-ebbingei-1.jpg",
+   "by": "mikeybabes",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/101934263",
+   "taxon": "Elaeagnus × submacrophylla"
+  },
+  {
+   "file": "img/elaeagnus-ebbingei-2.jpg",
+   "by": "蒋迪（涂璟）",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/276169912",
+   "taxon": "Elaeagnus × submacrophylla"
+  },
+  {
+   "file": "img/elaeagnus-ebbingei-3.jpg",
+   "by": "reinderw",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/30842564",
+   "taxon": "Elaeagnus × submacrophylla"
+  }
+ ],
+ "choisya-ternata": [
+  {
+   "file": "img/choisya-ternata-1.jpg",
+   "by": "Robin Gwen Agarwal",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/1501311",
+   "taxon": "Choisya ternata"
+  },
+  {
+   "file": "img/choisya-ternata-2.jpg",
+   "by": "yuliedu08",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/47700196",
+   "taxon": "Choisya ternata"
+  },
+  {
+   "file": "img/choisya-ternata-3.jpg",
+   "by": "M a n u e l",
+   "lic": "CC BY-SA",
+   "url": "https://www.inaturalist.org/photos/1540963",
+   "taxon": "Choisya ternata"
+  }
+ ],
+ "abelia-grandiflora": [
+  {
+   "file": "img/abelia-grandiflora-1.jpg",
+   "by": "Pieter Pelser",
+   "lic": "CC BY",
+   "url": "https://www.inaturalist.org/photos/119229249",
+   "taxon": "Abelia × grandiflora"
+  },
+  {
+   "file": "img/abelia-grandiflora-2.jpg",
+   "by": "Pieter Pelser",
+   "lic": "CC BY",
+   "url": "https://www.inaturalist.org/photos/119229220",
+   "taxon": "Abelia × grandiflora"
+  },
+  {
+   "file": "img/abelia-grandiflora-3.jpg",
+   "by": "Pieter Pelser",
+   "lic": "CC BY",
+   "url": "https://www.inaturalist.org/photos/119229070",
+   "taxon": "Abelia × grandiflora"
+  }
+ ],
+ "spiraea-vanhouttei": [
+  {
+   "file": "img/spiraea-vanhouttei-1.jpg",
+   "by": "Dra. Leah",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/131392897",
+   "taxon": "Spiraea × vanhouttei"
+  },
+  {
+   "file": "img/spiraea-vanhouttei-2.jpg",
+   "by": "Gábor Keresztes",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/162236441",
+   "taxon": "Spiraea × vanhouttei"
+  },
+  {
+   "file": "img/spiraea-vanhouttei-3.jpg",
+   "by": "Kor!An (Андрей Корзун)",
+   "lic": "CC BY-SA",
+   "url": "https://www.inaturalist.org/photos/94951261",
+   "taxon": "Spiraea × vanhouttei"
+  }
+ ],
+ "deutzia-scabra": [
+  {
+   "file": "img/deutzia-scabra-1.jpg",
+   "by": "harum.koh",
+   "lic": "CC BY-SA",
+   "url": "https://www.inaturalist.org/photos/291144248",
+   "taxon": "Deutzia scabra"
+  },
+  {
+   "file": "img/deutzia-scabra-2.jpg",
+   "by": "Mizuki Shimoda",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/69101748",
+   "taxon": "Deutzia scabra"
+  },
+  {
+   "file": "img/deutzia-scabra-3.jpg",
+   "by": "shrnsmt",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/16952184",
+   "taxon": "Deutzia scabra"
+  }
+ ],
+ "mahonia-aquifolium": [
+  {
+   "file": "img/mahonia-aquifolium-1.jpg",
+   "by": "sylviehawkes",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/84899255",
+   "taxon": "Berberis aquifolium"
+  },
+  {
+   "file": "img/mahonia-aquifolium-2.jpg",
+   "by": "macstap",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/65130109",
+   "taxon": "Berberis aquifolium"
+  },
+  {
+   "file": "img/mahonia-aquifolium-3.jpg",
+   "by": "Tracking Surrey's Biodiversity",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/276823449",
+   "taxon": "Berberis aquifolium"
+  }
+ ],
+ "berberis-thunbergii": [
+  {
+   "file": "img/berberis-thunbergii-1.jpg",
+   "by": "Mark Kluge",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/37811889",
+   "taxon": "Berberis thunbergii"
+  },
+  {
+   "file": "img/berberis-thunbergii-2.jpg",
+   "by": "Rob Curtis",
+   "lic": "CC BY-NC-SA",
+   "url": "https://www.inaturalist.org/photos/2822868",
+   "taxon": "Berberis thunbergii"
+  },
+  {
+   "file": "img/berberis-thunbergii-3.jpg",
+   "by": "Douglas Goldman",
+   "lic": "CC BY-SA",
+   "url": "https://www.inaturalist.org/photos/649270085",
+   "taxon": "Berberis thunbergii"
+  }
  ]
 }
