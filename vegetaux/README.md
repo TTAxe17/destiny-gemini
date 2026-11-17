@@ -36,6 +36,16 @@ Application d'entraînement quotidien à la reconnaissance des végétaux, pens�
 
 Version publiée : https://claude.ai/artifact/VKobStoCcmh9hH27HKrAtF
 
+## Installer sur son téléphone
+
+Hébergée sur GitHub Pages (ou tout hébergement HTTPS), l'application s'installe comme une appli :
+
+- **iPhone (Safari)** : bouton Partager, puis « Sur l'écran d'accueil ».
+- **Android (Chrome)** : menu ⋮, puis « Installer l'application » ou « Ajouter à l'écran d'accueil ».
+
+Elle s'ouvre alors en plein écran avec son icône, et fonctionne hors connexion : les photos sont gardées sur le téléphone après la première ouverture.
+
 ## Héberger soi-même
 
-Le dossier peut être publié tel quel avec GitHub Pages ou n'importe quel hébergeur de pages statiques. Il suffit d'ouvrir `index.html`.
+Activez GitHub Pages sur la branche (Settings → Pages → Deploy from a branch, dossier `/ (root)`), puis ouvrez `https://<utilisateur>.github.io/<dépôt>/vegetaux/`.
+Les fichiers `manifest.webmanifest`, `sw.js` et les icônes rendent l'application installable.
