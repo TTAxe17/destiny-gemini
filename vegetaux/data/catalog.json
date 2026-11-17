@@ -112,7 +112,10 @@
   "lvl": 1,
   "tip": "Petites feuilles opposées, ovales, souvent échancrées au sommet, au bord entier. Rameaux à 4 angles. Odeur caractéristique, un peu animale.",
   "diff": "Le houx crénelé et le chèvrefeuille arbustif lui ressemblent, mais le houx crénelé a des feuilles alternes et finement dentées.",
-  "conf": [],
+  "conf": [
+   "lonicera-nitida",
+   "ilex-crenata"
+  ],
   "slots": {
    "leaf": "leaf",
    "fruit": "fruit",
@@ -262,7 +265,8 @@
    "habit": "habit"
   },
   "conf": [
-   "clematis-flammula"
+   "clematis-flammula",
+   "clematis-montana"
   ]
  },
  {
@@ -282,6 +286,7 @@
    "habit": "habit"
   },
   "conf": [
+   "chaenomeles-speciosa",
    "mespilus-germanica"
   ]
  },
@@ -324,6 +329,28 @@
    "bark": "bark",
    "habit": "habit"
   }
+ },
+ {
+  "id": "forsythia-intermedia",
+  "lat": "Forsythia × intermedia",
+  "fr": "Forsythia",
+  "fam": "Oléacées",
+  "type": "Arbuste caduc",
+  "orig": "Hybride horticole",
+  "lvl": 1,
+  "wiki": "Forsythia",
+  "tip": "En mars, explosion de fleurs jaune vif à 4 pétales, avant les feuilles. Coupez une tige : la moelle est creuse ou cloisonnée.",
+  "diff": "Le jasmin d'hiver fleurit plus tôt, en plein hiver. Ses fleurs ont 5-6 pétales et ses rameaux sont verts et quadrangulaires.",
+  "conf": [
+   "jasminum-nudiflorum"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "twig",
+   "habit": "habit"
+  },
+  "curated": true
  },
  {
   "lat": "Rubus idaeus",
@@ -461,6 +488,7 @@
   "diff": "L'hortensia paniculé fleurit en cônes allongés blancs. L'hortensia à feuilles de chêne a des feuilles lobées.",
   "conf": [
    "viburnum-opulus",
+   "hydrangea-paniculata",
    "hydrangea-quercifolia"
   ],
   "slots": {
@@ -562,7 +590,8 @@
   "tip": "Écorce brun-rouge brillante, qui se déroule en bandes horizontales. Deux glandes rouges au sommet du pétiole. Feuilles grandes et pendantes. Fleurs blanches en bouquets.",
   "diff": "Le cerisier du Japon a des dents de feuille terminées par un fil et des fleurs souvent doubles roses.",
   "conf": [
-   "prunus-cerasifera"
+   "prunus-cerasifera",
+   "prunus-serrulata"
   ],
   "slots": {
    "leaf": "leaf",
@@ -633,6 +662,29 @@
    "bark": "bark",
    "habit": "habit"
   }
+ },
+ {
+  "id": "photinia-fraseri",
+  "lat": "Photinia × fraseri",
+  "fr": "Photinia 'Red Robin'",
+  "fam": "Rosacées",
+  "type": "Arbuste persistant",
+  "orig": "Hybride horticole",
+  "lvl": 1,
+  "wiki": "Photinia × fraseri",
+  "tip": "Jeunes pousses rouge vif au printemps et après chaque taille. Feuilles alternes, coriaces, finement dentées.",
+  "diff": "Le piéris a lui aussi des pousses rouges, mais ses feuilles sont serrées en rosettes et il fleurit en clochettes blanches pendantes.",
+  "conf": [
+   "prunus-laurocerasus",
+   "pieris-japonica"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "bark",
+   "habit": "habit"
+  },
+  "curated": true
  },
  {
   "id": "platanus-hispanica",
@@ -1091,6 +1143,28 @@
   }
  },
  {
+  "id": "abelia-grandiflora",
+  "lat": "Abelia × grandiflora",
+  "fr": "Abélia",
+  "fam": "Caprifoliacées",
+  "type": "Arbuste semi-persistant",
+  "orig": "Hybride horticole",
+  "lvl": 2,
+  "wiki": "Abelia × grandiflora",
+  "tip": "Petites feuilles opposées, brillantes, finement dentées. Petites clochettes blanc rosé de juin à octobre. Le calice rose reste après la floraison et colore l'arbuste.",
+  "diff": "Le chèvrefeuille arbustif a de minuscules feuilles entières et une floraison discrète.",
+  "conf": [
+   "lonicera-nitida"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "twig",
+   "habit": "habit"
+  },
+  "curated": true
+ },
+ {
   "lat": "Hibiscus syriacus",
   "fr": "Althéa (hibiscus de Syrie)",
   "fam": "Malvacées",
@@ -1106,7 +1180,9 @@
    "bark": "bark",
    "habit": "habit"
   },
-  "conf": []
+  "conf": [
+   "lagerstroemia-indica"
+  ]
  },
  {
   "lat": "Prunus dulcis",
@@ -1252,6 +1328,25 @@
   ]
  },
  {
+  "id": "phyllostachys-aurea",
+  "lat": "Phyllostachys aurea",
+  "fr": "Bambou doré",
+  "fam": "Poacées",
+  "type": "Bambou",
+  "orig": "Chine",
+  "lvl": 2,
+  "tip": "Chez les Phyllostachys, chaque entre-nœud porte une gouttière d'un côté. Chez celui-ci, les nœuds du bas sont tassés et irréguliers. Bambou traçant, à planter avec une barrière anti-rhizome.",
+  "diff": "Les Fargesia sont des bambous non traçants, en touffe, sans gouttière sur le chaume.",
+  "conf": [],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "twig",
+   "bark": "bark",
+   "habit": "habit"
+  },
+  "curated": true
+ },
+ {
   "lat": "Campsis radicans",
   "fr": "Bignone",
   "fam": "Bignoniacées",
@@ -1268,7 +1363,8 @@
    "habit": "habit"
   },
   "conf": [
-   "wisteria-sinensis"
+   "wisteria-sinensis",
+   "trachelospermum-jasminoides"
   ]
  },
  {
@@ -1287,7 +1383,31 @@
    "bark": "bark",
    "habit": "habit"
   },
-  "conf": []
+  "conf": [
+   "camellia-japonica"
+  ]
+ },
+ {
+  "id": "prunus-serrulata",
+  "lat": "Prunus serrulata",
+  "fr": "Cerisier du Japon",
+  "fam": "Rosacées",
+  "type": "Arbre caduc",
+  "orig": "Japon, Chine, Corée",
+  "lvl": 2,
+  "tip": "Écorce brun-rouge brillante rayée de lenticelles horizontales. Feuilles dont les dents finissent par un petit fil. Fleurs souvent doubles, roses, en avril.",
+  "diff": "Le merisier a la même écorce, mais des fleurs simples blanches et des dents de feuille sans fil.",
+  "conf": [
+   "prunus-cerasifera",
+   "prunus-avium"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "bark",
+   "habit": "habit"
+  },
+  "curated": true
  },
  {
   "lat": "Lonicera maackii",
@@ -1348,7 +1468,8 @@
    "habit": "habit"
   },
   "conf": [
-   "lonicera-periclymenum"
+   "lonicera-periclymenum",
+   "trachelospermum-jasminoides"
   ]
  },
  {
@@ -1368,7 +1489,51 @@
    "habit": "habit"
   },
   "conf": [
+   "clematis-montana",
    "clematis-vitalba"
+  ]
+ },
+ {
+  "lat": "Clematis montana",
+  "fr": "Clématite des montagnes",
+  "fam": "Renonculacées",
+  "type": "Liane caduque",
+  "orig": "Himalaya, Chine",
+  "lvl": 2,
+  "tip": "Liane très vigoureuse. Feuilles opposées à 3 folioles dentées. Avalanche de fleurs à 4 sépales blancs ou roses en mai, au parfum de vanille.",
+  "diff": "La clématite des haies a des fleurs crème plus petites en été et 5 folioles ; la clématite d'Armand est persistante.",
+  "id": "clematis-montana",
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "twig",
+   "habit": "habit"
+  },
+  "curated": true,
+  "conf": [
+   "clematis-vitalba"
+  ]
+ },
+ {
+  "lat": "Chaenomeles speciosa",
+  "fr": "Cognassier du Japon",
+  "fam": "Rosacées",
+  "type": "Arbuste caduc",
+  "orig": "Chine",
+  "lvl": 2,
+  "tip": "Arbuste épineux aux rameaux enchevêtrés. Fleurs rouges, roses ou blanches serrées sur le bois nu en fin d'hiver. Feuilles ovales luisantes avec de grandes stipules. Fruits jaunes très durs et parfumés.",
+  "diff": "Le cognassier commun est un arbre sans épines aux fleurs isolées rose pâle.",
+  "id": "chaenomeles-speciosa",
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "flower",
+   "habit": "habit"
+  },
+  "curated": true,
+  "conf": [
+   "cydonia-oblonga",
+   "pyracantha-coccinea"
   ]
  },
  {
@@ -1429,6 +1594,7 @@
    "habit": "habit"
   },
   "conf": [
+   "forsythia-intermedia",
    "jasminum-nudiflorum"
   ]
  },
@@ -1494,6 +1660,48 @@
   ]
  },
  {
+  "lat": "Ceanothus thyrsiflorus",
+  "fr": "Céanothe",
+  "fam": "Rhamnacées",
+  "type": "Arbuste persistant",
+  "orig": "Californie",
+  "lvl": 2,
+  "tip": "Arbuste persistant aux petites feuilles brillantes à 3 nervures parallèles bien marquées. Grappes de petites fleurs bleu ciel en avril-mai.",
+  "diff": "Les 3 nervures parallèles de la feuille et les fleurs bleues en grappes le distinguent des autres persistants.",
+  "id": "ceanothus-thyrsiflorus",
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "twig",
+   "habit": "habit"
+  },
+  "curated": true,
+  "conf": [
+   "teucrium-fruticans"
+  ]
+ },
+ {
+  "id": "deutzia-scabra",
+  "lat": "Deutzia scabra",
+  "fr": "Deutzia",
+  "fam": "Hydrangéacées",
+  "type": "Arbuste caduc",
+  "orig": "Japon",
+  "lvl": 2,
+  "tip": "Feuilles opposées, rugueuses comme du papier de verre, à cause de poils étoilés. Écorce qui pèle en lanières. Tiges creuses. Grappes de fleurs blanches étoilées en juin.",
+  "diff": "Le seringat (Philadelphus) a des feuilles lisses et des fleurs plus grandes, très parfumées. La spirée a des feuilles alternes.",
+  "conf": [
+   "spiraea-vanhouttei"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "flower",
+   "habit": "habit"
+  },
+  "curated": true
+ },
+ {
   "lat": "Escallonia rubra",
   "fr": "Escallonia",
   "fam": "Escalloniacées",
@@ -1509,7 +1717,10 @@
    "bark": "bark",
    "habit": "habit"
   },
-  "conf": []
+  "conf": [
+   "photinia-fraseri",
+   "abelia-grandiflora"
+  ]
  },
  {
   "lat": "Fuchsia magellanica",
@@ -1572,6 +1783,27 @@
    "bark": "bark",
    "habit": "habit"
   }
+ },
+ {
+  "lat": "Wisteria floribunda",
+  "fr": "Glycine du Japon",
+  "fam": "Fabacées",
+  "type": "Liane caduque",
+  "orig": "Japon",
+  "lvl": 2,
+  "tip": "Glycine du Japon : tiges qui s'enroulent dans le sens des aiguilles d'une montre. 13 à 19 folioles. Très longues grappes qui s'ouvrent progressivement du haut vers le bas.",
+  "diff": "La glycine de Chine s'enroule dans l'autre sens et ses grappes plus courtes s'ouvrent d'un coup.",
+  "id": "wisteria-floribunda",
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "bark",
+   "habit": "habit"
+  },
+  "curated": true,
+  "conf": [
+   "wisteria-sinensis"
+  ]
  },
  {
   "lat": "Ribes aureum",
@@ -1653,7 +1885,8 @@
    "habit": "habit"
   },
   "conf": [
-   "hydrangea-macrophylla"
+   "hydrangea-macrophylla",
+   "hydrangea-paniculata"
   ]
  },
  {
@@ -1673,7 +1906,30 @@
    "habit": "habit"
   },
   "conf": [
+   "trachelospermum-jasminoides",
    "jasminum-nudiflorum"
+  ]
+ },
+ {
+  "lat": "Trachelospermum jasminoides",
+  "fr": "Jasmin étoilé",
+  "fam": "Apocynacées",
+  "type": "Liane persistante",
+  "orig": "Chine, Japon",
+  "lvl": 2,
+  "tip": "Liane persistante volubile aux feuilles opposées, ovales, vert sombre luisant. Latex blanc à la cassure. Fleurs blanches en hélice, au parfum de jasmin, en juin-juillet.",
+  "diff": "Le jasmin officinal a des feuilles composées et perd ses feuilles ; le jasmin étoilé a des feuilles simples et persistantes.",
+  "id": "trachelospermum-jasminoides",
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "flower",
+   "bark": "twig",
+   "habit": "habit"
+  },
+  "curated": true,
+  "conf": [
+   "jasminum-officinale",
+   "lonicera-japonica"
   ]
  },
  {
@@ -1693,7 +1949,8 @@
    "habit": "habit"
   },
   "conf": [
-   "rhododendron-ponticum"
+   "rhododendron-ponticum",
+   "pieris-japonica"
   ]
  },
  {
@@ -1737,6 +1994,24 @@
    "hedera-helix",
    "hedera-hibernica"
   ]
+ },
+ {
+  "lat": "Magnolia stellata",
+  "fr": "Magnolia étoilé",
+  "fam": "Magnoliacées",
+  "type": "Arbuste caduc",
+  "orig": "Japon",
+  "lvl": 2,
+  "tip": "Arbuste compact. En mars, fleurs blanches étoilées à 12-18 pétales fins et rubanés, très parfumées, sur bois nu. Bourgeons velus gris.",
+  "diff": "Le magnolia de Kobé est un arbre à fleurs de 6 pétales plus larges. Le magnolia de Soulange a des fleurs en tulipe rosées.",
+  "id": "magnolia-stellata",
+  "slots": {
+   "fruit": "flower",
+   "bark": "bark",
+   "habit": "habit"
+  },
+  "curated": true,
+  "conf": []
  },
  {
   "id": "mahonia-aquifolium",
@@ -1943,7 +2218,8 @@
    "habit": "habit"
   },
   "conf": [
-   "malus-domestica"
+   "malus-domestica",
+   "prunus-serrulata"
   ]
  },
  {
@@ -2070,6 +2346,28 @@
   }
  },
  {
+  "lat": "Koelreuteria paniculata",
+  "fr": "Savonnier",
+  "fam": "Sapindacées",
+  "type": "Arbre caduc",
+  "orig": "Chine, Corée",
+  "lvl": 2,
+  "tip": "Feuilles composées aux folioles profondément dentées ou lobées. En juillet, grandes panicules de fleurs jaunes, puis capsules gonflées en lanternes de papier, vertes puis rosées puis brunes.",
+  "diff": "Les lanternes en papier sont uniques. Le frêne a des folioles dentées mais des feuilles opposées.",
+  "id": "koelreuteria-paniculata",
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "fruit",
+   "habit": "habit"
+  },
+  "curated": true,
+  "conf": [
+   "fraxinus-excelsior",
+   "ailanthus-altissima"
+  ]
+ },
+ {
   "lat": "Philadelphus coronarius",
   "fr": "Seringat",
   "fam": "Hydrangéacées",
@@ -2085,7 +2383,9 @@
    "bark": "bark",
    "habit": "habit"
   },
-  "conf": []
+  "conf": [
+   "deutzia-scabra"
+  ]
  },
  {
   "lat": "Spiraea douglasii",
@@ -2109,6 +2409,28 @@
   ]
  },
  {
+  "id": "spiraea-vanhouttei",
+  "lat": "Spiraea × vanhouttei",
+  "fr": "Spirée de Van Houtte",
+  "fam": "Rosacées",
+  "type": "Arbuste caduc",
+  "orig": "Hybride horticole",
+  "lvl": 2,
+  "wiki": "Spiraea × vanhouttei",
+  "tip": "Rameaux arqués couverts de petits bouquets ronds de fleurs blanches en avril-mai. Petites feuilles en losange, dentées vers la pointe, bleutées dessous.",
+  "diff": "La spirée du Japon fleurit en été, en plateaux roses au bout des tiges.",
+  "conf": [
+   "deutzia-scabra"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "twig",
+   "habit": "habit"
+  },
+  "curated": true
+ },
+ {
   "lat": "Spiraea japonica",
   "fr": "Spirée du Japon",
   "fam": "Rosacées",
@@ -2125,6 +2447,7 @@
    "habit": "habit"
   },
   "conf": [
+   "spiraea-vanhouttei",
    "sorbaria-sorbifolia"
   ]
  },
@@ -2212,6 +2535,49 @@
   ]
  },
  {
+  "lat": "Viburnum × bodnantense",
+  "fr": "Viorne de Bodnant",
+  "fam": "Viburnacées",
+  "type": "Arbuste caduc",
+  "orig": "Hybride horticole",
+  "lvl": 2,
+  "tip": "Arbuste dressé. Petites boules de fleurs rose pâle très parfumées sur le bois nu de novembre à mars. Feuilles opposées dentées, bronze au débourrement.",
+  "diff": "Le laurier-tin fleurit aussi en hiver mais il est persistant et ses fleurs sont blanches.",
+  "id": "viburnum-bodnantense",
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "flower",
+   "bark": "twig",
+   "habit": "habit"
+  },
+  "curated": true,
+  "conf": [
+   "viburnum-tinus"
+  ]
+ },
+ {
+  "lat": "Viburnum plicatum",
+  "fr": "Viorne de Chine",
+  "fam": "Viburnacées",
+  "type": "Arbuste caduc",
+  "orig": "Chine, Japon",
+  "lvl": 2,
+  "tip": "Branches étagées horizontalement. Feuilles opposées plissées le long des nervures. En mai, rangées de fleurs blanches stériles alignées au-dessus des branches. Fruits rouges puis noirs.",
+  "diff": "La viorne obier a des feuilles à 3 lobes ; la viorne de Chine a des feuilles ovales plissées et un port en étages.",
+  "id": "viburnum-plicatum",
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "flower",
+   "habit": "habit"
+  },
+  "curated": true,
+  "conf": [
+   "viburnum-opulus",
+   "cornus-controversa"
+  ]
+ },
+ {
   "lat": "Viburnum rhytidophyllum",
   "fr": "Viorne à feuilles ridées",
   "fam": "Viburnacées",
@@ -2229,6 +2595,27 @@
   },
   "conf": [
    "prunus-laurocerasus"
+  ]
+ },
+ {
+  "lat": "Weigela florida",
+  "fr": "Weigela",
+  "fam": "Caprifoliacées",
+  "type": "Arbuste caduc",
+  "orig": "Corée, Chine",
+  "lvl": 2,
+  "tip": "Feuilles opposées, ovales, dentées. Fleurs en trompette rose à rouge en mai-juin, groupées le long des rameaux. Capsules sèches allongées.",
+  "diff": "L'abélia a de petites feuilles brillantes et fleurit tout l'été en clochettes blanc rosé. Le buisson de beauté a une écorce qui pèle et des fleurs rose pâle à gorge jaune.",
+  "id": "weigela-florida",
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "flower",
+   "bark": "twig",
+   "habit": "habit"
+  },
+  "curated": true,
+  "conf": [
+   "abelia-grandiflora"
   ]
  },
  {
@@ -2292,6 +2679,27 @@
    "amelanchier-lamarckii",
    "cotoneaster-integerrimus"
   ]
+ },
+ {
+  "id": "pieris-japonica",
+  "lat": "Pieris japonica",
+  "fr": "Andromède du Japon (piéris)",
+  "fam": "Éricacées",
+  "type": "Arbuste persistant",
+  "orig": "Japon",
+  "lvl": 3,
+  "tip": "Feuilles étroites serrées en rosettes au bout des rameaux. Jeunes pousses rouge vif ou bronze. Grappes pendantes de clochettes blanches comme du muguet, au printemps. Terre de bruyère.",
+  "diff": "Le photinia a aussi des pousses rouges, mais des feuilles plus grandes, réparties le long des tiges, et des fleurs en corymbes plats.",
+  "conf": [
+   "photinia-fraseri"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "flower",
+   "habit": "habit"
+  },
+  "curated": true
  },
  {
   "lat": "Calycanthus floridus",
@@ -2637,7 +3045,8 @@
    "habit": "habit"
   },
   "conf": [
-   "cornus-alternifolia"
+   "cornus-alternifolia",
+   "viburnum-plicatum"
   ]
  },
  {
@@ -3115,6 +3524,27 @@
   ]
  },
  {
+  "id": "choisya-ternata",
+  "lat": "Choisya ternata",
+  "fr": "Oranger du Mexique",
+  "fam": "Rutacées",
+  "type": "Arbuste persistant",
+  "orig": "Mexique",
+  "lvl": 3,
+  "tip": "Feuilles opposées à 3 folioles brillantes. Froissées, elles sentent fort, entre agrume et épices. Fleurs blanches étoilées au printemps.",
+  "diff": "Sa feuille en trèfle à 3 doigts et son odeur forte le distinguent des autres arbustes à feuilles vernissées.",
+  "conf": [
+   "skimmia-japonica"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "flower",
+   "bark": "twig",
+   "habit": "habit"
+  },
+  "curated": true
+ },
+ {
   "lat": "Ptelea trifoliata",
   "fr": "Orme de Samarie",
   "fam": "Rutacées",
@@ -3131,7 +3561,8 @@
    "habit": "habit"
   },
   "conf": [
-   "ulmus-minor"
+   "ulmus-minor",
+   "choisya-ternata"
   ]
  },
  {
@@ -3213,6 +3644,7 @@
    "habit": "habit"
   },
   "conf": [
+   "photinia-fraseri",
    "prunus-laurocerasus"
   ]
  },
@@ -3356,6 +3788,7 @@
    "habit": "habit"
   },
   "conf": [
+   "pieris-japonica",
    "vaccinium-corymbosum"
   ]
  },
@@ -3687,6 +4120,7 @@
   },
   "conf": [
    "mahonia-aquifolium",
+   "osmanthus-heterophyllus",
    "berberis-julianae"
   ]
  },
@@ -4193,6 +4627,7 @@
   "tip": "Petites fleurs jaunes en pompons dès février, avant les feuilles. Feuilles à nervures arquées. Fruits rouges oblongs comestibles (cornouilles).",
   "diff": "Le forsythia a de plus grandes fleurs à 4 pétales. Son bois n'a pas de fils dans les feuilles. Le cornouiller mâle a de petits pompons jaunes.",
   "conf": [
+   "forsythia-intermedia",
    "cornus-sanguinea"
   ],
   "slots": {
@@ -4362,6 +4797,7 @@
    "habit": "habit"
   },
   "conf": [
+   "koelreuteria-paniculata",
    "ailanthus-altissima"
   ]
  },
@@ -4939,8 +5375,32 @@
    "habit": "habit"
   },
   "conf": [
-   "cupressus-sempervirens"
+   "cupressus-sempervirens",
+   "cuprocyparis-leylandii"
   ]
+ },
+ {
+  "id": "cuprocyparis-leylandii",
+  "lat": "× Cuprocyparis leylandii",
+  "fr": "Cyprès de Leyland",
+  "fam": "Cupressacées",
+  "type": "Conifère persistant",
+  "orig": "Hybride horticole",
+  "lvl": 5,
+  "wiki": "× Cuprocyparis leylandii",
+  "tip": "Croissance très rapide (plus d'1 m par an). Rameaux denses, légèrement aplatis, irréguliers en 3D, vert grisé. Flèche dressée. Le grand classique des haies hautes.",
+  "diff": "Le thuya a des rameaux bien plus plats et réguliers, à l'odeur fruitée. Le faux-cyprès a une flèche retombante.",
+  "conf": [
+   "thuja-occidentalis",
+   "chamaecyparis-lawsoniana"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "twig",
+   "bark": "bark",
+   "habit": "habit"
+  },
+  "curated": true
  },
  {
   "lat": "Cupressus arizonica",
@@ -4996,6 +5456,7 @@
   "diff": "Le cèdre du Liban a des étages horizontaux en plateaux. Le déodar a une flèche qui retombe. Le mélèze perd ses aiguilles en hiver.",
   "conf": [
    "larix-decidua",
+   "cedrus-libani",
    "cedrus-deodara"
   ],
   "slots": {
@@ -5016,7 +5477,8 @@
   "tip": "Aiguilles longues (jusqu'à 5 cm) et souples. Branches et flèche retombantes, ce qui lui donne un port pleureur gracieux.",
   "diff": "Les cèdres de l'Atlas et du Liban ont des aiguilles plus courtes et un sommet qui ne retombe pas.",
   "conf": [
-   "cedrus-atlantica"
+   "cedrus-atlantica",
+   "cedrus-libani"
   ],
   "slots": {
    "leaf": "leaf",
@@ -5024,6 +5486,28 @@
    "bark": "bark",
    "habit": "habit"
   }
+ },
+ {
+  "id": "cedrus-libani",
+  "lat": "Cedrus libani",
+  "fr": "Cèdre du Liban",
+  "fam": "Pinacées",
+  "type": "Conifère persistant",
+  "orig": "Liban, Turquie",
+  "lvl": 5,
+  "tip": "Adulte, il forme de grands étages horizontaux en plateaux et un sommet aplati. Aiguilles vert sombre un peu plus longues que l'Atlas. Jeune, sa flèche s'incline légèrement.",
+  "diff": "Le cèdre de l'Atlas a des branches qui montent en oblique et des aiguilles courtes, souvent bleutées. Le déodar a des rameaux retombants.",
+  "conf": [
+   "cedrus-atlantica",
+   "cedrus-deodara"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "bark",
+   "habit": "habit"
+  },
+  "curated": true
  },
  {
   "lat": "Calocedrus decurrens",
@@ -5079,7 +5563,8 @@
   "tip": "Rameaux plats en éventail, avec de fines marques blanches en X dessous. Flèche qui retombe. Petits cônes ronds. Odeur de persil au froissement.",
   "diff": "Le thuya a des cônes allongés en tulipe et pas de marques en X. Le Leyland a une flèche dressée et des cônes bruns plus gros.",
   "conf": [
-   "thuja-occidentalis"
+   "thuja-occidentalis",
+   "cuprocyparis-leylandii"
   ],
   "slots": {
    "leaf": "leaf",
@@ -5180,7 +5665,8 @@
   "tip": "Conifère qui perd ses aiguilles : elles virent au jaune d'or en automne. Aiguilles tendres en touffes sur des rameaux courts. Petits cônes dressés.",
   "diff": "Le cèdre a des rosettes similaires, mais persistantes et raides, et de gros cônes en tonneau.",
   "conf": [
-   "cedrus-atlantica"
+   "cedrus-atlantica",
+   "metasequoia-glyptostroboides"
   ],
   "slots": {
    "leaf": "leaf",
@@ -5572,7 +6058,8 @@
   "tip": "Rameaux aplatis en éventails, couverts de petites écailles. Petits cônes allongés dressés, qui s'ouvrent comme une tulipe. Odeur fruitée au froissement.",
   "diff": "Le faux-cyprès de Lawson a des cônes ronds et des marques blanches en X sous les rameaux. Le Leyland a des rameaux moins plats et pousse bien plus vite.",
   "conf": [
-   "chamaecyparis-lawsoniana"
+   "chamaecyparis-lawsoniana",
+   "cuprocyparis-leylandii"
   ],
   "slots": {
    "leaf": "leaf",
@@ -5817,7 +6304,9 @@
   "lvl": 6,
   "tip": "Feuilles rondes, plissées en éventail, veloutées. Les gouttes d'eau perlent à leur surface. Nuages de petites fleurs vert-jaune en juin.",
   "diff": "L'heuchère a des feuilles lisses et colorées. L'alchémille, elle, a des feuilles veloutées vert tendre.",
-  "conf": [],
+  "conf": [
+   "heuchera-micrantha"
+  ],
   "slots": {
    "leaf": "leaf",
    "fruit": "fruit",
@@ -5959,7 +6448,9 @@
   "lvl": 6,
   "tip": "Grandes feuilles rondes, épaisses et luisantes, persistantes, qui rougissent en hiver. Frottées entre les doigts, elles grincent. Fleurs roses en fin d'hiver.",
   "diff": "Le hosta a des feuilles fines aux nervures parallèles, qui disparaissent en hiver.",
-  "conf": [],
+  "conf": [
+   "hosta-sieboldiana"
+  ],
   "slots": {
    "leaf": "leaf",
    "fruit": "fruit",
@@ -6005,6 +6496,7 @@
    "habit": "habit"
   },
   "conf": [
+   "phyllostachys-aurea",
    "cortaderia-selloana"
   ]
  },
@@ -6220,7 +6712,9 @@
   "lvl": 6,
   "tip": "Petit coussin dense de feuilles fines, raides, d'un bleu argenté. Courts épis paille en début d'été.",
   "diff": "L'avoine bleue (Helictotrichon) est bien plus grande, avec des feuilles plus larges et plates.",
-  "conf": [],
+  "conf": [
+   "nassella-tenuissima"
+  ],
   "slots": {
    "leaf": "leaf",
    "fruit": "fruit",
@@ -6247,6 +6741,28 @@
   "conf": [
    "smilax-aspera"
   ]
+ },
+ {
+  "id": "gaura-lindheimeri",
+  "lat": "Oenothera lindheimeri",
+  "fr": "Gaura",
+  "fam": "Onagracées",
+  "type": "Vivace",
+  "orig": "Texas, Louisiane",
+  "lvl": 6,
+  "wiki": "Oenothera lindheimeri",
+  "tip": "Longues tiges fines et souples portant de petites fleurs blanches ou roses, comme des papillons, de juin aux gelées. Souvent appelée Gaura lindheimeri.",
+  "diff": "L'érigéron forme un coussin bas de petites pâquerettes. La gaura a des tiges hautes et légères.",
+  "conf": [
+   "erigeron-karvinskianus"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "flower",
+   "bark": "twig",
+   "habit": "habit"
+  },
+  "curated": true
  },
  {
   "lat": "Teucrium chamaedrys",
@@ -6361,7 +6877,9 @@
   "lvl": 6,
   "tip": "Feuilles découpées en 5 à 7 lanières profondes. Fleurs magenta à 5 pétales. Le fruit pointu ressemble à un bec de grue. Feuillage rouge en automne.",
   "diff": "Le « géranium » des balcons est un Pelargonium : feuilles rondes, épaisses et odorantes, non rustique.",
-  "conf": [],
+  "conf": [
+   "heuchera-micrantha"
+  ],
   "slots": {
    "leaf": "leaf",
    "fruit": "fruit",
@@ -6399,7 +6917,8 @@
   "tip": "Touffe arrondie de feuilles fines. Épis cylindriques duveteux, comme des goupillons à biberon, en fin d'été.",
   "diff": "Le miscanthus porte des plumeaux en éventail, pas des épis en écouvillon.",
   "conf": [
-   "miscanthus-sinensis"
+   "miscanthus-sinensis",
+   "nassella-tenuissima"
   ],
   "slots": {
    "leaf": "leaf",
@@ -6427,6 +6946,51 @@
    "bark": "bark",
    "habit": "habit"
   }
+ },
+ {
+  "id": "heuchera-micrantha",
+  "lat": "Heuchera micrantha",
+  "fr": "Heuchère",
+  "fam": "Saxifragacées",
+  "type": "Vivace",
+  "orig": "Amérique du Nord",
+  "lvl": 6,
+  "wiki": "Heuchera",
+  "tip": "Rosette de feuilles arrondies et lobées, aux couleurs vives : pourpre, caramel, vert acide, souvent veinées. Fines tiges de minuscules clochettes.",
+  "diff": "Le géranium vivace a des feuilles plus profondément découpées, et de grandes fleurs à 5 pétales.",
+  "conf": [
+   "geranium-sanguineum",
+   "alchemilla-mollis"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "flower",
+   "habit": "habit"
+  },
+  "curated": true
+ },
+ {
+  "id": "hosta-sieboldiana",
+  "lat": "Hosta sieboldiana",
+  "fr": "Hosta",
+  "fam": "Asparagacées",
+  "type": "Vivace",
+  "orig": "Japon",
+  "lvl": 6,
+  "wiki": "Hosta",
+  "tip": "Grandes feuilles en cœur aux nervures parallèles marquées, souvent bleutées ou panachées, formant une touffe. Plante d'ombre très appréciée des limaces. Hampes de clochettes lilas.",
+  "diff": "Le bergénia a des feuilles épaisses et brillantes, persistantes, aux nervures en réseau.",
+  "conf": [
+   "bergenia-cordifolia"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "flower",
+   "habit": "habit"
+  },
+  "curated": true
  },
  {
   "lat": "Humulus lupulus",
@@ -6500,7 +7064,9 @@
   "lvl": 6,
   "tip": "Feuilles en lanières arquées, pliées en V. Grandes fleurs orange en entonnoir, qui ne durent qu'un jour (d'où le nom anglais « daylily »).",
   "diff": "L'agapanthe a des fleurs bleues regroupées en boule au sommet de la tige.",
-  "conf": [],
+  "conf": [
+   "kniphofia-uvaria"
+  ],
   "slots": {
    "leaf": "leaf",
    "fruit": "flower",
@@ -6685,6 +7251,7 @@
   "tip": "Feuilles étroites gris-vert. Chaque tige florale porte un seul épi, court et compact. Plante compacte au parfum fin.",
   "diff": "Le lavandin est plus grand, et ses tiges se ramifient en 3 épis. La lavande papillon porte de grandes bractées en oreilles de lapin.",
   "conf": [
+   "perovskia-atriplicifolia",
    "lavandula-stoechas"
   ],
   "slots": {
@@ -6897,6 +7464,29 @@
   "conf": []
  },
  {
+  "id": "nepeta-faassenii",
+  "lat": "Nepeta × faassenii",
+  "fr": "Népéta (herbe aux chats)",
+  "fam": "Lamiacées",
+  "type": "Vivace",
+  "orig": "Hybride horticole",
+  "lvl": 6,
+  "wiki": "Nepeta × faassenii",
+  "tip": "Coussin de petites feuilles gris-vert, crénelées et aromatiques. Tige carrée. Épis lâches de fleurs bleu lavande en mai-juin.",
+  "diff": "La lavande a des feuilles étroites et un épi compact au bout d'une tige nue. La népéta a des feuilles en cœur crénelées.",
+  "conf": [
+   "lavandula-angustifolia",
+   "salvia-nemorosa"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "flower",
+   "bark": "twig",
+   "habit": "habit"
+  },
+  "curated": true
+ },
+ {
   "lat": "Oenothera biennis",
   "fr": "Onagre bisannuelle",
   "fam": "Onagracées",
@@ -6913,7 +7503,8 @@
    "habit": "habit"
   },
   "conf": [
-   "verbascum-thapsus"
+   "verbascum-thapsus",
+   "gaura-lindheimeri"
   ]
  },
  {
@@ -7073,6 +7664,7 @@
    "habit": "habit"
   },
   "conf": [
+   "phyllostachys-aurea",
    "fallopia-baldschuanica"
   ]
  },
@@ -7263,6 +7855,29 @@
   ]
  },
  {
+  "id": "perovskia-atriplicifolia",
+  "lat": "Salvia yangii",
+  "fr": "Sauge d'Afghanistan (pérovskia)",
+  "fam": "Lamiacées",
+  "type": "Sous-arbrisseau",
+  "orig": "Asie centrale",
+  "lvl": 6,
+  "wiki": "Salvia yangii",
+  "tip": "Tiges blanc argenté. Feuillage gris très découpé au parfum de sauge. Nuages de petites fleurs bleu lavande en fin d'été. Anciennement Perovskia atriplicifolia.",
+  "diff": "La lavande a des feuilles entières étroites et un épi compact. Le pérovskia a des tiges blanches et des feuilles découpées.",
+  "conf": [
+   "lavandula-angustifolia",
+   "verbena-bonariensis"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "flower",
+   "bark": "twig",
+   "habit": "habit"
+  },
+  "curated": true
+ },
+ {
   "lat": "Phlomis fruticosa",
   "fr": "Sauge de Jérusalem",
   "fam": "Lamiacées",
@@ -7293,7 +7908,9 @@
   "lvl": 6,
   "tip": "Épis dressés et serrés de fleurs violet profond. Les bractées violettes restent après la fleur. Feuilles ridées et aromatiques. Tige carrée.",
   "diff": "La népéta a des épis plus lâches, bleu pâle, et un port en coussin étalé.",
-  "conf": [],
+  "conf": [
+   "nepeta-faassenii"
+  ],
   "slots": {
    "leaf": "leaf",
    "fruit": "fruit",
@@ -7381,6 +7998,28 @@
   ]
  },
  {
+  "id": "nassella-tenuissima",
+  "lat": "Nassella tenuissima",
+  "fr": "Stipa cheveux d'ange",
+  "fam": "Poacées",
+  "type": "Graminée",
+  "orig": "Amériques",
+  "lvl": 6,
+  "tip": "Touffe de feuilles très fines comme des cheveux, qui ondulent au moindre vent. Épis blond paille en été. Souvent vendue sous l'ancien nom Stipa tenuissima.",
+  "diff": "La fétuque bleue a des feuilles fines mais raides, bleu-gris, en coussin.",
+  "conf": [
+   "pennisetum-alopecuroides",
+   "festuca-glauca"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "bark",
+   "habit": "habit"
+  },
+  "curated": true
+ },
+ {
   "lat": "Stipa pennata",
   "fr": "Stipe penné",
   "fam": "Poacées",
@@ -7396,7 +8035,9 @@
    "bark": "bark",
    "habit": "habit"
   },
-  "conf": []
+  "conf": [
+   "nassella-tenuissima"
+  ]
  },
  {
   "lat": "Tamus communis",
@@ -7461,6 +8102,27 @@
   ]
  },
  {
+  "id": "kniphofia-uvaria",
+  "lat": "Kniphofia uvaria",
+  "fr": "Tritoma (faux aloès)",
+  "fam": "Asphodélacées",
+  "type": "Vivace",
+  "orig": "Afrique du Sud",
+  "lvl": 6,
+  "tip": "Touffe de feuilles étroites en V. Épis en torche, rouges en haut et jaunes en bas, sur des tiges nues en été.",
+  "diff": "L'hémérocalle a de grandes fleurs ouvertes isolées, pas un épi dense en torche.",
+  "conf": [
+   "hemerocallis-fulva"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "flower",
+   "habit": "habit"
+  },
+  "curated": true
+ },
+ {
   "lat": "Valeriana officinalis",
   "fr": "Valériane officinale",
   "fam": "Caprifoliacées",
@@ -7511,7 +8173,9 @@
   "lvl": 6,
   "tip": "Coussin de petites pâquerettes blanches qui virent au rose, d'avril aux gelées. Se ressème dans les murets et les fissures.",
   "diff": "La pâquerette pousse en rosette au ras du gazon, avec une seule fleur par tige.",
-  "conf": [],
+  "conf": [
+   "gaura-lindheimeri"
+  ],
   "slots": {
    "leaf": "leaf",
    "fruit": "fruit",
@@ -7529,7 +8193,9 @@
   "lvl": 6,
   "tip": "Hautes tiges raides et carrées, presque sans feuilles, portant de petits bouquets plats violets. Effet transparent dans les massifs. Se ressème partout.",
   "diff": "La sauge d'Afghanistan a des épis bleu lavande et un feuillage gris argenté.",
-  "conf": [],
+  "conf": [
+   "perovskia-atriplicifolia"
+  ],
   "slots": {
    "leaf": "leaf",
    "fruit": "fruit",
@@ -7948,6 +8614,28 @@
   "conf": [
    "vaccinium-vitis-idaea"
   ]
+ },
+ {
+  "id": "lonicera-nitida",
+  "lat": "Lonicera nitida",
+  "fr": "Chèvrefeuille arbustif",
+  "fam": "Caprifoliacées",
+  "type": "Arbuste persistant",
+  "orig": "Chine",
+  "lvl": 7,
+  "tip": "Minuscules feuilles opposées (environ 1 cm), ovales, sur de longs rameaux arqués disposés en arêtes. Repousse très vite après la taille.",
+  "diff": "Le buis a des feuilles un peu plus grandes, souvent échancrées, des rameaux à 4 angles et une odeur caractéristique.",
+  "conf": [
+   "buxus-sempervirens",
+   "ilex-crenata"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "twig",
+   "habit": "habit"
+  },
+  "curated": true
  },
  {
   "lat": "Lonicera etrusca",
@@ -8385,6 +9073,28 @@
   "conf": []
  },
  {
+  "id": "hydrangea-paniculata",
+  "lat": "Hydrangea paniculata",
+  "fr": "Hortensia paniculé",
+  "fam": "Hydrangéacées",
+  "type": "Arbuste caduc",
+  "orig": "Chine, Japon",
+  "lvl": 7,
+  "tip": "Fleurs en cônes allongés blanc crème qui rosissent en fin d'été. Feuilles mates, parfois groupées par 3. Supporte mieux le soleil et le calcaire que l'hortensia classique.",
+  "diff": "L'hortensia commun fleurit en boules bleues ou roses et ses feuilles sont brillantes.",
+  "conf": [
+   "hydrangea-macrophylla",
+   "hydrangea-quercifolia"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "bark",
+   "habit": "habit"
+  },
+  "curated": true
+ },
+ {
   "id": "hydrangea-quercifolia",
   "lat": "Hydrangea quercifolia",
   "fr": "Hortensia à feuilles de chêne",
@@ -8395,7 +9105,8 @@
   "tip": "Grandes feuilles lobées comme une feuille de chêne, rouge pourpre en automne. Panicules blanches coniques. Écorce cannelle qui s'exfolie.",
   "diff": "L'hortensia paniculé a des feuilles simples et ovales, sans lobes.",
   "conf": [
-   "hydrangea-macrophylla"
+   "hydrangea-macrophylla",
+   "hydrangea-paniculata"
   ],
   "slots": {
    "leaf": "leaf",
@@ -8415,7 +9126,8 @@
   "tip": "Feuilles simples, coriaces, très brillantes, aux bords ondulés et épineux (souvent moins épineuses en haut de l'arbre). Baies rouges seulement sur les pieds femelles.",
   "diff": "Le mahonia a des feuilles composées de plusieurs folioles épineuses. L'osmanthe à feuilles de houx a des feuilles opposées.",
   "conf": [
-   "mahonia-aquifolium"
+   "mahonia-aquifolium",
+   "osmanthus-heterophyllus"
   ],
   "slots": {
    "leaf": "leaf",
@@ -8423,6 +9135,28 @@
    "bark": "bark",
    "habit": "habit"
   }
+ },
+ {
+  "id": "ilex-crenata",
+  "lat": "Ilex crenata",
+  "fr": "Houx crénelé",
+  "fam": "Aquifoliacées",
+  "type": "Arbuste persistant",
+  "orig": "Japon",
+  "lvl": 7,
+  "tip": "Petites feuilles alternes, vert foncé, au bord finement crénelé, sans épines. Baies noires. Très utilisé en remplacement du buis contre la pyrale.",
+  "diff": "Le buis a des feuilles opposées au bord lisse. Regardez la disposition sur le rameau.",
+  "conf": [
+   "buxus-sempervirens",
+   "lonicera-nitida"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "bark",
+   "habit": "habit"
+  },
+  "curated": true
  },
  {
   "id": "taxus-baccata",
@@ -8455,7 +9189,9 @@
   "lvl": 7,
   "tip": "Rameaux verts, quadrangulaires, retombants. Fleurs jaunes à 5-6 pétales de décembre à mars, sans parfum. Feuilles trifoliolées opposées.",
   "diff": "Le forsythia fleurit en mars-avril sur des rameaux bruns, avec des fleurs à 4 pétales.",
-  "conf": [],
+  "conf": [
+   "forsythia-intermedia"
+  ],
   "slots": {
    "leaf": "leaf",
    "fruit": "flower",
@@ -8544,6 +9280,27 @@
   }
  },
  {
+  "id": "osmanthus-heterophyllus",
+  "lat": "Osmanthus heterophyllus",
+  "fr": "Osmanthe à feuilles de houx",
+  "fam": "Oléacées",
+  "type": "Arbuste persistant",
+  "orig": "Japon",
+  "lvl": 7,
+  "tip": "Feuilles épineuses comme le houx, mais opposées. Les feuilles du haut sont souvent entières. Petites fleurs blanches très parfumées en automne.",
+  "diff": "Le houx a des feuilles alternes. Une feuille épineuse opposée, c'est l'osmanthe.",
+  "conf": [
+   "ilex-aquifolium"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "bark",
+   "habit": "habit"
+  },
+  "curated": true
+ },
+ {
   "lat": "Myrica gale",
   "fr": "Piment royal",
   "fam": "Myricacées",
@@ -8575,6 +9332,7 @@
   "tip": "Floraison blanche ou rose pâle très précoce, en février-mars. En ville, surtout la forme pourpre 'Pissardii' : feuillage pourpre, petites feuilles ovales dentées.",
   "diff": "Le hêtre pourpre a des feuilles au bord entier et cilié, et c'est un grand arbre.",
   "conf": [
+   "prunus-serrulata",
    "prunus-spinosa"
   ],
   "slots": {
@@ -9438,7 +10196,8 @@
   "tip": "Silhouette en colonne étroite et dense, vert sombre. Feuillage en petites écailles sur des rameaux non aplatis. Cônes ronds de 3 cm, à écailles en bouclier.",
   "diff": "Le thuya et le faux-cyprès ont des rameaux aplatis en éventail.",
   "conf": [
-   "thuja-occidentalis"
+   "thuja-occidentalis",
+   "cuprocyparis-leylandii"
   ],
   "slots": {
    "leaf": "leaf",
@@ -9663,7 +10422,9 @@
   "lvl": 8,
   "tip": "Petites feuilles brillantes, étroites, rougeâtres au débourrement. Fleurs rouge orangé vif au calice charnu en couronne, qui reste au sommet de la grenade.",
   "diff": "Le lilas des Indes fleurit aussi en été, mais ses fleurs sont crêpées en panicules et son écorce est tachetée.",
-  "conf": [],
+  "conf": [
+   "lagerstroemia-indica"
+  ],
   "slots": {
    "leaf": "leaf",
    "fruit": "fruit",
@@ -10290,6 +11051,27 @@
   }
  },
  {
+  "id": "fatsia-japonica",
+  "lat": "Fatsia japonica",
+  "fr": "Aralia du Japon",
+  "fam": "Araliacées",
+  "type": "Arbuste persistant",
+  "orig": "Japon",
+  "lvl": 9,
+  "tip": "Très grandes feuilles palmées, vernissées, à 7-9 lobes, sur de longs pétioles. Boules de fleurs crème en automne, puis baies noires. Ambiance tropicale à l'ombre.",
+  "diff": "Le ricin a des feuilles proches, mais pourpres ou vertes et très dentées, et c'est une plante annuelle.",
+  "conf": [
+   "hedera-helix"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "bark",
+   "habit": "habit"
+  },
+  "curated": true
+ },
+ {
   "id": "ginkgo-biloba",
   "lat": "Ginkgo biloba",
   "fr": "Arbre aux quarante écus",
@@ -10379,13 +11161,37 @@
   "lvl": 9,
   "tip": "Ce n'est pas un bambou. Tiges dressées non ramifiées, avec des feuilles 2 ou 3 fois composées en petites folioles pointues, rouges en hiver. Grappes de baies rouges.",
   "diff": "Un vrai bambou a des tiges creuses à nœuds et des feuilles simples, en lanières.",
-  "conf": [],
+  "conf": [
+   "phyllostachys-aurea"
+  ],
   "slots": {
    "leaf": "leaf",
    "fruit": "fruit",
    "bark": "bark",
    "habit": "habit"
   }
+ },
+ {
+  "id": "bougainvillea-spectabilis",
+  "lat": "Bougainvillea spectabilis",
+  "fr": "Bougainvillier",
+  "fam": "Nyctaginacées",
+  "type": "Liane persistante",
+  "orig": "Brésil",
+  "lvl": 9,
+  "wiki": "Bougainvillier",
+  "tip": "Ce que l'on prend pour des pétales, ce sont 3 bractées colorées (magenta, orange, blanc) comme du papier. Elles entourent 3 petites fleurs tubulaires blanches. Tiges épineuses.",
+  "diff": "Le laurier-rose a de vraies fleurs à 5 pétales et des feuilles étroites.",
+  "conf": [
+   "nerium-oleander"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "flower",
+   "bark": "twig",
+   "habit": "habit"
+  },
+  "curated": true
  },
  {
   "lat": "Buddleja globosa",
@@ -10406,6 +11212,28 @@
   "conf": [
    "buddleja-davidii"
   ]
+ },
+ {
+  "id": "camellia-japonica",
+  "lat": "Camellia japonica",
+  "fr": "Camélia du Japon",
+  "fam": "Théacées",
+  "type": "Arbuste persistant",
+  "orig": "Japon, Chine, Corée",
+  "lvl": 9,
+  "tip": "Feuilles alternes, épaisses, vernissées, finement dentées. Gros boutons ronds. Grandes fleurs rouges, roses ou blanches en fin d'hiver. Terre acide.",
+  "diff": "Le laurier-cerise a des feuilles plus longues avec des glandes au revers. Le camélia a des dents fines tout le long.",
+  "conf": [
+   "prunus-laurocerasus",
+   "skimmia-japonica"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "flower",
+   "habit": "habit"
+  },
+  "curated": true
  },
  {
   "id": "catalpa-bignonioides",
@@ -10461,7 +11289,8 @@
   "diff": "Les érables ont des feuilles opposées. Le copalme les a alternes.",
   "conf": [
    "acer-platanoides",
-   "platanus-hispanica"
+   "platanus-hispanica",
+   "acer-palmatum"
   ],
   "slots": {
    "leaf": "leaf",
@@ -10481,6 +11310,7 @@
   "tip": "Ce n'est pas un palmier. Touffes de longues feuilles étroites et souples au sommet de troncs qui se ramifient après la floraison. Panicules de petites fleurs crème parfumées.",
   "diff": "Le yucca a des feuilles raides et piquantes. Le phormium n'a pas de tronc.",
   "conf": [
+   "phormium-tenax",
    "yucca-gloriosa"
   ],
   "slots": {
@@ -10520,7 +11350,9 @@
   "lvl": 9,
   "tip": "Conifère caduc à aiguilles plates alternes, roux cuivré en automne. Au bord de l'eau, il fait sortir du sol des racines-genoux (pneumatophores). Base du tronc évasée.",
   "diff": "Le métaséquoia a des aiguilles opposées et un tronc plus cannelé.",
-  "conf": [],
+  "conf": [
+   "metasequoia-glyptostroboides"
+  ],
   "slots": {
    "leaf": "leaf",
    "fruit": "fruit",
@@ -10539,7 +11371,8 @@
   "tip": "Aiguilles courtes en alène, recourbées vers l'avant, disposées en spirale autour du rameau. Écorce rousse qui se détache en lanières. Petits cônes ronds hérissés.",
   "diff": "Le séquoia géant a des écailles plaquées contre le rameau. Le cryptomeria a des aiguilles plus longues, recourbées et décollées.",
   "conf": [
-   "sequoiadendron-giganteum"
+   "sequoiadendron-giganteum",
+   "araucaria-araucana"
   ],
   "slots": {
    "leaf": "leaf",
@@ -10547,6 +11380,27 @@
    "bark": "bark",
    "habit": "habit"
   }
+ },
+ {
+  "id": "araucaria-araucana",
+  "lat": "Araucaria araucana",
+  "fr": "Désespoir des singes",
+  "fam": "Araucariacées",
+  "type": "Conifère persistant",
+  "orig": "Chili, Argentine",
+  "lvl": 9,
+  "tip": "Branches en candélabre couvertes de grosses écailles triangulaires, épaisses, très piquantes, qui se chevauchent. Silhouette étrange de fossile vivant.",
+  "diff": "Aucun autre conifère rustique n'a ces écailles larges et dures comme des écailles de reptile.",
+  "conf": [
+   "cryptomeria-japonica"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "twig",
+   "bark": "bark",
+   "habit": "habit"
+  },
+  "curated": true
  },
  {
   "lat": "Fascicularia bicolor",
@@ -10590,6 +11444,27 @@
   ]
  },
  {
+  "id": "dicksonia-antarctica",
+  "lat": "Dicksonia antarctica",
+  "fr": "Fougère arborescente",
+  "fam": "Dicksoniacées",
+  "type": "Fougère",
+  "orig": "Australie, Tasmanie",
+  "lvl": 9,
+  "tip": "Grandes frondes (feuilles de fougère) en couronne au sommet d'un faux tronc fibreux, fait de racines. Les jeunes frondes se déroulent en crosse.",
+  "diff": "Les palmiers ont des feuilles en plume ou en éventail, sans crosses ni spores sous les feuilles.",
+  "conf": [
+   "phoenix-canariensis"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "spores",
+   "bark": "bark",
+   "habit": "habit"
+  },
+  "curated": true
+ },
+ {
   "lat": "Eucalyptus globulus",
   "fr": "Gommier bleu",
   "fam": "Myrtacées",
@@ -10605,7 +11480,30 @@
    "bark": "bark",
    "habit": "habit"
   },
-  "conf": []
+  "conf": [
+   "eucalyptus-gunnii"
+  ]
+ },
+ {
+  "id": "eucalyptus-gunnii",
+  "lat": "Eucalyptus gunnii",
+  "fr": "Gommier cidre",
+  "fam": "Myrtacées",
+  "type": "Arbre persistant",
+  "orig": "Tasmanie",
+  "lvl": 9,
+  "tip": "Jeunes feuilles rondes, opposées, bleu argenté. Les feuilles adultes deviennent allongées en faucille et pendantes. Écorce qui pèle en plaques. Odeur d'eucalyptus au froissement.",
+  "diff": "L'olivier a des feuilles étroites mais pas rondes, et sans l'odeur camphrée.",
+  "conf": [
+   "olea-europaea"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "bark",
+   "habit": "habit"
+  },
+  "curated": true
  },
  {
   "lat": "Griselinia littoralis",
@@ -10629,6 +11527,49 @@
   ]
  },
  {
+  "id": "grevillea-rosmarinifolia",
+  "lat": "Grevillea rosmarinifolia",
+  "fr": "Grévilléa à feuilles de romarin",
+  "fam": "Protéacées",
+  "type": "Arbuste persistant",
+  "orig": "Australie",
+  "lvl": 9,
+  "tip": "Feuilles en aiguilles comme le romarin, mais piquantes et sans odeur. Fleurs rouge et crème en forme d'araignée, aux longs styles recourbés, en hiver-printemps.",
+  "diff": "Le romarin est aromatique et a des fleurs bleues à lèvres.",
+  "conf": [
+   "salvia-rosmarinus",
+   "callistemon-citrinus"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "flower",
+   "bark": "twig",
+   "habit": "habit"
+  },
+  "curated": true
+ },
+ {
+  "id": "ophiopogon-japonicus",
+  "lat": "Ophiopogon japonicus",
+  "fr": "Herbe aux turquoises",
+  "fam": "Asparagacées",
+  "type": "Couvre-sol",
+  "orig": "Chine, Japon",
+  "lvl": 9,
+  "tip": "Touffes de feuilles fines comme des herbes, vert foncé et persistantes. Petites fleurs lilas cachées dans le feuillage, puis baies bleu turquoise. La variété 'Nigrescens' est noire.",
+  "diff": "Un carex a des tiges triangulaires et des épis bruns. L'ophiopogon a des baies bleues.",
+  "conf": [
+   "festuca-glauca"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "flower",
+   "habit": "habit"
+  },
+  "curated": true
+ },
+ {
   "id": "jacaranda-mimosifolia",
   "lat": "Jacaranda mimosifolia",
   "fr": "Jacaranda",
@@ -10648,6 +11589,49 @@
    "bark": "bark",
    "habit": "habit"
   }
+ },
+ {
+  "id": "lagerstroemia-indica",
+  "lat": "Lagerstroemia indica",
+  "fr": "Lilas des Indes",
+  "fam": "Lythracées",
+  "type": "Arbre caduc",
+  "orig": "Chine",
+  "lvl": 9,
+  "tip": "Écorce lisse qui s'exfolie en laissant des taches beige, grises et roses. Fleurs crêpées roses, rouges ou blanches en fin d'été. Petites feuilles entières presque opposées.",
+  "diff": "Le platane a lui aussi une écorce marbrée, mais c'est un grand arbre à grandes feuilles lobées.",
+  "conf": [
+   "platanus-hispanica"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "flower",
+   "habit": "habit"
+  },
+  "curated": true
+ },
+ {
+  "id": "phormium-tenax",
+  "lat": "Phormium tenax",
+  "fr": "Lin de Nouvelle-Zélande",
+  "fam": "Asphodélacées",
+  "type": "Vivace",
+  "orig": "Nouvelle-Zélande",
+  "lvl": 9,
+  "tip": "Éventail de grandes feuilles en glaive, rigides, pliées en V à la base. Elles se fendent en fibres très résistantes. Formes pourpres ou panachées.",
+  "diff": "Le cordyline a lui aussi des feuilles en lanières, mais réunies en plumet au sommet d'un tronc.",
+  "conf": [
+   "yucca-gloriosa",
+   "cordyline-australis"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "flower",
+   "habit": "habit"
+  },
+  "curated": true
  },
  {
   "id": "magnolia-grandiflora",
@@ -10769,8 +11753,31 @@
    "habit": "habit"
   },
   "conf": [
-   "myrtus-communis"
+   "myrtus-communis",
+   "lagerstroemia-indica"
   ]
+ },
+ {
+  "id": "metasequoia-glyptostroboides",
+  "lat": "Metasequoia glyptostroboides",
+  "fr": "Métaséquoia",
+  "fam": "Cupressacées",
+  "type": "Conifère caduc",
+  "orig": "Chine",
+  "lvl": 9,
+  "tip": "Conifère caduc à aiguilles plates et tendres, opposées le long des rameaux. Elles tombent avec le rameau en automne, rousses. Tronc creusé de cannelures profondes. Connu d'abord à l'état fossile.",
+  "diff": "Le cyprès chauve a des aiguilles alternes et produit des pneumatophores (racines-genoux) au bord de l'eau.",
+  "conf": [
+   "larix-decidua",
+   "taxodium-distichum"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "twig",
+   "bark": "bark",
+   "habit": "habit"
+  },
+  "curated": true
  },
  {
   "id": "trachycarpus-fortunei",
@@ -10783,7 +11790,8 @@
   "tip": "Feuilles en éventail rondes, découpées. Tronc couvert d'une fibre brune serrée qui ressemble à une toile. C'est le palmier le plus rustique (jusqu'à environ -15 °C).",
   "diff": "Le palmier nain (Chamaerops) forme une touffe de plusieurs troncs et ses pétioles portent de fortes épines.",
   "conf": [
-   "chamaerops-humilis"
+   "chamaerops-humilis",
+   "washingtonia-filifera"
   ],
   "slots": {
    "leaf": "leaf",
@@ -10791,6 +11799,28 @@
    "bark": "bark",
    "habit": "habit"
   }
+ },
+ {
+  "id": "phoenix-canariensis",
+  "lat": "Phoenix canariensis",
+  "fr": "Palmier des Canaries",
+  "fam": "Arécacées",
+  "type": "Palmier",
+  "orig": "Îles Canaries",
+  "lvl": 9,
+  "tip": "Feuilles pennées (en plumes), très longues et arquées : couronne énorme et dense. Gros tronc marqué d'écailles en losange. Folioles du bas transformées en épines.",
+  "diff": "Le Washingtonia et le palmier de Chine ont des feuilles en éventail, pas en plume.",
+  "conf": [
+   "trachycarpus-fortunei",
+   "washingtonia-filifera"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "bark",
+   "habit": "habit"
+  },
+  "curated": true
  },
  {
   "lat": "Washingtonia robusta",
@@ -10809,8 +11839,30 @@
    "habit": "habit"
   },
   "conf": [
+   "washingtonia-filifera",
    "trachycarpus-fortunei"
   ]
+ },
+ {
+  "id": "washingtonia-filifera",
+  "lat": "Washingtonia filifera",
+  "fr": "Palmier jupon",
+  "fam": "Arécacées",
+  "type": "Palmier",
+  "orig": "Californie, Arizona",
+  "lvl": 9,
+  "tip": "Feuilles en éventail garnies de longs fils blancs qui pendent. Les vieilles feuilles sèches restent collées au tronc et forment une « jupe ». Tronc épais et droit.",
+  "diff": "Le palmier de Chine a un tronc couvert de fibres brunes et ses feuilles n'ont pas de fils blancs.",
+  "conf": [
+   "trachycarpus-fortunei",
+   "phoenix-canariensis"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "bark": "bark",
+   "habit": "habit"
+  },
+  "curated": true
  },
  {
   "id": "paulownia-tomentosa",
@@ -10884,13 +11936,37 @@
   "wiki": "Melaleuca citrina",
   "tip": "Fleurs rouges en écouvillon autour des tiges : ce sont les étamines. La tige continue de pousser au-delà de la fleur. Feuilles étroites, raides, citronnées froissées. Longtemps appelé Callistemon citrinus.",
   "diff": "Le grevillea a des fleurs en araignée ou en peigne, pas en goupillon cylindrique.",
-  "conf": [],
+  "conf": [
+   "grevillea-rosmarinifolia"
+  ],
   "slots": {
    "leaf": "leaf",
    "fruit": "fruit",
    "bark": "bark",
    "habit": "habit"
   }
+ },
+ {
+  "id": "skimmia-japonica",
+  "lat": "Skimmia japonica",
+  "fr": "Skimmia du Japon",
+  "fam": "Rutacées",
+  "type": "Arbuste persistant",
+  "orig": "Japon",
+  "lvl": 9,
+  "tip": "Petit arbuste en dôme. Feuilles lisses, groupées au bout des rameaux, qui sentent l'agrume froissées. Boutons rouges tout l'hiver, puis fleurs blanches parfumées.",
+  "diff": "Le piéris a des pousses rouges et des fleurs en clochettes pendantes, pas des boutons dressés.",
+  "conf": [
+   "choisya-ternata",
+   "pieris-japonica"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "twig",
+   "habit": "habit"
+  },
+  "curated": true
  },
  {
   "id": "sequoiadendron-giganteum",
@@ -10945,7 +12021,8 @@
   "tip": "Feuilles opposées, lancéolées, au bord entier. En juin, panicules de fleurs blanches à l'odeur forte, puis baies noires luisantes.",
   "diff": "Le troène de Californie a des feuilles plus larges et ovales, plus persistantes, et des rameaux glabres.",
   "conf": [
-   "ligustrum-ovalifolium"
+   "ligustrum-ovalifolium",
+   "lonicera-nitida"
   ],
   "slots": {
    "leaf": "leaf",
@@ -11014,6 +12091,27 @@
    "bark": "bark",
    "habit": "habit"
   }
+ },
+ {
+  "id": "acer-palmatum",
+  "lat": "Acer palmatum",
+  "fr": "Érable du Japon",
+  "fam": "Sapindacées",
+  "type": "Arbuste caduc",
+  "orig": "Japon, Corée",
+  "lvl": 9,
+  "tip": "Feuilles opposées palmées, découpées profondément en 5 à 9 lobes pointus et dentés. Port étagé et gracieux. Couleurs d'automne flamboyantes.",
+  "diff": "Le copalme a des lobes semblables, mais en feuilles alternes, et c'est un grand arbre.",
+  "conf": [
+   "liquidambar-styraciflua"
+  ],
+  "slots": {
+   "leaf": "leaf",
+   "fruit": "fruit",
+   "bark": "bark",
+   "habit": "habit"
+  },
+  "curated": true
  },
  {
   "id": "acer-rubrum",

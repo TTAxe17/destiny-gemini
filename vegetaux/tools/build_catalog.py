@@ -87,7 +87,7 @@ json.dump(catalog, open(os.path.join(ROOT, "data/catalog.json"), "w"), ensure_as
 
 from collections import Counter
 print(len(catalog), "plantes retenues", dict(sorted(Counter(e["lvl"] for e in catalog).items())))
-print("fruit remplacé par la fleur :", sum(1 for e in catalog if e["slots"]["fruit"] == "flower"))
+print("fruit remplacé par la fleur :", sum(1 for e in catalog if e["slots"].get("fruit") == "flower"))
 print("sans conseil :", len(missing_tips), missing_tips)
 print("rejetées (photos manquantes) :", len(rejected))
 for lat, n in rejected:
