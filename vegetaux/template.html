@@ -35,6 +35,7 @@
   --ok:#7fcf92; --ok-soft:#1d3524; --ko:#f08d7f; --ko-soft:#3d221e; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25); color-scheme:dark}
 
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{min-height:100%}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 96px}
@@ -292,18 +293,80 @@ function makeQuestion(p){
   return {p, mode, choices, answered:null};
 }
 
-/* ---------- Images ---------- */
-function img(p){ const m=IMAGES[p.id]; return m && m.file ? m.file : "" }
-function credit(p){
-  const m=IMAGES[p.id]; if(!m||!m.commons) return "";
-  const url="https://commons.wikimedia.org/wiki/File:"+encodeURIComponent(m.commons.replace(/ /g,"_"));
-  return `<span class="credit">Photo : ${esc(m.artist||"Wikimedia Commons")}${m.license?" · "+esc(m.license):""} · <a href="${url}" target="_blank" rel="noopener">source</a></span>`;
+/* ---------- Images ----------
+   Photo locale si elle existe (dossier img/), sinon le navigateur la cherche sur Wikipédia
+   (image principale de l'article, en évitant les planches dessinées). Résultat mis en cache. */
+const PLATE = /k[oö]e?hler|illustration|sturm|thom[eé]|botanical|plate|flora|tafel|drawing|\.svg$|\.png$|\.tif|(?<![a-z])(map|range)(?![a-z])|distribution|herbarium/i;
+const IMG_KEY = "herbier-vivant-img-v1";
+let IMGC = {}; try{ IMGC = JSON.parse(localStorage.getItem(IMG_KEY))||{} }catch(e){}
+const pending = {};
+function localImg(p){ const m=IMAGES[p.id]; return m && m.file ? {src:m.file, commons:m.commons, artist:m.artist, license:m.license} : null }
+function sized(url){ return url.split("?")[0].replace(/\/\d+px-/, "/500px-") }
+async function wiki(lang, path){
+  const r = await fetch(`https://${lang}.wikipedia.org/api/rest_v1/page/${path}`);
+  if(!r.ok) throw new Error(r.status); return r.json();
 }
+async function findRemote(p){
+  const t = encodeURIComponent((p.wiki||p.lat).replace(/ /g,"_"));
+  const tried = [];
+  for (const lang of ["fr","en"]){
+    try{
+      const d = await wiki(lang, "summary/"+t);
+      tried.push(lang);
+      if (d.originalimage && d.thumbnail){
+        const name = decodeURIComponent(d.originalimage.source.split("?")[0].split("/").pop());
+        if (!PLATE.test(name)){
+          const src = d.originalimage.width>500 && d.thumbnail.source.includes("/thumb/") ? sized(d.thumbnail.source) : d.originalimage.source.split("?")[0];
+          return {src, commons:name};
+        }
+      }
+    }catch(e){}
+  }
+  for (const lang of tried){
+    try{
+      const d = await wiki(lang, "media-list/"+t);
+      for (const it of d.items||[]){
+        const name = (it.title||"").replace(/^(File|Fichier):/,"");
+        if (it.type!=="image" || !/\.jpe?g$/i.test(name) || PLATE.test(name) || !(it.srcset||[]).length) continue;
+        let src = it.srcset[0].src; if (src.startsWith("//")) src = "https:"+src;
+        return {src: sized(src), commons:name};
+      }
+    }catch(e){}
+  }
+  return null;
+}
+function getImg(p){
+  const l = localImg(p); if (l) return Promise.resolve(l);
+  if (IMGC[p.id]) return Promise.resolve(IMGC[p.id]);
+  if (!pending[p.id]) pending[p.id] = findRemote(p).then(r=>{ if(r){ IMGC[p.id]=r; try{ localStorage.setItem(IMG_KEY, JSON.stringify(IMGC)) }catch(e){} } return r });
+  return pending[p.id];
+}
+function creditHTML(m){
+  if(!m||!m.commons) return "";
+  const url="https://commons.wikimedia.org/wiki/File:"+encodeURIComponent(m.commons.replace(/ /g,"_"));
+  return `Photo : ${esc(m.artist||"Wikimedia Commons")}${m.license?" · "+esc(m.license):""} · <a href="${url}" target="_blank" rel="noopener">source et licence</a>`;
+}
+async function fill(el){
+  const p = byId[el.dataset.pid]; if(!p || el.dataset.done) return; el.dataset.done = "1";
+  const m = await getImg(p);
+  const box = el.closest(".photo");
+  if (!m){
+    if (box){ box.classList.add("noimg"); box.innerHTML = "Photo indisponible (connexion à Wikipédia impossible).<br>Fiez-vous à la description." }
+    return;
+  }
+  el.src = m.src;
+  if (box){
+    const z = box.querySelector(".zoom"); if (z){ z.dataset.zoom = m.src; z.hidden = false }
+    const c = box.querySelector(".credit"); if (c){ c.innerHTML = creditHTML(m); c.hidden = false }
+  }
+}
+const io = "IntersectionObserver" in window ? new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ io.unobserve(e.target); fill(e.target) } }), {rootMargin:"400px"}) : null;
+function hydrate(root){ (root||document).querySelectorAll("img[data-pid]:not([data-done])").forEach(el=> io ? io.observe(el) : fill(el)) }
+new MutationObserver(()=>hydrate()).observe(document.body, {childList:true, subtree:true});
+function thumb(p){ return `<img data-pid="${p.id}" alt="" loading="lazy">` }
 function photo(p, hide){
-  const src=img(p);
-  if(!src) return `<div class="photo noimg">Photo indisponible pour cette plante.<br>Fiez-vous à la description.</div>`;
   const alt = hide ? "Photo du végétal à identifier" : `${p.fr} (${p.lat})`;
-  return `<div class="photo"><img src="${esc(src)}" alt="${esc(alt)}" loading="lazy"><button class="zoom" data-zoom="${esc(src)}" type="button">Agrandir</button>${credit(p)}</div>`;
+  return `<div class="photo"><img data-pid="${p.id}" alt="${esc(alt)}"><button class="zoom" type="button" hidden>Agrandir</button><span class="credit" hidden></span></div>`;
 }
 
 /* ---------- Vues ---------- */
@@ -403,7 +466,7 @@ function renderHerbier(){
     const l = $("#fl").value;
     const list = PLANTS.filter(p=>(!l||p.lvl==l) && (!q || (p.fr+" "+p.lat+" "+p.fam).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").includes(q)));
     $("#grid").innerHTML = list.map(p=>{const c=card(p.id); const cls = c.box>=MASTER_BOX?"m2":c.box>0?"m1":"";
-      return `<button class="mini" data-id="${p.id}" type="button">${img(p)?`<img src="${esc(img(p))}" alt="" loading="lazy">`:`<img alt="">`}
+      return `<button class="mini" data-id="${p.id}" type="button">${thumb(p)}
       <span><b><i class="dot ${cls}"></i>${esc(p.fr)}</b><em>${esc(p.lat)}</em></span></button>`}).join("") || `<p class="muted">Aucun végétal ne correspond.</p>`;
     $("#grid").querySelectorAll(".mini").forEach(b=>b.onclick=()=>openSheet(byId[b.dataset.id]));
   };
@@ -449,6 +512,7 @@ function renderShare(){
 /* ---------- Séance ---------- */
 function startSession(level){
   quiz = {level, qs: buildSession(level), i:0, good:0};
+  quiz.qs.forEach(q=>getImg(q.p)); // précharge les photos de la séance
   if (location.hash==="#seance") renderQuiz(); else location.hash = "#seance";
 }
 function renderQuiz(){
@@ -508,7 +572,7 @@ function sheetBody(p, wrong){
     ${looks.length?`<div><div class="eyebrow" style="margin-bottom:6px">${wrong?"À comparer":"Ses sosies"}</div><div class="look">${looks.map(miniHTML).join("")}</div></div>`:""}
   </div>`;
 }
-function miniHTML(p){ return `<button class="mini" data-id="${p.id}" type="button">${img(p)?`<img src="${esc(img(p))}" alt="" loading="lazy">`:`<img alt="">`}<span>${esc(p.fr)}<br><em>${esc(p.lat)}</em></span></button>` }
+function miniHTML(p){ return `<button class="mini" data-id="${p.id}" type="button">${thumb(p)}<span>${esc(p.fr)}<br><em>${esc(p.lat)}</em></span></button>` }
 function bindMinis(root){ root.querySelectorAll(".mini").forEach(b=>b.onclick=()=>openSheet(byId[b.dataset.id])) }
 function next(){
   if (quiz.i < quiz.qs.length-1){ quiz.i++; renderQuiz(); window.scrollTo(0,0); return }
