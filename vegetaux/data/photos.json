@@ -3587,5 +3587,281 @@
    "url": "https://www.inaturalist.org/photos/8040674",
    "taxon": "Grevillea rosmarinifolia"
   }
+ ],
+ "dicksonia-antarctica": [
+  {
+   "file": "img/dicksonia-antarctica-1.jpg",
+   "by": "OggioniAle",
+   "lic": "CC BY-NC-ND",
+   "url": "https://www.inaturalist.org/photos/1983800",
+   "taxon": "Dicksonia antarctica"
+  },
+  {
+   "file": "img/dicksonia-antarctica-2.jpg",
+   "by": "bennybotany85",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/177659432",
+   "taxon": "Dicksonia antarctica"
+  },
+  {
+   "file": "img/dicksonia-antarctica-3.jpg",
+   "by": "Reiner Richter",
+   "lic": "CC BY-NC-SA",
+   "url": "https://www.inaturalist.org/photos/310896229",
+   "taxon": "Dicksonia antarctica"
+  }
+ ],
+ "cordyline-australis": [
+  {
+   "file": "img/cordyline-australis-1.jpg",
+   "by": "Ivan A. Popov",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/585527931",
+   "taxon": "Cordyline australis"
+  },
+  {
+   "file": "img/cordyline-australis-2.jpg",
+   "by": "Sandy Austin",
+   "lic": "CC BY",
+   "url": "https://www.inaturalist.org/photos/591762040",
+   "taxon": "Cordyline australis"
+  },
+  {
+   "file": "img/cordyline-australis-3.jpg",
+   "by": "corokid",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/54409602",
+   "taxon": "Cordyline australis"
+  }
+ ],
+ "pittosporum-tenuifolium": [
+  {
+   "file": "img/pittosporum-tenuifolium-1.jpg",
+   "by": "David Orlovich",
+   "lic": "CC BY",
+   "url": "https://www.inaturalist.org/photos/69088302",
+   "taxon": "Pittosporum tenuifolium"
+  },
+  {
+   "file": "img/pittosporum-tenuifolium-2.jpg",
+   "by": "Eric Hunt",
+   "lic": "CC BY-NC-ND",
+   "url": "https://www.inaturalist.org/photos/1182030",
+   "taxon": "Pittosporum tenuifolium"
+  },
+  {
+   "file": "img/pittosporum-tenuifolium-3.jpg",
+   "by": "Ana Elsner",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/63436538",
+   "taxon": "Pittosporum tenuifolium"
+  }
+ ],
+ "strelitzia-reginae": [
+  {
+   "file": "img/strelitzia-reginae-1.jpg",
+   "by": "tshire_letso",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/375256909",
+   "taxon": "Strelitzia reginae"
+  },
+  {
+   "file": "img/strelitzia-reginae-2.jpg",
+   "by": "Croc O'Dyle",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/344084890",
+   "taxon": "Strelitzia reginae"
+  },
+  {
+   "file": "img/strelitzia-reginae-3.jpg",
+   "by": "Craig Peter",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/232775278",
+   "taxon": "Strelitzia reginae"
+  }
+ ],
+ "protea-cynaroides": [
+  {
+   "file": "img/protea-cynaroides-1.jpg",
+   "by": "no rights reserved",
+   "lic": "CC0",
+   "url": "https://www.inaturalist.org/photos/180107528",
+   "taxon": "Protea cynaroides"
+  },
+  {
+   "file": "img/protea-cynaroides-2.jpg",
+   "by": "Bird Explorers",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/150875174",
+   "taxon": "Protea cynaroides"
+  },
+  {
+   "file": "img/protea-cynaroides-3.jpg",
+   "by": "Martim Melo",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/116776551",
+   "taxon": "Protea cynaroides"
+  }
+ ],
+ "jacaranda-mimosifolia": [
+  {
+   "file": "img/jacaranda-mimosifolia-1.jpg",
+   "by": "Art Mur",
+   "lic": "CC BY-NC-ND",
+   "url": "https://www.inaturalist.org/photos/375478",
+   "taxon": "Jacaranda mimosifolia"
+  },
+  {
+   "file": "img/jacaranda-mimosifolia-2.jpg",
+   "by": "Linda",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/32686403",
+   "taxon": "Jacaranda mimosifolia"
+  },
+  {
+   "file": "img/jacaranda-mimosifolia-3.jpg",
+   "by": "Ricky Taylor",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/31535647",
+   "taxon": "Jacaranda mimosifolia"
+  }
+ ],
+ "bougainvillea-spectabilis": [
+  {
+   "file": "img/bougainvillea-spectabilis-1.jpg",
+   "by": "Ramon",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/660099975",
+   "taxon": "Bougainvillea spectabilis"
+  },
+  {
+   "file": "img/bougainvillea-spectabilis-2.jpg",
+   "by": "Ramon",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/660095943",
+   "taxon": "Bougainvillea spectabilis"
+  },
+  {
+   "file": "img/bougainvillea-spectabilis-3.jpg",
+   "by": "Bernard Olivier",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/693423015",
+   "taxon": "Bougainvillea spectabilis"
+  }
+ ],
+ "washingtonia-filifera": [
+  {
+   "file": "img/washingtonia-filifera-1.jpg",
+   "by": "Thibaud Aronson",
+   "lic": "CC BY-SA",
+   "url": "https://www.inaturalist.org/photos/51127673",
+   "taxon": "Washingtonia filifera"
+  },
+  {
+   "file": "img/washingtonia-filifera-2.jpg",
+   "by": "Jeff Harding",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/61758125",
+   "taxon": "Washingtonia filifera"
+  },
+  {
+   "file": "img/washingtonia-filifera-3.jpg",
+   "by": "Camden Bruner",
+   "lic": "CC BY-NC-ND",
+   "url": "https://www.inaturalist.org/photos/22030326",
+   "taxon": "Washingtonia filifera"
+  }
+ ],
+ "hedera-helix": [
+  {
+   "file": "img/hedera-helix-1.jpg",
+   "by": "Marianna Boi",
+   "lic": "CC BY",
+   "url": "https://www.inaturalist.org/photos/38428455",
+   "taxon": "Hedera helix"
+  },
+  {
+   "file": "img/hedera-helix-2.jpg",
+   "by": "Douglas Goldman",
+   "lic": "CC BY-SA",
+   "url": "https://www.inaturalist.org/photos/50733032",
+   "taxon": "Hedera helix"
+  },
+  {
+   "file": "img/hedera-helix-3.jpg",
+   "by": "Gianni Del Bufalo bygdb",
+   "lic": "CC BY",
+   "url": "https://www.inaturalist.org/photos/23968680",
+   "taxon": "Hedera helix"
+  }
+ ],
+ "bergenia-cordifolia": [
+  {
+   "file": "img/bergenia-cordifolia-1.jpg",
+   "by": "daniel",
+   "lic": "CC BY-NC-SA",
+   "url": "https://www.inaturalist.org/photos/570066",
+   "taxon": "Bergenia crassifolia"
+  },
+  {
+   "file": "img/bergenia-cordifolia-2.jpg",
+   "by": "Hagar",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/353974962",
+   "taxon": "Bergenia crassifolia"
+  },
+  {
+   "file": "img/bergenia-cordifolia-3.jpg",
+   "by": "schaager",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/270730213",
+   "taxon": "Bergenia crassifolia"
+  }
+ ],
+ "sorbus-aria": [
+  {
+   "file": "img/sorbus-aria-1.jpg",
+   "by": "profpiper",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/76073229",
+   "taxon": "Aria edulis"
+  },
+  {
+   "file": "img/sorbus-aria-2.jpg",
+   "by": "felixf",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/99604097",
+   "taxon": "Aria edulis"
+  },
+  {
+   "file": "img/sorbus-aria-3.jpg",
+   "by": "Laurent Quéno",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/38504524",
+   "taxon": "Aria edulis"
+  }
+ ],
+ "cuprocyparis-leylandii": [
+  {
+   "file": "img/cuprocyparis-leylandii-1.jpg",
+   "by": "oij",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/156275456",
+   "taxon": "× Hesperotropsis leylandii"
+  },
+  {
+   "file": "img/cuprocyparis-leylandii-2.jpg",
+   "by": "David Earl",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/54146452",
+   "taxon": "× Hesperotropsis leylandii"
+  },
+  {
+   "file": "img/cuprocyparis-leylandii-3.jpg",
+   "by": "annaclaireloos",
+   "lic": "CC BY-NC",
+   "url": "https://www.inaturalist.org/photos/614566665",
+   "taxon": "× Hesperotropsis leylandii"
+  }
  ]
 }

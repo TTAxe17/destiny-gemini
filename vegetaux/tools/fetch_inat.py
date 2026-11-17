@@ -28,7 +28,11 @@ ALIASES = {
     "nepeta-faassenii": "Nepeta × faassenii",
     "lavandula-intermedia": "Lavandula × intermedia",
     "cuprocyparis-leylandii": "Cupressus × leylandii",
-    "sorbus-aria": "Sorbus aria",
+    # identifiants iNaturalist explicites (synonymes ou recherche ambiguë)
+    "hedera-helix": 55882,
+    "bergenia-cordifolia": 127228,   # B. cordifolia est traité comme B. crassifolia
+    "sorbus-aria": 900799,           # Aria edulis
+    "cuprocyparis-leylandii": 1515671,  # × Hesperotropsis leylandii
     "pennisetum-alopecuroides": "Cenchrus purpurascens",
     "hosta-sieboldiana": "Hosta sieboldiana",
     "heuchera-micrantha": "Heuchera micrantha",
@@ -90,12 +94,14 @@ for p in plants:
         continue
     name = ALIASES.get(pid, p["lat"])
     print(pid, "→", name, flush=True)
-    t = find_taxon(name)
+    t = {"id": name, "name": str(name)} if isinstance(name, int) else find_taxon(name)
     if not t:
         print("  taxon introuvable", flush=True)
         continue
     full = get(f"https://api.inaturalist.org/v1/taxa/{t['id']}")
-    tp = ((full or {}).get("results") or [{}])[0].get("taxon_photos", [])
+    res0 = ((full or {}).get("results") or [{}])[0]
+    t["name"] = res0.get("name", t["name"])
+    tp = res0.get("taxon_photos", [])
     chosen = []
     for item in tp:
         ph = item.get("photo", {})
