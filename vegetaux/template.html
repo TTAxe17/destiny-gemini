@@ -128,7 +128,7 @@ section.view{padding-block:20px;display:flex;flex-direction:column;gap:18px}
 
 /* Fiche réponse */
 .answer{overflow:hidden}
-.verdict{padding:12px 18px;font-weight:700;display:flex;align-items:center;gap:8px}
+.verdict{padding:12px 18px;font-weight:700;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .verdict.ok{background:var(--ok-soft);color:var(--ok)}
 .verdict.ko{background:var(--ko-soft);color:var(--ko)}
 .label{padding:16px 18px;display:flex;flex-direction:column;gap:12px}
@@ -233,8 +233,8 @@ const LEVELS = [
   {n:9, name:"Venus d'ailleurs", sub:"Espèces d'autres pays qui poussent en France"},
 ];
 const SESSION_LEN = 10;
-const INTERVALS = [0,1,2,4,8,16,32]; // jours avant révision selon la boîte
-const MASTER_BOX = 2;               // une plante est « connue » dès qu'on la reconnaît ; une erreur la fait redescendre
+const INTERVALS = [0,1,1,4,8,16,32]; // jours avant révision : lendemain, lendemain (=> connue au 3e jour), puis 4, 8, 16, 32 jours
+const MASTER_DAYS = 3;              // une plante est « connue » après avoir été reconnue 3 jours différents
 const UNLOCK = 0.5;                 // part du niveau précédent à connaître pour débloquer
 
 const byId = Object.fromEntries(PLANTS.map(p=>[p.id,p]));
@@ -252,8 +252,13 @@ function load(){
   return Object.assign({cards:{}, days:{}, streak:0, lastDay:null, best:0, all:false, maxLvl:1}, s||{});
 }
 function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)) }catch(e){} }
-const card = id => S.cards[id] || {box:0, ok:0, ko:0, last:null};
-const known = id => card(id).box >= MASTER_BOX;
+const card = id => {
+  const c = S.cards[id] || {box:0, ok:0, ko:0, last:null};
+  if (c.days === undefined) { c.days = (c.box>=2 && c.last) ? 1 : 0; c.okDay = c.days ? c.last : null } // anciennes données
+  return c;
+};
+const learning = id => { const c = card(id); return c.box>0 && c.days < MASTER_DAYS };
+const known = id => card(id).days >= MASTER_DAYS;
 
 function levelStats(n){
   const ps = PLANTS.filter(p=>p.lvl===n);
@@ -288,12 +293,13 @@ function buildSession(level){
     const weak = shuffle(pool.filter(p=>card(p.id).box>0 && !known(p.id)));
     picks = [...due, ...fresh.slice(0,5), ...weak, ...shuffle(pool)];
   } else {
-    const due = shuffle(pool.filter(p=>isDue(p.id))).sort((a,b)=>card(a.id).box-card(b.id).box);
+    // révisions : d'abord les plantes les plus proches d'être connues (2/3 jours, puis 1/3)
+    const due = shuffle(pool.filter(p=>isDue(p.id))).sort((a,b)=>card(b.id).days-card(a.id).days);
     // nouvelles plantes : dans l'ordre, des plus communes aux plus difficiles
     const fresh = pool.filter(p=>!card(p.id).box).sort((a,b)=>a.lvl-b.lvl);
-    const nNew = Math.max(3, SESSION_LEN - Math.min(due.length, 7));
+    const nNew = Math.max(2, SESSION_LEN - Math.min(due.length, 8));
     const weak = shuffle(pool.filter(p=>card(p.id).box>0 && !known(p.id)));
-    picks = [...due.slice(0,7), ...fresh.slice(0,nNew), ...weak, ...shuffle(pool)];
+    picks = [...due.slice(0,8), ...fresh.slice(0,nNew), ...weak, ...shuffle(pool)];
   }
   const seen = new Set(); const out=[];
   for(const p of picks){ if(!seen.has(p.id)){ seen.add(p.id); out.push(p) } if(out.length===SESSION_LEN) break }
@@ -406,9 +412,9 @@ function renderHome(){
     </div>
     <button class="btn btn-main btn-wide" id="go" type="button">${done ? "Faire une séance bonus" : "Commencer l'entraînement du jour"}</button>
     <div class="stats">
-      <div class="card stat"><b>${S.lastDay && dayDiff(S.lastDay,t)<=1 ? S.streak : 0}</b><span>jours d'affilée</span></div>
-      <div class="card stat"><b>${totalKnown}</b><span>végétaux connus</span></div>
-      <div class="card stat"><b>${Math.max(S.best,0)}</b><span>meilleure série</span></div>
+      <div class="card stat"><b>${S.lastDay && dayDiff(S.lastDay,t)<=1 ? S.streak : 0}</b><span>jours d'affilée (record ${Math.max(S.best,0)})</span></div>
+      <div class="card stat"><b>${totalKnown}</b><span>végétaux connus (3 jours réussis)</span></div>
+      <div class="card stat"><b>${PLANTS.filter(p=>learning(p.id)).length}</b><span>en cours d'apprentissage</span></div>
     </div>
     <div class="card pad">
       <div class="eyebrow" style="margin-bottom:10px">Cette semaine</div>
@@ -464,14 +470,14 @@ function renderHerbier(){
       <input id="q" type="search" placeholder="Chercher un nom français ou latin…" aria-label="Chercher">
       <select id="fl" aria-label="Filtrer par niveau"><option value="">Tous les niveaux</option>${LEVELS.map(l=>`<option value="${l.n}">${l.n}. ${esc(l.name)}</option>`).join("")}</select>
     </div>
-    <p class="small muted" style="margin:0"><span class="dot"></span>pas encore vu <span class="dot m1" style="margin-left:10px"></span>en cours <span class="dot m2" style="margin-left:10px"></span>connu</p>
+    <p class="small muted" style="margin:0"><span class="dot"></span>pas encore vu <span class="dot m1" style="margin-left:10px"></span>en cours (1 ou 2 jours réussis) <span class="dot m2" style="margin-left:10px"></span>connu (3 jours)</p>
     <div class="grid" id="grid"></div>
   </section>`;
   const draw = ()=>{
     const q = $("#q").value.trim().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
     const l = $("#fl").value;
     const list = PLANTS.filter(p=>(!l||p.lvl==l) && (!q || (p.fr+" "+p.lat+" "+p.fam).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").includes(q)));
-    $("#grid").innerHTML = list.map(p=>{const c=card(p.id); const cls = c.box>=MASTER_BOX?"m2":c.box>0?"m1":"";
+    $("#grid").innerHTML = list.map(p=>{const c=card(p.id); const cls = c.days>=MASTER_DAYS?"m2":c.box>0?"m1":"";
       return `<button class="mini" data-id="${p.id}" type="button">${thumb(p)}
       <span><b><i class="dot ${cls}"></i>${esc(p.fr)}</b><em>${esc(p.lat)}</em></span></button>`}).join("") || `<p class="muted">Aucun végétal ne correspond.</p>`;
     $("#grid").querySelectorAll(".mini").forEach(b=>b.onclick=()=>openSheet(byId[b.dataset.id]));
@@ -544,8 +550,13 @@ function answer(i){
   const q = quiz.qs[quiz.i]; if(q.answered!==null) return;
   q.answered = i;
   const ok = q.choices[i].id===q.p.id;
-  const c = Object.assign({box:0,ok:0,ko:0,last:null}, S.cards[q.p.id]);
-  if(ok){ c.box=Math.min(Math.max(c.box+1, MASTER_BOX), INTERVALS.length-1); c.ok++; quiz.good++ } else { c.box=1; c.ko++ }
+  const c = Object.assign({}, card(q.p.id));
+  const t = today();
+  if(ok){
+    c.ok++; quiz.good++;
+    q.newDay = c.okDay !== t;              // une seule progression par jour
+    if (q.newDay){ c.box=Math.min(c.box+1, INTERVALS.length-1); c.days++; c.okDay=t }
+  } else { c.box=1; c.ko++; c.days=0; c.okDay=null }
   c.last = today(); S.cards[q.p.id]=c; save();
   showFeedback(q);
 }
@@ -558,13 +569,19 @@ function showFeedback(q){
   const wrong = q.choices[q.answered];
   const last = quiz.i===quiz.qs.length-1;
   $("#fb").innerHTML = `<div class="card answer">
-    <div class="verdict ${ok?"ok":"ko"}">${ok?"✓ Bien vu !":"✗ Ce n'était pas ça"}</div>
+    <div class="verdict ${ok?"ok":"ko"}">${ok?"✓ Bien vu !":"✗ Ce n'était pas ça"}<span style="margin-left:auto;font-weight:600;font-size:.85rem">${progressText(p, ok, q.newDay)}</span></div>
     ${sheetBody(p, ok?null:wrong)}
     <div class="pad" style="padding-top:0"><button class="btn btn-main btn-wide" id="next" type="button">${last?"Voir le bilan":"Plante suivante"}</button></div>
   </div>`;
   $("#next").onclick = next;
   bindMinis($("#fb"));
   $("#fb").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth", block:"start"});
+}
+function progressText(p, ok, newDay){
+  const d = card(p.id).days;
+  if (!ok) return "Retour à 0/3 jours";
+  if (d >= MASTER_DAYS) return newDay && d===MASTER_DAYS ? "Connue ! 3/3 jours" : "Connue";
+  return newDay ? `Jour ${d}/3 réussi` : `Déjà réussie aujourd'hui (${d}/3)`;
 }
 function sheetBody(p, wrong){
   const looks = [...new Set([...(wrong?[wrong.id]:[]), ...p.conf])].map(id=>byId[id]).filter(Boolean).slice(0,4);
@@ -604,7 +621,8 @@ function finish(){
       <div class="score">${g}/${n}</div>
       <h2>${word}</h2>
       <p class="muted" style="margin:0">${first?`Jour validé : série de <b>${S.streak}</b> jour${S.streak>1?"s":""}.`:"Séance bonus enregistrée."} Revenez demain pour garder votre série.</p>
-      <p style="margin:6px 0 0;font-weight:700">${(()=>{ const now=PLANTS.filter(p=>known(p.id)).length, d=now-quiz.knownBefore; return `${now} végétaux connus sur ${PLANTS.length}`+(d>0?` (+${d} aujourd'hui)`:"") })()}</p>
+      <p style="margin:6px 0 0;font-weight:700">${(()=>{ const now=PLANTS.filter(p=>known(p.id)).length, d=now-quiz.knownBefore; return `${now} végétaux connus sur ${PLANTS.length}`+(d>0?` (+${d} aujourd'hui)`:"")+` · ${PLANTS.filter(p=>learning(p.id)).length} en cours d'apprentissage` })()}</p>
+      <p class="small muted" style="margin:4px 0 0">Une plante devient « connue » quand vous la reconnaissez 3 jours différents. Une erreur la remet à zéro.</p>
       ${opened?`<p style="margin:6px 0 0;color:var(--leaf);font-weight:700">Nouveau niveau débloqué : ${esc(LEVELS[S.maxLvl-1].name)}</p>`:""}
     </div>
     ${missed.length?`<div><div class="eyebrow" style="margin-bottom:8px">À revoir (elles reviendront demain)</div><div class="look">${missed.map(miniHTML).join("")}</div></div>`:""}
