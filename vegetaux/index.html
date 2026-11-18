@@ -249,7 +249,7 @@ const LEVELS = [
 ];
 const SESSION_LEN = 10;
 const INTERVALS = [0,1,2,4,8,16,32]; // jours avant révision selon la boîte
-const MASTER_BOX = 3;               // boîte à partir de laquelle une plante est « connue »
+const MASTER_BOX = 2;               // une plante est « connue » dès qu'on la reconnaît ; une erreur la fait redescendre
 const UNLOCK = 0.5;                 // part du niveau précédent à connaître pour débloquer
 
 const byId = Object.fromEntries(PLANTS.map(p=>[p.id,p]));
@@ -315,8 +315,7 @@ function buildSession(level){
   return shuffle(out).map(p => makeQuestion(p));
 }
 function makeQuestion(p){
-  const latinChance = p.lvl>=4 ? .6 : p.lvl>=2 ? .4 : .25;
-  const mode = Math.random() < latinChance ? "lat" : "fr";
+  const mode = "lat"; // chaque réponse affiche le nom latin, avec le nom français en petit dessous
   const nChoices = p.lvl>=4 ? 6 : 4;
   const others = [];
   const add = q => { if(q && q.id!==p.id && !others.includes(q) && q[mode]!==p[mode]) others.push(q) };
@@ -533,7 +532,7 @@ function renderShare(){
 
 /* ---------- Séance ---------- */
 function startSession(level){
-  quiz = {level, qs: buildSession(level), i:0, good:0};
+  quiz = {level, qs: buildSession(level), i:0, good:0, knownBefore: PLANTS.filter(p=>known(p.id)).length};
   quiz.qs.forEach(q=>photos(q.p).forEach(m=>{ const i=new Image(); i.src=m.file })); // précharge les photos de la séance
   if (location.hash==="#seance") renderQuiz(); else location.hash = "#seance";
 }
@@ -547,9 +546,9 @@ function renderQuiz(){
     ${gallery(p, true)}
     <div>
       <div class="eyebrow">Niveau ${p.lvl} · ${esc(lvlName)} · ${esc(p.type)}</div>
-      <h2 class="qtitle">${q.mode==="lat" ? "Quel est son nom latin ?" : "Quel est ce végétal ?"}</h2>
+      <h2 class="qtitle">Quel est ce végétal ?</h2>
     </div>
-    <div class="choices" id="choices">${q.choices.map((c,i)=>`<button class="choice" data-i="${i}" type="button"><span class="main ${q.mode==="lat"?"latin":""}">${esc(c[q.mode])}</span></button>`).join("")}</div>
+    <div class="choices" id="choices">${q.choices.map((c,i)=>`<button class="choice" data-i="${i}" type="button"><span class="main latin">${esc(c.lat)}</span><span class="small muted">${esc(c.fr)}</span></button>`).join("")}</div>
     <div id="fb"></div>
   </section>`;
   $("#quit").onclick = ()=>{ quiz=null; location.hash="#accueil" };
@@ -561,7 +560,7 @@ function answer(i){
   q.answered = i;
   const ok = q.choices[i].id===q.p.id;
   const c = Object.assign({box:0,ok:0,ko:0,last:null}, S.cards[q.p.id]);
-  if(ok){ c.box=Math.min(c.box+1, INTERVALS.length-1); c.ok++; quiz.good++ } else { c.box=1; c.ko++ }
+  if(ok){ c.box=Math.min(Math.max(c.box+1, MASTER_BOX), INTERVALS.length-1); c.ok++; quiz.good++ } else { c.box=1; c.ko++ }
   c.last = today(); S.cards[q.p.id]=c; save();
   showFeedback(q);
 }
@@ -570,7 +569,6 @@ function showFeedback(q){
   app.querySelectorAll(".choice").forEach((b,i)=>{
     b.disabled=true; const c=q.choices[i];
     if(c.id===p.id) b.classList.add("good"); else if(i===q.answered) b.classList.add("bad"); else b.classList.add("dim");
-    b.insertAdjacentHTML("beforeend", `<span class="small muted ${q.mode==="lat"?"":"latin"}" style="${q.mode==="lat"?"":"font-size:1rem"}">${esc(q.mode==="lat"?c.fr:c.lat)}</span>`);
   });
   const wrong = q.choices[q.answered];
   const last = quiz.i===quiz.qs.length-1;
@@ -621,6 +619,7 @@ function finish(){
       <div class="score">${g}/${n}</div>
       <h2>${word}</h2>
       <p class="muted" style="margin:0">${first?`Jour validé : série de <b>${S.streak}</b> jour${S.streak>1?"s":""}.`:"Séance bonus enregistrée."} Revenez demain pour garder votre série.</p>
+      <p style="margin:6px 0 0;font-weight:700">${(()=>{ const now=PLANTS.filter(p=>known(p.id)).length, d=now-quiz.knownBefore; return `${now} végétaux connus sur ${PLANTS.length}`+(d>0?` (+${d} aujourd'hui)`:"") })()}</p>
       ${opened?`<p style="margin:6px 0 0;color:var(--leaf);font-weight:700">Nouveau niveau débloqué : ${esc(LEVELS[S.maxLvl-1].name)}</p>`:""}
     </div>
     ${missed.length?`<div><div class="eyebrow" style="margin-bottom:8px">À revoir (elles reviendront demain)</div><div class="look">${missed.map(miniHTML).join("")}</div></div>`:""}
