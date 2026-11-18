@@ -3,7 +3,7 @@
 Produit index.html (page autonome, installable sur téléphone) et sw.js (hors connexion).
 Usage : python3 tools/build.py
 """
-import json, os, sys
+import glob, json, os, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FIELDS = ("id", "lat", "fr", "fam", "type", "orig", "lvl", "tip", "diff", "conf")
@@ -16,16 +16,30 @@ for pid, slots in credits.items():
     if ok:
         img[pid] = ok
 # On garde les plantes qui ont leurs 4 photos (au moins 3 pour celles choisies à la main)
-plants = [{k: p[k] for k in FIELDS} for p in catalog if len(img.get(p["id"], {})) >= (3 if p.get("curated") else 4)]
+BASE = ("leaf", "fruit", "bark", "habit")   # les 4 photos du mode classique ; spring/autumn/winter = mode saisons
+nbase = lambda pid: sum(1 for k in BASE if k in img.get(pid, {}))
+plants = [{k: p[k] for k in FIELDS} for p in catalog if nbase(p["id"]) >= (3 if p.get("curated") else 4)]
 keep = {p["id"] for p in plants}
 for p in plants:
     p["conf"] = [c for c in p["conf"] if c in keep]
 img = {k: v for k, v in img.items() if k in keep}
 
+# Infos de paysagiste (data/garden_*.tsv) : rusticité, exposition, sol, hauteur, toxicité, envahissant
+lat2id = {p["lat"]: p["id"] for p in plants}
+garden = {}
+for f in sorted(glob.glob(os.path.join(ROOT, "data/garden_*.tsv"))):
+    for line in open(f):
+        if not line.strip() or line.startswith("#"):
+            continue
+        lat, r, e, sol, h, t, v = [x.strip() for x in line.rstrip("\n").split("|")]
+        if lat in lat2id:
+            garden[lat2id[lat]] = {k: x for k, x in zip(("r", "e", "s", "h", "t", "v"), (r.replace("-", "−"), e, sol, h, t, v)) if x}
+
 tpl = open(os.path.join(ROOT, "template.html")).read()
 dump = lambda o: json.dumps(o, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
 page = (tpl.replace("/*PLANTS*/[]", dump(plants))
            .replace("/*IMAGES*/{}", dump(img))
+           .replace("/*GARDEN*/{}", dump(garden))
            )
 page = page.replace('/*SHARE_URL*/""', '""')  # le lien de partage est l'adresse réelle de la page
 # Version installable (PWA) : manifeste, icônes, fonctionnement hors connexion
@@ -51,4 +65,5 @@ open(os.path.join(ROOT, "index.html"), "w").write(
     '<!doctype html>\n<html lang="fr">\n<head>\n<meta charset="utf-8">\n'
     '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
     + pwa_head + '</head>\n<body>\n' + page + '\n' + pwa_script + '</body>\n</html>\n')
-print(f"{len(plants)} végétaux, {sum(map(len, img.values()))} photos")
+seasons = {k: sum(1 for v in img.values() if k in v) for k in ("spring", "autumn", "winter")}
+print(f"{len(plants)} végétaux, {sum(map(len, img.values()))} photos, fiches jardin : {len(garden)}, saisons : {seasons}")
