@@ -55,7 +55,7 @@ def colors(data):
     n, top = len(px), px[: len(px) // 3]
     green = sum(1 for h, s, v in px if 45 <= h <= 125 and s > 60 and v > 40) / n
     warm = sum(1 for h, s, v in px if (h < 40 or h > 235) and s > 90 and v > 70) / n
-    vivid = sum(1 for h, s, v in px if not (45 <= h <= 125) and s > 90 and v > 90) / n
+    vivid = sum(1 for h, s, v in px if not (45 <= h <= 125) and s > 90 and v > 150) / n
     white = sum(1 for h, s, v in px if s < 35 and v > 215) / n
     sky = sum(1 for h, s, v in top if (130 <= h <= 180 and s > 35 and v > 120) or (s < 25 and v > 190)) / len(top)
     return green, warm, vivid, white, sky
@@ -66,7 +66,7 @@ def fit(slot, c, evergreen):
         return -9
     green, warm, vivid, white, sky = c
     if slot == "autumn":
-        return 3.0 * warm - 1.0 * white + (0 if evergreen else -1.0 * max(0.0, green - 0.4))
+        return 3.0 * warm - 1.0 * white - 1.5 * max(0.0, green - 0.3)
     if slot == "winter":
         return 2.5 * sky + (0.3 * green if evergreen else -2.0 * green) - 0.5 * max(0.0, white - 0.5)
     return 1.5 * (vivid + white * 0.8) - 0.8 * max(0.0, green - 0.5)   # fleur de printemps
@@ -91,7 +91,7 @@ def pick(cands, slot, evergreen, small, medium, large):
         if d:
             pre.append((fit(slot, colors(d), evergreen), c))
     pre.sort(key=lambda x: -x[0])
-    if not pre or pre[0][0] < (0.15 if slot == "autumn" else 0.05 if slot == "winter" else 0.1):
+    if not pre or pre[0][0] < (0.6 if slot == "autumn" else 0.05 if slot == "winter" else 0.3):
         return None, None            # aucune photo assez caractéristique de la saison
     best = []
     for f, c in pre[:TOP]:
