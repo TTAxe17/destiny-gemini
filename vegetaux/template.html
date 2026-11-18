@@ -133,8 +133,8 @@ section.view{padding-block:20px;display:flex;flex-direction:column;gap:18px}
 .verdict.ok{background:var(--ok-soft);color:var(--ok)}
 .verdict.ko{background:var(--ko-soft);color:var(--ko)}
 .label{padding:16px 18px;display:flex;flex-direction:column;gap:12px}
-.names .fr{font-family:var(--f-display);font-size:1.4rem;font-weight:700}
-.names .latin{font-size:1.35rem;color:var(--leaf)}
+.names .latin{font-size:1.55rem;color:var(--leaf);font-weight:600}
+.names .fr{font-size:1rem;color:var(--muted,#666);margin-top:2px}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{font-size:.76rem;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--surface-2);color:var(--muted)}
 .chip.tagc{background:var(--tag-soft);color:var(--ink)}
@@ -725,7 +725,7 @@ function gardenHTML(p){
 function sheetBody(p, wrong){
   const looks = [...new Set([...(wrong?[wrong.id]:[]), ...p.conf])].map(id=>byId[id]).filter(Boolean).slice(0,4);
   return `<div class="label">
-    <div class="names"><div class="fr">${esc(p.fr)}</div><div class="latin">${esc(p.lat)}</div></div>
+    <div class="names"><div class="latin">${esc(p.lat)}</div><div class="fr">${esc(p.fr)}</div></div>
     <div class="chips"><span class="chip tagc">${esc(p.fam)}</span><span class="chip">${esc(p.type)}</span><span class="chip">Origine : ${esc(p.orig)}</span><span class="chip">Niveau ${p.lvl}</span></div>
     <div class="tip"><h4>Pour le reconnaître</h4><p>${esc(p.tip)}</p></div>
     ${seasonsHTML(p)}
