@@ -54,7 +54,7 @@ def colors(data):
     px = list(im.get_flattened_data() if hasattr(im, "get_flattened_data") else im.getdata())
     n, top = len(px), px[: len(px) // 3]
     green = sum(1 for h, s, v in px if 45 <= h <= 125 and s > 60 and v > 40) / n
-    warm = sum(1 for h, s, v in px if (h < 40 or h > 235) and s > 90 and v > 70) / n
+    warm = sum(1 for h, s, v in px if (h < 38 or h > 238) and s > 120 and v > 130) / n
     vivid = sum(1 for h, s, v in px if not (45 <= h <= 125) and s > 90 and v > 150) / n
     white = sum(1 for h, s, v in px if s < 35 and v > 215) / n
     sky = sum(1 for h, s, v in top if (130 <= h <= 180 and s > 35 and v > 120) or (s < 25 and v > 190)) / len(top)
@@ -91,7 +91,7 @@ def pick(cands, slot, evergreen, small, medium, large):
         if d:
             pre.append((fit(slot, colors(d), evergreen), c))
     pre.sort(key=lambda x: -x[0])
-    if not pre or pre[0][0] < (0.6 if slot == "autumn" else 0.05 if slot == "winter" else 0.3):
+    if not pre or pre[0][0] < (0.75 if slot == "autumn" else 0.05 if slot == "winter" else 0.3):
         return None, None            # aucune photo assez caractéristique de la saison
     best = []
     for f, c in pre[:TOP]:
