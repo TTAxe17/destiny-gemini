@@ -87,7 +87,7 @@ def sharp(data):
 def pick(cands, slot, evergreen, small, medium, large):
     pre = []
     for c in cands[:TRY]:
-        d = get(small(c))
+        d = get(small(c), binary=True)
         if d:
             pre.append((fit(slot, colors(d), evergreen), c))
     pre.sort(key=lambda x: -x[0])
@@ -95,7 +95,7 @@ def pick(cands, slot, evergreen, small, medium, large):
         return None, None            # aucune photo assez caractéristique de la saison
     best = []
     for f, c in pre[:TOP]:
-        d = get(medium(c))
+        d = get(medium(c), binary=True)
         if d:
             best.append((sharp(d) + 3 * f, c))
     best.sort(key=lambda x: -x[0])
