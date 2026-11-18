@@ -164,7 +164,8 @@ def work(p):
               ", ".join(k for k in SLOTS if k in out), flush=True)
 
 
-todo = [p for p in catalog if p["id"] in credits]
+todo = [p for p in catalog if p["id"] in credits and (p["lat"] in seasons or p.get("curated"))
+        and not all(k in credits[p["id"]] for k in SLOTS)]
 print(len(todo), "plantes", flush=True)
 with ThreadPoolExecutor(6) as ex:
     list(ex.map(work, todo))
