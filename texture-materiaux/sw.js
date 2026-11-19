@@ -1,5 +1,5 @@
 // Texture Matériaux : fonctionne hors connexion après la première visite.
-const VERSION = "tm-v3";
+const VERSION = "tm-v4";
 const SHELL = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png", "./icon-maskable-512.png", "./apple-touch-icon.png"];
 
 self.addEventListener("install", e => {

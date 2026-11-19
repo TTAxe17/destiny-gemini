@@ -362,8 +362,8 @@ const TEXTURES = [
       ["B21", "Remplis l'intérieur des cellules en laissant le réseau entre elles blanc.", "Pointe pinceau : contourne chaque cellule, puis remplis-la. Garde 1 à 2 mm de blanc entre les cellules."],
       ["B24", "Repasse dans chaque cellule en gardant un centre plus clair, et fonce légèrement tout le coin bas-droite pour la profondeur.", "Pointe pinceau : commence par le bord et arrête-toi avant le centre ; biseau couché pour le coin."],
       ["B29", "Sur le bord bas et droit de chaque cellule, ajoute un croissant foncé. C'est lui qui donne l'effet de vaguelette.", "Pointe pinceau : appuie au milieu du croissant et relâche aux deux bouts."],
-      ["B24", "Tant que c'est humide, repasse sur la limite du croissant pour la fondre.", "Tout de suite après le B29, petits mouvements sur la limite."],
-      ["Blanc", "Une fois sec, souligne le bord haut de quelques cellules, ajoute de petits points brillants et quelques fines lignes courbes de lumière dans les cellules.", "Traits courts et fins, seulement sur le bord haut-gauche de quelques cellules ; lignes courbes très légères."]
+      ["B24", "Tant que c'est humide, repasse sur la limite du croissant pour la fondre. Ajoute quelques lignes du carrelage du fond, ondulées par l'eau.", "Tout de suite après le B29, petits mouvements sur la limite ; pour le carrelage, traits très légers et ondulés."],
+      ["Blanc", "Une fois sec, repasse tout le réseau de lumière au stylo blanc, avec un léger halo autour, et ajoute quelques points brillants.", "Stylo gel blanc sur le réseau ; estompe le bord du trait du bout du doigt avant séchage pour le halo."]
     ],
     errors: ["Des cellules toutes de la même taille, alignées en grille.", "Un réseau d'épaisseur constante. Varie-le, plus fin aux croisements.", "Repasser trop souvent : le papier sature et les bords bavent."],
     tip: "Garde le croissant foncé du même côté dans toutes les cellules : il indique d'où vient la lumière, et l'œil remarque tout de suite s'il change." },
@@ -371,12 +371,12 @@ const TEXTURES = [
   { id: "eau-agitee", cat: "eaux", name: "Eau agitée", level: 2, time: "25 min", vue: "plan", use: "Bassins, mer et lacs en plan masse",
     observe: "En plan, une eau agitée est un bleu profond et irrégulier, traversé de fines lignes blanches ondulées qui se croisent.",
     steps: [
-      ["Crayon", "Trace légèrement des lignes ondulées qui traversent la case et se rejoignent parfois, comme un filet déformé."],
+      ["Crayon", "Trace légèrement les crêtes des vagues : des lignes ondulées, plutôt horizontales, qui se divisent et se rejoignent."],
       ["B24", "Pose un aplat moyen sur toute la case.", "Pointe biseau : grands traits rapides dans un seul sens, sans t'arrêter au milieu."],
       ["B29", "Repasse par zones, dans le sens des ondulations, pour varier le bleu.", "Pointe pinceau couchée, en suivant les ondulations du crayon."],
-      ["B39", "Ajoute des accents foncés dans les creux, juste sous certaines lignes, et fonce légèrement le bas de la case.", "Pointe pinceau : petites touches allongées juste sous les lignes ; biseau couché pour le bas."],
-      ["B24", "Repasse le B24 sur les limites entre les zones pour les fondre, puis laisse sécher complètement. Un blanc posé sur un feutre humide devient gris.", "Petits mouvements sur les limites encore humides, puis 10 minutes de séchage."],
-      ["Blanc", "Repasse les lignes ondulées d'un trait continu qui s'affine aux extrémités.", "Geste rapide du poignet : le trait commence et finit en pointe."]
+      ["B39", "Ajoute les creux des vagues : des taches allongées foncées, entre les crêtes.", "Pointe pinceau couchée, touches allongées dans le sens des vagues."],
+      ["B24", "Repasse le B24 sur les limites pour les fondre et fonce légèrement le bas de la case, puis laisse sécher complètement. Un blanc posé sur un feutre humide devient gris.", "Petits mouvements sur les limites encore humides, puis 10 minutes de séchage."],
+      ["Blanc", "Repasse les crêtes d'un trait blanc qui s'affine aux extrémités, avec un voile plus léger juste à côté.", "Geste rapide du poignet : le trait commence et finit en pointe."]
     ],
     errors: ["Des lignes blanches parallèles et régulières.", "Un bleu uniforme : l'eau paraît plate comme une peinture murale.", "Poser le blanc trop tôt."],
     tip: "Trace les lignes blanches d'un geste rapide, poignet souple. Un trait lent tremble et se voit tout de suite." },
@@ -388,8 +388,8 @@ const TEXTURES = [
       ["BG11", "Pose un fond très clair partout, en laissant blancs les liserés entre les facettes (1 à 2 mm).", "Pointe biseau, facette par facette, en contournant les liserés."],
       ["B21", "Remplis une facette sur deux ou trois, au hasard.", "Pointe biseau : une facette entière à la fois, pour éviter les traces."],
       ["B23", "Assombris un côté de quelques facettes, toujours le même côté.", "Pointe pinceau, le long du côté choisi, sur le tiers de la facette."],
-      ["BG11", "Repasse le clair sur ces zones sombres pour les fondre en dégradé.", "Du côté clair vers le foncé, en petits mouvements, tant que c'est humide."],
-      ["Blanc", "Nettoie et éclaircis les liserés au stylo blanc.", "Trait fin, seulement sur les liserés qui ont été tachés."]
+      ["BG11", "Repasse le clair sur ces zones sombres pour les fondre en dégradé, et fonce légèrement le bas de la case.", "Du côté clair vers le foncé, en petits mouvements, tant que c'est humide."],
+      ["Blanc", "Nettoie les liserés au stylo blanc, puis ajoute quelques reflets horizontaux très légers.", "Trait fin sur les liserés ; reflets estompés du doigt avant séchage."]
     ],
     errors: ["Des facettes en losanges réguliers.", "Trop de contraste : l'eau calme doit rester douce.", "Des liserés tous de la même largeur."],
     tip: "Choisis trois feutres d'une même famille : clair, moyen, un peu plus foncé. Avec des couleurs trop éloignées, les facettes ressemblent à un vitrail." },
@@ -401,8 +401,8 @@ const TEXTURES = [
       ["BG15", "Pose le turquoise sur toute la zone d'eau, sauf une bande le long du rivage.", "Pointe biseau, traits parallèles au rivage. Laisse une bande blanche de 3 à 5 mm."],
       ["BG49", "Superpose à partir de la première courbe, vers le large.", "Pointe biseau, de la courbe vers le large, traits qui se chevauchent."],
       ["B39", "Pose le bleu le plus foncé après la deuxième courbe, puis fonds les limites en repassant le BG49.", "Pose le foncé, puis repasse tout de suite le BG49 sur la limite."],
-      ["E31", "Colore le sable, puis repasse une seconde couche près de l'eau pour le sable mouillé.", "Pointe biseau, traits parallèles au rivage."],
-      ["Blanc", "Dessine l'écume en festons irréguliers sur la bande réservée, plus quelques tirets au large.", "Petites boucles irrégulières le long du rivage, tirets courts au large."]
+      ["E31", "Colore le sable, repasse une seconde couche près de l'eau pour le sable mouillé, puis pointille le grain.", "Pointe biseau, traits parallèles au rivage ; pointe fine tapotée pour le grain."],
+      ["Blanc", "Dessine l'écume en festons irréguliers sur la bande réservée, puis des lignes de vagues parallèles au rivage, de plus en plus fines et espacées vers le large.", "Petites boucles irrégulières pour l'écume ; traits interrompus qui suivent la forme du rivage pour les vagues."]
     ],
     errors: ["Des limites dures entre les zones de profondeur.", "Une écume en ligne continue et régulière.", "Un sable de la même teinte partout."],
     tip: "Pour un dégradé propre, pose le feutre foncé puis repasse le clair sur la limite : son alcool dissout l'encre foncée et fond la transition." },
@@ -1274,55 +1274,57 @@ function crescent(c, s, pen, a) { c.save(); ell(c, s.x, s.y, s.r * 1.2, s.r, s.r
 /* Chaque générateur reçoit st = nombre d'étapes faites (1 à 6) et rr(k) = hasard propre à la couche k. */
 const GEN = {
   piscine(c, st, rr) {
-    const pts = jitterPts(rr(0), 6, 6, S, S, .85), B21 = P("B21"), B24 = P("B24"), DK = mul(P("B29"), B24);
+    const pts = jitterPts(rr(0), 7, 7, S, S, .9), B21 = P("B21"), B24 = P("B24"), DK = mul(P("B29"), B24);
     field(c, S, S, (x, y) => {
-      const X = x + (vnoise(x * .02, y * .02, 1) - .5) * 34, Y = y + (vnoise(x * .02, y * .02, 2) - .5) * 34;
-      const v = voronoi(pts, X, Y), w = 5 + 5 * vnoise(x * .05, y * .05, 3), p = pts[v.i], sd = side(X - p[0], Y - p[1]);
+      const X = x + (vnoise(x * .018, y * .018, 1) - .5) * 40, Y = y + (vnoise(x * .018, y * .018, 2) - .5) * 40;
+      const v = voronoi(pts, X, Y), w = 1.6 + 2.6 * vnoise(x * .04, y * .04, 3), p = pts[v.i], sd = side(X - p[0], Y - p[1]), line = v.e < w;
       let o = PAPER;
-      if (v.e >= w) {
+      if (!line) {
         if (st >= 2) o = B21;
-        if (st >= 3) o = mix(B24, B21, clamp((v.e - w - 10) / 30) * .7);
-        if (st >= 4) { const k = clamp(1 - (v.e - w) / 13) * sd; o = mix(o, DK, st >= 5 ? k * .95 : (k > .42 ? .9 : 0)); }
-        if (st >= 6 && v.e < w + 1.8 && sd < .3) o = W3C;
-      }
-      if (st < 6 && Math.abs(v.e - w) < .8) o = mix(o, GREY, skA(st));
+        if (st >= 3) o = mix(B24, B21, clamp((v.e - w - 6) / 26) * .75);
+        if (st >= 4) { const k = clamp(1 - (v.e - w) / 11) * sd; o = mix(o, DK, st >= 5 ? k * .85 : (k > .45 ? .8 : 0)); }
+      } else if (st >= 2) o = mix(PAPER, B21, .25 * (v.e / w));
+      if (st >= 6) { const glow = Math.exp(-Math.pow(v.e / (w * 2.6), 2)); o = mix(o, W3C, line ? .97 : glow * .45); }
+      if (st < 6 && Math.abs(v.e - w) < .7) o = mix(o, GREY, skA(st));
       return o;
     });
-    if (st >= 2) strokes(c, col("B21"), .12, 0, 9, 8, rr(2));
     if (st >= 3) { const g = c.createLinearGradient(0, 0, S, S); g.addColorStop(0, rgba("B24", 0)); g.addColorStop(1, rgba("B24", .35)); c.save(); c.globalCompositeOperation = "multiply"; c.fillStyle = g; c.fillRect(0, 0, S, S); c.restore(); }
-    if (st >= 6) { const D = rr(6); c.fillStyle = WHITE; for (let k = 0; k < 28; k++) { ell(c, D() * S, D() * S, 1.4, 1.4); c.fill(); } c.save(); c.strokeStyle = WHITE; c.globalAlpha = .55; c.lineWidth = .9; c.lineCap = "round"; for (let k = 0; k < 40; k++) { const x = D() * S, y = D() * S, a = D() * 6.28; c.beginPath(); c.moveTo(x, y); c.quadraticCurveTo(x + Math.cos(a) * 8, y + Math.sin(a) * 8, x + Math.cos(a + .8) * 14, y + Math.sin(a + .8) * 14); c.stroke(); } c.restore(); }
+    if (st >= 5) { c.save(); c.globalCompositeOperation = "multiply"; c.strokeStyle = col("B29"); c.globalAlpha = .16; c.lineWidth = 1.3; for (let k = -1; k * 45 < S + 45; k++) { c.beginPath(); for (let t = -10; t <= S + 10; t += 6) { const x = k * 45 + 7 * Math.sin(t * .045 + k), y = t; t === -10 ? c.moveTo(x, y) : c.lineTo(x, y); } c.stroke(); c.beginPath(); for (let t = -10; t <= S + 10; t += 6) { const y = k * 45 + 7 * Math.sin(t * .045 + k * 1.7), x = t; t === -10 ? c.moveTo(x, y) : c.lineTo(x, y); } c.stroke(); } c.restore(); }
+    if (st >= 6) { const D = rr(6); c.fillStyle = WHITE; for (let k = 0; k < 22; k++) { ell(c, D() * S, D() * S, 1.3, 1.3); c.fill(); } }
   },
   "eau-agitee"(c, st, rr) {
-    const pts = jitterPts(rr(0), 4, 7, S, S, .9), B24 = P("B24"), B29 = P("B29"), B39 = P("B39");
+    const B24 = P("B24"), B29 = P("B29"), B39 = P("B39");
+    const crest = (x, y) => { const wx = x + (fbm(x * .008, y * .02, 31) - .5) * 70, n = fbm(wx * .011, y * .034, 32); return 1 - Math.abs(2 * n - 1); };
     field(c, S, S, (x, y) => {
-      const n = fbm(x * .008, y * .02, 4), X = x + (vnoise(x * .015, y * .015, 6) - .5) * 40, v = voronoi(pts, X, y, .45);
-      const la = clamp(1.6 - v.e * 1.1);
+      const n = fbm(x * .006, y * .022, 4), r = crest(x, y);
       let o = PAPER;
       if (st >= 2) o = B24;
-      if (st >= 3) { const t = clamp(.35 + n * .9); o = mix(B24, B29, st >= 5 ? t : (t > .8 ? .95 : 0)); }
-      if (st >= 4) { const b = clamp((n - .55) * 2.5); o = mix(o, B39, st >= 5 ? b : (b > .35 ? .85 : 0)); }
-      if (st >= 6) o = mix(o, W3C, la * (.75 + .25 * vnoise(x * .05, y * .05, 8)));
-      else if (la > .2) o = mix(o, GREY, skA(st) * la);
+      if (st >= 3) { const t = clamp(.3 + n * .9); o = mix(B24, B29, st >= 5 ? t : (t > .75 ? .95 : 0)); }
+      if (st >= 4) { const b = ss(.55, .85, 1 - r) * clamp((n - .35) * 2); o = mix(o, B39, st >= 5 ? b * .85 : (b > .3 ? .8 : 0)); }
+      if (st >= 5) o = mix(o, mul(o, B39), clamp(y / S) * .25);
+      if (st >= 6) { const l = ss(.955, .985, r), l2 = ss(.92, .955, r) * .22; o = mix(o, W3C, clamp(l * (.7 + .3 * vnoise(x * .05, y * .05, 8)) + l2)); }
+      else if (r > .965) o = mix(o, GREY, skA(st) * .9);
       return o;
     });
-    if (st >= 3) strokes(c, col("B29"), .08, -.15, 10, 9, rr(3));
-    if (st >= 4) { const g = c.createLinearGradient(0, 0, 0, S); g.addColorStop(0, rgba("B39", 0)); g.addColorStop(1, rgba("B39", .3)); c.save(); c.globalCompositeOperation = "multiply"; c.fillStyle = g; c.fillRect(0, 0, S, S); c.restore(); }
+    if (st >= 3) strokes(c, col("B29"), .06, -.1, 10, 9, rr(3));
   },
   "eau-calme"(c, st, rr) {
-    const R = rr(0), pts = jitterPts(R, 4, 4, S, S, .9), cls = pts.map(() => R()), sh = pts.map(() => R() < .6);
+    const R = rr(0), pts = jitterPts(R, 4, 5, S, S, .9), cls = pts.map(() => R()), sh = pts.map(() => R() < .6);
     const BG11 = P("BG11"), B21 = P("B21"), B23 = P("B23");
     field(c, S, S, (x, y) => {
-      const v = voronoi(pts, x, y); let o;
-      if (v.e < 3.2) o = st >= 6 ? W3C : st >= 2 ? mix(PAPER, BG11, .3) : PAPER;
+      const X = x + (vnoise(x * .012, y * .012, 21) - .5) * 26, v = voronoi(pts, X, y); let o;
+      if (v.e < 1.8) o = st >= 6 ? W3C : st >= 2 ? mix(PAPER, BG11, .35) : PAPER;
       else {
         o = PAPER;
         if (st >= 2) o = BG11;
-        if (st >= 3 && cls[v.i] < .4) o = B21;
-        if (st >= 4 && sh[v.i]) { const p = pts[v.i], dx = x - p[0], dy = y - p[1]; const s = side(dx, dy) * clamp(Math.hypot(dx, dy) / 60); o = mix(o, mul(o, B23), st >= 5 ? s * .7 : (s > .4 ? .65 : 0)); }
+        if (st >= 3 && cls[v.i] < .4) o = mix(BG11, B21, .85);
+        if (st >= 4 && sh[v.i]) { const p = pts[v.i], dx = X - p[0], dy = y - p[1]; const k = side(dx, dy) * clamp(Math.hypot(dx, dy) / 60); o = mix(o, mul(o, B23), st >= 5 ? k * .55 : (k > .4 ? .55 : 0)); }
+        if (st >= 5) o = mix(o, mul(o, B23), clamp(y / S) * .28);
       }
-      if (st < 6 && Math.abs(v.e - 1.6) < .9) o = mix(o, GREY, skA(st));
+      if (st < 6 && Math.abs(v.e - 1.2) < .8) o = mix(o, GREY, skA(st));
       return o;
     });
+    if (st >= 6) { const D = rr(6); c.save(); c.filter = "blur(1.5px)"; c.fillStyle = WHITE; for (let k = 0; k < 9; k++) { c.globalAlpha = .45 + D() * .3; ell(c, D() * S, D() * S * .7, 25 + D() * 45, 1.5 + D() * 1.5); c.fill(); } c.restore(); }
   },
   mer(c, st, rr) {
     const shore = x => S * (.24 + .05 * Math.sin(x * .018) + .025 * Math.sin(x * .05 + 1));
@@ -1343,8 +1345,12 @@ const GEN = {
       const D = rr(6); c.fillStyle = WHITE;
       c.beginPath(); c.moveTo(0, shore(0)); for (let x = 0; x <= S; x += 4) c.lineTo(x, shore(x)); for (let x = S; x >= 0; x -= 4) c.lineTo(x, shore(x) + 6); c.fill();
       for (let x = -6; x < S + 10; x += 11) { const r = 5 + D() * 5; ell(c, x, shore(x) + 6 + D() * 4, r, r * .7); c.fill(); }
-      c.globalAlpha = .9; for (let k = 0; k < 60; k++) { const x = D() * S; ell(c, x, shore(x) + 30 + D() * S * .7, 5 + D() * 10, .9); c.fill(); } c.globalAlpha = 1;
+      c.save(); c.globalCompositeOperation = "multiply"; c.fillStyle = col("BG15"); c.globalAlpha = .55; for (let k = 0; k < 90; k++) { const x = D() * S; ell(c, x, shore(x) + 4 + D() * 10, 1.5 + D() * 3, 1 + D() * 2); c.fill(); } c.restore();
+      c.strokeStyle = WHITE; c.lineCap = "round";
+      for (let k = 1; k <= 7; k++) { const off = 14 * Math.pow(k, 1.35); c.lineWidth = Math.max(.7, 2.2 - k * .22); c.globalAlpha = .85 - k * .07; let x = -D() * 30; while (x < S) { const len = 25 + D() * 70, gap = 8 + D() * 20 * k; c.beginPath(); for (let t = x; t <= x + len; t += 4) { const y = shore(t) + off + Math.sin(t * .07 + k) * 2; t === x ? c.moveTo(t, y) : c.lineTo(t, y); } c.stroke(); x += len + gap; } }
+      c.globalAlpha = 1;
     }
+    if (st >= 5) { const D = rr(7); c.save(); c.fillStyle = col("E35"); c.globalAlpha = .45; for (let k = 0; k < 900; k++) { const x = D() * S, y = D() * S; if (y < shore(x) - 2) { ell(c, x, y, .6, .6); c.fill(); } } c.restore(); }
   },
   dalles(c, st, rr) {
     const R = rr(0), cw = 90, tiles = [];
