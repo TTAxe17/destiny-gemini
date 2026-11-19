@@ -1,0 +1,16 @@
+{
+  "name": "Texture Matériaux",
+  "short_name": "Textures",
+  "description": "Textures d'architecture aux feutres à alcool, étape par étape.",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#eff0ec",
+  "theme_color": "#eff0ec",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
