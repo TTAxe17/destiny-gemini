@@ -2006,8 +2006,35 @@ function renderCanvas(id, st, grain) {
   const ctx = cv.getContext("2d"), seed = seedOf(id);
   if (st <= 0) { paper(ctx); return cv; }
   try { GEN[id](ctx, st, k => rng(seed * 7919 + k * 104729)); } catch (e) { console.error(id, st, e); }
+  handmade(ctx, S, S, seed & 1023, VERTICAL.has(id) ? Math.PI / 2 + .08 : .12);
   if (grain) finish(ctx, S, S, seed + st);
   return cv;
+}
+/* Rendu « fait main » : contours tremblés, bandes de passage du feutre, petits manques d'encre */
+const VERTICAL = new Set(["parquet", "bois", "bardage", "zinc", "bac-acier", "beton", "dalles", "tuiles", "bois-brule", "vitre", "mur-rideau", "corten", "point-de-hongrie"]);
+function handmade(c, w, h, seed, dir) {
+  const src = c.getImageData(0, 0, w, h), s = src.data, out = c.createImageData(w, h), d = out.data;
+  const ca = Math.cos(dir), sa = Math.sin(dir), per = 17;
+  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+    const dx = (vnoise(x * .025, y * .025, seed) - .5) * 5 + (vnoise(x * .09, y * .09, seed + 1) - .5) * 1.4;
+    const dy = (vnoise(x * .025 + 50, y * .025, seed + 2) - .5) * 5 + (vnoise(x * .09 + 9, y * .09, seed + 3) - .5) * 1.4;
+    let sx = Math.min(w - 1.001, Math.max(0, x + dx)), sy = Math.min(h - 1.001, Math.max(0, y + dy));
+    const x0 = sx | 0, y0 = sy | 0, fx = sx - x0, fy = sy - y0, i00 = (y0 * w + x0) * 4, i10 = i00 + 4, i01 = i00 + w * 4, i11 = i01 + 4;
+    const px = k => (s[i00 + k] * (1 - fx) + s[i10 + k] * fx) * (1 - fy) + (s[i01 + k] * (1 - fx) + s[i11 + k] * fx) * fy;
+    let r = px(0), g = px(1), b = px(2);
+    const lum = .3 * r + .59 * g + .11 * b, sat = Math.max(r, g, b) - Math.min(r, g, b);
+    const amt = clamp((246 - lum) / 90 + sat / 140);
+    if (amt > .04) {
+      const u = x * ca + y * sa, v = -x * sa + y * ca, row = Math.floor(v / per), t = v / per - row;
+      const wob = (vnoise(u * .01, row * 3.1, seed + 6) - .5) * .5, tt = clamp(t + wob * .3), edge = ss(.72, 1, tt) * .7 + (1 - ss(0, .3, tt)) * .5;
+      const along = vnoise(u * .018 + row * 7.3, row, seed + 4);
+      let k = 1 - amt * (.06 * edge + .06 * along);
+      if (hash(x, y, seed + 5) < .0035 * amt) k = 1.18;
+      r *= k; g *= k; b *= k;
+    }
+    const j = (y * w + x) * 4; d[j] = r; d[j + 1] = g; d[j + 2] = b; d[j + 3] = 255;
+  }
+  c.putImageData(out, 0, 0);
 }
 function stageImg(id, st) { const key = id + ":" + st; return cache[key] || (cache[key] = renderCanvas(id, st, true).toDataURL("image/jpeg", .9)); }
 const finalStep = id => BY_ID[id].steps.length;
