@@ -1,0 +1,799 @@
+<title>Herbier Vivant</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Entraînement quotidien à la reconnaissance des végétaux pour paysagistes : photos, noms français et latins, conseils de reconnaissance.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Mise en page : une colonne étroite de « fiches d'herbier » ; photo en haut, étiquette de pépinière dessous. */
+:root{
+  --bg:#eef2ec;          /* papier d'herbier, teinté sauge */
+  --surface:#ffffff;
+  --surface-2:#e3eadf;
+  --ink:#18241c;
+  --muted:#56655a;
+  --line:#cdd8cb;
+  --leaf:#2c5a3a;        /* vert feuillage */
+  --leaf-soft:#d6e6d6;
+  --tag:#b9761a;         /* étiquette de pépinière */
+  --tag-soft:#f4e2c4;
+  --ok:#2f7d45; --ok-soft:#dcefdf;
+  --ko:#b23b2c; --ko-soft:#f6dcd7;
+  --shadow:0 1px 2px rgba(24,36,28,.06),0 6px 20px rgba(24,36,28,.07);
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Public Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+  --f-latin:"Instrument Serif","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#101712; --surface:#18221b; --surface-2:#202d24; --ink:#e4ece5; --muted:#9aab9e; --line:#2d3d32;
+  --leaf:#8fc79d; --leaf-soft:#22382a; --tag:#e3a64a; --tag-soft:#3a2d17;
+  --ok:#7fcf92; --ok-soft:#1d3524; --ko:#f08d7f; --ko-soft:#3d221e; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#101712; --surface:#18221b; --surface-2:#202d24; --ink:#e4ece5; --muted:#9aab9e; --line:#2d3d32;
+  --leaf:#8fc79d; --leaf-soft:#22382a; --tag:#e3a64a; --tag-soft:#3a2d17;
+  --ok:#7fcf92; --ok-soft:#1d3524; --ko:#f08d7f; --ko-soft:#3d221e; --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25); color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 96px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:720px;margin:0 auto}
+h1,h2,h3{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+.latin{font-family:var(--f-latin);font-style:italic;font-weight:400}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--tag);outline-offset:2px;border-radius:8px}
+a{color:var(--leaf)}
+
+/* En-tête */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:14px 10px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.brand svg{flex:none}
+.brand b{font-family:var(--f-display);font-weight:800;font-size:1.25rem;letter-spacing:-.01em}
+.brand small{display:block;font-size:.72rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:-2px}
+.streak{display:flex;align-items:center;gap:6px;background:var(--tag-soft);color:var(--ink);border-radius:999px;padding:6px 12px;font-weight:700;font-variant-numeric:tabular-nums;font-size:.9rem;white-space:nowrap}
+.streak i{font-style:normal;color:var(--tag)}
+
+/* Navigation basse */
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--surface);border-top:1px solid var(--line);
+  padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px))}
+nav.tabs .in{max-width:720px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+nav.tabs a{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:var(--muted);font-size:.75rem;font-weight:600;padding:6px 4px;border-radius:10px}
+nav.tabs a[aria-current="page"]{color:var(--leaf);background:var(--leaf-soft)}
+nav.tabs svg{width:22px;height:22px}
+
+section.view{padding-block:20px;display:flex;flex-direction:column;gap:18px}
+.eyebrow{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.pad{padding:18px}
+.muted{color:var(--muted)}
+
+/* Accueil */
+.hero{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
+.hero h1{font-size:clamp(1.6rem,5vw,2.2rem);font-weight:800;letter-spacing:-.02em}
+.hero p{margin:6px 0 0;color:var(--muted);max-width:46ch}
+.ring{width:96px;height:96px;flex:none}
+.ring text{font-family:var(--f-display);font-weight:800;fill:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:12px;padding:14px 20px;font-weight:700;cursor:pointer;text-decoration:none;font-size:1rem}
+.btn-main{background:var(--leaf);color:var(--bg)}
+.btn-main:hover{filter:brightness(1.08)}
+.btn-ghost{background:var(--surface-2);color:var(--ink)}
+.btn-ghost:hover{background:var(--line)}
+.btn-wide{width:100%}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat{padding:12px 14px}
+.stat b{display:block;font-family:var(--f-display);font-size:1.5rem;font-variant-numeric:tabular-nums}
+.stat span{font-size:.82rem;color:var(--muted);line-height:1.3;display:block}
+.stat small{font-size:.72rem;opacity:.8}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center;font-size:.72rem;color:var(--muted)}
+.week .d{aspect-ratio:1;max-width:100%;border-radius:8px;background:var(--surface-2);display:grid;place-items:center;font-weight:700;color:var(--muted);margin-bottom:3px}
+.week .d.on{background:var(--leaf);color:var(--bg)}
+.week .d.today{outline:2px solid var(--tag)}
+
+/* Niveaux */
+.levels{display:flex;flex-direction:column;gap:10px}
+.lvl{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:14px 16px;text-align:left;width:100%;border:1px solid var(--line);background:var(--surface);border-radius:var(--r);cursor:pointer}
+.lvl:hover:not([disabled]){border-color:var(--leaf)}
+.lvl[disabled]{cursor:not-allowed;opacity:.6}
+.lvl .num{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;font-family:var(--f-display);font-weight:800;background:var(--leaf-soft);color:var(--leaf)}
+.lvl h3{font-size:1.02rem}
+.lvl p{margin:2px 0 6px;font-size:.85rem;color:var(--muted)}
+.lvl .meta{font-size:.8rem;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar{height:6px;border-radius:99px;background:var(--surface-2);overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--leaf);border-radius:99px}
+
+/* Quiz */
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.qhead .bar{flex:1}
+.qcount{font-variant-numeric:tabular-nums;font-weight:700;font-size:.9rem;color:var(--muted);white-space:nowrap}
+.photo{position:relative;border-radius:var(--r);overflow:hidden;background:var(--surface-2);aspect-ratio:4/3;max-width:100%}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo .credit{position:absolute;right:0;bottom:0;max-width:100%;background:rgba(0,0,0,.55);color:#fff;font-size:.68rem;padding:3px 8px;border-top-left-radius:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.photo .credit a{color:#fff}
+.photo .zoom{position:absolute;left:10px;top:10px;background:rgba(0,0,0,.5);color:#fff;border:0;border-radius:8px;padding:6px 10px;font-size:.78rem;cursor:pointer}
+.photo.noimg{display:grid;place-items:center;color:var(--muted);text-align:center;padding:20px}
+.qtitle{font-size:1.25rem;font-weight:700}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:520px){.choices{grid-template-columns:1fr}}
+.choice{border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:12px 14px;text-align:left;cursor:pointer;min-height:56px;display:flex;flex-direction:column;justify-content:center}
+.choice:hover:not([disabled]){border-color:var(--leaf)}
+.choice .main{font-weight:600}
+.choice .main.latin{font-size:1.18rem;font-weight:400}
+.choice[disabled]{cursor:default}
+.choice.good{border-color:var(--ok);background:var(--ok-soft)}
+.choice.bad{border-color:var(--ko);background:var(--ko-soft)}
+.choice.dim{opacity:.55}
+
+/* Fiche réponse */
+.answer{overflow:hidden}
+.verdict{padding:12px 18px;font-weight:700;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.verdict.ok{background:var(--ok-soft);color:var(--ok)}
+.verdict.ko{background:var(--ko-soft);color:var(--ko)}
+.label{padding:16px 18px;display:flex;flex-direction:column;gap:12px}
+.names .latin{font-size:1.55rem;color:var(--leaf);font-weight:600}
+.names .fr{font-size:1rem;color:var(--muted,#666);margin-top:2px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:.76rem;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--surface-2);color:var(--muted)}
+.chip.tagc{background:var(--tag-soft);color:var(--ink)}
+.tip{border-left:3px solid var(--tag);padding:2px 0 2px 12px}
+.tip h4,.diff h4{margin:0 0 3px;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--tag)}
+.diff h4{color:var(--leaf)}
+.tip p,.diff p{margin:0}
+.diff{border-left:3px solid var(--leaf);padding:2px 0 2px 12px}
+.look{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
+.g4{display:grid;grid-template-columns:1fr 1fr;gap:6px;border-radius:var(--r);overflow:hidden}
+.g4-cell{position:relative;padding:0;border:0;background:var(--surface-2);aspect-ratio:1;cursor:zoom-in;overflow:hidden;max-width:100%}
+.g4-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.g4-cell:hover img{transform:scale(1.04)}
+.g4-tag{position:absolute;left:6px;top:6px;background:rgba(0,0,0,.6);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:999px}
+.vw{position:relative;background:#000;display:grid;place-items:center}
+.vw img{width:100%;max-height:78vh;object-fit:contain;display:block}
+.vw-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:64px;border:0;background:rgba(0,0,0,.45);color:#fff;font-size:2rem;cursor:pointer}
+.vw-prev{left:0;border-radius:0 10px 10px 0}.vw-next{right:0;border-radius:10px 0 0 10px}
+.vw-bar{background:#111;color:#ddd;padding:10px 12px;display:flex;flex-direction:column;gap:8px}
+.vw-tabs{display:flex;gap:6px;flex-wrap:wrap}
+.vw-tab{border:1px solid #444;background:transparent;color:#ddd;border-radius:999px;padding:5px 12px;font-size:.82rem;cursor:pointer}
+.vw-tab[aria-current="true"]{background:#fff;color:#000;border-color:#fff}
+.vw-credit{font-size:.75rem;color:#aaa}.vw-credit a{color:#ccc}
+.views{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.view-btn{padding:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;cursor:zoom-in;background:var(--surface-2)}
+.view-btn img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.season-shot{position:relative}.season-shot span{position:absolute;left:4px;bottom:4px;background:rgba(0,0,0,.6);color:#fff;font-size:.68rem;font-weight:700;padding:2px 7px;border-radius:999px}
+.mini{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface);cursor:pointer;text-align:left;padding:0}
+.mini img{width:100%;aspect-ratio:1;object-fit:cover;display:block;background:var(--surface-2)}
+.mini span{display:block;padding:6px 8px;font-size:.8rem;line-height:1.25}
+.mini span em{font-family:var(--f-latin);font-size:.9rem;color:var(--muted)}
+
+/* Herbier */
+.search{display:flex;gap:8px;flex-wrap:wrap}
+.search input,.search select{flex:1 1 180px;min-width:0;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.grid .mini span b{display:block;font-weight:600}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;background:var(--line);vertical-align:middle}
+.dot.m1{background:var(--tag)} .dot.m2{background:var(--leaf)}
+
+/* Modale */
+dialog{border:0;padding:0;border-radius:var(--r);max-width:min(640px,calc(100vw - 24px));width:100%;background:var(--surface);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(10,16,12,.6)}
+dialog .close{position:absolute;right:10px;top:10px;z-index:2;border:0;border-radius:999px;width:36px;height:36px;background:rgba(0,0,0,.55);color:#fff;cursor:pointer;font-size:1.1rem}
+dialog .photo{border-radius:0;aspect-ratio:4/3}
+dialog.zoomd{max-width:min(1000px,calc(100vw - 24px));background:#000}
+dialog.zoomd img{width:100%;max-height:85vh;object-fit:contain;display:block}
+
+/* Résultat */
+.result h2{font-size:1.8rem}
+.score{font-family:var(--f-display);font-size:3rem;font-weight:800;color:var(--leaf);font-variant-numeric:tabular-nums}
+.share-url{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem;background:var(--surface-2);padding:12px;border-radius:10px;word-break:break-all;user-select:all}
+.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-weight:600;z-index:20;max-width:calc(100vw - 32px)}
+.steps{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.small{font-size:.85rem}
+
+/* Modes d'entraînement */
+.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mode{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;padding:12px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface);cursor:pointer;min-width:0}
+.mode svg{width:22px;height:22px;fill:none;stroke:var(--leaf);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mode b{font-family:var(--f-display);font-size:.98rem;line-height:1.15}
+.mode span{font-size:.74rem;color:var(--muted);line-height:1.3}
+.mode[aria-checked="true"]{border-color:var(--leaf);background:var(--leaf-soft);box-shadow:inset 0 0 0 1px var(--leaf)}
+@media (max-width:420px){.mode span{display:none}.mode{align-items:center;text-align:center;padding:12px 6px}}
+.seasons{display:flex;gap:6px;flex-wrap:wrap}
+.season{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 14px;font-weight:600;cursor:pointer;font-size:.9rem}
+.season[disabled]{opacity:.45;cursor:not-allowed}
+.season[aria-checked="true"]{background:var(--leaf);border-color:var(--leaf);color:var(--bg)}
+/* Pendant une séance : plus de place, bouton « suivant » toujours à portée de pouce */
+body.in-session nav.tabs{display:none}
+body.in-session{padding-block-end:24px}
+.nextbar{position:sticky;bottom:0;z-index:4;padding:12px 0 calc(12px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--bg) 70%,transparent)}
+.nextbar .btn{box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.quiz .qhead .chip{white-space:nowrap}
+.g4.g2{grid-template-columns:1fr 1fr}
+.typed{display:flex;flex-direction:column;gap:10px}
+.typed input{font-family:var(--f-latin);font-style:italic;font-size:1.35rem;padding:14px 16px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);width:100%}
+.typed input:focus{outline:none;border-color:var(--leaf);box-shadow:0 0 0 3px var(--leaf-soft)}
+.typed input.good{border-color:var(--ok);background:var(--ok-soft)}
+.typed input.bad{border-color:var(--ko);background:var(--ko-soft)}
+.typed .row .btn{padding:12px 10px}
+/* Fiche : au jardin */
+.garden{border-left:3px solid var(--line);padding:2px 0 2px 12px}
+.garden h4{margin:0 0 6px;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.garden dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 14px;margin:0}
+.garden dt{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.garden dd{margin:0;font-weight:600;font-size:.9rem}
+.warn{margin:8px 0 0;font-size:.85rem;font-weight:600;padding:6px 10px;border-radius:8px}
+.warn.tox{background:var(--ko-soft);color:var(--ko)}
+.warn.inv{background:var(--tag-soft);color:var(--ink)}
+.choice{transition:transform .08s}
+.choice:active:not([disabled]){transform:scale(.98)}
+@media (prefers-reduced-motion:no-preference){
+  .choice,.lvl,.btn{transition:background .15s,border-color .15s,filter .15s}
+  .answer{animation:rise .25s ease-out}
+  @keyframes rise{from{transform:translateY(6px)}to{transform:none}}
+}
+</style>
+
+<header class="top wrap">
+  <a class="brand" href="#accueil" aria-label="Herbier Vivant, accueil">
+    <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="9" fill="var(--leaf)"/><path d="M9 25c0-9 6-15 16-16-1 10-7 16-16 16Z" fill="var(--bg)"/><path d="M9 25 20 14" stroke="var(--leaf)" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <span><b>Herbier Vivant</b><small>Reconnaissance des végétaux</small></span>
+  </a>
+  <div class="streak" id="streak" title="Jours d'entraînement consécutifs"><i>●</i> <span id="streakN">0</span> j</div>
+</header>
+
+<main class="wrap" id="app"></main>
+
+<nav class="tabs" aria-label="Navigation">
+  <div class="in">
+    <a href="#accueil" data-v="accueil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/></svg>Aujourd'hui</a>
+    <a href="#niveaux" data-v="niveaux"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20h4v-6H4zM10 20h4V9h-4zM16 20h4V4h-4z"/></svg>Niveaux</a>
+    <a href="#herbier" data-v="herbier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M9 15c0-4 3-7 7-7-.5 4-3 7-7 7Z"/></svg>Herbier</a>
+    <a href="#partager" data-v="partager"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>Partager</a>
+  </div>
+</nav>
+
+<dialog id="modal"></dialog>
+
+<script>
+const PLANTS = /*PLANTS*/[];
+const IMAGES = /*IMAGES*/{};
+const GARDEN = /*GARDEN*/{};
+const SHARE_URL = /*SHARE_URL*/"";
+
+const LEVELS = [
+  {n:1, name:"Les incontournables", sub:"Arbres, fruitiers et arbustes qu'on croise partout en France"},
+  {n:2, name:"Jardins et espaces verts", sub:"Les classiques des pépinières, des villes et des pergolas"},
+  {n:3, name:"Haies et arbustes d'ornement", sub:"Persistants, floraux, haies libres et champêtres"},
+  {n:4, name:"Arbres de parcs et d'alignement", sub:"Érables, chênes, tilleuls et raretés des arboretums"},
+  {n:5, name:"Conifères", sub:"Sapins, épicéas, pins, cyprès et genévriers"},
+  {n:6, name:"Vivaces, graminées et grimpantes", sub:"Massifs, sous-arbrisseaux, fougères et lianes"},
+  {n:7, name:"Flore sauvage et sosies", sub:"Les espèces indigènes à départager au détail près"},
+  {n:8, name:"Méditerranée et littoral", sub:"Garrigue, maquis et bord de mer"},
+  {n:9, name:"Venus d'ailleurs", sub:"Espèces d'autres pays qui poussent en France"},
+];
+const SESSION_LEN = 10;
+const MODES = {
+  classique: {name:"Classique", sub:"4 photos, choisissez le bon nom", icon:"M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"},
+  ecrire:    {name:"Nom à écrire", sub:"4 photos, tapez le nom latin", icon:"M4 20h4L19 9l-4-4L4 16zM14 6l4 4"},
+  saison:    {name:"Saisons", sub:"La plante telle qu'elle est à une saison", icon:"M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"},
+};
+const SEASONS = {
+  printemps: {name:"Printemps", slots:[["spring","Fleur (printemps)"],["leaf","Feuille"]], need:"spring"},
+  ete:       {name:"Été", slots:[["leaf","Feuille"],["habit","Port"]], need:null},
+  automne:   {name:"Automne", slots:[["fruit","Fruit"],["autumn","Feuillage d'automne"]], need:"autumn"},
+  hiver:     {name:"Hiver", slots:[["bark","Écorce"],["winter","Silhouette d'hiver"]], need:"winter"},
+};
+const currentSeason = () => { const m=new Date().getMonth()+1; return m>=3&&m<=5?"printemps":m>=6&&m<=8?"ete":m>=9&&m<=11?"automne":"hiver" };
+const INTERVALS = [0,1,1,4,8,16,32]; // jours avant révision : lendemain, lendemain (=> connue au 3e jour), puis 4, 8, 16, 32 jours
+const MASTER_DAYS = 3;              // une plante est « connue » après avoir été reconnue 3 jours différents
+const UNLOCK = 0.5;                 // part du niveau précédent à connaître pour débloquer
+
+const byId = Object.fromEntries(PLANTS.map(p=>[p.id,p]));
+const $ = s => document.querySelector(s);
+const esc = s => String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const shuffle = a => {a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const today = () => { const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0") };
+const dayDiff = (a,b) => Math.round((new Date(b+"T12:00")-new Date(a+"T12:00"))/864e5);
+
+/* ---------- Progression (dans ce navigateur) ---------- */
+const KEY = "herbier-vivant-v1";
+let S = load();
+function load(){
+  let s=null; try{ s=JSON.parse(localStorage.getItem(KEY)) }catch(e){}
+  const o = Object.assign({cards:{}, days:{}, streak:0, lastDay:null, best:0, all:false, maxLvl:1, mode:"classique", season:currentSeason()}, s||{});
+  return o;
+}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)) }catch(e){} }
+const card = id => {
+  const c = S.cards[id] || {box:0, ok:0, ko:0, last:null};
+  if (c.days === undefined) { c.days = (c.box>=2 && c.last) ? 1 : 0; c.okDay = c.days ? c.last : null } // anciennes données
+  return c;
+};
+const learning = id => { const c = card(id); return c.box>0 && c.days < MASTER_DAYS };
+const known = id => card(id).days >= MASTER_DAYS;
+
+function levelStats(n){
+  const ps = PLANTS.filter(p=>p.lvl===n);
+  const k = ps.filter(p=>known(p.id)).length;
+  const seen = ps.filter(p=>card(p.id).box>0).length;
+  return {total:ps.length, known:k, seen, ratio: ps.length? k/ps.length : 0};
+}
+function unlocked(n){ return S.all || n <= (S.maxLvl||1) }
+function refreshUnlocks(){
+  let m = S.maxLvl||1; const before = m;
+  while (m < LEVELS.length && levelStats(m).ratio >= UNLOCK) m++;
+  S.maxLvl = m; if (m!==before) save();
+  return m > before;
+}
+function isDue(id){
+  const c = card(id); if(!c.box || !c.last) return false;
+  return dayDiff(c.last, today()) >= INTERVALS[Math.min(c.box, INTERVALS.length-1)];
+}
+function displayStreak(){
+  let n = S.streak;
+  if (S.lastDay && dayDiff(S.lastDay, today()) > 1) n = 0;
+  $("#streakN").textContent = n;
+}
+
+/* ---------- Construction d'une séance ---------- */
+function seasonCount(k){ const need=SEASONS[k].need; return PLANTS.filter(p=>!need || (IMAGES[p.id]||{})[need]).length }
+function modeOK(p){
+  if (S.mode!=="saison") return true;
+  if (seasonCount(S.season) < SESSION_LEN) S.season = "ete";
+  const need = SEASONS[S.season].need;
+  return !need || !!(IMAGES[p.id]||{})[need];
+}
+function buildSession(level){
+  let pool = PLANTS.filter(p => (level ? p.lvl===level : unlocked(p.lvl)) && modeOK(p));
+  if (pool.length < SESSION_LEN) pool = PLANTS.filter(p => modeOK(p) && (level ? p.lvl<=level : true));
+  let picks = [];
+  if (level){
+    const due = shuffle(pool.filter(p=>isDue(p.id)));
+    const fresh = pool.filter(p=>!card(p.id).box);
+    const weak = shuffle(pool.filter(p=>card(p.id).box>0 && !known(p.id)));
+    picks = [...due, ...fresh.slice(0,5), ...weak, ...shuffle(pool)];
+  } else {
+    // révisions : d'abord les plantes les plus proches d'être connues (2/3 jours, puis 1/3)
+    const due = shuffle(pool.filter(p=>isDue(p.id))).sort((a,b)=>card(b.id).days-card(a.id).days);
+    // nouvelles plantes : dans l'ordre, des plus communes aux plus difficiles
+    const fresh = pool.filter(p=>!card(p.id).box).sort((a,b)=>a.lvl-b.lvl);
+    const nNew = Math.max(2, SESSION_LEN - Math.min(due.length, 8));
+    const weak = shuffle(pool.filter(p=>card(p.id).box>0 && !known(p.id)));
+    picks = [...due.slice(0,8), ...fresh.slice(0,nNew), ...weak, ...shuffle(pool)];
+  }
+  const seen = new Set(); const out=[];
+  for(const p of picks){ if(!seen.has(p.id)){ seen.add(p.id); out.push(p) } if(out.length===SESSION_LEN) break }
+  return shuffle(out).map(p => makeQuestion(p));
+}
+function makeQuestion(p){
+  const mode = "lat"; // chaque réponse affiche le nom latin, avec le nom français en petit dessous
+  const nChoices = p.lvl>=4 ? 6 : 4;
+  const others = [];
+  const add = q => { if(q && q.id!==p.id && !others.includes(q) && q[mode]!==p[mode]) others.push(q) };
+  shuffle(p.conf).forEach(id=>add(byId[id]));
+  shuffle(PLANTS.filter(q=>q.type===p.type && Math.abs(q.lvl-p.lvl)<=2)).forEach(add);
+  shuffle(PLANTS.filter(q=>q.lvl===p.lvl)).forEach(add);
+  shuffle(PLANTS).forEach(add);
+  const choices = shuffle([p, ...others.slice(0,nChoices-1)]);
+  return {p, mode, choices, answered:null, kind: S.mode, season: S.season};
+}
+
+/* ---------- Images ----------
+   4 photos par plante (Pl@ntNet, licences Creative Commons) : feuille, fruit, écorce, port. */
+const SLOTS = [["leaf","Feuille"],["fruit","Fruit"],["bark","Écorce"],["habit","Port"]];
+function slotLabel(p, slot){
+  const m = (IMAGES[p.id]||{})[slot] || {};
+  const organ = m.organ || slot;
+  const woody = /^(Arbre|Arbuste|Conifère|Liane|Palmier)/.test(p.type);
+  return {leaf:"Feuille", flower:"Fleur", fruit:"Fruit", bark: woody?"Écorce":"Tige", twig: woody?"Rameau":"Tige", spores:"Spores", habit:"Port"}[organ] || "Photo";
+}
+function photos(p, season){
+  const im = IMAGES[p.id]||{};
+  if (season) return SEASONS[season].slots.map(([k,l])=>({slot:k, label: k==="fruit"||k==="bark"||k==="leaf"||k==="habit" ? slotLabel(p,k) : l, ...(im[k]||{})})).filter(x=>x.file);
+  return SLOTS.map(([k])=>({slot:k, label:slotLabel(p,k), ...(im[k]||{})})).filter(x=>x.file);
+}
+function thumb(p){ const m=(IMAGES[p.id]||{}); const f=(m.leaf||m.habit||m.fruit||m.bark||{}).file; return f ? `<img src="${esc(f)}" alt="" loading="lazy">` : `<img alt="">` }
+function creditHTML(m){
+  if(!m) return "";
+  return `Photo : ${esc(m.by||"Pl@ntNet")} · ${esc(m.lic||"")}${m.src?` · <a href="${esc(m.src)}" target="_blank" rel="noopener">Pl@ntNet</a>`:""}`;
+}
+function gallery(p, hide, season){
+  const ph = photos(p, season);
+  if (!ph.length) return `<div class="photo noimg">Photos indisponibles pour cette plante.</div>`;
+  return `<div class="g4 ${ph.length===2?"g2":""}" data-pid="${p.id}">${ph.map((m,i)=>`<button class="g4-cell" type="button" data-gal="${p.id}" data-i="${i}" data-hide="${hide?1:0}" data-season="${season||""}" aria-label="Agrandir : ${esc(m.label)}">
+    <img src="${esc(m.file)}" alt="${esc(hide?m.label+" du végétal à identifier":m.label+" de "+p.fr)}" loading="${hide?"eager":"lazy"}">
+    <span class="g4-tag">${esc(m.label)}</span></button>`).join("")}</div>`;
+}
+/* Visionneuse plein écran : glisser ou flèches pour passer d'une photo à l'autre */
+let viewer = null;
+function openViewer(p, i, hide, season){
+  const ph = photos(p, season); if(!ph.length) return;
+  viewer = {p, ph, i, hide};
+  modal.className = "zoomd";
+  drawViewer();
+  if(!modal.open) modal.showModal();
+}
+function drawViewer(){
+  const {p, ph, i, hide} = viewer; const m = ph[i];
+  modal.innerHTML = `<button class="close" type="button" aria-label="Fermer">✕</button>
+    <div class="vw"><img src="${esc(m.file)}" alt="${esc(m.label)}">
+      <button class="vw-nav vw-prev" type="button" aria-label="Photo précédente">‹</button>
+      <button class="vw-nav vw-next" type="button" aria-label="Photo suivante">›</button></div>
+    <div class="vw-bar"><div class="vw-tabs">${ph.map((x,j)=>`<button type="button" class="vw-tab" data-j="${j}" aria-current="${j===i}">${esc(x.label)}</button>`).join("")}</div>
+      <div class="vw-credit">${hide?"":`<b>${esc(p.fr)}</b> · `}${creditHTML(m)}</div></div>`;
+  modal.querySelector(".close").onclick=()=>modal.close();
+  modal.querySelector(".vw-prev").onclick=()=>step(-1);
+  modal.querySelector(".vw-next").onclick=()=>step(1);
+  modal.querySelectorAll(".vw-tab").forEach(b=>b.onclick=()=>{ viewer.i=+b.dataset.j; drawViewer() });
+  let x0=null; const im=modal.querySelector(".vw");
+  im.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true});
+  im.addEventListener("touchend",e=>{ if(x0==null) return; const dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>40) step(dx<0?1:-1); x0=null });
+}
+function step(d){ if(!viewer) return; viewer.i=(viewer.i+d+viewer.ph.length)%viewer.ph.length; drawViewer() }
+document.addEventListener("click", e=>{ const z=e.target.closest("[data-zoomsrc]"); if(z){ e.preventDefault(); viewer=null; modal.className="zoomd"; modal.innerHTML=`<button class="close" type="button" aria-label="Fermer">✕</button><div class="vw"><img src="${esc(z.dataset.zoomsrc)}" alt=""></div>`; modal.querySelector(".close").onclick=()=>modal.close(); if(!modal.open) modal.showModal() } });
+document.addEventListener("click", e=>{ const g=e.target.closest("[data-gal]"); if(g){ e.preventDefault(); openViewer(byId[g.dataset.gal], +g.dataset.i, g.dataset.hide==="1", g.dataset.season||null) } });
+document.addEventListener("keydown", e=>{ if(modal.open && viewer && modal.classList.contains("zoomd")){ if(e.key==="ArrowRight") step(1); if(e.key==="ArrowLeft") step(-1) } });
+
+/* ---------- Vues ---------- */
+let quiz = null; // séance en cours
+const app = $("#app");
+
+function route(){
+  if ((location.hash||"")!=="#seance") document.body.classList.remove("in-session");
+  const v = (location.hash||"#accueil").slice(1);
+  const known = ["accueil","niveaux","herbier","partager","seance"];
+  const view = known.includes(v) ? v : "accueil";
+  document.querySelectorAll("nav.tabs a").forEach(a=>a.setAttribute("aria-current", a.dataset.v===view || (view==="seance" && a.dataset.v==="accueil") ? "page":"false"));
+  refreshUnlocks(); displayStreak();
+  if (view==="seance"){ if(!quiz){ location.hash="#accueil"; return } renderQuiz(); }
+  else ({accueil:renderHome, niveaux:renderLevels, herbier:renderHerbier, partager:renderShare})[view]();
+  window.scrollTo(0,0);
+}
+window.addEventListener("hashchange", route);
+
+function renderHome(){
+  if (seasonCount(S.season) < SESSION_LEN) S.season = "ete";
+  const t = today(); const d = S.days[t];
+  const totalKnown = PLANTS.filter(p=>known(p.id)).length;
+  const due = PLANTS.filter(p=>unlocked(p.lvl) && isDue(p.id)).length;
+  const done = d && d.sessions>0;
+  const pct = Math.round(totalKnown/PLANTS.length*100);
+  const C = 2*Math.PI*40;
+  const week = [...Array(7)].map((_,i)=>{ const dt=new Date(); dt.setDate(dt.getDate()-(6-i));
+    const k=dt.getFullYear()+"-"+String(dt.getMonth()+1).padStart(2,"0")+"-"+String(dt.getDate()).padStart(2,"0");
+    return {k, on: S.days[k] && S.days[k].sessions>0, l:"DLMMJVS"[dt.getDay()], today:k===t}});
+  const curLvl = LEVELS.find(l=>unlocked(l.n) && levelStats(l.n).ratio<1) || LEVELS[LEVELS.length-1];
+  app.innerHTML = `<section class="view">
+    <div class="hero">
+      <div>
+        <div class="eyebrow">${new Date().toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"})}</div>
+        <h1>${done ? "Séance du jour faite. Bravo !" : "Votre séance du jour vous attend"}</h1>
+        <p>${SESSION_LEN} plantes à reconnaître : ${due ? `<b>${due}</b> révision${due>1?"s":""} et ` : ""}de nouvelles espèces du niveau « ${esc(curLvl.name)} ».</p>
+      </div>
+      <svg class="ring" viewBox="0 0 96 96" role="img" aria-label="${totalKnown} végétaux connus sur ${PLANTS.length}">
+        <circle cx="48" cy="48" r="40" fill="none" stroke="var(--surface-2)" stroke-width="9"/>
+        <circle cx="48" cy="48" r="40" fill="none" stroke="var(--leaf)" stroke-width="9" stroke-linecap="round" stroke-dasharray="${C*pct/100} ${C}" transform="rotate(-90 48 48)"/>
+        <text x="48" y="50" text-anchor="middle" font-size="21">${totalKnown}</text>
+        <text x="48" y="66" text-anchor="middle" font-size="10" style="font-family:var(--f-body);font-weight:600;fill:var(--muted)">sur ${PLANTS.length}</text>
+      </svg>
+    </div>
+    <div class="modes" role="radiogroup" aria-label="Mode d'entraînement">${Object.entries(MODES).map(([k,m])=>`<button class="mode" type="button" role="radio" aria-checked="${S.mode===k}" data-mode="${k}">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="${m.icon}"/></svg><b>${m.name}</b><span>${m.sub}</span></button>`).join("")}</div>
+    ${S.mode==="saison"?`<div class="seasons" role="radiogroup" aria-label="Saison">${Object.entries(SEASONS).map(([k,v])=>`<button class="season" type="button" role="radio" aria-checked="${S.season===k}" data-season="${k}" ${seasonCount(k)<SESSION_LEN?"disabled":""}>${v.name}${k===currentSeason()?" ·&nbsp;maintenant":""}${seasonCount(k)<SESSION_LEN?" (bientôt)":""}</button>`).join("")}</div>
+      <p class="small muted" style="margin:-6px 0 0">${{printemps:"Fleurs et jeunes feuilles.",ete:"Feuilles et silhouette en pleine végétation.",automne:"Fruits et couleurs d'automne.",hiver:"Écorce et silhouette sans feuilles : le vrai test de terrain."}[S.season]} ${PLANTS.filter(modeOK).length} végétaux disponibles.</p>`:""}
+    <button class="btn btn-main btn-wide" id="go" type="button">${done ? "Faire une séance bonus" : "Commencer l'entraînement du jour"}</button>
+    <div class="stats">
+      <div class="card stat"><b>${S.lastDay && dayDiff(S.lastDay,t)<=1 ? S.streak : 0}</b><span>jours d'affilée<br><small>record ${Math.max(S.best,0)}</small></span></div>
+      <div class="card stat"><b>${totalKnown}</b><span>connus<br><small>3 jours réussis</small></span></div>
+      <div class="card stat"><b>${PLANTS.filter(p=>learning(p.id)).length}</b><span>en cours<br><small>1 ou 2 jours</small></span></div>
+    </div>
+    <div class="card pad">
+      <div class="eyebrow" style="margin-bottom:10px">Cette semaine</div>
+      <div class="week">${week.map(w=>`<div><div class="d ${w.on?"on":""} ${w.today?"today":""}">${w.on?"✓":""}</div>${w.l}</div>`).join("")}</div>
+    </div>
+    <div class="card pad">
+      <div class="eyebrow" style="margin-bottom:6px">Comment ça marche</div>
+      <ol class="steps small">
+        <li>Chaque jour, une séance de ${SESSION_LEN} plantes : de nouvelles espèces, des plus communes aux plus difficiles, et des révisions. Choisissez votre mode : classique, nom à écrire ou saisons.</li>
+        <li>Après chaque réponse, une fiche donne les noms français et latin, un conseil pour reconnaître la plante et la différence avec ses sosies.</li>
+        <li>Une plante est « connue » quand vous la reconnaissez 3 jours différents. Une plante ratée revient dès le lendemain.</li>
+        <li>Connaissez la moitié d'un niveau pour débloquer le suivant, jusqu'aux végétaux du monde entier.</li>
+      </ol>
+    </div>
+  </section>`;
+  $("#go").onclick = ()=>startSession(null);
+  app.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{ S.mode=b.dataset.mode; save(); renderHome() });
+  app.querySelectorAll(".season").forEach(b=>b.onclick=()=>{ S.season=b.dataset.season; save(); renderHome() });
+}
+
+function renderLevels(){
+  app.innerHTML = `<section class="view">
+    <div><div class="eyebrow">Parcours</div><h1 style="font-size:1.8rem">Niveaux</h1>
+    <p class="muted" style="margin:6px 0 0">Choisissez un niveau pour une séance ciblée. Un niveau s'ouvre quand vous connaissez la moitié du précédent.</p></div>
+    <div class="levels">${LEVELS.map(l=>{const st=levelStats(l.n), u=unlocked(l.n);
+      return `<button class="lvl" data-l="${l.n}" ${u?"":"disabled"} type="button">
+        <span class="num">${u?l.n:"🔒"}</span>
+        <span><h3>${esc(l.name)}</h3><p>${esc(l.sub)}</p><span class="bar"><i style="width:${Math.round(st.ratio*100)}%"></i></span></span>
+        <span class="meta">${st.known}/${st.total}<br>connus</span></button>`}).join("")}</div>
+    <div class="card pad small" id="offline" hidden style="display:flex;flex-direction:column;gap:8px">
+      <b>Hors connexion</b>
+      <span class="muted">Les photos vues une fois restent sur le téléphone. Pour réviser sur un chantier sans réseau, téléchargez d'avance celles des niveaux ouverts.</span>
+      <button class="btn btn-ghost" id="dl" type="button">Télécharger les photos des niveaux ouverts</button>
+    </div>
+    <label class="card pad row small" style="align-items:center;cursor:pointer">
+      <input type="checkbox" id="all" ${S.all?"checked":""}> <span>Tout débloquer (pour les paysagistes déjà expérimentés)</span>
+    </label>
+  </section>`;
+  app.querySelectorAll(".lvl").forEach(b=>b.onclick=()=>startSession(+b.dataset.l));
+  $("#all").onchange = e => { S.all = e.target.checked; save(); renderLevels() };
+  const sw = navigator.serviceWorker && navigator.serviceWorker.controller;
+  if (sw){
+    const files = PLANTS.filter(p=>unlocked(p.lvl)).flatMap(p=>photos(p).map(m=>m.file));
+    $("#offline").hidden = false;
+    $("#dl").textContent = `Télécharger les photos des niveaux ouverts (${files.length} photos, environ ${Math.round(files.length*0.13)} Mo)`;
+    $("#dl").onclick = ()=>{ sw.postMessage({type:"precache", files}); toast("Téléchargement lancé : gardez l'appli ouverte quelques minutes") };
+  }
+}
+
+function renderHerbier(){
+  app.innerHTML = `<section class="view">
+    <div><div class="eyebrow">Catalogue</div><h1 style="font-size:1.8rem">L'herbier</h1>
+    <p class="muted" style="margin:6px 0 0">Les ${PLANTS.length} végétaux du parcours. Touchez une fiche pour l'étudier.</p></div>
+    <div class="search">
+      <input id="q" type="search" placeholder="Chercher un nom français ou latin…" aria-label="Chercher">
+      <select id="fl" aria-label="Filtrer par niveau"><option value="">Tous les niveaux</option>${LEVELS.map(l=>`<option value="${l.n}">${l.n}. ${esc(l.name)}</option>`).join("")}</select>
+    </div>
+    <p class="small muted" style="margin:0"><span class="dot"></span>pas encore vu <span class="dot m1" style="margin-left:10px"></span>en cours (1 ou 2 jours réussis) <span class="dot m2" style="margin-left:10px"></span>connu (3 jours)</p>
+    <div class="grid" id="grid"></div>
+  </section>`;
+  const draw = ()=>{
+    const q = $("#q").value.trim().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+    const l = $("#fl").value;
+    const list = PLANTS.filter(p=>(!l||p.lvl==l) && (!q || (p.fr+" "+p.lat+" "+p.fam).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").includes(q)));
+    $("#grid").innerHTML = list.map(p=>{const c=card(p.id); const cls = c.days>=MASTER_DAYS?"m2":c.box>0?"m1":"";
+      return `<button class="mini" data-id="${p.id}" type="button">${thumb(p)}
+      <span><b><i class="dot ${cls}"></i>${esc(p.fr)}</b><em>${esc(p.lat)}</em></span></button>`}).join("") || `<p class="muted">Aucun végétal ne correspond.</p>`;
+    $("#grid").querySelectorAll(".mini").forEach(b=>b.onclick=()=>openSheet(byId[b.dataset.id]));
+  };
+  $("#q").oninput = draw; $("#fl").onchange = draw; draw();
+}
+
+function shareLink(){ return SHARE_URL || location.href.split("#")[0] }
+function renderShare(){
+  const url = shareLink();
+  const msg = `Je m'entraîne chaque jour à reconnaître les végétaux avec Herbier Vivant (photos, noms latins, astuces de pro). Viens t'entraîner aussi : ${url}`;
+  app.innerHTML = `<section class="view">
+    <div><div class="eyebrow">Entre amis</div><h1 style="font-size:1.8rem">Partager l'application</h1>
+    <p class="muted" style="margin:6px 0 0">Envoyez ce lien à vos amis et collègues. Chacun suit sa propre progression, enregistrée sur son téléphone ou son ordinateur.</p></div>
+    <div class="card pad" style="display:flex;flex-direction:column;gap:12px">
+      <div class="eyebrow">Lien de l'application</div>
+      <div class="share-url" id="url">${esc(url)}</div>
+      <div class="row"><button class="btn btn-main" id="cp1" type="button">Copier le lien</button><button class="btn btn-ghost" id="cp2" type="button">Copier un message d'invitation</button></div>
+    </div>
+    <div class="card pad" style="display:flex;flex-direction:column;gap:10px">
+      <div class="eyebrow">Défiez-les</div>
+      <p style="margin:0">Partagez votre score : <b>${PLANTS.filter(p=>known(p.id)).length}</b> végétaux connus sur ${PLANTS.length}, série de <b>${S.lastDay && dayDiff(S.lastDay,today())<=1 ? S.streak : 0}</b> jour(s).</p>
+      <div class="row"><button class="btn btn-ghost" id="cp3" type="button">Copier mon score</button></div>
+    </div>
+    <div class="card pad small muted">
+      Votre progression reste dans ce navigateur. Si vous videz les données du navigateur ou changez d'appareil, elle repart de zéro.
+      <div class="row" style="margin-top:10px"><button class="btn btn-ghost" id="reset" type="button">Remettre ma progression à zéro</button></div>
+      <div id="resetc" hidden style="margin-top:10px"><p style="margin:0 0 8px;color:var(--ko)">Toute votre progression sera effacée. Confirmer ?</p>
+      <div class="row"><button class="btn btn-ghost" id="resetyes" type="button" style="color:var(--ko)">Oui, tout effacer</button><button class="btn btn-ghost" id="resetno" type="button">Annuler</button></div></div>
+    </div>
+  </section>`;
+  const copy = (txt, ok) => {
+    const fallback = ()=>{ const r=document.createRange(); r.selectNodeContents($("#url")); const s=getSelection(); s.removeAllRanges(); s.addRange(r); toast("Sélectionné : faites Copier") };
+    try{ navigator.clipboard.writeText(txt).then(()=>toast(ok)).catch(fallback) }catch(e){ fallback() }
+  };
+  $("#cp1").onclick = ()=>copy(url,"Lien copié");
+  $("#cp2").onclick = ()=>copy(msg,"Message copié, collez-le dans un SMS ou WhatsApp");
+  $("#cp3").onclick = ()=>copy(`🌿 Herbier Vivant : je connais ${PLANTS.filter(p=>known(p.id)).length}/${PLANTS.length} végétaux, série de ${S.streak} jour(s). À toi ! ${url}`,"Score copié");
+  $("#reset").onclick = ()=>{ $("#resetc").hidden=false };
+  $("#resetno").onclick = ()=>{ $("#resetc").hidden=true };
+  $("#resetyes").onclick = ()=>{ S = Object.assign(load(), {cards:{},days:{},streak:0,lastDay:null,best:0,all:false,maxLvl:1}); save(); toast("Progression effacée"); route() };
+}
+
+/* ---------- Séance ---------- */
+function startSession(level){
+  quiz = {level, qs: buildSession(level), i:0, good:0, knownBefore: PLANTS.filter(p=>known(p.id)).length};
+  quiz.qs.forEach(q=>photos(q.p).forEach(m=>{ const i=new Image(); i.src=m.file })); // précharge les photos de la séance
+  if (location.hash==="#seance") renderQuiz(); else location.hash = "#seance";
+}
+function renderQuiz(){
+  const q = quiz.qs[quiz.i];
+  const p = q.p;
+  const lvlName = LEVELS[p.lvl-1].name;
+  document.body.classList.add("in-session");
+  const tag = q.kind==="saison" ? SEASONS[q.season].name : MODES[q.kind].name;
+  app.innerHTML = `<section class="view quiz">
+    <div class="qhead"><span class="qcount">${quiz.i+1} / ${quiz.qs.length}</span><span class="bar"><i style="width:${(quiz.i)/quiz.qs.length*100}%"></i></span>
+      <span class="chip tagc">${esc(tag)}</span>
+      <button class="btn btn-ghost small" id="quit" type="button" style="padding:8px 12px">Quitter</button></div>
+    ${gallery(p, true, q.kind==="saison" ? q.season : null)}
+    <div>
+      <div class="eyebrow">Niveau ${p.lvl} · ${esc(lvlName)} · ${esc(p.type)}</div>
+      <h2 class="qtitle">${q.kind==="ecrire" ? "Écrivez son nom latin" : "Quel est ce végétal ?"}</h2>
+    </div>
+    ${q.kind==="ecrire" ? `<form class="typed" id="typed" autocomplete="off">
+        <input id="guess" type="text" inputmode="text" autocapitalize="sentences" spellcheck="false" placeholder="Ex. : Quercus robur" aria-label="Nom latin">
+        <div class="row"><button class="btn btn-main" type="submit" style="flex:2">Valider</button><button class="btn btn-ghost" type="button" id="hint" style="flex:1">Indice</button><button class="btn btn-ghost" type="button" id="skip" style="flex:1">Je ne sais pas</button></div>
+        <p class="small muted" id="hinttxt" style="margin:0">Le nom français est accepté aussi. Les petites fautes de frappe sont tolérées.</p>
+      </form>`
+    : `<div class="choices" id="choices">${q.choices.map((c,i)=>`<button class="choice" data-i="${i}" type="button"><span class="main latin">${esc(c.lat)}</span><span class="small muted">${esc(c.fr)}</span></button>`).join("")}</div>`}
+    <div id="fb"></div>
+  </section>`;
+  $("#quit").onclick = ()=>{ quiz=null; document.body.classList.remove("in-session"); location.hash="#accueil" };
+  if (q.kind==="ecrire"){
+    const f=$("#typed"), g=$("#guess");
+    f.onsubmit = e=>{ e.preventDefault(); if(g.value.trim()) answerTyped(g.value) };
+    $("#skip").onclick = ()=>answerTyped("");
+    $("#hint").onclick = ()=>{ q.hint=(q.hint||0)+1; $("#hinttxt").textContent = q.hint===1 ? `Genre : ${p.lat.replace(/^× /,"").split(" ")[0]}` : `Genre : ${p.lat.split(" ")[0]} · espèce en ${(p.lat.split(" ").slice(1).join(" ")||"").length} lettres, commence par « ${(p.lat.split(" ")[1]||"").slice(0,1)} »`; g.focus() };
+    if (q.answered===null) setTimeout(()=>g.focus({preventScroll:true}), 50);
+  } else app.querySelectorAll(".choice").forEach(b=>b.onclick=()=>answer(+b.dataset.i));
+  if (q.answered!==null) showFeedback(q);
+}
+/* Comparaison tolérante des noms écrits */
+const norm = s => String(s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/×|\bx\b/g," ").replace(/'[^']*'|\([^)]*\)|subsp\..*|var\..*/g," ").replace(/[^a-z ]/g," ").replace(/\s+/g," ").trim();
+function lev(a,b){ const m=a.length,n=b.length; if(!m) return n; if(!n) return m; let prev=[...Array(n+1).keys()];
+  for(let i=1;i<=m;i++){ const cur=[i]; for(let j=1;j<=n;j++) cur[j]=Math.min(prev[j]+1, cur[j-1]+1, prev[j-1]+(a[i-1]===b[j-1]?0:1)); prev=cur } return prev[n] }
+const near = (a,b) => a && b && lev(a,b) <= Math.max(1, Math.floor(b.length/8));
+function judge(text, p){
+  const t = norm(text); if(!t) return {ok:false, why:"skip"};
+  const lat = norm(p.lat), latWords = lat.split(" ");
+  if (near(t, lat)) return {ok:true, exact: t===lat, how:"latin"};
+  const frs = String(p.fr).split(/[()]/).map(norm).filter(Boolean);
+  if (frs.some(f=>near(t,f))) return {ok:true, how:"français"};
+  if (near(t.split(" ")[0], latWords[0])) return {ok:false, why:"genre"};
+  return {ok:false, why:"faux"};
+}
+function answerTyped(text){
+  const q = quiz.qs[quiz.i]; if(q.answered!==null) return;
+  q.typed = text; q.judge = judge(text, q.p);
+  q.answered = q.judge.ok ? q.choices.findIndex(c=>c.id===q.p.id) : -1;
+  record(q, q.judge.ok);
+}
+function answer(i){
+  const q = quiz.qs[quiz.i]; if(q.answered!==null) return;
+  q.answered = i;
+  record(q, q.choices[i].id===q.p.id);
+}
+function record(q, ok){
+  const c = Object.assign({}, card(q.p.id));
+  const t = today();
+  if(ok){
+    c.ok++; quiz.good++;
+    q.newDay = c.okDay !== t;              // une seule progression par jour
+    if (q.newDay){ c.box=Math.min(c.box+1, INTERVALS.length-1); c.days++; c.okDay=t }
+  } else { c.box=1; c.ko++; c.days=0; c.okDay=null }
+  c.last = t; S.cards[q.p.id]=c; save();
+  q.ok = ok;
+  try{ navigator.vibrate && navigator.vibrate(ok ? 18 : [30,50,30]) }catch(e){}
+  showFeedback(q);
+}
+function showFeedback(q){
+  const p=q.p, ok=q.ok;
+  let wrong = null, typedMsg = "";
+  if (q.kind==="ecrire"){
+    const g=$("#guess"); if(g){ g.value=q.typed||""; g.disabled=true; g.classList.add(ok?"good":"bad") }
+    app.querySelectorAll("#typed button").forEach(b=>b.hidden=true);
+    const j=q.judge||{};
+    typedMsg = ok ? (j.how==="français" ? `Bon nom français ! Le nom latin : <b class="latin">${esc(p.lat)}</b>` : j.exact ? "Orthographe parfaite." : `Presque parfait, l'orthographe exacte : <b class="latin">${esc(p.lat)}</b>`)
+      : j.why==="skip" ? `La réponse : <b class="latin">${esc(p.lat)}</b>`
+      : j.why==="genre" ? `Bon genre, mauvaise espèce. La réponse : <b class="latin">${esc(p.lat)}</b>`
+      : `Vous avez écrit « ${esc(q.typed)} ». La réponse : <b class="latin">${esc(p.lat)}</b>`;
+    $("#hinttxt").innerHTML = typedMsg;
+  } else {
+    app.querySelectorAll(".choice").forEach((b,i)=>{
+      b.disabled=true; const c=q.choices[i];
+      if(c.id===p.id) b.classList.add("good"); else if(i===q.answered) b.classList.add("bad"); else b.classList.add("dim");
+    });
+    if (!ok) wrong = q.choices[q.answered];
+  }
+  const last = quiz.i===quiz.qs.length-1;
+  $("#fb").innerHTML = `<div class="card answer">
+    <div class="verdict ${ok?"ok":"ko"}">${ok?"✓ Bien vu !":"✗ Ce n'était pas ça"}<span style="margin-left:auto;font-weight:600;font-size:.85rem">${progressText(p, ok, q.newDay)}</span></div>
+    ${q.kind==="saison" ? `<div class="pad" style="padding-bottom:0"><div class="eyebrow" style="margin-bottom:6px">Toute l'année</div>${gallery(p,false)}</div>` : ""}
+    ${sheetBody(p, wrong)}
+  </div>
+  <div class="nextbar"><button class="btn btn-main btn-wide" id="next" type="button">${last?"Voir le bilan":"Plante suivante →"}</button></div>`;
+  $("#next").onclick = next;
+  bindMinis($("#fb"));
+  $("#fb").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth", block:"start"});
+}
+function progressText(p, ok, newDay){
+  const d = card(p.id).days;
+  if (!ok) return "Retour à 0/3 jours";
+  if (d >= MASTER_DAYS) return newDay && d===MASTER_DAYS ? "Connue ! 3/3 jours" : "Connue";
+  return newDay ? `Jour ${d}/3 réussi` : `Déjà réussie aujourd'hui (${d}/3)`;
+}
+function seasonsHTML(p){
+  const im = IMAGES[p.id]||{};
+  const items = [["spring","Printemps"],["autumn","Automne"],["winter","Hiver"]].filter(([k])=>im[k]);
+  if (!items.length) return "";
+  return `<div><div class="eyebrow" style="margin-bottom:6px">Au fil des saisons</div><div class="views">${items.map(([k,l])=>
+    `<button class="view-btn season-shot" type="button" data-zoomsrc="${esc(im[k].file)}" aria-label="Agrandir : ${l}"><img src="${esc(im[k].file)}" alt="${esc(p.fr)} en ${l.toLowerCase()}" loading="lazy"><span>${l}</span></button>`).join("")}</div></div>`;
+}
+function gardenHTML(p){
+  const g = GARDEN[p.id]; if(!g) return "";
+  const row = (k,v) => v ? `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>` : "";
+  return `<div class="garden"><h4>Au jardin</h4><dl>
+    ${row("Rusticité", g.r ? g.r+" °C" : "")}${row("Exposition", g.e)}${row("Sol", g.s)}${row("Hauteur adulte", g.h)}</dl>
+    ${g.t?`<p class="warn tox">⚠ ${esc(g.t)}</p>`:""}${g.v?`<p class="warn inv">⚠ ${esc(g.v)}</p>`:""}</div>`;
+}
+function sheetBody(p, wrong){
+  const looks = [...new Set([...(wrong?[wrong.id]:[]), ...p.conf])].map(id=>byId[id]).filter(Boolean).slice(0,4);
+  return `<div class="label">
+    <div class="names"><div class="latin">${esc(p.lat)}</div><div class="fr">${esc(p.fr)}</div></div>
+    <div class="chips"><span class="chip tagc">${esc(p.fam)}</span><span class="chip">${esc(p.type)}</span><span class="chip">Origine : ${esc(p.orig)}</span><span class="chip">Niveau ${p.lvl}</span></div>
+    <div class="tip"><h4>Pour le reconnaître</h4><p>${esc(p.tip)}</p></div>
+    ${seasonsHTML(p)}
+    ${gardenHTML(p)}
+    <div class="diff"><h4>Pour ne pas confondre</h4><p>${esc(p.diff)}</p></div>
+    ${wrong?`<p class="small" style="margin:0">Vous avez répondu <b>${esc(wrong.fr)}</b> (<span class="latin">${esc(wrong.lat)}</span>). Comparez les deux ci-dessous.</p>`:""}
+    ${looks.length?`<div><div class="eyebrow" style="margin-bottom:6px">${wrong?"À comparer":"Ses sosies"}</div><div class="look">${looks.map(miniHTML).join("")}</div></div>`:""}
+  </div>`;
+}
+function miniHTML(p){ return `<button class="mini" data-id="${p.id}" type="button">${thumb(p)}<span>${esc(p.fr)}<br><em>${esc(p.lat)}</em></span></button>` }
+function bindMinis(root){ root.querySelectorAll(".mini").forEach(b=>b.onclick=()=>openSheet(byId[b.dataset.id])) }
+function next(){
+  if (quiz.i < quiz.qs.length-1){ quiz.i++; renderQuiz(); window.scrollTo(0,0); return }
+  finish();
+}
+function finish(){
+  document.body.classList.remove("in-session");
+  const t = today();
+  const d = S.days[t] || {sessions:0, good:0, total:0};
+  const first = d.sessions===0;
+  d.sessions++; d.good+=quiz.good; d.total+=quiz.qs.length; S.days[t]=d;
+  if (S.lastDay !== t){
+    S.streak = (S.lastDay && dayDiff(S.lastDay,t)===1) ? S.streak+1 : 1;
+    S.lastDay = t;
+  }
+  S.best = Math.max(S.best, S.streak);
+  save(); displayStreak();
+  const opened = refreshUnlocks() && !S.all;
+  const missed = quiz.qs.filter(q=>!q.ok).map(q=>q.p);
+  const g=quiz.good, n=quiz.qs.length;
+  const word = g===n ? "Sans faute !" : g>=n*.8 ? "Très bon œil" : g>=n*.5 ? "Bonne séance" : "On progresse en se trompant";
+  app.innerHTML = `<section class="view result">
+    <div class="card pad" style="text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center">
+      <div class="eyebrow">Bilan de la séance</div>
+      <div class="score">${g}/${n}</div>
+      <h2>${word}</h2>
+      <p class="muted" style="margin:0">${first?`Jour validé : série de <b>${S.streak}</b> jour${S.streak>1?"s":""}.`:"Séance bonus enregistrée."} Revenez demain pour garder votre série.</p>
+      <p style="margin:6px 0 0;font-weight:700">${(()=>{ const now=PLANTS.filter(p=>known(p.id)).length, d=now-quiz.knownBefore; return `${now} végétaux connus sur ${PLANTS.length}`+(d>0?` (+${d} aujourd'hui)`:"")+` · ${PLANTS.filter(p=>learning(p.id)).length} en cours d'apprentissage` })()}</p>
+      <p class="small muted" style="margin:4px 0 0">Une plante devient « connue » quand vous la reconnaissez 3 jours différents. Une erreur la remet à zéro.</p>
+      ${opened?`<p style="margin:6px 0 0;color:var(--leaf);font-weight:700">Nouveau niveau débloqué : ${esc(LEVELS[S.maxLvl-1].name)}</p>`:""}
+    </div>
+    ${missed.length?`<div><div class="eyebrow" style="margin-bottom:8px">À revoir (elles reviendront demain)</div><div class="look">${missed.map(miniHTML).join("")}</div></div>`:""}
+    <div class="row"><button class="btn btn-main" id="again" type="button" style="flex:1">Encore ${SESSION_LEN} plantes</button><a class="btn btn-ghost" href="#partager" style="flex:1">Défier un ami</a></div>
+  </section>`;
+  bindMinis(app);
+  const lvl = quiz.level; quiz=null;
+  $("#again").onclick = ()=>startSession(lvl);
+}
+
+/* ---------- Fiche & zoom ---------- */
+const modal = $("#modal");
+function openSheet(p){
+  viewer=null; modal.className="";
+  modal.innerHTML = `<button class="close" type="button" aria-label="Fermer">✕</button><div class="pad" style="padding-bottom:0">${gallery(p,false)}</div>${sheetBody(p,null)}`;
+  modal.querySelector(".close").onclick=()=>modal.close();
+  bindMinis(modal);
+  if(!modal.open) modal.showModal(); modal.scrollTop=0;
+}
+modal.addEventListener("click", e=>{ if(e.target===modal) modal.close() });
+let tt; function toast(m){ let el=$(".toast"); if(!el){ el=document.createElement("div"); el.className="toast"; el.setAttribute("role","status"); document.body.appendChild(el) } el.textContent=m; el.hidden=false; clearTimeout(tt); tt=setTimeout(()=>el.hidden=true,2600) }
+
+document.addEventListener("keydown", e=>{
+  if(location.hash!=="#seance"||!quiz||modal.open) return;
+  const q=quiz.qs[quiz.i];
+  if(q.kind!=="ecrire" && q.answered===null && /^[1-6]$/.test(e.key) && +e.key<=q.choices.length) answer(+e.key-1);
+  else if(q.answered!==null && e.key==="Enter"){ e.preventDefault(); next() }
+});
+
+if (location.hash==="#seance") location.hash="#accueil";
+route();
+</script>

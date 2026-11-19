@@ -1,0 +1,747 @@
+# niveau|nom latin|nom français|famille|type|origine
+# Niveaux : 1 incontournables, 2 jardins et espaces verts, 3 haies et arbustes d'ornement,
+# 4 arbres de parcs et d'alignement, 5 conifères, 6 vivaces graminées et grimpantes,
+# 7 flore sauvage et sosies, 8 Méditerranée et littoral, 9 venus d'ailleurs (acclimatés en France)
+1|Quercus robur|Chêne pédonculé|Fagacées|Arbre caduc|Europe
+1|Prunus avium|Merisier|Rosacées|Arbre caduc|Europe
+1|Salix alba|Saule blanc|Salicacées|Arbre caduc|Europe
+1|Salix caprea|Saule marsault|Salicacées|Arbre caduc|Europe
+1|Populus tremula|Tremble|Salicacées|Arbre caduc|Europe
+1|Malus domestica|Pommier|Rosacées|Arbre caduc|Asie centrale
+1|Pyrus communis|Poirier|Rosacées|Arbre caduc|Europe, Asie
+1|Prunus domestica|Prunier|Rosacées|Arbre caduc|Asie occidentale
+1|Prunus persica|Pêcher|Rosacées|Arbre caduc|Chine
+1|Prunus armeniaca|Abricotier|Rosacées|Arbre caduc|Asie centrale
+1|Prunus cerasus|Griottier|Rosacées|Arbre caduc|Asie occidentale
+1|Cydonia oblonga|Cognassier|Rosacées|Arbre caduc|Asie occidentale
+1|Vitis vinifera|Vigne|Vitacées|Liane caduque|Europe, Asie
+1|Rubus fruticosus|Ronce commune|Rosacées|Arbuste caduc|Europe
+1|Rubus idaeus|Framboisier|Rosacées|Arbuste caduc|Europe
+1|Ribes rubrum|Groseillier rouge|Grossulariacées|Arbuste caduc|Europe
+1|Ribes nigrum|Cassissier|Grossulariacées|Arbuste caduc|Europe
+1|Tilia × europaea|Tilleul commun|Malvacées|Arbre caduc|Europe
+1|Crataegus monogyna|Aubépine monogyne|Rosacées|Arbuste caduc|Europe
+1|Prunus spinosa|Prunellier|Rosacées|Arbuste caduc|Europe
+1|Cytisus scoparius|Genêt à balais|Fabacées|Arbuste caduc|Europe
+1|Ulex europaeus|Ajonc d'Europe|Fabacées|Arbuste persistant|Europe de l'Ouest
+1|Clematis vitalba|Clématite des haies|Renonculacées|Liane caduque|Europe
+1|Lonicera periclymenum|Chèvrefeuille des bois|Caprifoliacées|Liane caduque|Europe
+1|Parthenocissus quinquefolia|Vigne vierge|Vitacées|Liane caduque|Amérique du Nord
+1|Wisteria sinensis|Glycine de Chine|Fabacées|Liane caduque|Chine
+1|Ficus carica|Figuier|Moracées|Arbre caduc|Méditerranée
+1|Juglans regia|Noyer commun|Juglandacées|Arbre caduc|Asie centrale
+1|Castanea sativa|Châtaignier|Fagacées|Arbre caduc|Europe du Sud
+1|Aesculus hippocastanum|Marronnier d'Inde|Sapindacées|Arbre caduc|Balkans
+1|Robinia pseudoacacia|Robinier faux-acacia|Fabacées|Arbre caduc|Amérique du Nord
+1|Populus nigra|Peuplier noir|Salicacées|Arbre caduc|Europe
+1|Syringa vulgaris|Lilas commun|Oléacées|Arbuste caduc|Balkans
+1|Hydrangea macrophylla|Hortensia|Hydrangéacées|Arbuste caduc|Japon
+1|Rosa canina|Églantier|Rosacées|Arbuste caduc|Europe
+2|Magnolia × soulangeana|Magnolia de Soulange|Magnoliacées|Arbre caduc|Hybride horticole
+2|Magnolia stellata|Magnolia étoilé|Magnoliacées|Arbuste caduc|Japon
+2|Magnolia kobus|Magnolia de Kobé|Magnoliacées|Arbre caduc|Japon
+2|Chaenomeles speciosa|Cognassier du Japon|Rosacées|Arbuste caduc|Chine
+2|Kerria japonica|Corète du Japon|Rosacées|Arbuste caduc|Chine, Japon
+2|Weigela florida|Weigela|Caprifoliacées|Arbuste caduc|Corée, Chine
+2|Philadelphus coronarius|Seringat|Hydrangéacées|Arbuste caduc|Europe du Sud
+2|Hibiscus syriacus|Althéa (hibiscus de Syrie)|Malvacées|Arbuste caduc|Chine
+2|Cotinus coggygria|Arbre à perruque|Anacardiacées|Arbuste caduc|Europe du Sud, Asie
+2|Rhus typhina|Sumac de Virginie|Anacardiacées|Arbuste caduc|Amérique du Nord
+2|Ribes sanguineum|Groseillier à fleurs|Grossulariacées|Arbuste caduc|Ouest de l'Amérique du Nord
+2|Symphoricarpos albus|Symphorine blanche|Caprifoliacées|Arbuste caduc|Amérique du Nord
+2|Leycesteria formosa|Arbre aux faisans|Caprifoliacées|Arbuste caduc|Himalaya
+2|Kolkwitzia amabilis|Buisson de beauté|Caprifoliacées|Arbuste caduc|Chine
+2|Callicarpa bodinieri|Arbuste aux bonbons|Lamiacées|Arbuste caduc|Chine
+2|Caryopteris × clandonensis|Caryoptéris|Lamiacées|Arbuste caduc|Hybride horticole
+2|Ceanothus thyrsiflorus|Céanothe|Rhamnacées|Arbuste persistant|Californie
+2|Escallonia rubra|Escallonia|Escalloniacées|Arbuste persistant|Chili, Argentine
+2|Hypericum calycinum|Millepertuis à grandes fleurs|Hypéricacées|Arbuste persistant|Balkans, Turquie
+2|Potentilla fruticosa|Potentille arbustive|Rosacées|Arbuste caduc|Hémisphère Nord
+2|Spiraea japonica|Spirée du Japon|Rosacées|Arbuste caduc|Japon, Chine
+2|Spiraea thunbergii|Spirée de Thunberg|Rosacées|Arbuste caduc|Chine, Japon
+2|Physocarpus opulifolius|Physocarpe|Rosacées|Arbuste caduc|Amérique du Nord
+2|Amelanchier lamarckii|Amélanchier de Lamarck|Rosacées|Arbuste caduc|Amérique du Nord
+2|Malus floribunda|Pommier d'ornement du Japon|Rosacées|Arbre caduc|Japon
+2|Prunus subhirtella|Cerisier d'automne|Rosacées|Arbre caduc|Japon
+2|Prunus dulcis|Amandier|Rosacées|Arbre caduc|Asie occidentale
+2|Pyrus calleryana|Poirier de Chine|Rosacées|Arbre caduc|Chine
+2|Laburnum anagyroides|Cytise (faux-ébénier)|Fabacées|Arbre caduc|Europe centrale et du Sud
+2|Koelreuteria paniculata|Savonnier|Sapindacées|Arbre caduc|Chine, Corée
+2|Cornus kousa|Cornouiller du Japon|Cornacées|Arbre caduc|Japon, Corée, Chine
+2|Cornus sericea|Cornouiller stolonifère|Cornacées|Arbuste caduc|Amérique du Nord
+2|Viburnum plicatum|Viorne de Chine|Viburnacées|Arbuste caduc|Chine, Japon
+2|Viburnum × bodnantense|Viorne de Bodnant|Viburnacées|Arbuste caduc|Hybride horticole
+2|Viburnum carlesii|Viorne de Carles|Viburnacées|Arbuste caduc|Corée
+2|Viburnum davidii|Viorne de David|Viburnacées|Arbuste persistant|Chine
+2|Viburnum rhytidophyllum|Viorne à feuilles ridées|Viburnacées|Arbuste persistant|Chine
+2|Hamamelis × intermedia|Hamamélis|Hamamélidacées|Arbuste caduc|Hybride horticole
+2|Chimonanthus praecox|Chimonanthe (chimonanthe précoce)|Calycanthacées|Arbuste caduc|Chine
+2|Camellia sasanqua|Camélia d'automne|Théacées|Arbuste persistant|Japon
+2|Rhododendron ponticum|Rhododendron pontique|Éricacées|Arbuste persistant|Caucase, péninsule Ibérique
+2|Rhododendron luteum|Azalée jaune|Éricacées|Arbuste caduc|Caucase, Europe de l'Est
+2|Kalmia latifolia|Laurier des montagnes|Éricacées|Arbuste persistant|Est de l'Amérique du Nord
+2|Paeonia suffruticosa|Pivoine arbustive|Paeoniacées|Arbuste caduc|Chine
+2|Fuchsia magellanica|Fuchsia de Magellan|Onagracées|Arbuste caduc|Chili, Argentine
+2|Hydrangea arborescens|Hortensia arborescent|Hydrangéacées|Arbuste caduc|Est des États-Unis
+2|Hydrangea anomala|Hortensia grimpant|Hydrangéacées|Liane caduque|Japon, Corée
+2|Campsis radicans|Bignone|Bignoniacées|Liane caduque|Est des États-Unis
+2|Trachelospermum jasminoides|Jasmin étoilé|Apocynacées|Liane persistante|Chine, Japon
+2|Jasminum officinale|Jasmin officinal|Oléacées|Liane caduque|Asie
+2|Clematis montana|Clématite des montagnes|Renonculacées|Liane caduque|Himalaya, Chine
+2|Clematis armandii|Clématite d'Armand|Renonculacées|Liane persistante|Chine
+2|Parthenocissus tricuspidata|Vigne vierge de Boston|Vitacées|Liane caduque|Japon, Chine
+2|Lonicera japonica|Chèvrefeuille du Japon|Caprifoliacées|Liane persistante|Asie de l'Est
+2|Akebia quinata|Akébia|Lardizabalacées|Liane semi-persistante|Chine, Japon, Corée
+2|Actinidia deliciosa|Kiwi|Actinidiacées|Liane caduque|Chine
+2|Wisteria floribunda|Glycine du Japon|Fabacées|Liane caduque|Japon
+2|Fallopia baldschuanica|Renouée grimpante|Polygonacées|Liane caduque|Asie centrale
+2|Passiflora caerulea|Passiflore bleue|Passifloracées|Liane semi-persistante|Brésil, Argentine
+2|Hedera hibernica|Lierre d'Irlande|Araliacées|Liane persistante|Europe de l'Ouest
+2|Hedera colchica|Lierre de Colchide|Araliacées|Liane persistante|Caucase
+2|Rosa rugosa|Rosier rugueux|Rosacées|Arbuste caduc|Asie de l'Est
+2|Mespilus germanica|Néflier|Rosacées|Arbre caduc|Asie occidentale
+2|Diospyros kaki|Plaqueminier (kaki)|Ébénacées|Arbre caduc|Chine
+2|Eriobotrya japonica|Néflier du Japon|Rosacées|Arbre persistant|Chine
+2|Morus alba|Mûrier blanc|Moracées|Arbre caduc|Chine
+2|Morus nigra|Mûrier noir|Moracées|Arbre caduc|Asie occidentale
+2|Vaccinium corymbosum|Myrtillier américain|Éricacées|Arbuste caduc|Est de l'Amérique du Nord
+2|Ribes uva-crispa|Groseillier à maquereau|Grossulariacées|Arbuste caduc|Europe
+3|Berberis darwinii|Épine-vinette de Darwin|Berbéridacées|Arbuste persistant|Chili, Argentine
+3|Berberis julianae|Épine-vinette de Julien|Berbéridacées|Arbuste persistant|Chine
+3|Berberis vulgaris|Épine-vinette commune|Berbéridacées|Arbuste caduc|Europe
+3|Mahonia × media|Mahonia hybride|Berbéridacées|Arbuste persistant|Hybride horticole
+3|Mahonia japonica|Mahonia du Japon|Berbéridacées|Arbuste persistant|Taïwan
+3|Cotoneaster franchetii|Cotonéaster de Franchet|Rosacées|Arbuste semi-persistant|Chine
+3|Cotoneaster lacteus|Cotonéaster laiteux|Rosacées|Arbuste persistant|Chine
+3|Cotoneaster dammeri|Cotonéaster de Dammer|Rosacées|Arbuste persistant|Chine
+3|Cotoneaster salicifolius|Cotonéaster à feuilles de saule|Rosacées|Arbuste persistant|Chine
+3|Elaeagnus pungens|Chalef piquant|Élaéagnacées|Arbuste persistant|Japon, Chine
+3|Elaeagnus angustifolia|Olivier de Bohême|Élaéagnacées|Arbre caduc|Asie centrale
+3|Euonymus alatus|Fusain ailé|Célastracées|Arbuste caduc|Asie de l'Est
+3|Euonymus fortunei|Fusain de Fortune|Célastracées|Arbuste persistant|Chine, Japon
+3|Ligustrum japonicum|Troène du Japon|Oléacées|Arbuste persistant|Japon, Corée
+3|Ligustrum lucidum|Troène de Chine|Oléacées|Arbre persistant|Chine
+3|Lonicera pileata|Chèvrefeuille à feuilles de buis|Caprifoliacées|Arbuste persistant|Chine
+3|Lonicera fragrantissima|Chèvrefeuille d'hiver|Caprifoliacées|Arbuste semi-persistant|Chine
+3|Lonicera xylosteum|Camérisier à balais|Caprifoliacées|Arbuste caduc|Europe
+3|Osmanthus × burkwoodii|Osmanthe de Burkwood|Oléacées|Arbuste persistant|Hybride horticole
+3|Osmanthus fragrans|Osmanthe odorant|Oléacées|Arbuste persistant|Chine
+3|Prunus laurocerasus|Laurier-cerise|Rosacées|Arbuste persistant|Europe de l'Est
+3|Sarcococca hookeriana|Sarcococca|Buxacées|Arbuste persistant|Himalaya, Chine
+3|Garrya elliptica|Garrya|Garryacées|Arbuste persistant|Californie, Oregon
+3|Clethra alnifolia|Clèthre à feuilles d'aulne|Clethracées|Arbuste caduc|Est des États-Unis
+3|Calycanthus floridus|Arbre aux anémones|Calycanthacées|Arbuste caduc|Sud-est des États-Unis
+3|Clerodendrum trichotomum|Clérodendron|Lamiacées|Arbuste caduc|Chine, Japon
+3|Sorbaria sorbifolia|Sorbaria|Rosacées|Arbuste caduc|Asie du Nord-Est
+3|Spiraea × arguta|Spirée arguta|Rosacées|Arbuste caduc|Hybride horticole
+3|Deutzia gracilis|Deutzia grêle|Hydrangéacées|Arbuste caduc|Japon
+3|Buddleja alternifolia|Arbre aux papillons à feuilles alternes|Scrophulariacées|Arbuste caduc|Chine
+3|Corylus maxima|Noisetier franc (pourpre)|Bétulacées|Arbuste caduc|Balkans, Turquie
+3|Salix integra|Saule crevette (Hakuro-nishiki)|Salicacées|Arbuste caduc|Japon, Corée
+3|Salix purpurea|Saule pourpre|Salicacées|Arbuste caduc|Europe
+3|Salix viminalis|Osier blanc|Salicacées|Arbuste caduc|Europe
+3|Salix cinerea|Saule cendré|Salicacées|Arbuste caduc|Europe
+3|Hippophae rhamnoides|Argousier|Élaéagnacées|Arbuste caduc|Europe, Asie
+3|Colutea arborescens|Baguenaudier|Fabacées|Arbuste caduc|Europe du Sud
+3|Tamarix gallica|Tamaris de France|Tamaricacées|Arbuste caduc|Ouest de la Méditerranée
+3|Tamarix ramosissima|Tamaris d'été|Tamaricacées|Arbuste caduc|Asie
+3|Amelanchier ovalis|Amélanchier des bois|Rosacées|Arbuste caduc|Europe du Sud
+3|Viburnum lantana|Viorne mancienne|Viburnacées|Arbuste caduc|Europe
+3|Viburnum × burkwoodii|Viorne de Burkwood|Viburnacées|Arbuste semi-persistant|Hybride horticole
+3|Frangula alnus|Bourdaine|Rhamnacées|Arbuste caduc|Europe
+3|Rhamnus cathartica|Nerprun purgatif|Rhamnacées|Arbuste caduc|Europe
+3|Sambucus racemosa|Sureau rouge|Viburnacées|Arbuste caduc|Europe
+3|Staphylea pinnata|Staphylier|Staphyléacées|Arbuste caduc|Europe centrale et du Sud
+3|Daphne mezereum|Bois-joli|Thyméléacées|Arbuste caduc|Europe
+3|Daphne laureola|Daphné lauréole|Thyméléacées|Arbuste persistant|Europe
+3|Ruscus aculeatus|Fragon (petit houx)|Asparagacées|Arbuste persistant|Europe
+3|Ilex × meserveae|Houx bleu|Aquifoliacées|Arbuste persistant|Hybride horticole
+3|Photinia serratifolia|Photinia de Chine|Rosacées|Arbre persistant|Chine
+3|Pyracantha coccinea|Buisson ardent|Rosacées|Arbuste persistant|Sud de l'Europe
+3|Rosa rubiginosa|Rosier rouillé|Rosacées|Arbuste caduc|Europe
+3|Rosa arvensis|Rosier des champs|Rosacées|Arbuste caduc|Europe
+3|Rosa pimpinellifolia|Rosier pimprenelle|Rosacées|Arbuste caduc|Europe
+3|Rosa multiflora|Rosier multiflore|Rosacées|Arbuste caduc|Chine, Japon, Corée
+3|Rosa glauca|Rosier à feuilles rouges|Rosacées|Arbuste caduc|Montagnes d'Europe
+3|Exochorda racemosa|Exochorda|Rosacées|Arbuste caduc|Chine
+3|Enkianthus campanulatus|Enkianthus|Éricacées|Arbuste caduc|Japon
+3|Itea virginica|Itéa de Virginie|Iteacées|Arbuste caduc|Est des États-Unis
+3|Aronia melanocarpa|Aronia noir|Rosacées|Arbuste caduc|Est de l'Amérique du Nord
+3|Aronia arbutifolia|Aronia rouge|Rosacées|Arbuste caduc|Est de l'Amérique du Nord
+3|Lindera benzoin|Laurier benjoin|Lauracées|Arbuste caduc|Est de l'Amérique du Nord
+3|Fothergilla major|Fothergilla|Hamamélidacées|Arbuste caduc|Sud-est des États-Unis
+3|Disanthus cercidifolius|Disanthus|Hamamélidacées|Arbuste caduc|Japon
+3|Corylopsis pauciflora|Corylopsis|Hamamélidacées|Arbuste caduc|Japon, Taïwan
+3|Stachyurus praecox|Stachyurus|Stachyuracées|Arbuste caduc|Japon
+3|Edgeworthia chrysantha|Edgeworthia (buisson à papier)|Thyméléacées|Arbuste caduc|Chine
+3|Abeliophyllum distichum|Forsythia blanc|Oléacées|Arbuste caduc|Corée
+3|Heptacodium miconioides|Heptacodium|Caprifoliacées|Arbuste caduc|Chine
+3|Lespedeza thunbergii|Lespédèze|Fabacées|Arbuste caduc|Chine, Japon
+3|Indigofera heterantha|Indigotier|Fabacées|Arbuste caduc|Himalaya
+3|Ceratostigma willmottianum|Plumbago de Chine|Plumbaginacées|Sous-arbrisseau|Chine
+3|Hebe salicifolia|Véronique arbustive|Plantaginacées|Arbuste persistant|Nouvelle-Zélande
+3|Choisya ternata|Oranger du Mexique|Rutacées|Arbuste persistant|Mexique
+3|Poncirus trifoliata|Oranger trifolié|Rutacées|Arbuste caduc|Chine, Corée
+3|Zanthoxylum simulans|Poivrier du Sichuan|Rutacées|Arbuste caduc|Chine
+3|Ptelea trifoliata|Orme de Samarie|Rutacées|Arbuste caduc|Amérique du Nord
+3|Aralia elata|Angélique en arbre|Araliacées|Arbuste caduc|Asie de l'Est
+3|Eleutherococcus sieboldianus|Éleuthérocoque|Araliacées|Arbuste caduc|Chine, Japon
+3|Decaisnea fargesii|Arbre aux haricots bleus|Lardizabalacées|Arbuste caduc|Chine
+3|Cornus controversa|Cornouiller des pagodes|Cornacées|Arbre caduc|Asie de l'Est
+3|Cornus alternifolia|Cornouiller à feuilles alternes|Cornacées|Arbre caduc|Est de l'Amérique du Nord
+3|Viburnum betulifolium|Viorne à feuilles de bouleau|Viburnacées|Arbuste caduc|Chine
+3|Viburnum dentatum|Viorne dentée|Viburnacées|Arbuste caduc|Est de l'Amérique du Nord
+3|Viburnum odoratissimum|Viorne odorante|Viburnacées|Arbuste persistant|Asie
+3|Euonymus planipes|Fusain à fruits ailés|Célastracées|Arbuste caduc|Asie de l'Est
+3|Celastrus orbiculatus|Célastre|Célastracées|Liane caduque|Asie de l'Est
+3|Pieris japonica|Andromède du Japon|Éricacées|Arbuste persistant|Japon
+3|Gaultheria shallon|Salal|Éricacées|Arbuste persistant|Ouest de l'Amérique du Nord
+3|Vaccinium vitis-idaea|Airelle rouge|Éricacées|Sous-arbrisseau|Europe, Asie, Amérique du Nord
+3|Calluna vulgaris|Callune|Éricacées|Sous-arbrisseau|Europe
+3|Erica cinerea|Bruyère cendrée|Éricacées|Sous-arbrisseau|Europe de l'Ouest
+3|Erica carnea|Bruyère des neiges|Éricacées|Sous-arbrisseau|Alpes
+3|Erica arborea|Bruyère arborescente|Éricacées|Arbuste persistant|Méditerranée
+3|Pachysandra terminalis|Pachysandra|Buxacées|Sous-arbrisseau|Japon, Chine
+3|Vinca major|Grande pervenche|Apocynacées|Sous-arbrisseau|Europe du Sud
+3|Vinca minor|Petite pervenche|Apocynacées|Sous-arbrisseau|Europe
+4|Acer saccharinum|Érable argenté|Sapindacées|Arbre caduc|Est de l'Amérique du Nord
+4|Acer negundo|Érable negundo|Sapindacées|Arbre caduc|Amérique du Nord
+4|Acer griseum|Érable à écorce de papier|Sapindacées|Arbre caduc|Chine
+4|Acer davidii|Érable de David|Sapindacées|Arbre caduc|Chine
+4|Acer cappadocicum|Érable de Cappadoce|Sapindacées|Arbre caduc|Caucase, Asie
+4|Acer monspessulanum|Érable de Montpellier|Sapindacées|Arbre caduc|Méditerranée
+4|Acer opalus|Érable à feuilles d'obier|Sapindacées|Arbre caduc|Europe du Sud
+4|Acer saccharum|Érable à sucre|Sapindacées|Arbre caduc|Est de l'Amérique du Nord
+4|Acer × freemanii|Érable de Freeman|Sapindacées|Arbre caduc|Hybride
+4|Acer japonicum|Érable du Japon à feuilles de vigne|Sapindacées|Arbre caduc|Japon
+4|Acer ginnala|Érable du fleuve Amour|Sapindacées|Arbre caduc|Asie du Nord-Est
+4|Acer buergerianum|Érable trident|Sapindacées|Arbre caduc|Chine, Japon
+4|Acer rufinerve|Érable à nervures rousses|Sapindacées|Arbre caduc|Japon
+4|Aesculus × carnea|Marronnier rouge|Sapindacées|Arbre caduc|Hybride horticole
+4|Aesculus parviflora|Marronnier à petites fleurs|Sapindacées|Arbuste caduc|Sud-est des États-Unis
+4|Aesculus flava|Marronnier jaune|Sapindacées|Arbre caduc|Est des États-Unis
+4|Alnus cordata|Aulne de Corse|Bétulacées|Arbre caduc|Corse, sud de l'Italie
+4|Alnus incana|Aulne blanc|Bétulacées|Arbre caduc|Europe
+4|Betula utilis|Bouleau de l'Himalaya|Bétulacées|Arbre caduc|Himalaya
+4|Betula nigra|Bouleau noir|Bétulacées|Arbre caduc|Est des États-Unis
+4|Betula pubescens|Bouleau pubescent|Bétulacées|Arbre caduc|Europe
+4|Betula papyrifera|Bouleau à papier|Bétulacées|Arbre caduc|Amérique du Nord
+4|Carpinus japonica|Charme du Japon|Bétulacées|Arbre caduc|Japon
+4|Ostrya carpinifolia|Charme-houblon|Bétulacées|Arbre caduc|Europe du Sud
+4|Corylus colurna|Noisetier de Byzance|Bétulacées|Arbre caduc|Balkans, Turquie
+4|Celtis occidentalis|Micocoulier occidental|Cannabacées|Arbre caduc|Amérique du Nord
+4|Cercidiphyllum japonicum|Arbre à caramel|Cercidiphyllacées|Arbre caduc|Japon, Chine
+4|Davidia involucrata|Arbre aux mouchoirs|Nyssacées|Arbre caduc|Chine
+4|Nyssa sylvatica|Nyssa|Nyssacées|Arbre caduc|Est de l'Amérique du Nord
+4|Parrotia persica|Arbre de fer|Hamamélidacées|Arbre caduc|Iran, Caucase
+4|Gymnocladus dioicus|Chicot du Canada|Fabacées|Arbre caduc|Amérique du Nord
+4|Cladrastis kentukea|Virgilier|Fabacées|Arbre caduc|Sud-est des États-Unis
+4|Halesia carolina|Arbre aux cloches d'argent|Styracacées|Arbre caduc|Sud-est des États-Unis
+4|Styrax japonicus|Styrax du Japon|Styracacées|Arbre caduc|Japon, Chine, Corée
+4|Pterocarya fraxinifolia|Ptérocaryer du Caucase|Juglandacées|Arbre caduc|Caucase, Iran
+4|Juglans nigra|Noyer noir|Juglandacées|Arbre caduc|Est de l'Amérique du Nord
+4|Carya ovata|Caryer ovale|Juglandacées|Arbre caduc|Est de l'Amérique du Nord
+4|Carya illinoinensis|Pacanier|Juglandacées|Arbre caduc|Sud des États-Unis, Mexique
+4|Maclura pomifera|Oranger des Osages|Moracées|Arbre caduc|Sud des États-Unis
+4|Broussonetia papyrifera|Mûrier à papier|Moracées|Arbre caduc|Asie de l'Est
+4|Melia azedarach|Lilas de Perse (margousier)|Méliacées|Arbre caduc|Asie
+4|Toona sinensis|Cédrèle de Chine|Méliacées|Arbre caduc|Chine
+4|Phellodendron amurense|Arbre au liège de l'Amour|Rutacées|Arbre caduc|Asie du Nord-Est
+4|Tetradium daniellii|Arbre à miel (évodia)|Rutacées|Arbre caduc|Chine, Corée
+4|Sorbus torminalis|Alisier torminal|Rosacées|Arbre caduc|Europe
+4|Sorbus domestica|Cormier|Rosacées|Arbre caduc|Europe du Sud
+4|Sorbus intermedia|Alisier de Suède|Rosacées|Arbre caduc|Scandinavie, Baltique
+4|Prunus padus|Cerisier à grappes|Rosacées|Arbre caduc|Europe
+4|Prunus mahaleb|Cerisier de Sainte-Lucie|Rosacées|Arbre caduc|Europe
+4|Prunus serotina|Cerisier tardif|Rosacées|Arbre caduc|Amérique du Nord
+4|Prunus maackii|Cerisier de Mandchourie|Rosacées|Arbre caduc|Asie du Nord-Est
+4|Prunus sargentii|Cerisier de Sargent|Rosacées|Arbre caduc|Japon, Corée
+4|Malus sylvestris|Pommier sauvage|Rosacées|Arbre caduc|Europe
+4|Pyrus salicifolia|Poirier à feuilles de saule|Rosacées|Arbre caduc|Caucase, Iran
+4|Crataegus laevigata|Aubépine épineuse|Rosacées|Arbre caduc|Europe
+4|Crataegus persimilis|Aubépine à feuilles de prunier|Rosacées|Arbre caduc|Hybride horticole
+4|Quercus cerris|Chêne chevelu|Fagacées|Arbre caduc|Europe du Sud-Est
+4|Quercus palustris|Chêne des marais|Fagacées|Arbre caduc|Est des États-Unis
+4|Quercus frainetto|Chêne de Hongrie|Fagacées|Arbre caduc|Balkans, Italie
+4|Quercus pyrenaica|Chêne tauzin|Fagacées|Arbre caduc|Péninsule Ibérique, France
+4|Quercus coccinea|Chêne écarlate|Fagacées|Arbre caduc|Est des États-Unis
+4|Quercus phellos|Chêne à feuilles de saule|Fagacées|Arbre caduc|Est des États-Unis
+4|Quercus macrocarpa|Chêne à gros fruits|Fagacées|Arbre caduc|Amérique du Nord
+4|Quercus alba|Chêne blanc d'Amérique|Fagacées|Arbre caduc|Est de l'Amérique du Nord
+4|Fagus orientalis|Hêtre d'Orient|Fagacées|Arbre caduc|Balkans, Caucase
+4|Fraxinus angustifolia|Frêne à feuilles étroites|Oléacées|Arbre caduc|Sud de l'Europe
+4|Fraxinus ornus|Frêne à fleurs|Oléacées|Arbre caduc|Europe du Sud
+4|Fraxinus americana|Frêne blanc d'Amérique|Oléacées|Arbre caduc|Est de l'Amérique du Nord
+4|Populus alba|Peuplier blanc|Salicacées|Arbre caduc|Europe, Asie
+4|Populus × canadensis|Peuplier hybride (euraméricain)|Salicacées|Arbre caduc|Hybride
+4|Populus × canescens|Peuplier grisard|Salicacées|Arbre caduc|Europe
+4|Populus deltoides|Peuplier deltoïde|Salicacées|Arbre caduc|Amérique du Nord
+4|Salix fragilis|Saule fragile|Salicacées|Arbre caduc|Europe, Asie
+4|Salix × sepulcralis|Saule pleureur doré|Salicacées|Arbre caduc|Hybride horticole
+4|Salix matsudana|Saule tortueux|Salicacées|Arbre caduc|Chine
+4|Tilia tomentosa|Tilleul argenté|Malvacées|Arbre caduc|Balkans, Turquie
+4|Tilia americana|Tilleul d'Amérique|Malvacées|Arbre caduc|Est de l'Amérique du Nord
+4|Ulmus glabra|Orme des montagnes|Ulmacées|Arbre caduc|Europe
+4|Ulmus laevis|Orme lisse|Ulmacées|Arbre caduc|Europe
+4|Ulmus pumila|Orme de Sibérie|Ulmacées|Arbre caduc|Asie
+4|Zelkova serrata|Zelkova du Japon|Ulmacées|Arbre caduc|Japon, Corée, Chine
+4|Zelkova carpinifolia|Zelkova du Caucase|Ulmacées|Arbre caduc|Caucase
+4|Sassafras albidum|Sassafras|Lauracées|Arbre caduc|Est de l'Amérique du Nord
+4|Magnolia acuminata|Magnolia concombre|Magnoliacées|Arbre caduc|Est de l'Amérique du Nord
+4|Magnolia tripetala|Magnolia parasol|Magnoliacées|Arbre caduc|Est des États-Unis
+4|Diospyros lotus|Plaqueminier d'Europe|Ébénacées|Arbre caduc|Asie occidentale
+4|Diospyros virginiana|Plaqueminier de Virginie|Ébénacées|Arbre caduc|Est des États-Unis
+4|Platanus occidentalis|Platane d'Occident|Platanacées|Arbre caduc|Est de l'Amérique du Nord
+4|Platanus orientalis|Platane d'Orient|Platanacées|Arbre caduc|Balkans, Asie occidentale
+4|Eucommia ulmoides|Arbre à gutta-percha|Eucommiacées|Arbre caduc|Chine
+4|Idesia polycarpa|Idésia|Salicacées|Arbre caduc|Chine, Japon
+4|Hovenia dulcis|Raisinier de Chine|Rhamnacées|Arbre caduc|Chine, Japon, Corée
+4|Ziziphus jujuba|Jujubier|Rhamnacées|Arbre caduc|Chine
+4|Sorbus commixta|Sorbier du Japon|Rosacées|Arbre caduc|Japon, Corée
+4|Sorbus hupehensis|Sorbier du Hubei|Rosacées|Arbre caduc|Chine
+4|Amelanchier canadensis|Amélanchier du Canada|Rosacées|Arbre caduc|Est de l'Amérique du Nord
+4|Cornus mas|Cornouiller mâle|Cornacées|Arbre caduc|Europe
+4|Cercis canadensis|Gainier du Canada|Fabacées|Arbre caduc|Est de l'Amérique du Nord
+4|Cercis chinensis|Gainier de Chine|Fabacées|Arbuste caduc|Chine
+5|Abies nordmanniana|Sapin de Nordmann|Pinacées|Conifère persistant|Caucase
+5|Abies concolor|Sapin du Colorado|Pinacées|Conifère persistant|Ouest des États-Unis
+5|Abies pinsapo|Sapin d'Espagne|Pinacées|Conifère persistant|Sud de l'Espagne
+5|Abies grandis|Sapin de Vancouver|Pinacées|Conifère persistant|Ouest de l'Amérique du Nord
+5|Abies koreana|Sapin de Corée|Pinacées|Conifère persistant|Corée
+5|Abies cephalonica|Sapin de Céphalonie|Pinacées|Conifère persistant|Grèce
+5|Abies procera|Sapin noble|Pinacées|Conifère persistant|Ouest des États-Unis
+5|Picea pungens|Épicéa du Colorado|Pinacées|Conifère persistant|Montagnes Rocheuses
+5|Picea omorika|Épicéa de Serbie|Pinacées|Conifère persistant|Serbie, Bosnie
+5|Picea sitchensis|Épicéa de Sitka|Pinacées|Conifère persistant|Côte pacifique nord-américaine
+5|Picea orientalis|Épicéa d'Orient|Pinacées|Conifère persistant|Caucase, Turquie
+5|Picea glauca|Épinette blanche|Pinacées|Conifère persistant|Canada
+5|Pseudotsuga menziesii|Douglas|Pinacées|Conifère persistant|Ouest de l'Amérique du Nord
+5|Tsuga heterophylla|Pruche de l'Ouest|Pinacées|Conifère persistant|Ouest de l'Amérique du Nord
+5|Tsuga canadensis|Pruche du Canada|Pinacées|Conifère persistant|Est de l'Amérique du Nord
+5|Larix kaempferi|Mélèze du Japon|Pinacées|Conifère caduc|Japon
+5|Pinus pinaster|Pin maritime|Pinacées|Conifère persistant|Ouest de la Méditerranée
+5|Pinus uncinata|Pin à crochets|Pinacées|Conifère persistant|Pyrénées, Alpes
+5|Pinus mugo|Pin des montagnes|Pinacées|Conifère persistant|Montagnes d'Europe
+5|Pinus cembra|Pin cembro|Pinacées|Conifère persistant|Alpes, Carpates
+5|Pinus strobus|Pin de Weymouth|Pinacées|Conifère persistant|Est de l'Amérique du Nord
+5|Pinus wallichiana|Pin de l'Himalaya|Pinacées|Conifère persistant|Himalaya
+5|Pinus radiata|Pin de Monterey|Pinacées|Conifère persistant|Californie
+5|Pinus ponderosa|Pin ponderosa|Pinacées|Conifère persistant|Ouest de l'Amérique du Nord
+5|Pinus contorta|Pin tordu|Pinacées|Conifère persistant|Ouest de l'Amérique du Nord
+5|Pinus thunbergii|Pin noir du Japon|Pinacées|Conifère persistant|Japon, Corée
+5|Pinus parviflora|Pin blanc du Japon|Pinacées|Conifère persistant|Japon
+5|Pinus densiflora|Pin rouge du Japon|Pinacées|Conifère persistant|Japon, Corée, Chine
+5|Pinus brutia|Pin de Calabre|Pinacées|Conifère persistant|Méditerranée orientale
+5|Juniperus communis|Genévrier commun|Cupressacées|Conifère persistant|Hémisphère Nord
+5|Juniperus chinensis|Genévrier de Chine|Cupressacées|Conifère persistant|Chine, Japon
+5|Juniperus virginiana|Genévrier de Virginie|Cupressacées|Conifère persistant|Est de l'Amérique du Nord
+5|Juniperus squamata|Genévrier écailleux|Cupressacées|Conifère persistant|Himalaya, Chine
+5|Juniperus horizontalis|Genévrier rampant|Cupressacées|Conifère persistant|Amérique du Nord
+5|Juniperus sabina|Genévrier sabine|Cupressacées|Conifère persistant|Montagnes d'Europe
+5|Juniperus scopulorum|Genévrier des Rocheuses|Cupressacées|Conifère persistant|Montagnes Rocheuses
+5|Cupressus arizonica|Cyprès de l'Arizona|Cupressacées|Conifère persistant|Sud-ouest des États-Unis
+5|Cupressus macrocarpa|Cyprès de Lambert|Cupressacées|Conifère persistant|Californie
+5|Chamaecyparis obtusa|Faux-cyprès du Japon (Hinoki)|Cupressacées|Conifère persistant|Japon
+5|Chamaecyparis pisifera|Faux-cyprès de Sawara|Cupressacées|Conifère persistant|Japon
+5|Chamaecyparis nootkatensis|Cyprès de Nootka|Cupressacées|Conifère persistant|Côte pacifique nord-américaine
+5|Thuja plicata|Thuya géant|Cupressacées|Conifère persistant|Ouest de l'Amérique du Nord
+5|Platycladus orientalis|Thuya d'Orient|Cupressacées|Conifère persistant|Chine, Corée
+5|Thujopsis dolabrata|Thuyopsis|Cupressacées|Conifère persistant|Japon
+5|Calocedrus decurrens|Cèdre à encens|Cupressacées|Conifère persistant|Ouest des États-Unis
+5|Cunninghamia lanceolata|Sapin de Chine|Cupressacées|Conifère persistant|Chine
+5|Sciadopitys verticillata|Pin parasol du Japon|Sciadopityacées|Conifère persistant|Japon
+5|Cephalotaxus harringtonia|If à prunes|Taxacées|Conifère persistant|Japon
+5|Torreya californica|Torreya de Californie|Taxacées|Conifère persistant|Californie
+5|Taxus × media|If hybride|Taxacées|Conifère persistant|Hybride horticole
+5|Ginkgo biloba|Arbre aux quarante écus|Ginkgoacées|Arbre caduc|Chine
+5|Cedrus atlantica|Cèdre de l'Atlas|Pinacées|Conifère persistant|Afrique du Nord
+5|Pinus sylvestris|Pin sylvestre|Pinacées|Conifère persistant|Europe, Asie
+6|Lavandula angustifolia|Lavande vraie|Lamiacées|Sous-arbrisseau|Méditerranée
+6|Lavandula latifolia|Lavande aspic|Lamiacées|Sous-arbrisseau|Ouest de la Méditerranée
+6|Thymus vulgaris|Thym commun|Lamiacées|Sous-arbrisseau|Ouest de la Méditerranée
+6|Salvia officinalis|Sauge officinale|Lamiacées|Sous-arbrisseau|Méditerranée
+6|Santolina chamaecyparissus|Santoline|Astéracées|Sous-arbrisseau|Ouest de la Méditerranée
+6|Helichrysum italicum|Immortelle d'Italie|Astéracées|Sous-arbrisseau|Méditerranée
+6|Hyssopus officinalis|Hysope|Lamiacées|Sous-arbrisseau|Europe du Sud
+6|Artemisia absinthium|Absinthe|Astéracées|Sous-arbrisseau|Europe, Asie
+6|Ruta graveolens|Rue officinale|Rutacées|Sous-arbrisseau|Balkans
+6|Phlomis fruticosa|Sauge de Jérusalem|Lamiacées|Arbuste persistant|Méditerranée orientale
+6|Cistus × purpureus|Ciste pourpre|Cistacées|Arbuste persistant|Hybride
+6|Yucca filamentosa|Yucca filamenteux|Asparagacées|Arbuste persistant|Sud-est des États-Unis
+6|Paeonia lactiflora|Pivoine de Chine|Paeoniacées|Vivace|Chine, Sibérie
+6|Acanthus mollis|Acanthe|Acanthacées|Vivace|Méditerranée
+6|Iris germanica|Iris des jardins|Iridacées|Vivace|Méditerranée
+6|Echinops ritro|Échinops|Astéracées|Vivace|Europe du Sud
+6|Eryngium planum|Panicaut bleu|Apiacées|Vivace|Europe centrale, Asie
+6|Centranthus ruber|Valériane rouge|Caprifoliacées|Vivace|Méditerranée
+6|Achillea millefolium|Achillée millefeuille|Astéracées|Vivace|Hémisphère Nord
+6|Leucanthemum vulgare|Marguerite|Astéracées|Vivace|Europe
+6|Aster amellus|Aster amelle|Astéracées|Vivace|Europe
+6|Helleborus orientalis|Hellébore d'Orient|Renonculacées|Vivace|Turquie, Caucase
+6|Helleborus foetidus|Hellébore fétide|Renonculacées|Vivace|Europe de l'Ouest
+6|Anemone × hybrida|Anémone du Japon|Renonculacées|Vivace|Hybride horticole
+6|Aquilegia vulgaris|Ancolie|Renonculacées|Vivace|Europe
+6|Digitalis purpurea|Digitale pourpre|Plantaginacées|Bisannuelle|Europe de l'Ouest
+6|Alcea rosea|Rose trémière|Malvacées|Bisannuelle|Asie occidentale
+6|Papaver orientale|Pavot d'Orient|Papavéracées|Vivace|Caucase, Turquie
+6|Sedum telephium|Orpin reprise|Crassulacées|Vivace|Europe, Asie
+6|Stachys byzantina|Oreille d'ours|Lamiacées|Vivace|Turquie, Caucase
+6|Lythrum salicaria|Salicaire|Lythracées|Vivace|Europe
+6|Iris pseudacorus|Iris des marais|Iridacées|Vivace|Europe
+6|Calamagrostis × acutiflora|Calamagrostis|Poacées|Graminée|Hybride
+6|Molinia caerulea|Molinie bleue|Poacées|Graminée|Europe
+6|Panicum virgatum|Panic érigé|Poacées|Graminée|Amérique du Nord
+6|Carex pendula|Laîche pendante|Cypéracées|Vivace|Europe
+6|Hakonechloa macra|Herbe du Japon|Poacées|Graminée|Japon
+6|Imperata cylindrica|Herbe sanguine du Japon|Poacées|Graminée|Asie
+6|Arundo donax|Canne de Provence|Poacées|Graminée|Asie, Méditerranée
+6|Typha latifolia|Massette|Typhacées|Vivace|Hémisphère Nord
+6|Polystichum setiferum|Polystic à soies|Dryoptéridacées|Fougère|Europe
+6|Dryopteris filix-mas|Fougère mâle|Dryoptéridacées|Fougère|Hémisphère Nord
+6|Asplenium scolopendrium|Scolopendre|Aspléniacées|Fougère|Europe
+6|Osmunda regalis|Osmonde royale|Osmondacées|Fougère|Europe
+6|Matteuccia struthiopteris|Fougère plume d'autruche|Onocléacées|Fougère|Hémisphère Nord
+6|Pteridium aquilinum|Fougère aigle|Dennstaedtiacées|Fougère|Monde entier
+6|Gunnera manicata|Gunnera (rhubarbe géante)|Gunnéracées|Vivace|Brésil
+6|Rodgersia podophylla|Rodgersia|Saxifragacées|Vivace|Japon, Corée
+6|Ligularia dentata|Ligulaire|Astéracées|Vivace|Chine, Japon
+6|Persicaria amplexicaulis|Renouée amplexicaule|Polygonacées|Vivace|Himalaya
+6|Fallopia japonica|Renouée du Japon|Polygonacées|Vivace|Japon
+6|Humulus lupulus|Houblon|Cannabacées|Liane vivace|Europe
+6|Clematis tangutica|Clématite de Tangut|Renonculacées|Liane caduque|Chine, Asie centrale
+6|Lonicera × heckrottii|Chèvrefeuille de Heckrott|Caprifoliacées|Liane semi-persistante|Hybride horticole
+6|Vitis coignetiae|Vigne du Japon|Vitacées|Liane caduque|Japon
+6|Ampelopsis glandulosa|Vigne vierge à fruits bleus|Vitacées|Liane caduque|Asie de l'Est
+6|Actinidia kolomikta|Kiwi panaché|Actinidiacées|Liane caduque|Asie de l'Est
+6|Actinidia arguta|Kiwaï|Actinidiacées|Liane caduque|Asie de l'Est
+6|Smilax aspera|Salsepareille d'Europe|Smilacacées|Liane persistante|Méditerranée
+6|Bryonia dioica|Bryone|Cucurbitacées|Liane vivace|Europe
+6|Tamus communis|Tamier|Dioscoréacées|Liane vivace|Europe
+7|Acer campestre|Érable champêtre|Sapindacées|Arbre caduc|Europe
+7|Viburnum opulus|Viorne obier|Viburnacées|Arbuste caduc|Europe
+7|Euonymus europaeus|Fusain d'Europe|Célastracées|Arbuste caduc|Europe
+7|Cornus sanguinea|Cornouiller sanguin|Cornacées|Arbuste caduc|Europe
+7|Sorbus aucuparia|Sorbier des oiseleurs|Rosacées|Arbre caduc|Europe
+7|Sorbus aria|Alisier blanc|Rosacées|Arbre caduc|Europe
+7|Quercus petraea|Chêne sessile|Fagacées|Arbre caduc|Europe
+7|Quercus pubescens|Chêne pubescent|Fagacées|Arbre caduc|Europe du Sud
+7|Ulmus minor|Orme champêtre|Ulmacées|Arbre caduc|Europe
+7|Tilia platyphyllos|Tilleul à grandes feuilles|Malvacées|Arbre caduc|Europe
+7|Alnus glutinosa|Aulne glutineux|Bétulacées|Arbre caduc|Europe
+7|Ligustrum vulgare|Troène commun|Oléacées|Arbuste semi-persistant|Europe
+7|Pyrus pyraster|Poirier sauvage|Rosacées|Arbre caduc|Europe
+7|Prunus cerasifera|Prunier myrobolan|Rosacées|Arbre caduc|Asie occidentale
+7|Lonicera nigra|Camérisier noir|Caprifoliacées|Arbuste caduc|Montagnes d'Europe
+7|Lonicera alpigena|Camérisier des Alpes|Caprifoliacées|Arbuste caduc|Montagnes d'Europe
+7|Viscum album|Gui|Santalacées|Arbuste persistant (parasite)|Europe
+7|Juniperus oxycedrus|Genévrier cade|Cupressacées|Conifère persistant|Méditerranée
+7|Juniperus phoenicea|Genévrier de Phénicie|Cupressacées|Conifère persistant|Méditerranée
+7|Juniperus thurifera|Genévrier thurifère|Cupressacées|Conifère persistant|Ouest de la Méditerranée
+7|Coronilla emerus|Coronille arbrisseau|Fabacées|Arbuste caduc|Europe centrale et du Sud
+7|Genista tinctoria|Genêt des teinturiers|Fabacées|Sous-arbrisseau|Europe
+7|Genista hispanica|Genêt d'Espagne épineux|Fabacées|Sous-arbrisseau|Espagne, sud de la France
+7|Vaccinium myrtillus|Myrtille|Éricacées|Sous-arbrisseau|Europe
+7|Arctostaphylos uva-ursi|Raisin d'ours|Éricacées|Sous-arbrisseau|Hémisphère Nord
+7|Rhododendron ferrugineum|Rhododendron ferrugineux|Éricacées|Arbuste persistant|Alpes, Pyrénées
+7|Empetrum nigrum|Camarine noire|Éricacées|Sous-arbrisseau|Hémisphère Nord
+7|Myrica gale|Piment royal|Myricacées|Arbuste caduc|Europe du Nord-Ouest
+7|Salix repens|Saule rampant|Salicacées|Arbuste caduc|Europe
+7|Salix aurita|Saule à oreillettes|Salicacées|Arbuste caduc|Europe
+7|Salix triandra|Saule à trois étamines|Salicacées|Arbuste caduc|Europe
+7|Salix eleagnos|Saule drapé|Salicacées|Arbuste caduc|Europe du Sud
+7|Ribes alpinum|Groseillier des Alpes|Grossulariacées|Arbuste caduc|Europe
+7|Rosa gallica|Rosier de France|Rosacées|Arbuste caduc|Europe du Sud
+7|Rosa sempervirens|Rosier toujours vert|Rosacées|Arbuste persistant|Méditerranée
+7|Rubus caesius|Ronce bleuâtre|Rosacées|Arbuste caduc|Europe
+7|Cotoneaster integerrimus|Cotonéaster commun|Rosacées|Arbuste caduc|Europe
+7|Sorbus chamaemespilus|Alisier nain|Rosacées|Arbuste caduc|Montagnes d'Europe
+7|Daphne gnidium|Garou|Thyméléacées|Arbuste persistant|Méditerranée
+7|Clematis flammula|Clématite brûlante|Renonculacées|Liane persistante|Méditerranée
+7|Lonicera implexa|Chèvrefeuille des Baléares|Caprifoliacées|Liane persistante|Méditerranée
+7|Lonicera etrusca|Chèvrefeuille d'Étrurie|Caprifoliacées|Liane caduque|Méditerranée
+7|Hedera helix|Lierre grimpant|Araliacées|Liane persistante|Europe
+7|Ilex aquifolium|Houx commun|Aquifoliacées|Arbuste persistant|Europe
+7|Taxus baccata|If commun|Taxacées|Conifère persistant|Europe
+8|Quercus coccifera|Chêne kermès|Fagacées|Arbuste persistant|Méditerranée
+8|Pistacia terebinthus|Pistachier térébinthe|Anacardiacées|Arbuste caduc|Méditerranée
+8|Phillyrea latifolia|Filaria à larges feuilles|Oléacées|Arbuste persistant|Méditerranée
+8|Cistus monspeliensis|Ciste de Montpellier|Cistacées|Arbuste persistant|Méditerranée
+8|Cistus salviifolius|Ciste à feuilles de sauge|Cistacées|Arbuste persistant|Méditerranée
+8|Cistus ladanifer|Ciste ladanifère|Cistacées|Arbuste persistant|Ouest de la Méditerranée
+8|Cistus creticus|Ciste de Crète|Cistacées|Arbuste persistant|Méditerranée
+8|Atriplex halimus|Arroche halime|Amaranthacées|Arbuste persistant|Méditerranée
+8|Coronilla valentina|Coronille de Valence|Fabacées|Arbuste persistant|Méditerranée
+8|Bupleurum fruticosum|Buplèvre ligneux|Apiacées|Arbuste persistant|Méditerranée
+8|Vitex agnus-castus|Gattilier|Lamiacées|Arbuste caduc|Méditerranée
+8|Anthyllis barba-jovis|Barbe de Jupiter|Fabacées|Arbuste persistant|Méditerranée
+8|Calicotome spinosa|Calicotome épineux|Fabacées|Arbuste caduc|Méditerranée
+8|Spartium junceum|Genêt d'Espagne|Fabacées|Arbuste caduc|Méditerranée
+8|Erica multiflora|Bruyère multiflore|Éricacées|Arbuste persistant|Méditerranée
+8|Paliurus spina-christi|Paliure (épine du Christ)|Rhamnacées|Arbuste caduc|Méditerranée, Asie
+8|Styrax officinalis|Aliboufier|Styracacées|Arbuste caduc|Méditerranée orientale
+8|Jasminum fruticans|Jasmin jaune|Oléacées|Arbuste persistant|Méditerranée
+8|Euphorbia dendroides|Euphorbe arborescente|Euphorbiacées|Arbuste caduc|Méditerranée
+8|Myrtus communis|Myrte commun|Myrtacées|Arbuste persistant|Méditerranée
+8|Lavandula stoechas|Lavande papillon|Lamiacées|Sous-arbrisseau|Méditerranée
+8|Cistus albidus|Ciste cotonneux|Cistacées|Sous-arbrisseau|Méditerranée occidentale
+8|Rosmarinus officinalis|Romarin|Lamiacées|Arbuste persistant|Méditerranée
+8|Tamarix africana|Tamaris d'Afrique|Tamaricacées|Arbuste caduc|Ouest de la Méditerranée
+8|Ceratonia siliqua|Caroubier|Fabacées|Arbre persistant|Méditerranée
+8|Punica granatum|Grenadier|Lythracées|Arbuste caduc|Iran, Asie centrale
+8|Laurus nobilis|Laurier-sauce|Lauracées|Arbuste persistant|Méditerranée
+8|Olea europaea|Olivier|Oléacées|Arbre persistant|Méditerranée
+8|Nerium oleander|Laurier-rose|Apocynacées|Arbuste persistant|Méditerranée
+8|Cupressus sempervirens|Cyprès de Provence|Cupressacées|Conifère persistant|Méditerranée orientale
+8|Pinus halepensis|Pin d'Alep|Pinacées|Conifère persistant|Méditerranée
+8|Pinus pinea|Pin parasol|Pinacées|Conifère persistant|Méditerranée
+8|Quercus ilex|Chêne vert|Fagacées|Arbre persistant|Méditerranée
+8|Quercus suber|Chêne-liège|Fagacées|Arbre persistant|Méditerranée occidentale
+8|Arbutus unedo|Arbousier|Éricacées|Arbuste persistant|Méditerranée
+8|Pistacia lentiscus|Pistachier lentisque|Anacardiacées|Arbuste persistant|Méditerranée
+8|Phillyrea angustifolia|Filaria à feuilles étroites|Oléacées|Arbuste persistant|Méditerranée
+8|Rhamnus alaternus|Nerprun alaterne|Rhamnacées|Arbuste persistant|Méditerranée
+8|Teucrium fruticans|Germandrée arbustive|Lamiacées|Arbuste persistant|Méditerranée occidentale
+8|Celtis australis|Micocoulier de Provence|Cannabacées|Arbre caduc|Méditerranée
+8|Chamaerops humilis|Palmier nain|Arécacées|Palmier|Méditerranée occidentale
+8|Opuntia ficus-indica|Figuier de Barbarie|Cactacées|Succulente|Mexique
+8|Agave americana|Agave d'Amérique|Asparagacées|Succulente|Mexique
+8|Carpobrotus edulis|Griffe de sorcière|Aïzoacées|Succulente|Afrique du Sud
+8|Tamarix parviflora|Tamaris à petites fleurs|Tamaricacées|Arbuste caduc|Balkans, Turquie
+8|Lycium barbarum|Lyciet (goji)|Solanacées|Arbuste caduc|Chine
+8|Elaeagnus × submacrophylla|Chalef d'Ebbinge|Élaéagnacées|Arbuste persistant|Hybride horticole
+8|Pittosporum tobira|Pittosporum de Chine|Pittosporacées|Arbuste persistant|Chine, Japon
+8|Ligustrum ovalifolium|Troène de Californie|Oléacées|Arbuste semi-persistant|Japon
+9|Acacia dealbata|Mimosa|Fabacées|Arbre persistant|Australie
+9|Acacia retinodes|Mimosa des quatre saisons|Fabacées|Arbre persistant|Australie
+9|Acca sellowiana|Feijoa|Myrtacées|Arbuste persistant|Brésil, Uruguay
+9|Butia capitata|Palmier abricot|Arécacées|Palmier|Brésil, Uruguay
+9|Phoenix canariensis|Palmier des Canaries|Arécacées|Palmier|Îles Canaries
+9|Washingtonia filifera|Palmier jupon|Arécacées|Palmier|Californie, Arizona
+9|Washingtonia robusta|Palmier du Mexique|Arécacées|Palmier|Mexique
+9|Trachycarpus fortunei|Palmier de Chine|Arécacées|Palmier|Chine
+9|Cordyline australis|Cordyline|Asparagacées|Arbre persistant|Nouvelle-Zélande
+9|Dicksonia antarctica|Fougère arborescente|Dicksoniacées|Fougère|Australie
+9|Eucalyptus gunnii|Gommier cidre|Myrtacées|Arbre persistant|Tasmanie
+9|Eucalyptus globulus|Gommier bleu|Myrtacées|Arbre persistant|Australie, Tasmanie
+9|Eucalyptus camaldulensis|Gommier rouge|Myrtacées|Arbre persistant|Australie
+9|Melaleuca citrina|Rince-bouteille|Myrtacées|Arbuste persistant|Australie
+9|Callistemon viminalis|Rince-bouteille pleureur|Myrtacées|Arbuste persistant|Australie
+9|Grevillea rosmarinifolia|Grévilléa à feuilles de romarin|Protéacées|Arbuste persistant|Australie
+9|Grevillea juniperina|Grévilléa à feuilles de genévrier|Protéacées|Arbuste persistant|Australie
+9|Pittosporum tenuifolium|Pittosporum à petites feuilles|Pittosporacées|Arbuste persistant|Nouvelle-Zélande
+9|Pittosporum undulatum|Pittosporum ondulé|Pittosporacées|Arbre persistant|Australie
+9|Phormium tenax|Lin de Nouvelle-Zélande|Asphodélacées|Vivace|Nouvelle-Zélande
+9|Schinus molle|Faux poivrier|Anacardiacées|Arbre persistant|Pérou
+9|Jacaranda mimosifolia|Jacaranda|Bignoniacées|Arbre semi-caduc|Argentine, Bolivie
+9|Bougainvillea spectabilis|Bougainvillier|Nyctaginacées|Liane persistante|Brésil
+9|Lagerstroemia indica|Lilas des Indes|Lythracées|Arbre caduc|Chine
+9|Albizia julibrissin|Arbre à soie|Fabacées|Arbre caduc|Asie
+9|Yucca gloriosa|Yucca glorieux|Asparagacées|Arbuste persistant|Sud-est des États-Unis
+9|Yucca rostrata|Yucca bleu|Asparagacées|Arbre persistant|Texas, Mexique
+9|Araucaria araucana|Désespoir des singes|Araucariacées|Conifère persistant|Chili, Argentine
+9|Araucaria heterophylla|Pin de Norfolk|Araucariacées|Conifère persistant|Île Norfolk
+9|Sequoiadendron giganteum|Séquoia géant|Cupressacées|Conifère persistant|Californie
+9|Sequoia sempervirens|Séquoia à feuilles d'if|Cupressacées|Conifère persistant|Côte de Californie
+9|Metasequoia glyptostroboides|Métaséquoia|Cupressacées|Conifère caduc|Chine
+9|Taxodium distichum|Cyprès chauve|Cupressacées|Conifère caduc|Sud-est des États-Unis
+9|Cryptomeria japonica|Cèdre du Japon|Cupressacées|Conifère persistant|Japon
+9|Liriodendron tulipifera|Tulipier de Virginie|Magnoliacées|Arbre caduc|Est de l'Amérique du Nord
+9|Liquidambar styraciflua|Copalme d'Amérique|Altingiacées|Arbre caduc|Est de l'Amérique du Nord
+9|Quercus rubra|Chêne rouge d'Amérique|Fagacées|Arbre caduc|Est de l'Amérique du Nord
+9|Acer rubrum|Érable rouge|Sapindacées|Arbre caduc|Est de l'Amérique du Nord
+9|Cornus florida|Cornouiller à fleurs|Cornacées|Arbre caduc|Est de l'Amérique du Nord
+9|Magnolia grandiflora|Magnolia à grandes fleurs|Magnoliacées|Arbre persistant|Sud-est des États-Unis
+9|Catalpa bignonioides|Catalpa|Bignoniacées|Arbre caduc|Sud-est des États-Unis
+9|Paulownia tomentosa|Paulownia|Paulowniacées|Arbre caduc|Chine
+9|Ailanthus altissima|Ailante|Simaroubacées|Arbre caduc|Chine
+9|Camellia japonica|Camélia du Japon|Théacées|Arbuste persistant|Japon
+9|Nandina domestica|Bambou sacré|Berbéridacées|Arbuste persistant|Chine, Japon
+9|Fatsia japonica|Aralia du Japon|Araliacées|Arbuste persistant|Japon
+9|Aucuba japonica|Aucuba du Japon|Garryacées|Arbuste persistant|Japon
+9|Skimmia japonica|Skimmia du Japon|Rutacées|Arbuste persistant|Japon
+9|Acer palmatum|Érable du Japon|Sapindacées|Arbre caduc|Japon, Corée
+9|Ginkgo biloba|Arbre aux quarante écus|Ginkgoacées|Arbre caduc|Chine
+9|Musa basjoo|Bananier du Japon|Musacées|Vivace|Chine
+9|Tetrapanax papyrifer|Arbre à papier de riz|Araliacées|Arbuste persistant|Taïwan
+9|Fascicularia bicolor|Fascicularia|Broméliacées|Vivace|Chili
+9|Beschorneria yuccoides|Beschorneria|Asparagacées|Vivace|Mexique
+9|Echium candicans|Vipérine de Madère|Boraginacées|Arbuste persistant|Madère
+9|Leptospermum scoparium|Arbre à thé (manuka)|Myrtacées|Arbuste persistant|Nouvelle-Zélande, Australie
+9|Olearia × haastii|Oléaria|Astéracées|Arbuste persistant|Nouvelle-Zélande
+9|Corokia cotoneaster|Corokia|Argophyllacées|Arbuste persistant|Nouvelle-Zélande
+9|Griselinia littoralis|Griselinia|Griseliniacées|Arbuste persistant|Nouvelle-Zélande
+9|Drimys winteri|Écorce de Winter|Wintéracées|Arbre persistant|Chili, Argentine
+9|Luma apiculata|Myrte du Chili|Myrtacées|Arbre persistant|Chili, Argentine
+9|Embothrium coccineum|Arbre de feu du Chili|Protéacées|Arbre persistant|Chili, Argentine
+9|Crinodendron hookerianum|Arbre aux lanternes|Élaeocarpacées|Arbuste persistant|Chili
+9|Desfontainia spinosa|Desfontainia|Columelliacées|Arbuste persistant|Andes
+9|Abutilon vitifolium|Abutilon à feuilles de vigne|Malvacées|Arbuste caduc|Chili
+9|Buddleja globosa|Buddleia à boules|Scrophulariacées|Arbuste semi-persistant|Chili, Argentine
+9|Ugni molinae|Goyavier du Chili|Myrtacées|Arbuste persistant|Chili
+9|Azara microphylla|Azara|Salicacées|Arbuste persistant|Chili, Argentine
+9|Nothofagus antarctica|Hêtre de l'Antarctique|Nothofagacées|Arbre caduc|Chili, Argentine
+9|Maytenus boaria|Maïten|Célastracées|Arbre persistant|Chili, Argentine
+# --- Ajouts (bonne couverture photo Pl@ntNet) ---
+1|Juglans regia|Noyer commun|Juglandacées|Arbre caduc|Asie centrale
+1|Phragmites australis|Roseau commun|Poacées|Graminée|Monde entier
+1|Solanum dulcamara|Douce-amère|Solanacées|Liane caduque|Europe
+1|Lonicera caprifolium|Chèvrefeuille des jardins|Caprifoliacées|Liane caduque|Europe du Sud
+1|Rubus ulmifolius|Ronce à feuilles d'orme|Rosacées|Arbuste caduc|Europe de l'Ouest et du Sud
+2|Ribes aureum|Groseillier doré|Grossulariacées|Arbuste caduc|Amérique du Nord
+2|Lonicera tatarica|Chèvrefeuille de Tartarie|Caprifoliacées|Arbuste caduc|Asie centrale
+2|Lonicera maackii|Chèvrefeuille de Maack|Caprifoliacées|Arbuste caduc|Asie de l'Est
+2|Spiraea douglasii|Spirée de Douglas|Rosacées|Arbuste caduc|Ouest de l'Amérique du Nord
+2|Spiraea salicifolia|Spirée à feuilles de saule|Rosacées|Arbuste caduc|Europe de l'Est, Asie
+2|Clematis viticella|Clématite bleue|Renonculacées|Liane caduque|Europe du Sud
+2|Aristolochia macrophylla|Aristoloche siphon|Aristolochiacées|Liane caduque|Est de l'Amérique du Nord
+2|Parthenocissus inserta|Vigne vierge commune|Vitacées|Liane caduque|Amérique du Nord
+2|Rubus phoenicolasius|Ronce du Japon|Rosacées|Arbuste caduc|Asie de l'Est
+2|Syringa × persica|Lilas de Perse|Oléacées|Arbuste caduc|Hybride horticole
+2|Laburnum alpinum|Cytise des Alpes|Fabacées|Arbre caduc|Alpes
+3|Amorpha fruticosa|Faux indigo|Fabacées|Arbuste caduc|Amérique du Nord
+3|Caragana arborescens|Caraganier de Sibérie|Fabacées|Arbuste caduc|Sibérie
+3|Elaeagnus umbellata|Chalef en ombelle|Élaéagnacées|Arbuste caduc|Asie de l'Est
+3|Baccharis halimifolia|Séneçon en arbre|Astéracées|Arbuste caduc|Amérique du Nord
+3|Euonymus latifolius|Fusain à larges feuilles|Célastracées|Arbuste caduc|Europe centrale et du Sud
+3|Rosa tomentosa|Rosier tomenteux|Rosacées|Arbuste caduc|Europe
+3|Rosa villosa|Rosier pommier|Rosacées|Arbuste caduc|Europe
+3|Rosa corymbifera|Rosier à corymbes|Rosacées|Arbuste caduc|Europe
+3|Salix daphnoides|Saule faux-daphné|Salicacées|Arbuste caduc|Europe
+3|Salix pentandra|Saule à cinq étamines|Salicacées|Arbre caduc|Europe
+3|Salix myrsinifolia|Saule noircissant|Salicacées|Arbuste caduc|Europe
+3|Prunus fruticosa|Cerisier nain|Rosacées|Arbuste caduc|Europe centrale
+3|Cotoneaster bullatus|Cotonéaster bullé|Rosacées|Arbuste caduc|Chine
+3|Cotoneaster divaricatus|Cotonéaster divariqué|Rosacées|Arbuste caduc|Chine
+3|Ligustrum sinense|Troène à feuilles de buis|Oléacées|Arbuste semi-persistant|Chine
+3|Philadelphus inodorus|Seringat inodore|Hydrangéacées|Arbuste caduc|Sud-est des États-Unis
+3|Deutzia crenata|Deutzia crénelé|Hydrangéacées|Arbuste caduc|Japon
+3|Weigela coraeensis|Weigela de Corée|Caprifoliacées|Arbuste caduc|Japon
+3|Diervilla lonicera|Diervillée|Caprifoliacées|Arbuste caduc|Amérique du Nord
+3|Lonicera involucrata|Chèvrefeuille involucré|Caprifoliacées|Arbuste caduc|Amérique du Nord
+3|Rhamnus saxatilis|Nerprun des rochers|Rhamnacées|Arbuste caduc|Europe du Sud
+3|Rhamnus alpina|Nerprun des Alpes|Rhamnacées|Arbuste caduc|Montagnes d'Europe du Sud
+4|Fraxinus pennsylvanica|Frêne rouge|Oléacées|Arbre caduc|Amérique du Nord
+4|Acer tataricum|Érable de Tartarie|Sapindacées|Arbre caduc|Europe de l'Est, Asie
+4|Carpinus orientalis|Charme d'Orient|Bétulacées|Arbre caduc|Balkans, Turquie
+4|Alnus alnobetula|Aulne vert|Bétulacées|Arbuste caduc|Montagnes d'Europe
+4|Sorbus mougeotii|Alisier de Mougeot|Rosacées|Arbre caduc|Montagnes d'Europe
+4|Sorbus latifolia|Alisier de Fontainebleau|Rosacées|Arbre caduc|France
+4|Quercus faginea|Chêne du Portugal|Fagacées|Arbre semi-persistant|Péninsule Ibérique
+4|Quercus × hispanica|Chêne d'Espagne|Fagacées|Arbre semi-persistant|Hybride
+4|Tilia × euchlora|Tilleul de Crimée|Malvacées|Arbre caduc|Hybride
+4|Prunus virginiana|Cerisier de Virginie|Rosacées|Arbre caduc|Amérique du Nord
+4|Populus balsamifera|Peuplier baumier|Salicacées|Arbre caduc|Amérique du Nord
+4|Populus simonii|Peuplier de Simon|Salicacées|Arbre caduc|Chine
+4|Ulmus americana|Orme d'Amérique|Ulmacées|Arbre caduc|Est de l'Amérique du Nord
+4|Liriodendron chinense|Tulipier de Chine|Magnoliacées|Arbre caduc|Chine
+4|Catalpa speciosa|Catalpa remarquable|Bignoniacées|Arbre caduc|Centre des États-Unis
+4|Robinia viscosa|Robinier visqueux|Fabacées|Arbre caduc|Sud-est des États-Unis
+4|Robinia hispida|Robinier hispide|Fabacées|Arbuste caduc|Sud-est des États-Unis
+4|Acer pensylvanicum|Érable de Pennsylvanie|Sapindacées|Arbre caduc|Est de l'Amérique du Nord
+4|Quercus imbricaria|Chêne à lattes|Fagacées|Arbre caduc|Est des États-Unis
+4|Quercus velutina|Chêne noir|Fagacées|Arbre caduc|Est des États-Unis
+4|Quercus bicolor|Chêne bicolore|Fagacées|Arbre caduc|Est de l'Amérique du Nord
+4|Quercus libani|Chêne du Liban|Fagacées|Arbre caduc|Liban, Turquie
+4|Quercus castaneifolia|Chêne à feuilles de châtaignier|Fagacées|Arbre caduc|Caucase, Iran
+5|Pinus heldreichii|Pin de Bosnie|Pinacées|Conifère persistant|Balkans
+5|Pinus peuce|Pin des Balkans|Pinacées|Conifère persistant|Balkans
+5|Pinus banksiana|Pin gris|Pinacées|Conifère persistant|Canada
+5|Pinus rigida|Pin rigide|Pinacées|Conifère persistant|Est des États-Unis
+5|Pinus jeffreyi|Pin de Jeffrey|Pinacées|Conifère persistant|Californie
+5|Pinus coulteri|Pin de Coulter|Pinacées|Conifère persistant|Californie
+5|Abies balsamea|Sapin baumier|Pinacées|Conifère persistant|Canada
+5|Abies veitchii|Sapin de Veitch|Pinacées|Conifère persistant|Japon
+5|Picea mariana|Épinette noire|Pinacées|Conifère persistant|Canada
+5|Picea engelmannii|Épicéa d'Engelmann|Pinacées|Conifère persistant|Montagnes Rocheuses
+5|Larix × eurolepis|Mélèze hybride|Pinacées|Conifère caduc|Hybride
+5|Cupressus lusitanica|Cyprès du Portugal|Cupressacées|Conifère persistant|Mexique, Amérique centrale
+5|Juniperus × pfitzeriana|Genévrier de Pfitzer|Cupressacées|Conifère persistant|Hybride horticole
+5|Thuja standishii|Thuya du Japon|Cupressacées|Conifère persistant|Japon
+6|Phalaris arundinacea|Baldingère|Poacées|Graminée|Hémisphère Nord
+6|Juncus effusus|Jonc épars|Joncacées|Vivace|Monde entier
+6|Glyceria maxima|Glycérie aquatique|Poacées|Graminée|Europe, Asie
+6|Schoenoplectus lacustris|Jonc des chaisiers|Cypéracées|Vivace|Europe
+6|Sparganium erectum|Rubanier dressé|Typhacées|Vivace|Europe, Asie
+6|Butomus umbellatus|Jonc fleuri|Butomacées|Vivace|Europe, Asie
+6|Filipendula ulmaria|Reine-des-prés|Rosacées|Vivace|Europe
+6|Eupatorium cannabinum|Eupatoire chanvrine|Astéracées|Vivace|Europe
+6|Valeriana officinalis|Valériane officinale|Caprifoliacées|Vivace|Europe
+6|Verbascum thapsus|Bouillon-blanc|Scrophulariacées|Bisannuelle|Europe
+6|Dipsacus fullonum|Cardère sauvage|Caprifoliacées|Bisannuelle|Europe
+6|Foeniculum vulgare|Fenouil commun|Apiacées|Vivace|Méditerranée
+6|Angelica sylvestris|Angélique des bois|Apiacées|Vivace|Europe
+6|Origanum vulgare|Origan|Lamiacées|Vivace|Europe
+6|Tanacetum vulgare|Tanaisie|Astéracées|Vivace|Europe
+6|Hypericum perforatum|Millepertuis perforé|Hypéricacées|Vivace|Europe
+6|Malva sylvestris|Mauve sylvestre|Malvacées|Vivace|Europe
+6|Althaea officinalis|Guimauve officinale|Malvacées|Vivace|Europe
+6|Epilobium angustifolium|Épilobe en épi|Onagracées|Vivace|Hémisphère Nord
+6|Oenothera biennis|Onagre bisannuelle|Onagracées|Bisannuelle|Amérique du Nord
+6|Symphytum officinale|Grande consoude|Boraginacées|Vivace|Europe
+6|Euphorbia amygdaloides|Euphorbe des bois|Euphorbiacées|Vivace|Europe
+6|Iris foetidissima|Iris fétide|Iridacées|Vivace|Europe de l'Ouest
+6|Polygonatum multiflorum|Sceau de Salomon|Asparagacées|Vivace|Europe
+6|Echium vulgare|Vipérine commune|Boraginacées|Bisannuelle|Europe
+6|Solidago canadensis|Solidage du Canada|Astéracées|Vivace|Amérique du Nord
+6|Teucrium chamaedrys|Germandrée petit-chêne|Lamiacées|Sous-arbrisseau|Europe
+6|Satureja montana|Sarriette des montagnes|Lamiacées|Sous-arbrisseau|Europe du Sud
+6|Helianthemum nummularium|Hélianthème jaune|Cistacées|Sous-arbrisseau|Europe
+6|Dryas octopetala|Dryade à huit pétales|Rosacées|Sous-arbrisseau|Montagnes de l'hémisphère Nord
+6|Rubia peregrina|Garance voyageuse|Rubiacées|Liane persistante|Méditerranée, Europe de l'Ouest
+6|Asparagus acutifolius|Asperge sauvage|Asparagacées|Sous-arbrisseau|Méditerranée
+6|Aristolochia clematitis|Aristoloche clématite|Aristolochiacées|Vivace|Europe du Sud
+6|Clematis recta|Clématite droite|Renonculacées|Vivace|Europe
+6|Lathyrus latifolius|Gesse à larges feuilles|Fabacées|Liane vivace|Europe du Sud
+6|Convolvulus sepium|Liseron des haies|Convolvulacées|Liane vivace|Europe
+6|Luzula sylvatica|Luzule des bois|Joncacées|Vivace|Europe
+6|Stipa pennata|Stipe penné|Poacées|Graminée|Europe, Asie
+6|Briza media|Brize intermédiaire|Poacées|Graminée|Europe
+6|Carex riparia|Laîche des rives|Cypéracées|Vivace|Europe
+7|Erica tetralix|Bruyère à quatre angles|Éricacées|Sous-arbrisseau|Europe de l'Ouest
+7|Erica scoparia|Bruyère à balais|Éricacées|Arbuste persistant|Ouest de la Méditerranée
+7|Erica vagans|Bruyère vagabonde|Éricacées|Sous-arbrisseau|Europe de l'Ouest
+7|Erica ciliaris|Bruyère ciliée|Éricacées|Sous-arbrisseau|Europe de l'Ouest
+7|Daboecia cantabrica|Bruyère de Saint-Daboec|Éricacées|Sous-arbrisseau|Europe de l'Ouest
+7|Vaccinium uliginosum|Airelle des marais|Éricacées|Sous-arbrisseau|Hémisphère Nord
+7|Vaccinium oxycoccos|Canneberge|Éricacées|Sous-arbrisseau|Hémisphère Nord
+7|Andromeda polifolia|Andromède|Éricacées|Sous-arbrisseau|Hémisphère Nord
+7|Genista pilosa|Genêt poilu|Fabacées|Sous-arbrisseau|Europe
+7|Genista sagittalis|Genêt ailé|Fabacées|Sous-arbrisseau|Europe
+7|Cytisus nigricans|Cytise noircissant|Fabacées|Arbuste caduc|Europe centrale
+7|Chamaecytisus hirsutus|Cytise hirsute|Fabacées|Sous-arbrisseau|Europe du Sud
+7|Lonicera caerulea|Camérisier bleu|Caprifoliacées|Arbuste caduc|Montagnes de l'hémisphère Nord
+7|Ribes petraeum|Groseillier des rochers|Grossulariacées|Arbuste caduc|Montagnes d'Europe
+7|Rosa pendulina|Rosier des Alpes|Rosacées|Arbuste caduc|Montagnes d'Europe
+7|Salix herbacea|Saule herbacé|Salicacées|Sous-arbrisseau|Montagnes de l'hémisphère Nord
+7|Salix retusa|Saule émoussé|Salicacées|Sous-arbrisseau|Alpes, Pyrénées
+7|Salix rosmarinifolia|Saule à feuilles de romarin|Salicacées|Arbuste caduc|Europe
+7|Prunus brigantina|Abricotier de Briançon|Rosacées|Arbuste caduc|Alpes du Sud
+7|Sorbus aucuparia|Sorbier des oiseleurs|Rosacées|Arbre caduc|Europe
+7|Ilex aquifolium|Houx commun|Aquifoliacées|Arbuste persistant|Europe
+8|Osyris alba|Rouvet|Santalacées|Sous-arbrisseau|Méditerranée
+8|Globularia alypum|Globulaire buissonnante|Plantaginacées|Sous-arbrisseau|Méditerranée
+8|Coriaria myrtifolia|Corroyère à feuilles de myrte|Coriariacées|Arbuste caduc|Ouest de la Méditerranée
+8|Rhus coriaria|Sumac des corroyeurs|Anacardiacées|Arbuste caduc|Méditerranée
+8|Quercus rotundifolia|Chêne à feuilles rondes|Fagacées|Arbre persistant|Péninsule Ibérique, Afrique du Nord
+8|Cneorum tricoccon|Camélée|Cnéoracées|Sous-arbrisseau|Ouest de la Méditerranée
+8|Thymelaea hirsuta|Passerine hérissée|Thyméléacées|Sous-arbrisseau|Méditerranée
+8|Lavandula dentata|Lavande dentée|Lamiacées|Sous-arbrisseau|Ouest de la Méditerranée
+8|Teucrium polium|Germandrée tomenteuse|Lamiacées|Sous-arbrisseau|Méditerranée
+8|Cistus laurifolius|Ciste à feuilles de laurier|Cistacées|Arbuste persistant|Ouest de la Méditerranée
+8|Halimium halimifolium|Halimium|Cistacées|Sous-arbrisseau|Ouest de la Méditerranée
+8|Ononis natrix|Bugrane jaune|Fabacées|Sous-arbrisseau|Méditerranée
+8|Medicago arborea|Luzerne arborescente|Fabacées|Arbuste persistant|Méditerranée
+8|Ephedra distachya|Éphédra à deux épis|Éphédracées|Sous-arbrisseau|Europe du Sud, Asie
+8|Salsola vermiculata|Soude vermiculée|Amaranthacées|Sous-arbrisseau|Méditerranée
+8|Limoniastrum monopetalum|Grand statice|Plumbaginacées|Sous-arbrisseau|Méditerranée
+9|Eucalyptus dalrympleana|Gommier de montagne|Myrtacées|Arbre persistant|Australie
+9|Eucalyptus pauciflora|Gommier des neiges|Myrtacées|Arbre persistant|Australie
+9|Acacia melanoxylon|Acacia à bois noir|Fabacées|Arbre persistant|Australie
+9|Acacia longifolia|Mimosa à longues feuilles|Fabacées|Arbuste persistant|Australie
+9|Hakea sericea|Hakea soyeux|Protéacées|Arbuste persistant|Australie
+9|Callistemon rigidus|Rince-bouteille raide|Myrtacées|Arbuste persistant|Australie
+9|Kunzea ericoides|Kanuka|Myrtacées|Arbuste persistant|Nouvelle-Zélande
+9|Sophora tetraptera|Kowhai|Fabacées|Arbre persistant|Nouvelle-Zélande
+9|Brachyglottis greyi|Séneçon de Grey|Astéracées|Arbuste persistant|Nouvelle-Zélande
+9|Cotoneaster coriaceus|Cotonéaster coriace|Rosacées|Arbuste persistant|Chine
+9|Ligustrum vulgare|Troène commun|Oléacées|Arbuste semi-persistant|Europe

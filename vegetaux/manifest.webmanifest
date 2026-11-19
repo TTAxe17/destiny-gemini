@@ -1,0 +1,17 @@
+{
+  "name": "Herbier Vivant",
+  "short_name": "Herbier",
+  "description": "Entraînement quotidien à la reconnaissance des végétaux : photos, noms français et latins, conseils de paysagiste.",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#eef2ec",
+  "theme_color": "#2c5a3a",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}

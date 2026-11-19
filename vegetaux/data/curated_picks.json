@@ -1,0 +1,411 @@
+{
+"Photinia × fraseri": {
+"leaf": 3,
+"fruit": 4,
+"bark": 15,
+"habit": 1
+},
+"Forsythia × intermedia": {
+"leaf": 8,
+"fruit": 6,
+"bark": [
+12,
+"twig"
+],
+"habit": 7
+},
+"Lagerstroemia indica": {
+"leaf": 2,
+"fruit": 7,
+"bark": [
+9,
+"flower"
+],
+"habit": 11
+},
+"Choisya ternata": {
+"leaf": 5,
+"fruit": [
+11,
+"flower"
+],
+"bark": [
+3,
+"twig"
+],
+"habit": 12
+},
+"Abelia × grandiflora": {
+"leaf": 9,
+"fruit": 6,
+"bark": [
+4,
+"twig"
+],
+"habit": 3
+},
+"Spiraea × vanhouttei": {
+"leaf": 6,
+"fruit": 12,
+"bark": [
+0,
+"twig"
+],
+"habit": 11
+},
+"Deutzia scabra": {
+"leaf": 9,
+"fruit": 6,
+"bark": [
+15,
+"flower"
+],
+"habit": 13
+},
+"Acer palmatum": {
+"leaf": 0,
+"fruit": 7,
+"bark": 12,
+"habit": 8
+},
+"Prunus serrulata": {
+"leaf": 13,
+"fruit": 7,
+"bark": 6,
+"habit": 3
+},
+"Phyllostachys aurea": {
+"leaf": 6,
+"fruit": [
+3,
+"twig"
+],
+"bark": 10,
+"habit": 7
+},
+"Nassella tenuissima": {
+"leaf": 8,
+"fruit": 12,
+"bark": 11,
+"habit": 3
+},
+"Oenothera lindheimeri": {
+"leaf": 8,
+"fruit": [
+3,
+"flower"
+],
+"bark": [
+4,
+"twig"
+],
+"habit": 9
+},
+"Nepeta × faassenii": {
+"leaf": 13,
+"fruit": [
+10,
+"flower"
+],
+"bark": [
+8,
+"twig"
+],
+"habit": 5
+},
+"Salvia yangii": {
+"leaf": 0,
+"fruit": [
+6,
+"flower"
+],
+"bark": [
+2,
+"twig"
+],
+"habit": 4
+},
+"Hosta sieboldiana": {
+"leaf": 13,
+"fruit": 11,
+"bark": [
+9,
+"flower"
+],
+"habit": 14
+},
+"Heuchera micrantha": {
+"leaf": 5,
+"fruit": 10,
+"bark": [
+6,
+"flower"
+],
+"habit": 9
+},
+"Phormium tenax": {
+"leaf": 2,
+"fruit": 10,
+"bark": [
+15,
+"flower"
+],
+"habit": 6
+},
+"Kniphofia uvaria": {
+"leaf": 8,
+"fruit": 6,
+"bark": [
+12,
+"flower"
+],
+"habit": 9
+},
+"Lonicera nitida": {
+"leaf": 13,
+"fruit": 7,
+"bark": [
+12,
+"twig"
+],
+"habit": 5
+},
+"Ilex crenata": {
+"leaf": 6,
+"fruit": 7,
+"bark": 9,
+"habit": 13
+},
+"Osmanthus heterophyllus": {
+"leaf": 2,
+"fruit": 7,
+"bark": 10,
+"habit": 5
+},
+"Pieris japonica": {
+"leaf": 8,
+"fruit": 9,
+"bark": [
+12,
+"flower"
+],
+"habit": 0
+},
+"Hydrangea paniculata": {
+"leaf": 9,
+"fruit": 2,
+"bark": 10,
+"habit": 3
+},
+"Cedrus libani": {
+"leaf": 1,
+"fruit": 11,
+"bark": 7,
+"habit": 0
+},
+"× Cuprocyparis leylandii": {
+"leaf": 11,
+"fruit": [
+12,
+"twig"
+],
+"bark": 14,
+"habit": 2
+},
+"Phoenix canariensis": {
+"leaf": 11,
+"fruit": 6,
+"bark": 7,
+"habit": 4
+},
+"Camellia japonica": {
+"leaf": 1,
+"fruit": 10,
+"bark": [
+0,
+"flower"
+],
+"habit": 12
+},
+"Fatsia japonica": {
+"leaf": 1,
+"fruit": 12,
+"bark": 11,
+"habit": 7
+},
+"Skimmia japonica": {
+"leaf": 3,
+"fruit": 7,
+"bark": [
+9,
+"twig"
+],
+"habit": 15
+},
+"Ophiopogon japonicus": {
+"leaf": 15,
+"fruit": 2,
+"bark": [
+5,
+"flower"
+],
+"habit": 14
+},
+"Metasequoia glyptostroboides": {
+"leaf": 0,
+"fruit": [
+9,
+"twig"
+],
+"bark": 7,
+"habit": 8
+},
+"Araucaria araucana": {
+"leaf": 9,
+"fruit": [
+8,
+"twig"
+],
+"bark": 12,
+"habit": 3
+},
+"Eucalyptus gunnii": {
+"leaf": 5,
+"fruit": 9,
+"bark": 6,
+"habit": 8
+},
+"Grevillea rosmarinifolia": {
+"leaf": 7,
+"fruit": [
+5,
+"flower"
+],
+"bark": [
+14,
+"twig"
+],
+"habit": 4
+},
+"Dicksonia antarctica": {
+"leaf": 9,
+"fruit": [
+8,
+"spores"
+],
+"bark": 15,
+"habit": 4
+},
+"Bougainvillea spectabilis": {
+"leaf": 7,
+"fruit": [
+5,
+"flower"
+],
+"bark": [
+3,
+"twig"
+],
+"habit": 6
+},
+"Washingtonia filifera": {
+"leaf": 3,
+"bark": 1,
+"habit": 15
+},
+"Chaenomeles speciosa": {
+"leaf": 11,
+"fruit": 10,
+"bark": [
+0,
+"flower"
+],
+"habit": 14
+},
+"Weigela florida": {
+"leaf": 3,
+"fruit": [
+2,
+"flower"
+],
+"bark": [
+14,
+"twig"
+],
+"habit": 13
+},
+"Viburnum plicatum": {
+"leaf": 4,
+"fruit": 15,
+"bark": [
+5,
+"flower"
+],
+"habit": 1
+},
+"Trachelospermum jasminoides": {
+"leaf": 10,
+"fruit": [
+11,
+"flower"
+],
+"bark": [
+1,
+"twig"
+],
+"habit": 5
+},
+"Clematis montana": {
+"leaf": 5,
+"fruit": 6,
+"bark": [
+9,
+"twig"
+],
+"habit": 11
+},
+"Wisteria floribunda": {
+"leaf": 5,
+"fruit": 6,
+"bark": 9,
+"habit": 12
+},
+"Koelreuteria paniculata": {
+"leaf": 1,
+"fruit": 7,
+"bark": [
+8,
+"fruit"
+],
+"habit": 10
+},
+"Ceanothus thyrsiflorus": {
+"leaf": 11,
+"fruit": 10,
+"bark": [
+13,
+"twig"
+],
+"habit": 12
+},
+"Magnolia stellata": {
+"fruit": [
+2,
+"flower"
+],
+"bark": 14,
+"habit": 3
+},
+"Viburnum × bodnantense": {
+"leaf": 6,
+"fruit": [
+14,
+"flower"
+],
+"bark": [
+9,
+"twig"
+],
+"habit": 10
+}
+}
