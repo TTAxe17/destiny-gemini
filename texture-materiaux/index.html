@@ -360,10 +360,10 @@ const TEXTURES = [
     steps: [
       ["Crayon", "Dessine très légèrement un réseau de cellules arrondies de tailles variées, comme des galets aplatis qui ne se touchent pas."],
       ["B21", "Remplis l'intérieur des cellules en laissant le réseau entre elles blanc.", "Pointe pinceau : contourne chaque cellule, puis remplis-la. Garde 1 à 2 mm de blanc entre les cellules."],
-      ["B24", "Repasse dans chaque cellule en gardant un centre plus clair.", "Pointe pinceau : commence par le bord et arrête-toi avant le centre."],
+      ["B24", "Repasse dans chaque cellule en gardant un centre plus clair, et fonce légèrement tout le coin bas-droite pour la profondeur.", "Pointe pinceau : commence par le bord et arrête-toi avant le centre ; biseau couché pour le coin."],
       ["B29", "Sur le bord bas et droit de chaque cellule, ajoute un croissant foncé. C'est lui qui donne l'effet de vaguelette.", "Pointe pinceau : appuie au milieu du croissant et relâche aux deux bouts."],
       ["B24", "Tant que c'est humide, repasse sur la limite du croissant pour la fondre.", "Tout de suite après le B29, petits mouvements sur la limite."],
-      ["Blanc", "Une fois sec, souligne le bord haut de quelques cellules et ajoute de petits points brillants.", "Traits courts et fins, seulement sur le bord haut-gauche de quelques cellules."]
+      ["Blanc", "Une fois sec, souligne le bord haut de quelques cellules, ajoute de petits points brillants et quelques fines lignes courbes de lumière dans les cellules.", "Traits courts et fins, seulement sur le bord haut-gauche de quelques cellules ; lignes courbes très légères."]
     ],
     errors: ["Des cellules toutes de la même taille, alignées en grille.", "Un réseau d'épaisseur constante. Varie-le, plus fin aux croisements.", "Repasser trop souvent : le papier sature et les bords bavent."],
     tip: "Garde le croissant foncé du même côté dans toutes les cellules : il indique d'où vient la lumière, et l'œil remarque tout de suite s'il change." },
@@ -374,7 +374,7 @@ const TEXTURES = [
       ["Crayon", "Trace légèrement des lignes ondulées qui traversent la case et se rejoignent parfois, comme un filet déformé."],
       ["B24", "Pose un aplat moyen sur toute la case.", "Pointe biseau : grands traits rapides dans un seul sens, sans t'arrêter au milieu."],
       ["B29", "Repasse par zones, dans le sens des ondulations, pour varier le bleu.", "Pointe pinceau couchée, en suivant les ondulations du crayon."],
-      ["B39", "Ajoute des accents foncés dans les creux, juste sous certaines lignes.", "Pointe pinceau : petites touches allongées juste sous les lignes."],
+      ["B39", "Ajoute des accents foncés dans les creux, juste sous certaines lignes, et fonce légèrement le bas de la case.", "Pointe pinceau : petites touches allongées juste sous les lignes ; biseau couché pour le bas."],
       ["B24", "Repasse le B24 sur les limites entre les zones pour les fondre, puis laisse sécher complètement. Un blanc posé sur un feutre humide devient gris.", "Petits mouvements sur les limites encore humides, puis 10 minutes de séchage."],
       ["Blanc", "Repasse les lignes ondulées d'un trait continu qui s'affine aux extrémités.", "Geste rapide du poignet : le trait commence et finit en pointe."]
     ],
@@ -413,7 +413,7 @@ const TEXTURES = [
     steps: [
       ["Crayon", "À la règle, trace le calepinage : dalles rectangulaires décalées d'une rangée à l'autre."],
       ["W1", "Pose un aplat clair sur toutes les dalles.", "Pointe biseau, dalle par dalle, traits dans le même sens partout."],
-      ["W3", "Repasse une dalle sur trois pour varier les tons.", "Pointe biseau, une dalle entière à la fois. Évite deux dalles foncées côte à côte."],
+      ["W3", "Repasse une dalle sur trois pour varier les tons, et tapote quelques nuances sur toutes les dalles pour le grain de la pierre.", "Pointe biseau pour les dalles entières ; pointe pinceau tapotée pour les nuances. Évite deux dalles foncées côte à côte."],
       ["W5", "Ajoute une ombre fine le long du même côté de chaque dalle (ici à droite et en bas).", "Pointe fine du biseau contre la règle : 1 à 2 mm, toujours à droite et en bas."],
       ["Liner", "Repasse les joints avec un trait légèrement irrégulier.", "Feutre fin 0,3 à la règle, sans appuyer."],
       ["Liner", "Ajoute de petits points et quelques amas sombres le long des joints pour l'usure.", "Petits points groupés, 3 ou 4 amas par case au maximum."]
@@ -532,9 +532,9 @@ const TEXTURES = [
       ["Crayon", "À la règle, trace les lames : même largeur, longueurs variées, joints de bout décalés d'une rangée à l'autre."],
       ["E35", "Pose un aplat sur toutes les lames, dans le sens de la longueur.", "Pointe biseau, une lame à la fois."],
       ["E37", "Repasse une lame sur trois ou quatre, au hasard.", "Pointe biseau, lame entière d'un trait. Jamais deux lames voisines."],
-      ["E49", "Trace quelques veines fines dans le sens des lames, et fonce le bout de certaines lames.", "Pointe pinceau très légère, veines fines et longues."],
+      ["E49", "Trace des veines fines dans le sens des lames, ajoute quelques petits nœuds, et fonce le bout de certaines lames.", "Pointe pinceau très légère pour les veines ; un petit trait appuyé pour chaque nœud."],
       ["Liner", "Repasse les joints, le long des lames et en bout.", "Feutre fin 0,3 à la règle : joints longs d'abord, joints de bout ensuite."],
-      ["Blanc", "Trace deux reflets fins en diagonale, parallèles, qui traversent plusieurs lames.", "Règle en diagonale, deux traits proches : un épais, un fin."]
+      ["Blanc", "Trace deux reflets fins en diagonale qui traversent plusieurs lames, et un filet clair le long du bord gauche de chaque lame pour le chanfrein.", "Règle en diagonale pour les reflets ; trait très fin et léger pour les chanfreins."]
     ],
     errors: ["Des joints de bout alignés d'une rangée à l'autre.", "Toutes les lames identiques.", "Des veines qui changent de direction."],
     tip: "Les reflets blancs doivent être parallèles et traverser toute la case. Trace-les à la règle pour qu'ils restent droits." },
@@ -708,8 +708,8 @@ const TEXTURES = [
     steps: [
       ["Crayon", "Trace les rangs à la règle, joints verticaux décalés d'une demi-brique (appareil en panneresse)."],
       ["W1", "Passe le mortier.", "Pointe fine du biseau dans les joints, à la règle."],
-      ["E07", "Colorie toutes les briques.", "Pointe biseau, un trait horizontal par brique."],
-      ["E09", "Repasse une brique sur trois et le bas de chaque brique.", "Pointe biseau, brique entière ; puis un trait fin en bas de chaque brique."],
+      ["E07", "Colorie toutes les briques, en laissant quelques coins ébréchés en blanc, puis repasse quelques zones pour les nuancer.", "Pointe biseau, un trait horizontal par brique ; contourne les éclats aux coins."],
+      ["E09", "Repasse une brique sur trois et le bas de chaque brique, puis tapote quelques taches de cuisson.", "Pointe biseau, brique entière ; trait fin en bas de chaque brique ; pointe pinceau tapotée pour les taches."],
       ["E18", "Ombre fine sous chaque brique, sur le mortier, et quelques briques plus sombres.", "Pointe fine, 1 mm sous chaque brique, toujours du même côté."],
       ["Liner", "Repasse le contour des briques, puis ajoute quelques points et éclats."]
     ],
@@ -1176,9 +1176,10 @@ function jitterPts(R, n, m, w, h, j = .8) { const p = []; for (let a = -1; a <= 
 function ell(c, x, y, rx, ry, rot) { c.beginPath(); c.ellipse(x, y, Math.max(.1, rx), Math.max(.1, ry), rot || 0, 0, Math.PI * 2); }
 function strokes(c, color, alpha, angle, gap, width, R, clipPath) {
   c.save(); if (clipPath) { const rule = clipPath(); c.clip(rule || "nonzero"); }
-  c.globalCompositeOperation = "multiply"; c.globalAlpha = alpha; c.strokeStyle = color; c.lineWidth = width;
+  c.globalCompositeOperation = "multiply"; c.fillStyle = color; c.globalAlpha = alpha * .82; c.fillRect(0, 0, S, S);
+  c.globalAlpha = alpha * .2; c.strokeStyle = color; c.lineWidth = width;
   const L = S * 1.6, ca = Math.cos(angle), sa = Math.sin(angle);
-  for (let o = -L; o < L; o += gap * (.8 + R() * .4)) { const cx = S / 2 - sa * o, cy = S / 2 + ca * o; c.beginPath(); c.moveTo(cx - ca * L, cy - sa * L); c.lineTo(cx + ca * L, cy + sa * L); c.stroke(); }
+  for (let o = -L; o < L; o += gap * 1.6 * (.8 + R() * .4)) { const cx = S / 2 - sa * o, cy = S / 2 + ca * o; c.beginPath(); c.moveTo(cx - ca * L, cy - sa * L); c.lineTo(cx + ca * L, cy + sa * L); c.stroke(); }
   c.restore();
 }
 function flat(c, color, alpha = 1) { c.save(); c.globalCompositeOperation = "multiply"; c.globalAlpha = alpha; c.fillStyle = color; c.fillRect(0, 0, S, S); c.restore(); }
@@ -1219,7 +1220,7 @@ function unitsGen(o) {
     units.forEach(u => { u.alt = R() < (o.altRate ?? .33); u.q = R(); });
     paper(c);
     const X = { c, st, rr, units, o, dir };
-    if (st >= 2) { const L = rr(2); units.forEach(u => strokes(c, col(o.base), .8, dir, 8, 12, L, () => pathFor(c, u))); }
+    if (st >= 2) { const L = rr(2); units.forEach(u => { strokes(c, col(o.base), .8, dir, 8, 12, L, () => pathFor(c, u)); const M = rng(Math.floor(u.q * 1e7)); c.save(); pathFor(c, u); c.clip(); c.globalCompositeOperation = "multiply"; c.fillStyle = col(o.base); c.globalAlpha = M() * .22; c.fill(); const bx = u.poly ? u.poly[0][0] : u.x, by = u.poly ? u.poly[0][1] : u.y, bw = u.w || 40, bh = u.h || 40; c.globalAlpha = .16; for (let k = 0; k < 4; k++) { ell(c, bx + M() * bw, by + M() * bh, 4 + M() * bw * .25, 3 + M() * bh * .2, M() * 3); c.fill(); } c.restore(); }); }
     const D = {
       3: () => { const L = rr(3); units.forEach(u => u.alt && strokes(c, col(o.alt), .65, dir, 9, 12, L, () => pathFor(c, u))); },
       4: () => units.forEach(u => shadeUnit(c, u, o.shade, o.sw ?? 7)),
@@ -1240,7 +1241,7 @@ function fieldGen(o) {
       let v = PAPER;
       if (st >= 2 && !(o.reserve && o.reserve(x, y))) {
         v = base;
-        if (st >= 3 && mid) { const n = fbm(x * sc, y * sc * (o.ay ?? 1), seed); const t = soft ? ss(th - .12, th + .1, n) : (n > th ? 1 : 0); v = mix(v, mul(v, mid), t * ma); }
+        if (st >= 3 && mid) { const n = fbm(x * sc, y * sc * (o.ay ?? 1), seed) + (vnoise(x * sc * 4, y * sc * 4, seed + 7) - .5) * .06; const t = soft ? ss(th - .12, th + .1, n) : ss(th - .025, th + .025, n); v = mix(v, mul(v, mid), t * ma * (.85 + .3 * vnoise(x * .05, y * .05, seed + 9))); }
       }
       return o.pix ? o.pix(x, y, v, st) : v;
     });
@@ -1288,7 +1289,8 @@ const GEN = {
       return o;
     });
     if (st >= 2) strokes(c, col("B21"), .12, 0, 9, 8, rr(2));
-    if (st >= 6) { const D = rr(6); c.fillStyle = WHITE; for (let k = 0; k < 28; k++) { ell(c, D() * S, D() * S, 1.4, 1.4); c.fill(); } }
+    if (st >= 3) { const g = c.createLinearGradient(0, 0, S, S); g.addColorStop(0, rgba("B24", 0)); g.addColorStop(1, rgba("B24", .35)); c.save(); c.globalCompositeOperation = "multiply"; c.fillStyle = g; c.fillRect(0, 0, S, S); c.restore(); }
+    if (st >= 6) { const D = rr(6); c.fillStyle = WHITE; for (let k = 0; k < 28; k++) { ell(c, D() * S, D() * S, 1.4, 1.4); c.fill(); } c.save(); c.strokeStyle = WHITE; c.globalAlpha = .55; c.lineWidth = .9; c.lineCap = "round"; for (let k = 0; k < 40; k++) { const x = D() * S, y = D() * S, a = D() * 6.28; c.beginPath(); c.moveTo(x, y); c.quadraticCurveTo(x + Math.cos(a) * 8, y + Math.sin(a) * 8, x + Math.cos(a + .8) * 14, y + Math.sin(a + .8) * 14); c.stroke(); } c.restore(); }
   },
   "eau-agitee"(c, st, rr) {
     const pts = jitterPts(rr(0), 4, 7, S, S, .9), B24 = P("B24"), B29 = P("B29"), B39 = P("B39");
@@ -1304,6 +1306,7 @@ const GEN = {
       return o;
     });
     if (st >= 3) strokes(c, col("B29"), .08, -.15, 10, 9, rr(3));
+    if (st >= 4) { const g = c.createLinearGradient(0, 0, 0, S); g.addColorStop(0, rgba("B39", 0)); g.addColorStop(1, rgba("B39", .3)); c.save(); c.globalCompositeOperation = "multiply"; c.fillStyle = g; c.fillRect(0, 0, S, S); c.restore(); }
   },
   "eau-calme"(c, st, rr) {
     const R = rr(0), pts = jitterPts(R, 4, 4, S, S, .9), cls = pts.map(() => R()), sh = pts.map(() => R() < .6);
@@ -1351,7 +1354,7 @@ const GEN = {
     tiles.forEach(t => {
       const clip = () => { c.beginPath(); c.rect(t.x + 1, t.y + 1, cw - 2, t.h - 2); };
       if (st >= 2) strokes(c, col("W1"), .75, Math.PI / 2, 9, 12, L2, clip);
-      if (st >= 3 && t.dark) strokes(c, col("W3"), .55, Math.PI / 2, 10, 12, L3, clip);
+      if (st >= 3) { if (t.dark) strokes(c, col("W3"), .55, Math.PI / 2, 10, 12, L3, clip); const M = rng(Math.floor(t.x * 31 + t.y * 7 + 999)); c.save(); clip(); c.clip(); c.globalCompositeOperation = "multiply"; c.fillStyle = col("W3"); c.globalAlpha = .22; for (let k = 0; k < 6; k++) { ell(c, t.x + M() * cw, t.y + M() * t.h, 10 + M() * 20, 6 + M() * 12, M() * 3); c.fill(); } c.restore(); }
       if (st >= 4) { c.save(); clip(); c.clip(); c.globalCompositeOperation = "multiply"; c.fillStyle = col("W5"); c.globalAlpha = .75; c.fillRect(t.x + cw - 9, t.y, 9, t.h); c.fillRect(t.x, t.y + t.h - 7, cw, 7); c.restore(); }
       if (st >= 5) { c.strokeStyle = INK; c.lineWidth = 1.6; c.strokeRect(t.x + .5, t.y + .5, cw - 1, t.h - 1); }
       else pencil(c, st, () => c.strokeRect(t.x + .5, t.y + .5, cw - 1, t.h - 1));
@@ -1376,23 +1379,24 @@ const GEN = {
   },
   parquet(c, st, rr) {
     const R = rr(0), pw = 36, planks = [];
-    for (let i = 0; i * pw < S; i++) { let y = -R() * 150; while (y < S) { const h = 90 + R() * 110; planks.push({ x: i * pw, y, h, alt: R() < .27, end: R() < .3, g: [R(), R(), R()] }); y += h; } }
+    for (let i = 0; i * pw < S; i++) { let y = -R() * 150; while (y < S) { const h = 90 + R() * 110; planks.push({ x: i * pw, y, h, alt: R() < .27, end: R() < .3, g: [R(), R(), R(), R(), R()], t: R(), kn: R() < .22, ky: R() }); y += h; } }
     paper(c);
     const L2 = rr(2), L3 = rr(3);
     planks.forEach(p => {
       const clip = () => { c.beginPath(); c.rect(p.x, p.y, pw, p.h); };
-      if (st >= 2) strokes(c, col("E35"), .75, Math.PI / 2, 8, 12, L2, clip);
+      if (st >= 2) strokes(c, col("E35"), .6 + p.t * .32, Math.PI / 2, 8, 12, L2, clip);
       if (st >= 3 && p.alt) strokes(c, col("E37"), .75, Math.PI / 2, 8, 12, L3, clip);
       if (st >= 4) {
         c.save(); clip(); c.clip(); c.globalCompositeOperation = "multiply"; c.strokeStyle = col("E49"); c.lineWidth = .9;
-        p.g.forEach((g, k) => { const gx = p.x + 5 + g * (pw - 10); c.globalAlpha = .4 + .2 * (k % 2); c.beginPath(); for (let yy = p.y; yy <= p.y + p.h; yy += 6) { const xx = gx + Math.sin(yy * .05 + k) * 1.8; yy === p.y ? c.moveTo(xx, yy) : c.lineTo(xx, yy); } c.stroke(); });
+        p.g.forEach((g, k) => { const gx = p.x + 4 + g * (pw - 8); c.globalAlpha = .25 + .2 * (k % 3); c.beginPath(); for (let yy = p.y; yy <= p.y + p.h; yy += 6) { const xx = gx + Math.sin(yy * .05 + k) * 1.8; yy === p.y ? c.moveTo(xx, yy) : c.lineTo(xx, yy); } c.stroke(); });
         if (p.end) { c.globalAlpha = .5; c.fillStyle = col("E49"); c.fillRect(p.x, p.y + p.h - 14, pw, 14); }
+        if (p.kn) { c.globalAlpha = .8; c.fillStyle = col("E49"); ell(c, p.x + pw * .5, p.y + p.h * (.2 + p.ky * .6), 2.5, 6); c.fill(); c.globalAlpha = .35; ell(c, p.x + pw * .5, p.y + p.h * (.2 + p.ky * .6), 6, 16); c.fill(); }
         c.restore();
       }
       if (st >= 5) { c.strokeStyle = INK; c.lineWidth = 1.4; c.strokeRect(p.x + .5, p.y + .5, pw - 1, p.h - 1); }
       else pencil(c, st, () => c.strokeRect(p.x + .5, p.y + .5, pw - 1, p.h - 1));
     });
-    if (st >= 6) diagWhite(c);
+    if (st >= 6) { diagWhite(c); c.save(); c.strokeStyle = WHITE; c.lineWidth = 1.2; c.globalAlpha = .5; planks.forEach(p => { c.beginPath(); c.moveTo(p.x + 2.2, p.y + 3); c.lineTo(p.x + 2.2, p.y + p.h - 3); c.stroke(); }); c.restore(); }
   },
   mosaique(c, st, rr) {
     const R = rr(0), t = 24, j = 3, tiles = [];
@@ -1410,55 +1414,68 @@ const GEN = {
   },
   brique(c, st, rr) {
     const R = rr(0), bh = 30, bw = 84, gap = 6, bricks = [];
-    for (let r = 0; r * (bh + gap) < S; r++) { const y = r * (bh + gap) + 3, off = (r % 2) * (bw + gap) / 2; for (let x = -off; x < S; x += bw + gap) bricks.push({ x, y, q: R() }); }
+    for (let r = 0; r * (bh + gap) < S; r++) { const y = r * (bh + gap) + 3, off = (r % 2) * (bw + gap) / 2; for (let x = -off; x < S; x += bw + gap) bricks.push({ x, y, q: R(), ch: R() < .3 ? Math.floor(R() * 4) : -1, cs: 4 + R() * 5 }); }
     paper(c);
     if (st >= 2) { flat(c, col("W1"), .9); c.fillStyle = PAPERS; bricks.forEach(b => c.fillRect(b.x, b.y, bw, bh)); }
     const L3 = rr(3), L4 = rr(4), L5 = rr(5), L6 = rr(6);
     bricks.forEach(b => {
       const clip = () => { c.beginPath(); c.rect(b.x, b.y, bw, bh); };
-      if (st >= 3) strokes(c, col("E07"), .85, 0, 7, 10, L3, clip);
-      if (st >= 4) { if (b.q < .35) strokes(c, col("E09"), .6, 0, 8, 10, L4, clip); c.save(); clip(); c.clip(); c.globalCompositeOperation = "multiply"; c.fillStyle = col("E09"); c.globalAlpha = .6; c.fillRect(b.x, b.y + bh - 8, bw, 8); c.restore(); }
+      if (st >= 3) { strokes(c, col("E07"), .85, 0, 7, 10, L3, clip); const M = rng(Math.floor(b.q * 1e7)); c.save(); clip(); c.clip(); c.globalCompositeOperation = "multiply"; c.fillStyle = col("E07"); c.globalAlpha = .3; for (let k = 0; k < 4; k++) { ell(c, b.x + M() * bw, b.y + M() * bh, 8 + M() * 16, 4 + M() * 7, M() * .5); c.fill(); } c.restore(); }
+      if (st >= 4) { if (b.q < .35) strokes(c, col("E09"), .6, 0, 8, 10, L4, clip); c.save(); clip(); c.clip(); c.globalCompositeOperation = "multiply"; c.fillStyle = col("E09"); c.globalAlpha = .6; c.fillRect(b.x, b.y + bh - 8, bw, 8); const M = rng(Math.floor(b.q * 1e7) + 7); c.globalAlpha = .28; for (let k = 0; k < 3; k++) { ell(c, b.x + M() * bw, b.y + M() * bh, 6 + M() * 12, 3 + M() * 5, M() * .5); c.fill(); } c.restore(); }
       if (st >= 5) { if (b.q >= .35 && b.q < .47) strokes(c, col("E18"), .5, 0, 8, 10, L5, clip); c.save(); c.globalCompositeOperation = "multiply"; c.fillStyle = col("E18"); c.globalAlpha = .6; c.fillRect(b.x + 3, b.y + bh, bw, 3); c.restore(); }
+      if (st >= 3 && b.ch >= 0) { const cx = b.ch % 2 ? b.x + bw : b.x, cy = b.ch > 1 ? b.y + bh : b.y, sx = b.ch % 2 ? -1 : 1, sy = b.ch > 1 ? -1 : 1; c.fillStyle = col("W1"); c.beginPath(); c.moveTo(cx, cy); c.lineTo(cx + sx * b.cs * 1.6, cy); c.lineTo(cx + sx * b.cs * .5, cy + sy * b.cs * .6); c.lineTo(cx, cy + sy * b.cs); c.closePath(); c.fill(); }
       if (st >= 6) { c.strokeStyle = INK; c.lineWidth = 1; c.strokeRect(b.x + .5, b.y + .5, bw - 1, bh - 1); c.fillStyle = INK; for (let k = 0; k < 6; k++) { ell(c, b.x + L6() * bw, b.y + L6() * bh, .8, .8); c.fill(); } }
       else pencil(c, st, () => c.strokeRect(b.x + .5, b.y + .5, bw - 1, bh - 1));
     });
   },
   bois(c, st, rr) {
     const R = rr(0), E33 = P("E33"), E35 = P("E35");
-    const knots = [[S * .35, S * .3], [S * .68, S * .7]];
-    const disp = (x0, y) => { let d = 0; knots.forEach(([kx, ky]) => { const dy = (y - ky) / 46, dx = x0 - kx; d += (dx >= 0 ? 1 : -1) * 28 * Math.exp(-dy * dy) * Math.exp(-(dx * dx) / 3600); }); return d; };
-    const veins = []; for (let i = 0; i < 26; i++) veins.push({ i, x0: (i + .5) * S / 26 + (R() - .5) * 8, dark: R() < .3, a: .45 + R() * .45, w: R(), soft: R() < .55 });
-    field(c, S, S, (x, y) => st < 2 ? PAPER : st < 3 ? E33 : mix(E33, E35, clamp((vnoise((x - disp(x, y) * .6) * .08, y * .006, 3) - .3) * 1.6)));
-    const path = v => { c.beginPath(); for (let y = -10; y <= S + 10; y += 4) { const x = v.x0 + Math.sin(y * .015 + v.i) * 4 + disp(v.x0, y); y === -10 ? c.moveTo(x, y) : c.lineTo(x, y); } };
-    if (st < 4) pencil(c, st, () => { veins.forEach(v => { if (v.i % 2) return; path(v); c.stroke(); }); knots.forEach(([kx, ky]) => { ell(c, kx, ky, 6, 12); c.stroke(); }); });
+    const knots = [[S * .35, S * .3, 1], [S * .68, S * .72, .8]];
+    const disp = (x0, y) => { let d = 0; knots.forEach(([kx, ky, k]) => { const dy = (y - ky) / (46 * k), dx = x0 - kx; d += (dx >= 0 ? 1 : -1) * 30 * k * Math.exp(-dy * dy) * Math.exp(-(dx * dx) / 3600); }); return d; };
+    const veins = []; for (let i = 0; i < 64; i++) veins.push({ i, x0: (i + .5) * S / 64 + (R() - .5) * 4, dark: R() < .18, a: .25 + R() * .45, w: R(), soft: R() < .5 });
+    field(c, S, S, (x, y) => {
+      if (st < 2) return PAPER;
+      let v = mix(E33, mul(E33, E33), .12 * vnoise(x * .02, y * .01, 9));
+      if (st >= 3) { const t = vnoise((x - disp(x, y) * .8) * .07, y * .005, 3); v = mix(v, mul(v, E35), ss(.48, .6, t) * .9 + .15 * fbm(x * .01, y * .02, 12)); }
+      return v;
+    });
+    const path = v => { c.beginPath(); for (let y = -10; y <= S + 10; y += 4) { const x = v.x0 + Math.sin(y * .015 + v.i) * 3 + disp(v.x0, y); y === -10 ? c.moveTo(x, y) : c.lineTo(x, y); } };
+    if (st < 4) pencil(c, st, () => { veins.forEach(v => { if (v.i % 4) return; path(v); c.stroke(); }); knots.forEach(([kx, ky]) => { ell(c, kx, ky, 6, 12); c.stroke(); }); });
     else {
       c.save(); c.globalCompositeOperation = "multiply";
       veins.forEach(v => {
         const strong = v.dark && st >= 5, soft = st >= 6 && v.soft && !v.dark;
-        c.strokeStyle = col(strong ? "E49" : "E57"); c.lineWidth = .6 + v.w * (strong ? 2.6 : 1.6);
-        c.filter = soft ? "blur(1.3px)" : "none"; c.globalAlpha = v.a * (soft ? .5 : 1);
+        c.strokeStyle = col(strong ? "E49" : "E57"); c.lineWidth = strong ? 1.2 + v.w * 2 : .4 + v.w * 1.2;
+        c.filter = soft ? "blur(1.2px)" : "none"; c.globalAlpha = v.a * (soft ? .55 : 1);
         path(v); c.stroke();
       });
       c.filter = "none";
-      if (st >= 5) knots.forEach(([kx, ky]) => { c.strokeStyle = col("E49"); c.lineWidth = 1.3; c.globalAlpha = .5; for (let r = 3; r < 20; r += 3.5) { ell(c, kx, ky, r * .7, r * 1.6); c.stroke(); } c.globalAlpha = .95; c.fillStyle = col("E49"); ell(c, kx, ky, 3, 7); c.fill(); });
+      if (st >= 5) knots.forEach(([kx, ky, k]) => {
+        c.save(); c.filter = "blur(2px)"; c.fillStyle = col("E49"); c.globalAlpha = .3; ell(c, kx, ky, 7 * k, 44 * k); c.fill(); c.restore();
+        c.strokeStyle = col("E49"); c.lineWidth = 1.1; c.globalAlpha = .55; for (let r = 3; r < 22 * k; r += 3) { ell(c, kx, ky, r * .7, r * 1.7); c.stroke(); }
+        c.globalAlpha = .95; c.fillStyle = col("E49"); ell(c, kx, ky, 3.5 * k, 8 * k); c.fill();
+      });
       c.restore();
     }
   },
   galets(c, st, rr) {
     const R = rr(0), stones = [];
-    for (let k = 0; k < 4000 && stones.length < 70; k++) { const r = 14 + R() * 24, x = R() * S, y = R() * S; if (stones.every(s => Math.hypot(s.x - x, s.y - y) > s.r + r + 3)) stones.push({ x, y, r, sx: .82 + R() * .3, rot: R() * 3.14 }); }
-    const bases = ["C1", "C1", "W3", "#cdd3df"]; stones.forEach(s => s.b = bases[Math.floor(R() * 4)]);
+    for (let k = 0; k < 9000 && stones.length < 130; k++) { const r = 9 + R() * 22, x = R() * S, y = R() * S; if (stones.every(t => Math.hypot(t.x - x, t.y - y) > (t.r + r) * 1.02 + 2)) stones.push({ x, y, r, sx: .8 + R() * .25, rot: R() * 3.14, p1: R() * 6.28, p2: R() * 6.28, q: R() }); }
+    const tones = ["C1", "C1", "W1", "W3", "C3", "#cfd6df", "#e4d8c6"]; stones.forEach(t => t.b = tones[Math.floor(R() * tones.length)]);
+    const shape = (t, dx = 0, dy = 0, begin = true) => { if (begin) c.beginPath(); for (let a = 0; a <= 6.3; a += .12) { const r0 = t.r * (1 + .08 * Math.sin(3 * a + t.p1) + .05 * Math.sin(5 * a + t.p2)), lx = Math.cos(a) * r0 * t.sx, ly = Math.sin(a) * r0, x = t.x + dx + lx * Math.cos(t.rot) - ly * Math.sin(t.rot), y = t.y + dy + lx * Math.sin(t.rot) + ly * Math.cos(t.rot); a ? c.lineTo(x, y) : c.moveTo(x, y); } c.closePath(); };
     paper(c);
-    const shape = s => ell(c, s.x, s.y, s.r * s.sx, s.r, s.rot);
-    if (st >= 2) { flat(c, col("C7"), 1); c.fillStyle = PAPERS; stones.forEach(s => { shape(s); c.fill(); }); }
-    if (st >= 3) stones.forEach(s => {
-      c.save(); shape(s); c.clip(); c.globalCompositeOperation = "multiply"; c.fillStyle = col(s.b); c.fillRect(s.x - s.r * 2, s.y - s.r * 2, s.r * 4, s.r * 4);
-      if (st === 4) { c.beginPath(); c.rect(s.x - s.r * 2, s.y - s.r * 2, s.r * 4, s.r * 4); c.ellipse(s.x - s.r * .22, s.y - s.r * .25, s.r * s.sx * .9, s.r * .9, s.rot, 0, Math.PI * 2); c.fillStyle = col("C5"); c.globalAlpha = .85; c.fill("evenodd"); c.globalAlpha = 1; }
-      if (st >= 5) { const g = c.createRadialGradient(s.x - s.r * .4, s.y - s.r * .45, s.r * .2, s.x - s.r * .2, s.y - s.r * .2, s.r * 1.45); g.addColorStop(0, "rgba(143,150,156,0)"); g.addColorStop(.6, "rgba(143,150,156,.5)"); g.addColorStop(1, "rgba(94,101,108,.95)"); c.fillStyle = g; c.fillRect(s.x - s.r * 2, s.y - s.r * 2, s.r * 4, s.r * 4); }
-      if (st >= 6) { c.globalCompositeOperation = "source-over"; c.fillStyle = "rgba(255,255,255,.88)"; ell(c, s.x - s.r * .4, s.y - s.r * .45, s.r * .22, s.r * .12, -.6); c.fill(); }
+    if (st >= 2) { flat(c, col("C7"), 1); const D = rr(20); c.save(); c.fillStyle = "rgba(30,32,36,.45)"; for (let k = 0; k < 500; k++) { ell(c, D() * S, D() * S, .6 + D() * 1.2, .6 + D() * 1); c.fill(); } c.restore(); c.fillStyle = PAPERS; stones.forEach(t => { shape(t); c.fill(); }); }
+    if (st >= 3) stones.forEach(t => {
+      const M = rng(Math.floor(t.q * 1e7)); c.save(); shape(t); c.clip(); c.globalCompositeOperation = "multiply";
+      c.fillStyle = col(t.b); c.globalAlpha = .95; c.fillRect(t.x - t.r * 2, t.y - t.r * 2, t.r * 4, t.r * 4);
+      c.fillStyle = col("C5"); c.globalAlpha = .15; for (let k = 0; k < 5; k++) { ell(c, t.x + (M() - .5) * t.r * 1.4, t.y + (M() - .5) * t.r * 1.4, t.r * (.2 + M() * .3), t.r * (.12 + M() * .2), M() * 3); c.fill(); }
+      c.fillStyle = "#5e656c"; c.globalAlpha = .55; for (let k = 0; k < Math.round(t.r * .7); k++) { ell(c, t.x + (M() - .5) * t.r * 1.6, t.y + (M() - .5) * t.r * 1.6, .5 + M() * .5, .5 + M() * .5); c.fill(); }
+      if (st === 4) { c.beginPath(); c.rect(t.x - t.r * 2, t.y - t.r * 2, t.r * 4, t.r * 4); shape(t, -t.r * .22, -t.r * .25, false); c.fillStyle = col("C5"); c.globalAlpha = .8; c.fill("evenodd"); }
+      if (st >= 5) { const g = c.createRadialGradient(t.x - t.r * .35, t.y - t.r * .4, t.r * .15, t.x - t.r * .1, t.y - t.r * .1, t.r * 1.35); g.addColorStop(0, "rgba(143,150,156,0)"); g.addColorStop(.62, "rgba(143,150,156,.42)"); g.addColorStop(1, "rgba(80,86,93,.9)"); c.globalAlpha = 1; c.fillStyle = g; c.fillRect(t.x - t.r * 2, t.y - t.r * 2, t.r * 4, t.r * 4); }
+      if (st >= 6) { c.globalCompositeOperation = "source-over"; c.globalAlpha = 1; c.strokeStyle = "rgba(255,255,255,.8)"; c.lineWidth = Math.max(1.2, t.r * .09); c.lineCap = "round"; c.beginPath(); c.ellipse(t.x, t.y, t.r * t.sx * .72, t.r * .72, t.rot, 3.93 - .6 - t.rot, 3.93 + .6 - t.rot); c.stroke(); }
       c.restore();
     });
-    if (st < 6) pencil(c, st, () => stones.forEach(s => { shape(s); c.stroke(); }));
+    if (st < 6) pencil(c, st, () => stones.forEach(t => { shape(t); c.stroke(); }));
   },
   opus(c, st, rr) {
     const R = rr(0), pts = jitterPts(R, 5, 5, S, S, .9), cls = pts.map(() => R() < .5), rep = pts.map(() => R() < .3);
@@ -1665,7 +1682,7 @@ const GEN = {
   }),
 
   enrobe: fieldGen({
-    base: "C5", mid: "C7", sc: .018, th: .55, ma: .6, skUntil: 6,
+    base: "C5", mid: "C7", sc: .035, th: .55, ma: .55, skUntil: 6,
     reserve: inMarks, clipIn: c => { c.beginPath(); c.rect(0, 0, S, S); MARKS.forEach(m => c.rect(...m)); return "evenodd"; },
     sk: c => MARKS.forEach(m => c.strokeRect(...m)),
     s4: (c, st, rr) => {
@@ -1673,6 +1690,7 @@ const GEN = {
       c.globalCompositeOperation = "multiply"; c.strokeStyle = col("C9"); c.lineWidth = 1.1;
       for (let k = 0; k < 6; k++) { let x = D() * S, y = D() * S, a = D() * 6.28; c.beginPath(); c.moveTo(x, y); for (let s = 0; s < 14; s++) { a += (D() - .5) * 1.2; x += Math.cos(a) * 6; y += Math.sin(a) * 6; c.lineTo(x, y); } c.stroke(); }
       c.fillStyle = col("C9"); c.globalAlpha = .35; for (let k = 0; k < 9; k++) { ell(c, D() * S, D() * S, 6 + D() * 14, 4 + D() * 8, D() * 3); c.fill(); }
+      c.globalAlpha = .45; for (let k = 0; k < 1600; k++) { ell(c, D() * S, D() * S, .5 + D() * .7, .5 + D() * .6); c.fill(); }
       c.restore();
     },
     s6: (c, st, rr) => { c.fillStyle = WHITE; MARKS.forEach(m => c.fillRect(...m)); dots(c, rr(6), 380, WHITE, .6, .7); }
@@ -1686,7 +1704,7 @@ const GEN = {
   }),
 
   corten: fieldGen({
-    base: "E07", mid: "E09", sc: .022, th: .55, ma: .75, skUntil: 6,
+    base: "E07", mid: "E09", sc: .04, th: .55, ma: .7, skUntil: 6,
     sk: c => { c.beginPath(); c.moveTo(S / 2, 0); c.lineTo(S / 2, S); [S / 3, 2 * S / 3].forEach(y => { c.moveTo(0, y); c.lineTo(S, y); }); c.stroke(); },
     s4: (c, st, rr) => {
       const D = rr(4); c.save(); c.globalCompositeOperation = "multiply"; if (st >= 5) c.filter = "blur(1.2px)";
@@ -2016,8 +2034,8 @@ function handmade(c, w, h, seed, dir) {
   const src = c.getImageData(0, 0, w, h), s = src.data, out = c.createImageData(w, h), d = out.data;
   const ca = Math.cos(dir), sa = Math.sin(dir), per = 17;
   for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
-    const dx = (vnoise(x * .025, y * .025, seed) - .5) * 5 + (vnoise(x * .09, y * .09, seed + 1) - .5) * 1.4;
-    const dy = (vnoise(x * .025 + 50, y * .025, seed + 2) - .5) * 5 + (vnoise(x * .09 + 9, y * .09, seed + 3) - .5) * 1.4;
+    const dx = (vnoise(x * .025, y * .025, seed) - .5) * 3.4 + (vnoise(x * .09, y * .09, seed + 1) - .5) * 1;
+    const dy = (vnoise(x * .025 + 50, y * .025, seed + 2) - .5) * 3.4 + (vnoise(x * .09 + 9, y * .09, seed + 3) - .5) * 1;
     let sx = Math.min(w - 1.001, Math.max(0, x + dx)), sy = Math.min(h - 1.001, Math.max(0, y + dy));
     const x0 = sx | 0, y0 = sy | 0, fx = sx - x0, fy = sy - y0, i00 = (y0 * w + x0) * 4, i10 = i00 + 4, i01 = i00 + w * 4, i11 = i01 + 4;
     const px = k => (s[i00 + k] * (1 - fx) + s[i10 + k] * fx) * (1 - fy) + (s[i01 + k] * (1 - fx) + s[i11 + k] * fx) * fy;
