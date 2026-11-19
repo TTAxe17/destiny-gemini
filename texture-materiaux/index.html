@@ -1277,6 +1277,45 @@ function gravelStones(R) { const s = []; for (let k = 0; k < 700; k++) s.push({ 
 function crescent(c, s, pen, a) { c.save(); ell(c, s.x, s.y, s.r * 1.2, s.r, s.rot); c.clip(); c.beginPath(); c.rect(s.x - 12, s.y - 12, 24, 24); c.ellipse(s.x - 1.5, s.y - 1.5, s.r * 1.2, s.r, s.rot, 0, 6.29); c.globalCompositeOperation = "multiply"; c.globalAlpha = a; c.fillStyle = col(pen); c.fill("evenodd"); c.restore(); }
 
 /* Chaque générateur reçoit st = nombre d'étapes faites (1 à 6) et rr(k) = hasard propre à la couche k. */
+/* ===== Bois photoréaliste : la matière est calculée pixel par pixel ===== */
+const REAL = new Set(["bois", "bardage", "parquet", "deck"]);
+function woodPix(u, v, i, st, tone, kw, kd) {
+  const sd = i * 7.31, L = [226, 190, 136], M = [192, 142, 84], D = [118, 76, 38], VD = [62, 38, 18];
+  const U = u + kw + (fbm(u * .03 + sd, v * .004, 71) - .5) * 26;
+  let c = mix(L, M, clamp(.15 + .45 * vnoise(u * .04 + sd, v * .0035, 72) + .5 * tone)); c = mix(c, [205, 128, 60], .18 * vnoise(u * .02 + sd, v * .002, 78));
+  if (st >= 3) { const sk = fbm(U * .09, v * .007 + sd, 73); c = mix(c, D, ss(.5, .78, sk) * .38); }
+  if (st >= 4) {
+    const ph = U * .32 + 7 * fbm(U * .012 + sd, v * .0025, 74), ring = Math.abs(Math.sin(ph)), ring2 = Math.abs(Math.sin(ph * 2.7 + 1.3));
+    c = mix(c, D, (1 - ss(0, .2, ring)) * .55 * (.5 + .5 * vnoise(u * .2 + sd, v * .008, 75)));
+    c = mix(c, D, (1 - ss(0, .12, ring2)) * .22);
+    c = mix(c, VD, kd * .5);
+  }
+  if (st >= 5) c = mix(c, VD, kd * .35);
+  if (st >= 6) { const f = .9 + .2 * vnoise(u * 1.6 + sd, v * .03, 76); c = [c[0] * f, c[1] * f, c[2] * f]; if (vnoise(u * 2.6 + sd, v * .06, 77) > .86) c = mix(c, D, .28); }
+  return c;
+}
+function woodPlanks(c, st, planks, opt) {
+  const idx = new Int16Array(S * S).fill(-1);
+  planks.forEach((p, i) => { for (let y = Math.max(0, Math.ceil(p.y0)); y < Math.min(S, p.y1); y++) for (let x = Math.max(0, Math.ceil(p.x0)); x < Math.min(S, p.x1); x++) idx[y * S + x] = i; });
+  const GAP = [38, 25, 14], SH = [60, 38, 20];
+  field(c, S, S, (x, y) => {
+    const i = idx[y * S + x];
+    if (i < 0) return st >= opt.gapAt ? GAP : PAPER;
+    if (st < 2) return PAPER;
+    const p = planks[i], u = p.vert ? x - p.x0 : y - p.y0, a = p.vert ? y - p.y0 : x - p.x0, v = a + i * 137, W = p.vert ? p.x1 - p.x0 : p.y1 - p.y0, Lg = p.vert ? p.y1 - p.y0 : p.x1 - p.x0;
+    let kw = 0, kd = 0;
+    p.knots.forEach(k => { const du = (u - k.u) / k.r, dv = (a - k.v) / (k.r * 1.6), d = du * du + dv * dv, rd = Math.sqrt(d); kw += (u >= k.u ? 1 : -1) * k.r * 1.8 * Math.exp(-d * .35); kd = Math.max(kd, Math.exp(-d * 6) * .9 + Math.exp(-Math.pow((rd - 1) * 3.2, 2)) * .65); });
+    let col = woodPix(u, v, i, st, p.tone, kw, kd);
+    if (st >= opt.aoAt) {
+      col = mix(col, SH, (1 - ss(0, 7, W - u)) * .5 + (1 - ss(0, 3, u)) * .2);
+      if (opt.ends) col = mix(col, SH, (1 - ss(0, 4, Math.min(a, Lg - a))) * .35);
+      if (st >= 6) col = mix(col, [255, 236, 200], (1 - ss(0, 2.5, u)) * .25);
+    }
+    return col;
+  });
+  if (st < opt.gapAt) pencil(c, st, () => planks.forEach(p => c.strokeRect(p.x0, p.y0, p.x1 - p.x0, p.y1 - p.y0)));
+}
+function woodKnots(R, W, Lg, n, rmin, rmax) { const k = []; const cnt = Math.floor(R() * n * Lg / 200 + (R() < .3 ? 1 : 0)); for (let j = 0; j < cnt; j++) k.push({ u: W * (.2 + .6 * R()), v: Lg * R(), r: rmin + R() * (rmax - rmin) }); return k; }
 const GEN = {
   piscine(c, st, rr) {
     const pts = jitterPts(rr(0), 7, 7, S, S, .9), B21 = P("B21"), B24 = P("B24"), DK = mul(P("B29"), B24);
@@ -1391,24 +1430,9 @@ const GEN = {
   },
   parquet(c, st, rr) {
     const R = rr(0), pw = 36, planks = [];
-    for (let i = 0; i * pw < S; i++) { let y = -R() * 150; while (y < S) { const h = 90 + R() * 110; planks.push({ x: i * pw, y, h, alt: R() < .27, end: R() < .3, g: [R(), R(), R(), R(), R()], t: R(), kn: R() < .22, ky: R() }); y += h; } }
-    paper(c);
-    const L2 = rr(2), L3 = rr(3);
-    planks.forEach(p => {
-      const clip = () => { c.beginPath(); c.rect(p.x, p.y, pw, p.h); };
-      if (st >= 2) strokes(c, col("E35"), .6 + p.t * .32, Math.PI / 2, 8, 12, L2, clip);
-      if (st >= 3 && p.alt) strokes(c, col("E37"), .75, Math.PI / 2, 8, 12, L3, clip);
-      if (st >= 4) {
-        c.save(); clip(); c.clip(); c.globalCompositeOperation = "multiply"; c.strokeStyle = col("E49"); c.lineWidth = .9;
-        p.g.forEach((g, k) => { const gx = p.x + 4 + g * (pw - 8); c.globalAlpha = .25 + .2 * (k % 3); c.beginPath(); for (let yy = p.y; yy <= p.y + p.h; yy += 6) { const xx = gx + Math.sin(yy * .05 + k) * 1.8; yy === p.y ? c.moveTo(xx, yy) : c.lineTo(xx, yy); } c.stroke(); });
-        if (p.end) { c.globalAlpha = .5; c.fillStyle = col("E49"); c.fillRect(p.x, p.y + p.h - 14, pw, 14); }
-        if (p.kn) { c.globalAlpha = .8; c.fillStyle = col("E49"); ell(c, p.x + pw * .5, p.y + p.h * (.2 + p.ky * .6), 2.5, 6); c.fill(); c.globalAlpha = .35; ell(c, p.x + pw * .5, p.y + p.h * (.2 + p.ky * .6), 6, 16); c.fill(); }
-        c.restore();
-      }
-      if (st >= 5) { c.strokeStyle = INK; c.lineWidth = 1.4; c.strokeRect(p.x + .5, p.y + .5, pw - 1, p.h - 1); }
-      else pencil(c, st, () => c.strokeRect(p.x + .5, p.y + .5, pw - 1, p.h - 1));
-    });
-    if (st >= 6) { diagWhite(c); c.save(); c.strokeStyle = WHITE; c.lineWidth = 1.2; c.globalAlpha = .5; planks.forEach(p => { c.beginPath(); c.moveTo(p.x + 2.2, p.y + 3); c.lineTo(p.x + 2.2, p.y + p.h - 3); c.stroke(); }); c.restore(); }
+    for (let i = 0; i * pw < S; i++) { let y = -R() * 150; while (y < S) { const h = 90 + R() * 110, alt = R() < .27; planks.push({ x0: i * pw, x1: i * pw + pw - 1.5, y0: y, y1: y + h - 1.5, vert: true, tone: alt ? .75 + R() * .25 : R() * .5, knots: woodKnots(R, pw - 1.5, h, .9, 2, 4) }); y += h; } }
+    woodPlanks(c, st, planks, { gapAt: 5, aoAt: 5, ends: true });
+    if (st >= 6) { c.save(); c.filter = "blur(2px)"; c.globalAlpha = .45; diagWhite(c); c.restore(); }
   },
   mosaique(c, st, rr) {
     const R = rr(0), t = 24, j = 3, tiles = [];
@@ -1441,34 +1465,10 @@ const GEN = {
     });
   },
   bois(c, st, rr) {
-    const R = rr(0), E33 = P("E33"), E35 = P("E35");
-    const knots = [[S * .35, S * .3, 1], [S * .68, S * .72, .8]];
-    const disp = (x0, y) => { let d = 0; knots.forEach(([kx, ky, k]) => { const dy = (y - ky) / (46 * k), dx = x0 - kx; d += (dx >= 0 ? 1 : -1) * 30 * k * Math.exp(-dy * dy) * Math.exp(-(dx * dx) / 3600); }); return d; };
-    const veins = []; for (let i = 0; i < 64; i++) veins.push({ i, x0: (i + .5) * S / 64 + (R() - .5) * 4, dark: R() < .18, a: .25 + R() * .45, w: R(), soft: R() < .5 });
-    field(c, S, S, (x, y) => {
-      if (st < 2) return PAPER;
-      let v = mix(E33, mul(E33, E33), .12 * vnoise(x * .02, y * .01, 9));
-      if (st >= 3) { const t = vnoise((x - disp(x, y) * .8) * .07, y * .005, 3); v = mix(v, mul(v, E35), ss(.48, .6, t) * .9 + .15 * fbm(x * .01, y * .02, 12)); }
-      return v;
-    });
-    const path = v => { c.beginPath(); for (let y = -10; y <= S + 10; y += 4) { const x = v.x0 + Math.sin(y * .015 + v.i) * 3 + disp(v.x0, y); y === -10 ? c.moveTo(x, y) : c.lineTo(x, y); } };
-    if (st < 4) pencil(c, st, () => { veins.forEach(v => { if (v.i % 4) return; path(v); c.stroke(); }); knots.forEach(([kx, ky]) => { ell(c, kx, ky, 6, 12); c.stroke(); }); });
-    else {
-      c.save(); c.globalCompositeOperation = "multiply";
-      veins.forEach(v => {
-        const strong = v.dark && st >= 5, soft = st >= 6 && v.soft && !v.dark;
-        c.strokeStyle = col(strong ? "E49" : "E57"); c.lineWidth = strong ? 1.2 + v.w * 2 : .4 + v.w * 1.2;
-        c.filter = soft ? "blur(1.2px)" : "none"; c.globalAlpha = v.a * (soft ? .55 : 1);
-        path(v); c.stroke();
-      });
-      c.filter = "none";
-      if (st >= 5) knots.forEach(([kx, ky, k]) => {
-        c.save(); c.filter = "blur(2px)"; c.fillStyle = col("E49"); c.globalAlpha = .3; ell(c, kx, ky, 7 * k, 44 * k); c.fill(); c.restore();
-        c.strokeStyle = col("E49"); c.lineWidth = 1.1; c.globalAlpha = .55; for (let r = 3; r < 22 * k; r += 3) { ell(c, kx, ky, r * .7, r * 1.7); c.stroke(); }
-        c.globalAlpha = .95; c.fillStyle = col("E49"); ell(c, kx, ky, 3.5 * k, 8 * k); c.fill();
-      });
-      c.restore();
-    }
+    const R = rr(0);
+    const planks = [{ x0: 0, x1: S, y0: 0, y1: S, vert: true, tone: .35, knots: [{ u: S * .34, v: S * .3, r: 11 }, { u: S * .7, v: S * .72, r: 8 }] }];
+    woodPlanks(c, st, planks, { gapAt: 99, aoAt: 99 });
+    if (st < 4) pencil(c, st, () => planks[0].knots.forEach(k => { ell(c, k.u, k.v, k.r * .8, k.r * 1.8); c.stroke(); }));
   },
   galets(c, st, rr) {
     const R = rr(0), stones = [];
@@ -1636,22 +1636,17 @@ const GEN = {
     s6: ({ c, units }) => { c.save(); c.strokeStyle = WHITE; c.lineWidth = 1.3; c.globalAlpha = .9; units.forEach(u => { c.beginPath(); c.moveTo(u.x - 7.5, 0); c.lineTo(u.x - 7.5, S); c.stroke(); }); c.restore(); }
   }),
 
-  bardage: unitsGen({
-    layout: () => { const u = []; for (let i = 0; i * 33 < S; i++) u.push({ x: i * 33 + 1, y: -4, w: 30, h: S + 8 }); return u; },
-    base: "E33", alt: "E35", dir: Math.PI / 2, inkAt: 6,
-    s4: ({ c, units, rr }) => { const L = rr(4); units.forEach(u => grainLines(c, u, "E57", L, true, 3)); },
-    s5: ({ c, units }) => units.forEach(u => shadeUnit(c, u, "C5", 5, .8, 1, 0)),
-    s6: ({ c, units }) => inkUnits(c, units, 1.2)
-  }),
-
-  deck: unitsGen({
-    layout: R => { const u = []; for (let r = 0; r * 31 < S; r++) { let x = -R() * 150; while (x < S) { const w = 110 + R() * 100; u.push({ x, y: r * 31 + 3, w: w - 2, h: 26 }); x += w; } } return u; },
-    base: "E33", alt: "E35", inkAt: 6,
-    s4: ({ c, units, rr }) => { const L = rr(4); units.forEach(u => grainLines(c, u, "E57", L, false, 3)); },
-    s5: ({ c, units }) => fillJoints(c, units, "C7", .9),
-    s6: ({ c, units }) => { inkUnits(c, units, 1.1); c.fillStyle = INK; units.forEach(u => [[u.x + 7, u.y + 7], [u.x + 7, u.y + u.h - 7], [u.x + u.w - 7, u.y + 7], [u.x + u.w - 7, u.y + u.h - 7]].forEach(([x, y]) => { ell(c, x, y, 1.3, 1.3); c.fill(); })); }
-  }),
-
+  bardage: (c, st, rr) => {
+    const R = rr(0), planks = []; let x = -R() * 20;
+    while (x < S) { const w = 36 + R() * 14, alt = R() < .33, Lg = S + 4; planks.push({ x0: x, x1: x + w - 3, y0: -2, y1: S + 2, vert: true, tone: alt ? .7 + R() * .3 : R() * .5, knots: woodKnots(R, w - 3, Lg, 1.6, 3, 7) }); x += w; }
+    woodPlanks(c, st, planks, { gapAt: 6, aoAt: 5 });
+  },
+  deck: (c, st, rr) => {
+    const R = rr(0), planks = [];
+    for (let r = 0; r * 31 < S; r++) { let x = -R() * 150; while (x < S) { const w = 110 + R() * 100, alt = R() < .33; planks.push({ x0: x, x1: x + w - 3, y0: r * 31 + 3, y1: r * 31 + 29, vert: false, tone: alt ? .7 + R() * .3 : R() * .5, knots: woodKnots(R, 26, w - 3, 1.2, 2, 4), sx: x, sw: w - 3, sy: r * 31 + 3 }); x += w; } }
+    woodPlanks(c, st, planks, { gapAt: 5, aoAt: 5, ends: true });
+    if (st >= 6) { c.save(); planks.forEach(p => [[p.x0 + 8, p.y0 + 7], [p.x0 + 8, p.y1 - 7], [p.x1 - 8, p.y0 + 7], [p.x1 - 8, p.y1 - 7]].forEach(([x, y]) => { c.fillStyle = "rgba(255,240,210,.5)"; ell(c, x - .6, y - .6, 2, 2); c.fill(); c.fillStyle = "#2c2a26"; ell(c, x, y, 1.6, 1.6); c.fill(); })); c.restore(); }
+  },
   "pierre-taille": unitsGen({
     layout: R => { const u = []; let y = 0; while (y < S) { const h = 40 + R() * 22; let x = -R() * 60; while (x < S) { const w = 60 + R() * 55; u.push({ x: x + 2, y: y + 2, w: w - 4, h: h - 4 }); x += w; } y += h; } return u; },
     base: "E31", alt: "W3", shade: "W5", sw: 6,
@@ -2038,7 +2033,7 @@ function renderCanvas(id, st, grain) {
   const ctx = cv.getContext("2d"), seed = seedOf(id);
   if (st <= 0) { paper(ctx); return cv; }
   try { GEN[id](ctx, st, k => rng(seed * 7919 + k * 104729)); } catch (e) { console.error(id, st, e); }
-  handmade(ctx, S, S, seed & 1023, VERTICAL.has(id) ? Math.PI / 2 + .08 : .12, SMOOTH.has(id) ? .45 : 1);
+  if (!REAL.has(id)) handmade(ctx, S, S, seed & 1023, VERTICAL.has(id) ? Math.PI / 2 + .08 : .12, SMOOTH.has(id) ? .45 : 1);
   if (grain) finish(ctx, S, S, seed + st);
   return cv;
 }
