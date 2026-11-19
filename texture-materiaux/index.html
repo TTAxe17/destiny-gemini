@@ -2033,7 +2033,8 @@ function renderCanvas(id, st, grain) {
   const ctx = cv.getContext("2d"), seed = seedOf(id);
   if (st <= 0) { paper(ctx); return cv; }
   try { GEN[id](ctx, st, k => rng(seed * 7919 + k * 104729)); } catch (e) { console.error(id, st, e); }
-  if (!REAL.has(id)) handmade(ctx, S, S, seed & 1023, VERTICAL.has(id) ? Math.PI / 2 + .08 : .12, SMOOTH.has(id) ? .45 : 1);
+  photo(ctx, id, seed & 1023);
+  if (false) handmade(ctx, S, S, seed & 1023, VERTICAL.has(id) ? Math.PI / 2 + .08 : .12, SMOOTH.has(id) ? .45 : 1);
   if (grain) finish(ctx, S, S, seed + st);
   return cv;
 }
@@ -2064,6 +2065,48 @@ function handmade(c, w, h, seed, dir, amp = 1) {
     const j = (y * w + x) * 4; d[j] = r; d[j + 1] = g; d[j + 2] = b; d[j + 3] = 255;
   }
   c.putImageData(out, 0, 0);
+}
+/* ===== Rendu photo : relief (lumière en haut à gauche), grain de la matière, nuances naturelles ===== */
+const MAT = (() => {
+  const m = {}, set = (ids, v) => ids.forEach(id => m[id] = v);
+  set(["dalles", "pave-beton", "pave-granit", "opus", "galets", "gravier", "brique", "pierre-taille", "beton", "enduit", "travertin", "granit-poli", "terrazzo", "gabion", "tomettes", "tuiles", "ardoise", "carreaux-ciment", "enrobe", "sable", "osb", "toit-vegetal"], { grain: .07, bump: 2.4, sc: .3 });
+  set(["sable", "gravier", "enrobe", "enduit"], { grain: .1, bump: 2, sc: .55 });
+  set(["carrelage", "mosaique", "paves-verre"], { grain: .02, bump: 1.6, sc: .3, gloss: true });
+  set(["marbre", "marbre-noir", "beton-cire"], { grain: .015, bump: .35, sc: .3, gloss: true });
+  set(["zinc", "bac-acier", "tole-perforee", "caillebotis", "corten", "bois-brule"], { grain: .05, bump: 2.2, sc: .3, aniso: "v" });
+  set(["inox"], { grain: .05, bump: .8, sc: .3, aniso: "h", gloss: true });
+  set(["piscine", "eau-agitee", "eau-calme", "mer", "vitre", "mur-rideau"], { grain: .012, bump: .7, sc: .2, gloss: true });
+  set(["gazon", "arbre", "conifere", "haie", "massif", "arbre-elevation", "conifere-elevation", "haie-elevation"], { grain: .06, bump: 2.2, sc: .4 });
+  set(["personnages-plan", "silhouettes", "voitures-plan"], { grain: .015, bump: 1.4, sc: .3 });
+  set(["bois", "bardage", "parquet", "deck", "point-de-hongrie"], { grain: .02, bump: 1.2, sc: .3 });
+  return m;
+})();
+function photo(c, id, seed) {
+  const o = MAT[id] || { grain: .05, bump: 2.2, sc: .3 }, w = S, h = S;
+  const img = c.getImageData(0, 0, w, h), d = img.data, n = w * h;
+  const H = new Float32Array(n), T = new Float32Array(n), A = new Float32Array(n);
+  for (let i = 0; i < n; i++) { const j = i * 4, r = d[j], g = d[j + 1], b = d[j + 2], l = .3 * r + .59 * g + .11 * b; H[i] = l / 255; A[i] = clamp((246 - l) / 90 + (Math.max(r, g, b) - Math.min(r, g, b)) / 140); }
+  for (let pass = 0; pass < 3; pass++) {
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { const i = y * w + x; T[i] = (H[i] * 2 + (x > 0 ? H[i - 1] : H[i]) + (x < w - 1 ? H[i + 1] : H[i])) / 4; }
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { const i = y * w + x; H[i] = (T[i] * 2 + (y > 0 ? T[i - w] : T[i]) + (y < h - 1 ? T[i + w] : T[i])) / 4; }
+  }
+  const sc = o.sc, ax = o.aniso === "v" ? .12 : 1, ay = o.aniso === "h" ? .12 : 1;
+  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+    const i = y * w + x; if (A[i] < .04) continue;
+    const mic = (vnoise(x * sc * ax, y * sc * ay, seed) - .5) + (hash(x, y, seed + 1) - .5) * .6;
+    H[i] += mic * o.grain;
+  }
+  for (let y = 1; y < h - 1; y++) for (let x = 1; x < w - 1; x++) {
+    const i = y * w + x, a = A[i]; if (a < .04) continue;
+    const gx = H[i + 1] - H[i - 1], gy = H[i + w] - H[i - w];
+    let k = 1 + o.bump * (gx + gy) * a;
+    k *= 1 + (fbm(x * .015, y * .015, seed + 2) - .5) * .16 * a;
+    k *= 1 + ((vnoise(x * sc * ax, y * sc * ay, seed) - .5) + (hash(x, y, seed + 1) - .5) * .6) * o.grain * 1.4 * a;
+    k *= 1.04 - .08 * (x + y) / (w + h);
+    if (o.gloss) { const sp = Math.max(0, gx + gy) * o.bump * 2.2; k += sp * sp * .6; }
+    const j = i * 4; d[j] *= k; d[j + 1] *= k; d[j + 2] *= k;
+  }
+  c.putImageData(img, 0, 0);
 }
 function stageImg(id, st) { const key = id + ":" + st; return cache[key] || (cache[key] = renderCanvas(id, st, true).toDataURL("image/jpeg", .9)); }
 const finalStep = id => BY_ID[id].steps.length;
